@@ -1,18 +1,28 @@
-# iLib
-Basic system for managing a library on Java using Look And Feel and DAO Pattern. The ITPLibrary Version 2.0.
+##Programa para gestión de inventarios de Laboratorios UCAB
+✔️ Interfaz gráfica con Material Design style (usando Look And Feel).
+✔ Conexión con base de datos ️Firebase.
+✔️ Gestión de registros de equipos, insumos and sustancias química.
+✔ ️Manejo de notificaciones de mantenimiento.
+✔ ️Control de transacciones realizadas.
+✔️ Acceso de usuarios por privilegios.
+✔ ️Generación de reportes de Excel patrón adapter.
+✔ Patrón ️MVC.
 
-## Features
+## Contribuyentes:
+✔️ Daniel Russo
+✔ Jimmy Fung
+✔️ Jorge Ramírez
+
+## Referencias a proyectos que ayudaron a la contrucción de esta idea:
+
+## iLib by Anthony Zabs
+## Caracteristicas
 ✔️ Graphic interface with Material Design style (Using Look And Feel).\
-✔️ MySQL database connection.\
-✔️ Management of books, loans and returns.\
-✔️ Penalties for late returns.\
-✔️ Movement logs.\
-✔️ Lookup tables.\
-✔️ DAO Pattern.
-
-## Video Preview
-
+## Video donde se explica:
 https://www.youtube.com/watch?v=AgJMFhxvA40
 
-## Getting Started
-Import the java project in your preferred IDE and import the database. Just edit the class `Database.java` with your database connection credentials.
+## Como conectar Firebase con Java en NetBeans usando Maven by Rzy
+## Caracteristicas
+✔️ Realizar la "conexión" entre Firebase y NetBeans para realizar un CRUD. \
+##Lista de reproducción para conexión con base de datos
+https://www.youtube.com/watch?v=TjW7WZccMYk&list=PL-Y1OPtiTLCXQi5Bi1zW-T9p9NIvqmi3a
