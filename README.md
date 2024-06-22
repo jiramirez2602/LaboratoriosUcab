@@ -1,7 +1,7 @@
 ##Programa para gestión de inventarios de Laboratorios UCAB
 ✔️ Interfaz gráfica con Material Design style (usando Look And Feel).
 ✔ Conexión con base de datos ️Firebase.
-✔️ Gestión de registros de equipos, insumos and sustancias química.
+✔️ Gestión de registros de equipos, insumos y sustancias química.
 ✔ ️Manejo de notificaciones de mantenimiento.
 ✔ ️Control de transacciones realizadas.
 ✔️ Acceso de usuarios por privilegios.
