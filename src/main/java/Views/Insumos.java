@@ -1,4 +1,4 @@
-package com.mycompany.views;
+package Views;
 
 import com.mycompany.ilib.DAOUsersImpl;
 import com.mycompany.ilib.Dashboard;

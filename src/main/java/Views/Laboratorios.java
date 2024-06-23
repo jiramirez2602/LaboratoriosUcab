@@ -1,4 +1,4 @@
-package com.mycompany.views;
+package Views;
 
 import com.mycompany.ilib.DAOUsersImpl;
 import com.mycompany.ilib.Dashboard;
@@ -6,9 +6,9 @@ import com.mycompany.interfaces.DAOUsers;
 import java.awt.Color;
 import javax.swing.table.DefaultTableModel;
 
-public class Equipos extends javax.swing.JPanel {
+public class Laboratorios extends javax.swing.JPanel {
 
-    public Equipos() {
+    public Laboratorios() {
         initComponents();
         InitStyles();
         LoadUsers();
@@ -42,28 +42,28 @@ public class Equipos extends javax.swing.JPanel {
         bg = new javax.swing.JPanel();
         title = new javax.swing.JLabel();
         userSearch = new javax.swing.JTextField();
-        BotonBuscarEquipo = new javax.swing.JButton();
+        BotonBuscarLab = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        BotonEliminarEquipo = new javax.swing.JButton();
-        BotonModificarEquipo = new javax.swing.JButton();
-        BotonCrearEquipo = new javax.swing.JButton();
+        BotonEliminarLab = new javax.swing.JButton();
+        BotonModificarLab = new javax.swing.JButton();
+        BotonCrearLab = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
         bg.setBackground(new java.awt.Color(255, 255, 255));
 
-        title.setText("Equipos");
+        title.setText("Laboratorios");
 
-        BotonBuscarEquipo.setBackground(new java.awt.Color(18, 90, 173));
-        BotonBuscarEquipo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        BotonBuscarEquipo.setForeground(new java.awt.Color(255, 255, 255));
-        BotonBuscarEquipo.setText("Buscar");
-        BotonBuscarEquipo.setBorderPainted(false);
-        BotonBuscarEquipo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        BotonBuscarEquipo.addActionListener(new java.awt.event.ActionListener() {
+        BotonBuscarLab.setBackground(new java.awt.Color(18, 90, 173));
+        BotonBuscarLab.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        BotonBuscarLab.setForeground(new java.awt.Color(255, 255, 255));
+        BotonBuscarLab.setText("Buscar");
+        BotonBuscarLab.setBorderPainted(false);
+        BotonBuscarLab.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        BotonBuscarLab.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonBuscarEquipoActionPerformed(evt);
+                BotonBuscarLabActionPerformed(evt);
             }
         });
 
@@ -99,39 +99,39 @@ public class Equipos extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        BotonEliminarEquipo.setBackground(new java.awt.Color(18, 90, 173));
-        BotonEliminarEquipo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        BotonEliminarEquipo.setForeground(new java.awt.Color(255, 255, 255));
-        BotonEliminarEquipo.setText("Borrar");
-        BotonEliminarEquipo.setBorderPainted(false);
-        BotonEliminarEquipo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        BotonEliminarEquipo.addActionListener(new java.awt.event.ActionListener() {
+        BotonEliminarLab.setBackground(new java.awt.Color(18, 90, 173));
+        BotonEliminarLab.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        BotonEliminarLab.setForeground(new java.awt.Color(255, 255, 255));
+        BotonEliminarLab.setText("Borrar");
+        BotonEliminarLab.setBorderPainted(false);
+        BotonEliminarLab.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        BotonEliminarLab.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonEliminarEquipoActionPerformed(evt);
+                BotonEliminarLabActionPerformed(evt);
             }
         });
 
-        BotonModificarEquipo.setBackground(new java.awt.Color(18, 90, 173));
-        BotonModificarEquipo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        BotonModificarEquipo.setForeground(new java.awt.Color(255, 255, 255));
-        BotonModificarEquipo.setText("Editar");
-        BotonModificarEquipo.setBorderPainted(false);
-        BotonModificarEquipo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        BotonModificarEquipo.addActionListener(new java.awt.event.ActionListener() {
+        BotonModificarLab.setBackground(new java.awt.Color(18, 90, 173));
+        BotonModificarLab.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        BotonModificarLab.setForeground(new java.awt.Color(255, 255, 255));
+        BotonModificarLab.setText("Editar");
+        BotonModificarLab.setBorderPainted(false);
+        BotonModificarLab.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        BotonModificarLab.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonModificarEquipoActionPerformed(evt);
+                BotonModificarLabActionPerformed(evt);
             }
         });
 
-        BotonCrearEquipo.setBackground(new java.awt.Color(18, 90, 173));
-        BotonCrearEquipo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        BotonCrearEquipo.setForeground(new java.awt.Color(255, 255, 255));
-        BotonCrearEquipo.setText("Nuevo");
-        BotonCrearEquipo.setBorderPainted(false);
-        BotonCrearEquipo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        BotonCrearEquipo.addActionListener(new java.awt.event.ActionListener() {
+        BotonCrearLab.setBackground(new java.awt.Color(18, 90, 173));
+        BotonCrearLab.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        BotonCrearLab.setForeground(new java.awt.Color(255, 255, 255));
+        BotonCrearLab.setText("Nuevo");
+        BotonCrearLab.setBorderPainted(false);
+        BotonCrearLab.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        BotonCrearLab.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonCrearEquipoActionPerformed(evt);
+                BotonCrearLabActionPerformed(evt);
             }
         });
 
@@ -149,16 +149,16 @@ public class Equipos extends javax.swing.JPanel {
                         .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(bgLayout.createSequentialGroup()
                                 .addGap(427, 427, 427)
-                                .addComponent(BotonCrearEquipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(BotonCrearLab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(BotonModificarEquipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(BotonModificarLab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(BotonEliminarEquipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(BotonEliminarLab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(bgLayout.createSequentialGroup()
                                 .addComponent(userSearch)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(BotonBuscarEquipo)))
+                                .addComponent(BotonBuscarLab)))
                         .addGap(50, 50, 50))))
         );
         bgLayout.setVerticalGroup(
@@ -169,14 +169,14 @@ public class Equipos extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(userSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BotonBuscarEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BotonBuscarLab, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BotonEliminarEquipo)
-                    .addComponent(BotonModificarEquipo)
-                    .addComponent(BotonCrearEquipo))
+                    .addComponent(BotonEliminarLab)
+                    .addComponent(BotonModificarLab)
+                    .addComponent(BotonCrearLab))
                 .addGap(25, 25, 25))
         );
 
@@ -196,28 +196,28 @@ public class Equipos extends javax.swing.JPanel {
 
     }//GEN-LAST:event_jTable1MousePressed
 
-    private void BotonCrearEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCrearEquipoActionPerformed
+    private void BotonCrearLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCrearLabActionPerformed
         
-    }//GEN-LAST:event_BotonCrearEquipoActionPerformed
+    }//GEN-LAST:event_BotonCrearLabActionPerformed
 
-    private void BotonEliminarEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarEquipoActionPerformed
+    private void BotonEliminarLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarLabActionPerformed
      
-    }//GEN-LAST:event_BotonEliminarEquipoActionPerformed
+    }//GEN-LAST:event_BotonEliminarLabActionPerformed
 
-    private void BotonModificarEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarEquipoActionPerformed
+    private void BotonModificarLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarLabActionPerformed
         
-    }//GEN-LAST:event_BotonModificarEquipoActionPerformed
+    }//GEN-LAST:event_BotonModificarLabActionPerformed
 
-    private void BotonBuscarEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBuscarEquipoActionPerformed
+    private void BotonBuscarLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBuscarLabActionPerformed
        
-    }//GEN-LAST:event_BotonBuscarEquipoActionPerformed
+    }//GEN-LAST:event_BotonBuscarLabActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BotonBuscarEquipo;
-    private javax.swing.JButton BotonCrearEquipo;
-    private javax.swing.JButton BotonEliminarEquipo;
-    private javax.swing.JButton BotonModificarEquipo;
+    private javax.swing.JButton BotonBuscarLab;
+    private javax.swing.JButton BotonCrearLab;
+    private javax.swing.JButton BotonEliminarLab;
+    private javax.swing.JButton BotonModificarLab;
     private javax.swing.JPanel bg;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

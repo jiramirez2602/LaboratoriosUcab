@@ -1,4 +1,4 @@
-package com.mycompany.views;
+package Views;
 
 import com.mycompany.ilib.DAOUsersImpl;
 import com.mycompany.ilib.Dashboard;
@@ -6,9 +6,9 @@ import com.mycompany.interfaces.DAOUsers;
 import java.awt.Color;
 import javax.swing.table.DefaultTableModel;
 
-public class Laboratorios extends javax.swing.JPanel {
+public class Usuarios extends javax.swing.JPanel {
 
-    public Laboratorios() {
+    public Usuarios() {
         initComponents();
         InitStyles();
         LoadUsers();
@@ -42,28 +42,28 @@ public class Laboratorios extends javax.swing.JPanel {
         bg = new javax.swing.JPanel();
         title = new javax.swing.JLabel();
         userSearch = new javax.swing.JTextField();
-        BotonBuscarLab = new javax.swing.JButton();
+        BotonBuscarUsuarios = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        BotonEliminarLab = new javax.swing.JButton();
-        BotonModificarLab = new javax.swing.JButton();
-        BotonCrearLab = new javax.swing.JButton();
+        BotonEliminarUsuario = new javax.swing.JButton();
+        BotonModificarUsuario = new javax.swing.JButton();
+        BotonCrearUsuario = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
         bg.setBackground(new java.awt.Color(255, 255, 255));
 
-        title.setText("Laboratorios");
+        title.setText("Usuarios");
 
-        BotonBuscarLab.setBackground(new java.awt.Color(18, 90, 173));
-        BotonBuscarLab.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        BotonBuscarLab.setForeground(new java.awt.Color(255, 255, 255));
-        BotonBuscarLab.setText("Buscar");
-        BotonBuscarLab.setBorderPainted(false);
-        BotonBuscarLab.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        BotonBuscarLab.addActionListener(new java.awt.event.ActionListener() {
+        BotonBuscarUsuarios.setBackground(new java.awt.Color(18, 90, 173));
+        BotonBuscarUsuarios.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        BotonBuscarUsuarios.setForeground(new java.awt.Color(255, 255, 255));
+        BotonBuscarUsuarios.setText("Buscar");
+        BotonBuscarUsuarios.setBorderPainted(false);
+        BotonBuscarUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        BotonBuscarUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonBuscarLabActionPerformed(evt);
+                BotonBuscarUsuariosActionPerformed(evt);
             }
         });
 
@@ -99,39 +99,39 @@ public class Laboratorios extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        BotonEliminarLab.setBackground(new java.awt.Color(18, 90, 173));
-        BotonEliminarLab.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        BotonEliminarLab.setForeground(new java.awt.Color(255, 255, 255));
-        BotonEliminarLab.setText("Borrar");
-        BotonEliminarLab.setBorderPainted(false);
-        BotonEliminarLab.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        BotonEliminarLab.addActionListener(new java.awt.event.ActionListener() {
+        BotonEliminarUsuario.setBackground(new java.awt.Color(18, 90, 173));
+        BotonEliminarUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        BotonEliminarUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        BotonEliminarUsuario.setText("Borrar");
+        BotonEliminarUsuario.setBorderPainted(false);
+        BotonEliminarUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        BotonEliminarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonEliminarLabActionPerformed(evt);
+                BotonEliminarUsuarioActionPerformed(evt);
             }
         });
 
-        BotonModificarLab.setBackground(new java.awt.Color(18, 90, 173));
-        BotonModificarLab.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        BotonModificarLab.setForeground(new java.awt.Color(255, 255, 255));
-        BotonModificarLab.setText("Editar");
-        BotonModificarLab.setBorderPainted(false);
-        BotonModificarLab.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        BotonModificarLab.addActionListener(new java.awt.event.ActionListener() {
+        BotonModificarUsuario.setBackground(new java.awt.Color(18, 90, 173));
+        BotonModificarUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        BotonModificarUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        BotonModificarUsuario.setText("Editar");
+        BotonModificarUsuario.setBorderPainted(false);
+        BotonModificarUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        BotonModificarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonModificarLabActionPerformed(evt);
+                BotonModificarUsuarioActionPerformed(evt);
             }
         });
 
-        BotonCrearLab.setBackground(new java.awt.Color(18, 90, 173));
-        BotonCrearLab.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        BotonCrearLab.setForeground(new java.awt.Color(255, 255, 255));
-        BotonCrearLab.setText("Nuevo");
-        BotonCrearLab.setBorderPainted(false);
-        BotonCrearLab.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        BotonCrearLab.addActionListener(new java.awt.event.ActionListener() {
+        BotonCrearUsuario.setBackground(new java.awt.Color(18, 90, 173));
+        BotonCrearUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        BotonCrearUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        BotonCrearUsuario.setText("Nuevo");
+        BotonCrearUsuario.setBorderPainted(false);
+        BotonCrearUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        BotonCrearUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonCrearLabActionPerformed(evt);
+                BotonCrearUsuarioActionPerformed(evt);
             }
         });
 
@@ -149,16 +149,16 @@ public class Laboratorios extends javax.swing.JPanel {
                         .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(bgLayout.createSequentialGroup()
                                 .addGap(427, 427, 427)
-                                .addComponent(BotonCrearLab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(BotonCrearUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(BotonModificarLab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(BotonModificarUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(BotonEliminarLab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(BotonEliminarUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(bgLayout.createSequentialGroup()
                                 .addComponent(userSearch)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(BotonBuscarLab)))
+                                .addComponent(BotonBuscarUsuarios)))
                         .addGap(50, 50, 50))))
         );
         bgLayout.setVerticalGroup(
@@ -169,14 +169,14 @@ public class Laboratorios extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(userSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BotonBuscarLab, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BotonBuscarUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BotonEliminarLab)
-                    .addComponent(BotonModificarLab)
-                    .addComponent(BotonCrearLab))
+                    .addComponent(BotonEliminarUsuario)
+                    .addComponent(BotonModificarUsuario)
+                    .addComponent(BotonCrearUsuario))
                 .addGap(25, 25, 25))
         );
 
@@ -196,28 +196,28 @@ public class Laboratorios extends javax.swing.JPanel {
 
     }//GEN-LAST:event_jTable1MousePressed
 
-    private void BotonCrearLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCrearLabActionPerformed
-        
-    }//GEN-LAST:event_BotonCrearLabActionPerformed
-
-    private void BotonEliminarLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarLabActionPerformed
-     
-    }//GEN-LAST:event_BotonEliminarLabActionPerformed
-
-    private void BotonModificarLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarLabActionPerformed
-        
-    }//GEN-LAST:event_BotonModificarLabActionPerformed
-
-    private void BotonBuscarLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBuscarLabActionPerformed
+    private void BotonCrearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCrearUsuarioActionPerformed
        
-    }//GEN-LAST:event_BotonBuscarLabActionPerformed
+    }//GEN-LAST:event_BotonCrearUsuarioActionPerformed
+
+    private void BotonEliminarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarUsuarioActionPerformed
+       
+    }//GEN-LAST:event_BotonEliminarUsuarioActionPerformed
+
+    private void BotonModificarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarUsuarioActionPerformed
+       
+    }//GEN-LAST:event_BotonModificarUsuarioActionPerformed
+
+    private void BotonBuscarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBuscarUsuariosActionPerformed
+       
+    }//GEN-LAST:event_BotonBuscarUsuariosActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BotonBuscarLab;
-    private javax.swing.JButton BotonCrearLab;
-    private javax.swing.JButton BotonEliminarLab;
-    private javax.swing.JButton BotonModificarLab;
+    private javax.swing.JButton BotonBuscarUsuarios;
+    private javax.swing.JButton BotonCrearUsuario;
+    private javax.swing.JButton BotonEliminarUsuario;
+    private javax.swing.JButton BotonModificarUsuario;
     private javax.swing.JPanel bg;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

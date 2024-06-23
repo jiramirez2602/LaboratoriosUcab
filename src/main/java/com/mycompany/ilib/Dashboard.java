@@ -5,9 +5,14 @@
  */
 package com.mycompany.ilib;
 
+import Views.Productos;
+import Views.Reportes;
+import Views.Laboratorios;
+import Views.Usuarios;
+import Views.Principal;
+import Views.Transacciones;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialLighterIJTheme;
-import com.mycompany.views.*;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Insets;

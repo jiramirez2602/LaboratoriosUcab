@@ -1,4 +1,4 @@
-package com.mycompany.views;
+package Views;
 
 import com.mycompany.ilib.DAOLendingsImpl;
 import com.mycompany.interfaces.DAOLendings;
