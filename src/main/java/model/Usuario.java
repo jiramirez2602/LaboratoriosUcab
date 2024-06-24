@@ -28,6 +28,10 @@ public class Usuario {
         this.id=generarUUID();
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getUsername() {
         return username;
     }

@@ -25,6 +25,8 @@ public class Main {
 
         //Creo ahora un usuario con el controlador como se hara en produccion
         ListaDeUsuarios listaUsers = new ListaDeUsuarios();
-        listaUsers.crearUsuario(userLogeado, "Jorge", "123", "Jorge Ignacio Ramirez Millan", privilegios, "administrador", "true");
+        listaUsers.crearUsuario(userLogeado, "Jorge", "12223", "Jodsrge Ignacio Ramirez Millan", privilegios, "admon", "true");
+        
+        //listaUsers.actualizarUsuarios(userLogeado, "080b28ba-3190-4033-ab0e-6950b021bf90", "Jimmy", "321", "Fung Jimmy", privilegios, "admin", "true");
     }
 }
