@@ -20,8 +20,8 @@ public class ListaDeSustanciasQuimicas {
         privilegios.add("Transacciones");
         Usuario administradorLaboratorio = new Usuario("Harry1", "1234", "Harry Castellanos", privilegios, "administrador", true);
         Laboratorio lab = new Laboratorio("Aula 2", "Ingenieria", "Industrial", "Laboratorios",administradorLaboratorio);
-        //TODO: SustanciaQuimica sustancia = new SustanciaQuimica("H20", "Liquido", "estable","Hidrogeno",false,"32232","bajo", "fraseR","FraseS","Sellado en botella","Permitido","laboratorios",100, "LaboratoriosAMAI", "Envasado", "53236", "Hidrogeno", 1,"Seguro",lab);
-        //TODO: listaSustancias.add(sustancia);
+        SustanciaQuimica sustancia = new SustanciaQuimica("H20", "Liquido", "estable","Hidrogeno",false,"32232","bajo", "fraseR","FraseS","Sellado en botella","Permitido","laboratorios",100, "LaboratoriosAMAI", "Envasado", "53236", "Hidrogeno", 1,"Seguro",lab);
+        listaSustancias.add(sustancia);
     }
 
     public ArrayList<SustanciaQuimica> getListaSustanciasQuimicas() {
@@ -75,8 +75,8 @@ public class ListaDeSustanciasQuimicas {
                 return false;
             }
 
-            //TODO: SustanciaQuimica sustanciaAux = new SustanciaQuimica(formulaQuimica, concentracion, presentacion, nombreComercial, poseeMSD, numeroDeIdentificacion, grupoDeRiesgo, fraseR, fraseS, metodoDeControl, permisos, unidad, precioEstimadoAux, proveedor, almacenadoEnvasado, codigo, nombreProducto, inventarioExistenteAux, observaciones, laboratorio);
-            //TODO: listaSustancias.add(sustanciaAux);
+            SustanciaQuimica sustanciaAux = new SustanciaQuimica(formulaQuimica, concentracion, presentacion, nombreComercial, poseeMSD, numeroDeIdentificacion, grupoDeRiesgo, fraseR, fraseS, metodoDeControl, permisos, unidad, precioEstimadoAux, proveedor, almacenadoEnvasado, codigo, nombreProducto, inventarioExistenteAux, observaciones, laboratorio);
+            listaSustancias.add(sustanciaAux);
             return true;
         }
     }
@@ -96,9 +96,9 @@ public class ListaDeSustanciasQuimicas {
         ArrayList<SustanciaQuimica> listaSustanciaQuimicaAux = new ArrayList<>();
 
         for (SustanciaQuimica i : getListaSustanciasQuimicas()) {
-            //TODO: if (i.getLaboratorio().getAdministrador().getNombreUser().equals(usuario.getNombreUser())) {
-            //TODO:     listaSustanciaQuimicaAux.add(i);
-            //TODO: }
+            if (i.getLaboratorio().getAdministrador().getNombreUser().equals(usuario.getNombreUser())) {
+                listaSustanciaQuimicaAux.add(i);
+            }
         }
         return listaSustanciaQuimicaAux;
     }
@@ -157,13 +157,13 @@ public class ListaDeSustanciasQuimicas {
                     return false;
                 }
 
-                //TODO: //TODO: SustanciaQuimica sustanciaAux = new SustanciaQuimica(formulaQuimica, concentracion, presentacion, nombreComercial, poseeMSD, numeroDeIdentificacion, grupoDeRiesgo, fraseR, fraseS, metodoDeControl, permisos, unidad, precioEstimadoAux, proveedor, almacenadoEnvasado, codigo, nombreProducto, inventarioExistenteAux, observaciones, laboratorio);
-                //TODO: sustanciaAux.setId(id);
+                SustanciaQuimica sustanciaAux = new SustanciaQuimica(formulaQuimica, concentracion, presentacion, nombreComercial, poseeMSD, numeroDeIdentificacion, grupoDeRiesgo, fraseR, fraseS, metodoDeControl, permisos, unidad, precioEstimadoAux, proveedor, almacenadoEnvasado, codigo, nombreProducto, inventarioExistenteAux, observaciones, laboratorio);
+                sustanciaAux.setId(id);
 
                 int acumulador = 0;
                 for (SustanciaQuimica i : listaSustancias) {
                     if (i.getId().equals(id)) {
-                        //TODO: listaSustancias.set(acumulador, sustanciaAux);
+                        listaSustancias.set(acumulador, sustanciaAux);
                     }
                     acumulador++;
                 }

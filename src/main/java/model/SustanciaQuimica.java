@@ -18,7 +18,7 @@ public class SustanciaQuimica extends Producto{
     String proveedor;
     String almacenadoEnvasado;
 
-    public SustanciaQuimica(String formulaQuimica, String concentracion, String presentacion, String nombreComercial, Boolean poseeMSD, String numeroDeIdentificacion, String grupoDeRiesgo, String fraseR, String fraseS, String metodoDeControl, String permisos, String unidad, float precioEstimado, String proveedor, String almacenadoEnvasado, String codigo, String nombreProducto, int inventarioExistente, String observaciones, String laboratorio) {
+    public SustanciaQuimica(String formulaQuimica, String concentracion, String presentacion, String nombreComercial, Boolean poseeMSD, String numeroDeIdentificacion, String grupoDeRiesgo, String fraseR, String fraseS, String metodoDeControl, String permisos, String unidad, float precioEstimado, String proveedor, String almacenadoEnvasado, String codigo, String nombreProducto, int inventarioExistente, String observaciones, Laboratorio laboratorio) {
         super(codigo, nombreProducto, "Sustancia quimica", inventarioExistente, observaciones, laboratorio);
         this.formulaQuimica = formulaQuimica;
         this.concentracion = concentracion;

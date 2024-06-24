@@ -26,8 +26,8 @@ public class ListaDeInsumos {
         privilegios.add("Transacciones");
         Usuario administradorLaboratorio = new Usuario("Harry1", "1234", "Harry Castellanos", privilegios, "administrador", true);
         Laboratorio lab = new Laboratorio("Aula 2", "Ingenieria", "Industrial", "Laboratorios",administradorLaboratorio);
-        //TODO: Insumo insumo = new Insumo("Lentes que protege", "GlassesUSA", "modelo2", "Buen estado","objeto fisico","proteccion",date,20,"laboratorios","JuanInsumos","23232","Lentes de proteccion",1,"viejo",lab);
-        //TODO: listaInsumos.add(insumo);
+        Insumo insumo = new Insumo("Lentes que protege", "GlassesUSA", "modelo2", "Buen estado","objeto fisico","proteccion",date,20,"laboratorios","JuanInsumos","23232","Lentes de proteccion",1,"viejo",lab);
+        listaInsumos.add(insumo);
     }
 
     public ArrayList<Insumo> getListaInsumos() {
@@ -86,8 +86,8 @@ public class ListaDeInsumos {
                 return false;
             }
 
-            //TODO: Insumo insumoAux = new Insumo(descripcion, marca, modelo, presentacion, clasificacion, categoria, ultimaCompraAux, precioEstimadoAux, unidad, proveedor, codigo, nombreProducto, existenciasAux, observaciones, laboratorio);
-            //TODO: listaInsumos.add(insumoAux);
+            Insumo insumoAux = new Insumo(descripcion, marca, modelo, presentacion, clasificacion, categoria, ultimaCompraAux, precioEstimadoAux, unidad, proveedor, codigo, nombreProducto, existenciasAux, observaciones, laboratorio);
+            listaInsumos.add(insumoAux);
             return true;
         }
     }
@@ -107,9 +107,9 @@ public class ListaDeInsumos {
         ArrayList<Insumo> listaInsumoAux = new ArrayList<>();
 
         for (Insumo i : getListaInsumos()) {
-            //TODO: if (i.getLaboratorio().getAdministrador().getNombreUser().equals(usuario.getNombreUser())) {
-            //TODO:     listaInsumoAux.add(i);
-            //TODO: }
+            if (i.getLaboratorio().getAdministrador().getNombreUser().equals(usuario.getNombreUser())) {
+                listaInsumoAux.add(i);
+            }
         }
         return listaInsumoAux;
     }
@@ -173,13 +173,13 @@ public class ListaDeInsumos {
                     return false;
                 }
 
-                //TODO: Insumo insumoAux = new Insumo(descripcion, marca, modelo, presentacion, clasificacion, categoria, ultimaCompraAux, precioEstimadoAux, unidad, proveedor, codigo, nombreProducto, existenciasAux, observaciones, laboratorio);
-                //TODO: insumoAux.setId(id);
+                Insumo insumoAux = new Insumo(descripcion, marca, modelo, presentacion, clasificacion, categoria, ultimaCompraAux, precioEstimadoAux, unidad, proveedor, codigo, nombreProducto, existenciasAux, observaciones, laboratorio);
+                insumoAux.setId(id);
                 
                 int acumulador = 0;
                 for (Insumo i : listaInsumos) {
                     if (i.getId().equals(id)) {
-                        //TODO: listaInsumos.set(acumulador, insumoAux);
+                        listaInsumos.set(acumulador, insumoAux);
                     }
                     acumulador++;
                 }

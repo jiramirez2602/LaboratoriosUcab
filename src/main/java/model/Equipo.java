@@ -21,7 +21,7 @@ public class Equipo extends Producto{
     String proovedoresDeServicios;
     Boolean encendidoDenoche;
 
-    public Equipo(String descripcion, String marca, String modelo, String numeroSerial, String numeroActivo, String presentacion, String voltaje, String procesable, String materialRequerido, Date añoDeCompra, String aplicacion, Date ultimoMantenimiento, Date proximoMantenimiento, Date ultimaCalibracion, Date proximaCalibracion, String proovedoresDeServicios, Boolean encendidoDenoche, String codigo, String nombreProducto, int inventarioExistente, String observaciones, String laboratorio) {
+    public Equipo(String descripcion, String marca, String modelo, String numeroSerial, String numeroActivo, String presentacion, String voltaje, String procesable, String materialRequerido, Date añoDeCompra, String aplicacion, Date ultimoMantenimiento, Date proximoMantenimiento, Date ultimaCalibracion, Date proximaCalibracion, String proovedoresDeServicios, Boolean encendidoDenoche, String codigo, String nombreProducto, int inventarioExistente, String observaciones, Laboratorio laboratorio) {
         super(codigo, nombreProducto, "Equipo", inventarioExistente, observaciones, laboratorio);
         this.descripcion = descripcion;
         this.marca = marca;

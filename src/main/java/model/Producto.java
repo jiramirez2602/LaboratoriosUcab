@@ -9,7 +9,7 @@ public class Producto {
     String tipoDeProducto;
     int inventarioExistente;
     String observaciones;
-    String idLaboratorio;
+    Laboratorio laboratorio;
     String id;
 
     public static final String generarUUID() {
@@ -17,13 +17,13 @@ public class Producto {
         return uuid.toString();
     }
 
-    public Producto(String codigo, String nombreProducto, String tipoDeProducto, int inventarioExistente, String observaciones, String idLaboratorio) {
+    public Producto(String codigo, String nombreProducto, String tipoDeProducto, int inventarioExistente, String observaciones, Laboratorio laboratorio) {
         this.codigo = codigo;
         this.nombreProducto = nombreProducto;
         this.tipoDeProducto = tipoDeProducto;
         this.inventarioExistente = inventarioExistente;
         this.observaciones = observaciones;
-        this.idLaboratorio = idLaboratorio;
+        this.laboratorio = laboratorio;
         this.id = generarUUID();
     }
 
@@ -55,10 +55,9 @@ public class Producto {
         return observaciones;
     }
 
-    public String getIdLaboratorio() {
-        return idLaboratorio;
+    public Laboratorio getLaboratorio() {
+        return laboratorio;
     }
-
 
     public void setCodigo(String codigo) {
         this.codigo = codigo;
@@ -80,8 +79,8 @@ public class Producto {
         this.observaciones = observaciones;
     }
 
-    public void setIdLaboratorio(String idLaboratorio) {
-        this.idLaboratorio = idLaboratorio;
+    public void setLaboratorio(Laboratorio laboratorio) {
+        this.laboratorio = laboratorio;
     }
 
     public void necesitaCompra() {

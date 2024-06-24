@@ -28,10 +28,6 @@ public class Usuario {
         this.id=generarUUID();
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public String getUsername() {
         return username;
     }
@@ -83,6 +79,7 @@ public class Usuario {
     public String getId() {
         return id;
     }
+
     
     public boolean verificarPrivilegios(Usuario user,String privilegio){
         ArrayList<String> comprobarPrivi=user.getPrivilegios();

@@ -20,7 +20,7 @@ public class GeneralProvider {
     CollectionReference reference;
     static Firestore db;
 
-    public static boolean guardar(String coleccion, String documento, Map<String, Object> data) {
+    public static boolean guardarTelevisor(String coleccion, String documento, Map<String, Object> data) {
         db = FirestoreClient.getFirestore();
         try {
             DocumentReference docRef = db.collection(coleccion).document(documento);
@@ -34,7 +34,7 @@ public class GeneralProvider {
 
     }
 /*
-    public static boolean actualizarLavadora(String coleccion, String documento, Map<String, Object> data) {
+    public static boolean actualizarTelevisor(String coleccion, String documento, Map<String, Object> data) {
         db = FirestoreClient.getFirestore();
         try {
             DocumentReference docRef = db.collection(coleccion).document(documento);
@@ -48,7 +48,7 @@ public class GeneralProvider {
 
     }
 
-    public static boolean eliminarLavadora(String coleccion, String documento) {
+    public static boolean eliminarTelevisor(String coleccion, String documento) {
         db = FirestoreClient.getFirestore();
         try {
             DocumentReference docRef = db.collection(coleccion).document(documento);
@@ -62,24 +62,31 @@ public class GeneralProvider {
 
     }
 
-    public static ArrayList<Lavadora> cargarInfoLavadora() {
-        ListaDeLavadoras listaLav = new ListaDeLavadoras();
+    public static ArrayList<Televisor> cargarInfoTelevisor() {
+        ListaDeTelevisores listaTv = new ListaDeTelevisores();
         try {
-            CollectionReference lavadoras = Conexion.db.collection("Lavadoras");
-            ApiFuture<QuerySnapshot> querySnap = lavadoras.get();
+            CollectionReference televisores = Conexion.db.collection("Televisores");
+            ApiFuture<QuerySnapshot> querySnap = televisores.get();
             for (DocumentSnapshot document : querySnap.get().getDocuments()) {
-                listaLav.crearLavadoraLocal(document.getId(),
+                String TDT;
+                if ("false".equals(document.getString("TDT"))) {
+                    TDT = "No";
+                } else {
+                    TDT = "Si";
+                }
+                listaTv.crearTelevisorLocal(document.getId(),
                         document.getString("precioBase"),
                         document.getString("color"),
                         document.getString("consumoEnergetico"),
                         document.getString("peso"),
-                        document.getString("carga")
+                        document.getString("pulgadas"),
+                        TDT
                 );
             }
         } catch (InterruptedException | ExecutionException e) {
             System.out.println("Error al obtener: " + e.getMessage());
         }
-        return listaLav.getListaLocal();
-    }
-*/
+        return listaTv.getListaLocal();
+    }*/
 }
+

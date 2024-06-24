@@ -26,8 +26,8 @@ public class ListaDeEquipos {
         privilegios.add("Transacciones");
         Usuario administradorLaboratorio = new Usuario("Harry1", "1234", "Harry Castellanos", privilegios, "administrador", true);
         Laboratorio lab = new Laboratorio("Aula 2", "Ingenieria", "Industrial", "Laboratorios",administradorLaboratorio);
-        //TODO: Equipo equipoInicial=new Equipo("ver atomos", "Casio", "modeloS", "213212", "132123","prsentable","80watts","procesar","Hidrogeno",date, "ver en el micro",date2,date3,date2,date4,"Laboratorios Santa Ines",true,"563723","Microscopio",1,"Buen estado",lab);
-        //TODO: listaEquipos.add(equipoInicial);
+        Equipo equipoInicial=new Equipo("ver atomos", "Casio", "modeloS", "213212", "132123","prsentable","80watts","procesar","Hidrogeno",date, "ver en el micro",date2,date3,date2,date4,"Laboratorios Santa Ines",true,"563723","Microscopio",1,"Buen estado",lab);
+        listaEquipos.add(equipoInicial);
     }
 
     public ArrayList<Equipo> getListaEquipos() {
@@ -121,8 +121,8 @@ public class ListaDeEquipos {
                 return false;
             }
 
-            //TODO: Equipo equipoAux = new Equipo(descripcion, marca, modelo, numeroSerial, numeroActivo, presentacion, voltaje, procesable, materialRequerido, añoDeCompraAux, aplicacion, ultimoMantenimientoAux, proximoMantenimientoAux, ultimaCalibracionAux, proximaCalibracionAux, proovedoresDeServicios, encendidoDenoche, codigo, nombreProducto, inventarioExistenteAux, observaciones, laboratorio);
-            //TODO: listaEquipos.add(equipoAux);
+            Equipo equipoAux = new Equipo(descripcion, marca, modelo, numeroSerial, numeroActivo, presentacion, voltaje, procesable, materialRequerido, añoDeCompraAux, aplicacion, ultimoMantenimientoAux, proximoMantenimientoAux, ultimaCalibracionAux, proximaCalibracionAux, proovedoresDeServicios, encendidoDenoche, codigo, nombreProducto, inventarioExistenteAux, observaciones, laboratorio);
+            listaEquipos.add(equipoAux);
             return true;
         }
     }
@@ -142,9 +142,9 @@ public class ListaDeEquipos {
         ArrayList<Equipo> listaEquipoAux = new ArrayList<>();
 
         for (Equipo i : getListaEquipos()) {
-            //TODO: if (i.getLaboratorio().getAdministrador().getNombreUser().equals(usuario.getNombreUser())) {
-            //TODO:     listaEquipoAux.add(i);
-            //TODO: }
+            if (i.getLaboratorio().getAdministrador().getNombreUser().equals(usuario.getNombreUser())) {
+                listaEquipoAux.add(i);
+            }
         }
         return listaEquipoAux;
     }
@@ -247,14 +247,14 @@ public class ListaDeEquipos {
                     return false;
                 }
 
-                //TODO: Equipo equipoAux = new Equipo(descripcion, marca, modelo, numeroSerial, numeroActivo, presentacion, voltaje, procesable, materialRequerido, añoDeCompraAux, aplicacion, ultimoMantenimientoAux, proximoMantenimientoAux, ultimaCalibracionAux, proximaCalibracionAux, proovedoresDeServicios, encendidoDenoche, codigo, nombreProducto, inventarioExistenteAux, observaciones, laboratorio);
+                Equipo equipoAux = new Equipo(descripcion, marca, modelo, numeroSerial, numeroActivo, presentacion, voltaje, procesable, materialRequerido, añoDeCompraAux, aplicacion, ultimoMantenimientoAux, proximoMantenimientoAux, ultimaCalibracionAux, proximaCalibracionAux, proovedoresDeServicios, encendidoDenoche, codigo, nombreProducto, inventarioExistenteAux, observaciones, laboratorio);
 
-                //TODO: equipoAux.setId(id);
+                equipoAux.setId(id);
 
                 int acumulador = 0;
                 for (Equipo i : listaEquipos) {
                     if (i.getId().equals(id)) {
-                        //TODO: listaEquipos.set(acumulador, equipoAux);
+                        listaEquipos.set(acumulador, equipoAux);
                     }
                     acumulador++;
                 }
