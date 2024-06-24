@@ -79,10 +79,6 @@ public class Usuario {
     public String getId() {
         return id;
     }
-
-    public Object getNombreCompleto() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
     
     public boolean verificarPrivilegios(Usuario user,String privilegio){
         ArrayList<String> comprobarPrivi=user.getPrivilegios();

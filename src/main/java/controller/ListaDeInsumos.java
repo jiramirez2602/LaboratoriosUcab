@@ -25,8 +25,9 @@ public class ListaDeInsumos {
         privilegios.add("Productos");
         privilegios.add("Transacciones");
         Usuario administradorLaboratorio = new Usuario("Harry1", "1234", "Harry Castellanos", privilegios, "administrador", true);
-        Insumo insumo = new Insumo("Lentes que protege", "GlassesUSA", "modelo2", "Buen estado","objeto fisico","proteccion",date,20,"laboratorios","JuanInsumos","23232","Lentes de proteccion",1,"viejo","123");
-        listaInsumos.add(insumo);
+        Laboratorio lab = new Laboratorio("Aula 2", "Ingenieria", "Industrial", "Laboratorios",administradorLaboratorio);
+        //TODO: Insumo insumo = new Insumo("Lentes que protege", "GlassesUSA", "modelo2", "Buen estado","objeto fisico","proteccion",date,20,"laboratorios","JuanInsumos","23232","Lentes de proteccion",1,"viejo",lab);
+        //TODO: listaInsumos.add(insumo);
     }
 
     public ArrayList<Insumo> getListaInsumos() {
@@ -39,7 +40,7 @@ public class ListaDeInsumos {
 
     //TODO: Agregar logica de transacciones
     //Crear producto Insumo
-    public boolean crearProductoInsumo(Usuario user, String descripcion, String marca, String modelo, String presentacion, String clasificacion, String categoria, String ultimaCompra, String precioEstimado, String unidad, String proveedor, String codigo, String nombreProducto, String inventarioExistente, String observaciones, String laboratorio) {
+    public boolean crearProductoInsumo(Usuario user, String descripcion, String marca, String modelo, String presentacion, String clasificacion, String categoria, String ultimaCompra, String precioEstimado, String unidad, String proveedor, String codigo, String nombreProducto, String inventarioExistente, String observaciones, Laboratorio laboratorio) {
         Validador validador = new Validador();
 
         if (!validador.validarConRegex(descripcion, "^[^\\n]{0,100}$", "Descripcion", "Descripcion es invalido(a), puede usar hasta 100 caractes alfanumericos")
@@ -85,8 +86,8 @@ public class ListaDeInsumos {
                 return false;
             }
 
-            Insumo insumoAux = new Insumo(descripcion, marca, modelo, presentacion, clasificacion, categoria, ultimaCompraAux, precioEstimadoAux, unidad, proveedor, codigo, nombreProducto, existenciasAux, observaciones, laboratorio);
-            listaInsumos.add(insumoAux);
+            //TODO: Insumo insumoAux = new Insumo(descripcion, marca, modelo, presentacion, clasificacion, categoria, ultimaCompraAux, precioEstimadoAux, unidad, proveedor, codigo, nombreProducto, existenciasAux, observaciones, laboratorio);
+            //TODO: listaInsumos.add(insumoAux);
             return true;
         }
     }
@@ -101,16 +102,14 @@ public class ListaDeInsumos {
         return null;
     }
 
-/*
-    //Arreglar esta monda
     //Listar un insumo con un Usuario
     public ArrayList<Insumo> listarInsumoPorUsuario(Usuario usuario) {
         ArrayList<Insumo> listaInsumoAux = new ArrayList<>();
 
         for (Insumo i : getListaInsumos()) {
-            if (i.getLaboratorio().getAdministrador().getNombreUser().equals(usuario.getNombreUser())) {
-                listaInsumoAux.add(i);
-            }
+            //TODO: if (i.getLaboratorio().getAdministrador().getNombreUser().equals(usuario.getNombreUser())) {
+            //TODO:     listaInsumoAux.add(i);
+            //TODO: }
         }
         return listaInsumoAux;
     }
@@ -124,10 +123,10 @@ public class ListaDeInsumos {
         }
         return null;
     }
-*/
+
     //TODO: Agregar logica de transacciones
     //Modifica Insumos
-    public boolean modificarInsumo(Usuario user, String id, String descripcion, String marca, String modelo, String presentacion, String clasificacion, String categoria, String ultimaCompra, String precioEstimado, String unidad, String proveedor, String codigo, String nombreProducto, String inventarioExistente, String observaciones, String laboratorio) {
+    public boolean modificarInsumo(Usuario user, String id, String descripcion, String marca, String modelo, String presentacion, String clasificacion, String categoria, String ultimaCompra, String precioEstimado, String unidad, String proveedor, String codigo, String nombreProducto, String inventarioExistente, String observaciones, Laboratorio laboratorio) {
         Insumo product = listarInsumo(id);
         if (product != null) {
             Validador validador = new Validador();
@@ -174,13 +173,13 @@ public class ListaDeInsumos {
                     return false;
                 }
 
-                Insumo insumoAux = new Insumo(descripcion, marca, modelo, presentacion, clasificacion, categoria, ultimaCompraAux, precioEstimadoAux, unidad, proveedor, codigo, nombreProducto, existenciasAux, observaciones, laboratorio);
-                insumoAux.setId(id);
+                //TODO: Insumo insumoAux = new Insumo(descripcion, marca, modelo, presentacion, clasificacion, categoria, ultimaCompraAux, precioEstimadoAux, unidad, proveedor, codigo, nombreProducto, existenciasAux, observaciones, laboratorio);
+                //TODO: insumoAux.setId(id);
                 
                 int acumulador = 0;
                 for (Insumo i : listaInsumos) {
                     if (i.getId().equals(id)) {
-                        listaInsumos.set(acumulador, insumoAux);
+                        //TODO: listaInsumos.set(acumulador, insumoAux);
                     }
                     acumulador++;
                 }

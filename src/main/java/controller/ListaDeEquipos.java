@@ -25,8 +25,9 @@ public class ListaDeEquipos {
         privilegios.add("Productos");
         privilegios.add("Transacciones");
         Usuario administradorLaboratorio = new Usuario("Harry1", "1234", "Harry Castellanos", privilegios, "administrador", true);
-        Equipo equipoInicial=new Equipo("ver atomos", "Casio", "modeloS", "213212", "132123","prsentable","80watts","procesar","Hidrogeno",date, "ver en el micro",date2,date3,date2,date4,"Laboratorios Santa Ines",true,"563723","Microscopio",1,"Buen estado","12345");
-        listaEquipos.add(equipoInicial);
+        Laboratorio lab = new Laboratorio("Aula 2", "Ingenieria", "Industrial", "Laboratorios",administradorLaboratorio);
+        //TODO: Equipo equipoInicial=new Equipo("ver atomos", "Casio", "modeloS", "213212", "132123","prsentable","80watts","procesar","Hidrogeno",date, "ver en el micro",date2,date3,date2,date4,"Laboratorios Santa Ines",true,"563723","Microscopio",1,"Buen estado",lab);
+        //TODO: listaEquipos.add(equipoInicial);
     }
 
     public ArrayList<Equipo> getListaEquipos() {
@@ -39,7 +40,7 @@ public class ListaDeEquipos {
 
     //TODO: Agregar logica de transacciones
     //Crear producto Equipos
-    public boolean crearProductoEquipo(Usuario user, String descripcion, String marca, String modelo, String numeroSerial, String numeroActivo, String presentacion, String voltaje, String procesable, String materialRequerido, String añoDeCompra, String aplicacion, String ultimoMantenimiento, String proximoMantenimiento, String ultimaCalibracion, String proximaCalibracion, String proovedoresDeServicios, Boolean encendidoDenoche, String codigo, String nombreProducto, String inventarioExistente, String observaciones, String laboratorio) {
+    public boolean crearProductoEquipo(Usuario user, String descripcion, String marca, String modelo, String numeroSerial, String numeroActivo, String presentacion, String voltaje, String procesable, String materialRequerido, String añoDeCompra, String aplicacion, String ultimoMantenimiento, String proximoMantenimiento, String ultimaCalibracion, String proximaCalibracion, String proovedoresDeServicios, Boolean encendidoDenoche, String codigo, String nombreProducto, String inventarioExistente, String observaciones, Laboratorio laboratorio) {
         Validador validador = new Validador();
 
         if (!validador.validarConRegex(descripcion, "^[^\\n]{0,100}$", "Descripcion", "Descripcion es invalido(a), puede usar hasta 100 caractes alfanumericos")
@@ -120,8 +121,8 @@ public class ListaDeEquipos {
                 return false;
             }
 
-            Equipo equipoAux = new Equipo(descripcion, marca, modelo, numeroSerial, numeroActivo, presentacion, voltaje, procesable, materialRequerido, añoDeCompraAux, aplicacion, ultimoMantenimientoAux, proximoMantenimientoAux, ultimaCalibracionAux, proximaCalibracionAux, proovedoresDeServicios, encendidoDenoche, codigo, nombreProducto, inventarioExistenteAux, observaciones, laboratorio);
-            listaEquipos.add(equipoAux);
+            //TODO: Equipo equipoAux = new Equipo(descripcion, marca, modelo, numeroSerial, numeroActivo, presentacion, voltaje, procesable, materialRequerido, añoDeCompraAux, aplicacion, ultimoMantenimientoAux, proximoMantenimientoAux, ultimaCalibracionAux, proximaCalibracionAux, proovedoresDeServicios, encendidoDenoche, codigo, nombreProducto, inventarioExistenteAux, observaciones, laboratorio);
+            //TODO: listaEquipos.add(equipoAux);
             return true;
         }
     }
@@ -136,16 +137,14 @@ public class ListaDeEquipos {
         return null;
     }
 
-    /*
-    //TODO: acomodar esta monda
     //Listar un equipo con un Usuario
     public ArrayList<Equipo> listarEquipoPorUsuario(Usuario usuario) {
         ArrayList<Equipo> listaEquipoAux = new ArrayList<>();
 
         for (Equipo i : getListaEquipos()) {
-            if (i.getLaboratorio().getAdministrador().getNombreUser().equals(usuario.getNombreUser())) {
-                listaEquipoAux.add(i);
-            }
+            //TODO: if (i.getLaboratorio().getAdministrador().getNombreUser().equals(usuario.getNombreUser())) {
+            //TODO:     listaEquipoAux.add(i);
+            //TODO: }
         }
         return listaEquipoAux;
     }
@@ -158,11 +157,11 @@ public class ListaDeEquipos {
             }
         }
         return null;
-    }*/
+    }
 
     //TODO: Agregar logica de transacciones
     //Modifica Equipos
-    public boolean modificarEquipo(Usuario user, String id, String descripcion, String marca, String modelo, String numeroSerial, String numeroActivo, String presentacion, String voltaje, String procesable, String materialRequerido, String añoDeCompra, String aplicacion, String ultimoMantenimiento, String proximoMantenimiento, String ultimaCalibracion, String proximaCalibracion, String proovedoresDeServicios, Boolean encendidoDenoche, String codigo, String nombreProducto, String inventarioExistente, String observaciones, String laboratorio) {
+    public boolean modificarEquipo(Usuario user, String id, String descripcion, String marca, String modelo, String numeroSerial, String numeroActivo, String presentacion, String voltaje, String procesable, String materialRequerido, String añoDeCompra, String aplicacion, String ultimoMantenimiento, String proximoMantenimiento, String ultimaCalibracion, String proximaCalibracion, String proovedoresDeServicios, Boolean encendidoDenoche, String codigo, String nombreProducto, String inventarioExistente, String observaciones, Laboratorio laboratorio) {
         Equipo product = listarEquipo(id);
         if (product != null) {
             Validador validador = new Validador();
@@ -248,14 +247,14 @@ public class ListaDeEquipos {
                     return false;
                 }
 
-                Equipo equipoAux = new Equipo(descripcion, marca, modelo, numeroSerial, numeroActivo, presentacion, voltaje, procesable, materialRequerido, añoDeCompraAux, aplicacion, ultimoMantenimientoAux, proximoMantenimientoAux, ultimaCalibracionAux, proximaCalibracionAux, proovedoresDeServicios, encendidoDenoche, codigo, nombreProducto, inventarioExistenteAux, observaciones, laboratorio);
+                //TODO: Equipo equipoAux = new Equipo(descripcion, marca, modelo, numeroSerial, numeroActivo, presentacion, voltaje, procesable, materialRequerido, añoDeCompraAux, aplicacion, ultimoMantenimientoAux, proximoMantenimientoAux, ultimaCalibracionAux, proximaCalibracionAux, proovedoresDeServicios, encendidoDenoche, codigo, nombreProducto, inventarioExistenteAux, observaciones, laboratorio);
 
-                equipoAux.setId(id);
+                //TODO: equipoAux.setId(id);
 
                 int acumulador = 0;
                 for (Equipo i : listaEquipos) {
                     if (i.getId().equals(id)) {
-                        listaEquipos.set(acumulador, equipoAux);
+                        //TODO: listaEquipos.set(acumulador, equipoAux);
                     }
                     acumulador++;
                 }

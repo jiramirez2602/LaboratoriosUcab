@@ -1,13 +1,13 @@
 C:\Users\jirm2\Desktop\nuevo\ProyectoPooFinal\src\main\java\controller\ListaDeInsumos.java
 C:\Users\jirm2\Desktop\nuevo\ProyectoPooFinal\src\main\java\com\mycompany\ilib\DAOUsersImpl.java
 C:\Users\jirm2\Desktop\nuevo\ProyectoPooFinal\src\main\java\Views\SustanciasQuimicas.java
+C:\Users\jirm2\Desktop\nuevo\ProyectoPooFinal\src\main\java\main\Main.java
 C:\Users\jirm2\Desktop\nuevo\ProyectoPooFinal\src\main\java\Views\Equipos.java
 C:\Users\jirm2\Desktop\nuevo\ProyectoPooFinal\src\main\java\model\Laboratorio.java
 C:\Users\jirm2\Desktop\nuevo\ProyectoPooFinal\src\main\java\Views\Laboratorios.java
 C:\Users\jirm2\Desktop\nuevo\ProyectoPooFinal\src\main\java\Views\Principal.java
 C:\Users\jirm2\Desktop\nuevo\ProyectoPooFinal\src\main\java\controller\ListaDeUsuarios.java
 C:\Users\jirm2\Desktop\nuevo\ProyectoPooFinal\src\main\java\com\mycompany\models\Users.java
-C:\Users\jirm2\Desktop\nuevo\ProyectoPooFinal\src\main\java\firebase\TelevisorProvider.java
 C:\Users\jirm2\Desktop\nuevo\ProyectoPooFinal\src\main\java\controller\ListaDeSustanciasQuimicas.java
 C:\Users\jirm2\Desktop\nuevo\ProyectoPooFinal\src\main\java\Views\Usuarios.java
 C:\Users\jirm2\Desktop\nuevo\ProyectoPooFinal\src\main\java\firebase\Conexion.java
@@ -30,9 +30,9 @@ C:\Users\jirm2\Desktop\nuevo\ProyectoPooFinal\src\main\java\controller\Form.java
 C:\Users\jirm2\Desktop\nuevo\ProyectoPooFinal\src\main\java\controller\ListaLaboratorios.java
 C:\Users\jirm2\Desktop\nuevo\ProyectoPooFinal\src\main\java\controller\ListaDeEquipos.java
 C:\Users\jirm2\Desktop\nuevo\ProyectoPooFinal\src\main\java\Views\Reportes.java
-C:\Users\jirm2\Desktop\nuevo\ProyectoPooFinal\src\main\java\firebase\LavadoraProvider.java
 C:\Users\jirm2\Desktop\nuevo\ProyectoPooFinal\src\main\java\model\Usuario.java
 C:\Users\jirm2\Desktop\nuevo\ProyectoPooFinal\src\main\java\com\mycompany\ilib\DAOBooksImpl.java
+C:\Users\jirm2\Desktop\nuevo\ProyectoPooFinal\src\main\java\firebase\UserProvider.java
 C:\Users\jirm2\Desktop\nuevo\ProyectoPooFinal\src\main\java\controller\Validador.java
 C:\Users\jirm2\Desktop\nuevo\ProyectoPooFinal\src\main\java\Views\UpBooks.java
 C:\Users\jirm2\Desktop\nuevo\ProyectoPooFinal\src\main\java\com\mycompany\db\Database.java

@@ -1,6 +1,7 @@
 controller\ListaDeUsuarios.class
 Views\Insumos$3.class
 Views\Principal.class
+main\Main.class
 Views\UpUsers$1.class
 Views\SustanciasQuimicas$6.class
 model\Equipo.class
@@ -35,12 +36,12 @@ controller\ListaDeInsumos.class
 Views\Reportes$1.class
 model\Insumo.class
 Views\Productos$3.class
-firebase\LavadoraProvider.class
 Views\Transacciones$4.class
 Views\Insumos$5.class
 controller\ListaDeSustanciasQuimicas.class
 Views\SustanciasQuimicas$2.class
 Views\Laboratorios$2.class
+firebase\UserProvider.class
 Views\Equipos$4.class
 Views\Usuarios$5.class
 Views\Productos$2.class
@@ -49,7 +50,6 @@ controller\Form$1.class
 Views\Usuarios$2.class
 Views\Reportes$3.class
 Views\Laboratorios.class
-firebase\TelevisorProvider.class
 model\Producto.class
 model\Transaccion.class
 Views\Insumos$4.class

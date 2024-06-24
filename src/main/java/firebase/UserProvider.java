@@ -9,18 +9,18 @@ import com.google.cloud.firestore.Precondition;
 import com.google.cloud.firestore.QuerySnapshot;
 import com.google.cloud.firestore.WriteResult;
 import com.google.firebase.cloud.FirestoreClient;
-//import controller.ListaDeLavadoras;
+import controller.ListaDeUsuarios;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
-//import model.Lavadora;
+import model.Usuario;
 
-public class LavadoraProvider {
+public class UserProvider {
 
     CollectionReference reference;
     static Firestore db;
 
-    public static boolean guardarLavadora(String coleccion, String documento, Map<String, Object> data) {
+    public static boolean guardar(String coleccion, String documento, Map<String, Object> data) {
         db = FirestoreClient.getFirestore();
         try {
             DocumentReference docRef = db.collection(coleccion).document(documento);
@@ -33,8 +33,8 @@ public class LavadoraProvider {
         return false;
 
     }
-
-    public static boolean actualizarLavadora(String coleccion, String documento, Map<String, Object> data) {
+/*
+    public static boolean actualizarTelevisor(String coleccion, String documento, Map<String, Object> data) {
         db = FirestoreClient.getFirestore();
         try {
             DocumentReference docRef = db.collection(coleccion).document(documento);
@@ -48,7 +48,7 @@ public class LavadoraProvider {
 
     }
 
-    public static boolean eliminarLavadora(String coleccion, String documento) {
+    public static boolean eliminarTelevisor(String coleccion, String documento) {
         db = FirestoreClient.getFirestore();
         try {
             DocumentReference docRef = db.collection(coleccion).document(documento);
@@ -62,24 +62,31 @@ public class LavadoraProvider {
 
     }
 
-    /*
-    public static ArrayList<Lavadora> cargarInfoLavadora() {
-        ListaDeLavadoras listaLav = new ListaDeLavadoras();
+    public static ArrayList<Televisor> cargarInfoTelevisor() {
+        ListaDeTelevisores listaTv = new ListaDeTelevisores();
         try {
-            CollectionReference lavadoras = Conexion.db.collection("Lavadoras");
-            ApiFuture<QuerySnapshot> querySnap = lavadoras.get();
+            CollectionReference televisores = Conexion.db.collection("Televisores");
+            ApiFuture<QuerySnapshot> querySnap = televisores.get();
             for (DocumentSnapshot document : querySnap.get().getDocuments()) {
-                listaLav.crearLavadoraLocal(document.getId(),
+                String TDT;
+                if ("false".equals(document.getString("TDT"))) {
+                    TDT = "No";
+                } else {
+                    TDT = "Si";
+                }
+                listaTv.crearTelevisorLocal(document.getId(),
                         document.getString("precioBase"),
                         document.getString("color"),
                         document.getString("consumoEnergetico"),
                         document.getString("peso"),
-                        document.getString("carga")
+                        document.getString("pulgadas"),
+                        TDT
                 );
             }
         } catch (InterruptedException | ExecutionException e) {
             System.out.println("Error al obtener: " + e.getMessage());
         }
-        return listaLav.getListaLocal();
+        return listaTv.getListaLocal();
     }*/
 }
+

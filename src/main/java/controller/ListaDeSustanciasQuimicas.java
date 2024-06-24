@@ -19,8 +19,9 @@ public class ListaDeSustanciasQuimicas {
         privilegios.add("Productos");
         privilegios.add("Transacciones");
         Usuario administradorLaboratorio = new Usuario("Harry1", "1234", "Harry Castellanos", privilegios, "administrador", true);
-        SustanciaQuimica sustancia = new SustanciaQuimica("H20", "Liquido", "estable","Hidrogeno",false,"32232","bajo", "fraseR","FraseS","Sellado en botella","Permitido","laboratorios",100, "LaboratoriosAMAI", "Envasado", "53236", "Hidrogeno", 1,"Seguro","123");
-        listaSustancias.add(sustancia);
+        Laboratorio lab = new Laboratorio("Aula 2", "Ingenieria", "Industrial", "Laboratorios",administradorLaboratorio);
+        //TODO: SustanciaQuimica sustancia = new SustanciaQuimica("H20", "Liquido", "estable","Hidrogeno",false,"32232","bajo", "fraseR","FraseS","Sellado en botella","Permitido","laboratorios",100, "LaboratoriosAMAI", "Envasado", "53236", "Hidrogeno", 1,"Seguro",lab);
+        //TODO: listaSustancias.add(sustancia);
     }
 
     public ArrayList<SustanciaQuimica> getListaSustanciasQuimicas() {
@@ -33,7 +34,7 @@ public class ListaDeSustanciasQuimicas {
 
     //TODO: Agregar logica de transacciones
     //Crear producto Sustancia Quimica
-    public boolean crearProductoSustanciaQuimica(Usuario user, String formulaQuimica, String concentracion, String presentacion, String nombreComercial, Boolean poseeMSD, String numeroDeIdentificacion, String grupoDeRiesgo, String fraseR, String fraseS, String metodoDeControl, String permisos, String unidad, String precioEstimado, String proveedor, String almacenadoEnvasado, String codigo, String nombreProducto, String inventarioExistente, String observaciones, String laboratorio) {
+    public boolean crearProductoSustanciaQuimica(Usuario user, String formulaQuimica, String concentracion, String presentacion, String nombreComercial, Boolean poseeMSD, String numeroDeIdentificacion, String grupoDeRiesgo, String fraseR, String fraseS, String metodoDeControl, String permisos, String unidad, String precioEstimado, String proveedor, String almacenadoEnvasado, String codigo, String nombreProducto, String inventarioExistente, String observaciones, Laboratorio laboratorio) {
         Validador validador = new Validador();
 
         if (!validador.validarConRegex(formulaQuimica, "^[^\\n]{0,100}$", "Formula Quimica", "Formula Quimica es invalido(a), puede usar hasta 100 caractes alfanumericos")
@@ -74,8 +75,8 @@ public class ListaDeSustanciasQuimicas {
                 return false;
             }
 
-            SustanciaQuimica sustanciaAux = new SustanciaQuimica(formulaQuimica, concentracion, presentacion, nombreComercial, poseeMSD, numeroDeIdentificacion, grupoDeRiesgo, fraseR, fraseS, metodoDeControl, permisos, unidad, precioEstimadoAux, proveedor, almacenadoEnvasado, codigo, nombreProducto, inventarioExistenteAux, observaciones, laboratorio);
-            listaSustancias.add(sustanciaAux);
+            //TODO: SustanciaQuimica sustanciaAux = new SustanciaQuimica(formulaQuimica, concentracion, presentacion, nombreComercial, poseeMSD, numeroDeIdentificacion, grupoDeRiesgo, fraseR, fraseS, metodoDeControl, permisos, unidad, precioEstimadoAux, proveedor, almacenadoEnvasado, codigo, nombreProducto, inventarioExistenteAux, observaciones, laboratorio);
+            //TODO: listaSustancias.add(sustanciaAux);
             return true;
         }
     }
@@ -89,16 +90,15 @@ public class ListaDeSustanciasQuimicas {
         }
         return null;
     }
-    /*
-    //TODO: Arreglar esta monda
+
     //Listar un equipo con un Usuario
     public ArrayList<SustanciaQuimica> listarSustanciaQuimicaPorUsuario(Usuario usuario) {
         ArrayList<SustanciaQuimica> listaSustanciaQuimicaAux = new ArrayList<>();
 
         for (SustanciaQuimica i : getListaSustanciasQuimicas()) {
-            if (i.getLaboratorio().getAdministrador().getNombreUser().equals(usuario.getNombreUser())) {
-                listaSustanciaQuimicaAux.add(i);
-            }
+            //TODO: if (i.getLaboratorio().getAdministrador().getNombreUser().equals(usuario.getNombreUser())) {
+            //TODO:     listaSustanciaQuimicaAux.add(i);
+            //TODO: }
         }
         return listaSustanciaQuimicaAux;
     }
@@ -112,10 +112,10 @@ public class ListaDeSustanciasQuimicas {
         }
         return null;
     }
-*/
+
     //TODO: Agregar logica de transacciones
     //Modifica Equipos
-    public boolean modificarSustancia(Usuario user, String id, String formulaQuimica, String concentracion, String presentacion, String nombreComercial, Boolean poseeMSD, String numeroDeIdentificacion, String grupoDeRiesgo, String fraseR, String fraseS, String metodoDeControl, String permisos, String unidad, String precioEstimado, String proveedor, String almacenadoEnvasado, String codigo, String nombreProducto, String inventarioExistente, String observaciones, String laboratorio) {
+    public boolean modificarSustancia(Usuario user, String id, String formulaQuimica, String concentracion, String presentacion, String nombreComercial, Boolean poseeMSD, String numeroDeIdentificacion, String grupoDeRiesgo, String fraseR, String fraseS, String metodoDeControl, String permisos, String unidad, String precioEstimado, String proveedor, String almacenadoEnvasado, String codigo, String nombreProducto, String inventarioExistente, String observaciones, Laboratorio laboratorio) {
         SustanciaQuimica product = listarSustanciaQuimica(id);
         if (product != null) {
             Validador validador = new Validador();
@@ -157,13 +157,13 @@ public class ListaDeSustanciasQuimicas {
                     return false;
                 }
 
-                SustanciaQuimica sustanciaAux = new SustanciaQuimica(formulaQuimica, concentracion, presentacion, nombreComercial, poseeMSD, numeroDeIdentificacion, grupoDeRiesgo, fraseR, fraseS, metodoDeControl, permisos, unidad, precioEstimadoAux, proveedor, almacenadoEnvasado, codigo, nombreProducto, inventarioExistenteAux, observaciones, laboratorio);
-                sustanciaAux.setId(id);
+                //TODO: //TODO: SustanciaQuimica sustanciaAux = new SustanciaQuimica(formulaQuimica, concentracion, presentacion, nombreComercial, poseeMSD, numeroDeIdentificacion, grupoDeRiesgo, fraseR, fraseS, metodoDeControl, permisos, unidad, precioEstimadoAux, proveedor, almacenadoEnvasado, codigo, nombreProducto, inventarioExistenteAux, observaciones, laboratorio);
+                //TODO: sustanciaAux.setId(id);
 
                 int acumulador = 0;
                 for (SustanciaQuimica i : listaSustancias) {
                     if (i.getId().equals(id)) {
-                        listaSustancias.set(acumulador, sustanciaAux);
+                        //TODO: listaSustancias.set(acumulador, sustanciaAux);
                     }
                     acumulador++;
                 }
