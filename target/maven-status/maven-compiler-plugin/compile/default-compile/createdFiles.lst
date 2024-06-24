@@ -30,7 +30,6 @@ Views\Reportes$2.class
 Views\SustanciasQuimicas$1.class
 Views\Laboratorios$4.class
 Views\Equipos.class
-firebase\GeneralProvider.class
 Views\UpUsers.class
 Views\Usuarios$1.class
 controller\ListaDeInsumos.class
@@ -50,6 +49,7 @@ controller\Form$1.class
 Views\Usuarios$2.class
 Views\Reportes$3.class
 Views\Laboratorios.class
+firebase\TelevisorProvider.class
 model\Producto.class
 model\Transaccion.class
 Views\Insumos$4.class

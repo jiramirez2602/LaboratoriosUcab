@@ -9,7 +9,6 @@ C:\Users\jirm2\Desktop\Final\ProyectoPooFinal\src\main\java\firebase\Conexion.ja
 C:\Users\jirm2\Desktop\Final\ProyectoPooFinal\src\main\java\com\mycompany\interfaces\DAOUsers.java
 C:\Users\jirm2\Desktop\Final\ProyectoPooFinal\src\main\java\Views\SustanciasQuimicas.java
 C:\Users\jirm2\Desktop\Final\ProyectoPooFinal\src\main\java\Views\Principal.java
-C:\Users\jirm2\Desktop\Final\ProyectoPooFinal\src\main\java\firebase\GeneralProvider.java
 C:\Users\jirm2\Desktop\Final\ProyectoPooFinal\src\main\java\Views\Insumos.java
 C:\Users\jirm2\Desktop\Final\ProyectoPooFinal\src\main\java\controller\Validador.java
 C:\Users\jirm2\Desktop\Final\ProyectoPooFinal\src\main\java\Views\UpUsers.java
@@ -17,6 +16,7 @@ C:\Users\jirm2\Desktop\Final\ProyectoPooFinal\src\main\java\controller\ListaDeIn
 C:\Users\jirm2\Desktop\Final\ProyectoPooFinal\src\main\java\model\Equipo.java
 C:\Users\jirm2\Desktop\Final\ProyectoPooFinal\src\main\java\controller\ListaDeEquipos.java
 C:\Users\jirm2\Desktop\Final\ProyectoPooFinal\src\main\java\com\mycompany\models\Users.java
+C:\Users\jirm2\Desktop\Final\ProyectoPooFinal\src\main\java\firebase\TelevisorProvider.java
 C:\Users\jirm2\Desktop\Final\ProyectoPooFinal\src\main\java\com\mycompany\ilib\Dashboard.java
 C:\Users\jirm2\Desktop\Final\ProyectoPooFinal\src\main\java\controller\ListaLaboratorios.java
 C:\Users\jirm2\Desktop\Final\ProyectoPooFinal\src\main\java\com\mycompany\utils\Utils.java
