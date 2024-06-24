@@ -30,6 +30,7 @@ Views\Reportes$2.class
 Views\SustanciasQuimicas$1.class
 Views\Laboratorios$4.class
 Views\Equipos.class
+firebase\GeneralProvider.class
 Views\UpUsers.class
 Views\Usuarios$1.class
 controller\ListaDeInsumos.class
@@ -41,7 +42,6 @@ Views\Insumos$5.class
 controller\ListaDeSustanciasQuimicas.class
 Views\SustanciasQuimicas$2.class
 Views\Laboratorios$2.class
-firebase\UserProvider.class
 Views\Equipos$4.class
 Views\Usuarios$5.class
 Views\Productos$2.class
