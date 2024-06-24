@@ -19,8 +19,7 @@ public class ListaDeSustanciasQuimicas {
         privilegios.add("Productos");
         privilegios.add("Transacciones");
         Usuario administradorLaboratorio = new Usuario("Harry1", "1234", "Harry Castellanos", privilegios, "administrador", true);
-        Laboratorio lab = new Laboratorio("Aula 2", "Ingenieria", "Industrial", "Laboratorios",administradorLaboratorio);
-        SustanciaQuimica sustancia = new SustanciaQuimica("H20", "Liquido", "estable","Hidrogeno",false,"32232","bajo", "fraseR","FraseS","Sellado en botella","Permitido","laboratorios",100, "LaboratoriosAMAI", "Envasado", "53236", "Hidrogeno", 1,"Seguro",lab);
+        SustanciaQuimica sustancia = new SustanciaQuimica("H20", "Liquido", "estable","Hidrogeno",false,"32232","bajo", "fraseR","FraseS","Sellado en botella","Permitido","laboratorios",100, "LaboratoriosAMAI", "Envasado", "53236", "Hidrogeno", 1,"Seguro","123");
         listaSustancias.add(sustancia);
     }
 
@@ -34,7 +33,7 @@ public class ListaDeSustanciasQuimicas {
 
     //TODO: Agregar logica de transacciones
     //Crear producto Sustancia Quimica
-    public boolean crearProductoSustanciaQuimica(Usuario user, String formulaQuimica, String concentracion, String presentacion, String nombreComercial, Boolean poseeMSD, String numeroDeIdentificacion, String grupoDeRiesgo, String fraseR, String fraseS, String metodoDeControl, String permisos, String unidad, String precioEstimado, String proveedor, String almacenadoEnvasado, String codigo, String nombreProducto, String inventarioExistente, String observaciones, Laboratorio laboratorio) {
+    public boolean crearProductoSustanciaQuimica(Usuario user, String formulaQuimica, String concentracion, String presentacion, String nombreComercial, Boolean poseeMSD, String numeroDeIdentificacion, String grupoDeRiesgo, String fraseR, String fraseS, String metodoDeControl, String permisos, String unidad, String precioEstimado, String proveedor, String almacenadoEnvasado, String codigo, String nombreProducto, String inventarioExistente, String observaciones, String laboratorio) {
         Validador validador = new Validador();
 
         if (!validador.validarConRegex(formulaQuimica, "^[^\\n]{0,100}$", "Formula Quimica", "Formula Quimica es invalido(a), puede usar hasta 100 caractes alfanumericos")
@@ -90,7 +89,8 @@ public class ListaDeSustanciasQuimicas {
         }
         return null;
     }
-
+    /*
+    //TODO: Arreglar esta monda
     //Listar un equipo con un Usuario
     public ArrayList<SustanciaQuimica> listarSustanciaQuimicaPorUsuario(Usuario usuario) {
         ArrayList<SustanciaQuimica> listaSustanciaQuimicaAux = new ArrayList<>();
@@ -112,10 +112,10 @@ public class ListaDeSustanciasQuimicas {
         }
         return null;
     }
-
+*/
     //TODO: Agregar logica de transacciones
     //Modifica Equipos
-    public boolean modificarSustancia(Usuario user, String id, String formulaQuimica, String concentracion, String presentacion, String nombreComercial, Boolean poseeMSD, String numeroDeIdentificacion, String grupoDeRiesgo, String fraseR, String fraseS, String metodoDeControl, String permisos, String unidad, String precioEstimado, String proveedor, String almacenadoEnvasado, String codigo, String nombreProducto, String inventarioExistente, String observaciones, Laboratorio laboratorio) {
+    public boolean modificarSustancia(Usuario user, String id, String formulaQuimica, String concentracion, String presentacion, String nombreComercial, Boolean poseeMSD, String numeroDeIdentificacion, String grupoDeRiesgo, String fraseR, String fraseS, String metodoDeControl, String permisos, String unidad, String precioEstimado, String proveedor, String almacenadoEnvasado, String codigo, String nombreProducto, String inventarioExistente, String observaciones, String laboratorio) {
         SustanciaQuimica product = listarSustanciaQuimica(id);
         if (product != null) {
             Validador validador = new Validador();

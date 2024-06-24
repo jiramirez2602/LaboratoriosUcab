@@ -25,8 +25,7 @@ public class ListaDeEquipos {
         privilegios.add("Productos");
         privilegios.add("Transacciones");
         Usuario administradorLaboratorio = new Usuario("Harry1", "1234", "Harry Castellanos", privilegios, "administrador", true);
-        Laboratorio lab = new Laboratorio("Aula 2", "Ingenieria", "Industrial", "Laboratorios",administradorLaboratorio);
-        Equipo equipoInicial=new Equipo("ver atomos", "Casio", "modeloS", "213212", "132123","prsentable","80watts","procesar","Hidrogeno",date, "ver en el micro",date2,date3,date2,date4,"Laboratorios Santa Ines",true,"563723","Microscopio",1,"Buen estado",lab);
+        Equipo equipoInicial=new Equipo("ver atomos", "Casio", "modeloS", "213212", "132123","prsentable","80watts","procesar","Hidrogeno",date, "ver en el micro",date2,date3,date2,date4,"Laboratorios Santa Ines",true,"563723","Microscopio",1,"Buen estado","12345");
         listaEquipos.add(equipoInicial);
     }
 
@@ -40,7 +39,7 @@ public class ListaDeEquipos {
 
     //TODO: Agregar logica de transacciones
     //Crear producto Equipos
-    public boolean crearProductoEquipo(Usuario user, String descripcion, String marca, String modelo, String numeroSerial, String numeroActivo, String presentacion, String voltaje, String procesable, String materialRequerido, String añoDeCompra, String aplicacion, String ultimoMantenimiento, String proximoMantenimiento, String ultimaCalibracion, String proximaCalibracion, String proovedoresDeServicios, Boolean encendidoDenoche, String codigo, String nombreProducto, String inventarioExistente, String observaciones, Laboratorio laboratorio) {
+    public boolean crearProductoEquipo(Usuario user, String descripcion, String marca, String modelo, String numeroSerial, String numeroActivo, String presentacion, String voltaje, String procesable, String materialRequerido, String añoDeCompra, String aplicacion, String ultimoMantenimiento, String proximoMantenimiento, String ultimaCalibracion, String proximaCalibracion, String proovedoresDeServicios, Boolean encendidoDenoche, String codigo, String nombreProducto, String inventarioExistente, String observaciones, String laboratorio) {
         Validador validador = new Validador();
 
         if (!validador.validarConRegex(descripcion, "^[^\\n]{0,100}$", "Descripcion", "Descripcion es invalido(a), puede usar hasta 100 caractes alfanumericos")
@@ -137,6 +136,8 @@ public class ListaDeEquipos {
         return null;
     }
 
+    /*
+    //TODO: acomodar esta monda
     //Listar un equipo con un Usuario
     public ArrayList<Equipo> listarEquipoPorUsuario(Usuario usuario) {
         ArrayList<Equipo> listaEquipoAux = new ArrayList<>();
@@ -157,11 +158,11 @@ public class ListaDeEquipos {
             }
         }
         return null;
-    }
+    }*/
 
     //TODO: Agregar logica de transacciones
     //Modifica Equipos
-    public boolean modificarEquipo(Usuario user, String id, String descripcion, String marca, String modelo, String numeroSerial, String numeroActivo, String presentacion, String voltaje, String procesable, String materialRequerido, String añoDeCompra, String aplicacion, String ultimoMantenimiento, String proximoMantenimiento, String ultimaCalibracion, String proximaCalibracion, String proovedoresDeServicios, Boolean encendidoDenoche, String codigo, String nombreProducto, String inventarioExistente, String observaciones, Laboratorio laboratorio) {
+    public boolean modificarEquipo(Usuario user, String id, String descripcion, String marca, String modelo, String numeroSerial, String numeroActivo, String presentacion, String voltaje, String procesable, String materialRequerido, String añoDeCompra, String aplicacion, String ultimoMantenimiento, String proximoMantenimiento, String ultimaCalibracion, String proximaCalibracion, String proovedoresDeServicios, Boolean encendidoDenoche, String codigo, String nombreProducto, String inventarioExistente, String observaciones, String laboratorio) {
         Equipo product = listarEquipo(id);
         if (product != null) {
             Validador validador = new Validador();

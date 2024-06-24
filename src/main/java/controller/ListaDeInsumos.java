@@ -25,8 +25,7 @@ public class ListaDeInsumos {
         privilegios.add("Productos");
         privilegios.add("Transacciones");
         Usuario administradorLaboratorio = new Usuario("Harry1", "1234", "Harry Castellanos", privilegios, "administrador", true);
-        Laboratorio lab = new Laboratorio("Aula 2", "Ingenieria", "Industrial", "Laboratorios",administradorLaboratorio);
-        Insumo insumo = new Insumo("Lentes que protege", "GlassesUSA", "modelo2", "Buen estado","objeto fisico","proteccion",date,20,"laboratorios","JuanInsumos","23232","Lentes de proteccion",1,"viejo",lab);
+        Insumo insumo = new Insumo("Lentes que protege", "GlassesUSA", "modelo2", "Buen estado","objeto fisico","proteccion",date,20,"laboratorios","JuanInsumos","23232","Lentes de proteccion",1,"viejo","123");
         listaInsumos.add(insumo);
     }
 
@@ -40,7 +39,7 @@ public class ListaDeInsumos {
 
     //TODO: Agregar logica de transacciones
     //Crear producto Insumo
-    public boolean crearProductoInsumo(Usuario user, String descripcion, String marca, String modelo, String presentacion, String clasificacion, String categoria, String ultimaCompra, String precioEstimado, String unidad, String proveedor, String codigo, String nombreProducto, String inventarioExistente, String observaciones, Laboratorio laboratorio) {
+    public boolean crearProductoInsumo(Usuario user, String descripcion, String marca, String modelo, String presentacion, String clasificacion, String categoria, String ultimaCompra, String precioEstimado, String unidad, String proveedor, String codigo, String nombreProducto, String inventarioExistente, String observaciones, String laboratorio) {
         Validador validador = new Validador();
 
         if (!validador.validarConRegex(descripcion, "^[^\\n]{0,100}$", "Descripcion", "Descripcion es invalido(a), puede usar hasta 100 caractes alfanumericos")
@@ -102,6 +101,8 @@ public class ListaDeInsumos {
         return null;
     }
 
+/*
+    //Arreglar esta monda
     //Listar un insumo con un Usuario
     public ArrayList<Insumo> listarInsumoPorUsuario(Usuario usuario) {
         ArrayList<Insumo> listaInsumoAux = new ArrayList<>();
@@ -123,10 +124,10 @@ public class ListaDeInsumos {
         }
         return null;
     }
-
+*/
     //TODO: Agregar logica de transacciones
     //Modifica Insumos
-    public boolean modificarInsumo(Usuario user, String id, String descripcion, String marca, String modelo, String presentacion, String clasificacion, String categoria, String ultimaCompra, String precioEstimado, String unidad, String proveedor, String codigo, String nombreProducto, String inventarioExistente, String observaciones, Laboratorio laboratorio) {
+    public boolean modificarInsumo(Usuario user, String id, String descripcion, String marca, String modelo, String presentacion, String clasificacion, String categoria, String ultimaCompra, String precioEstimado, String unidad, String proveedor, String codigo, String nombreProducto, String inventarioExistente, String observaciones, String laboratorio) {
         Insumo product = listarInsumo(id);
         if (product != null) {
             Validador validador = new Validador();
