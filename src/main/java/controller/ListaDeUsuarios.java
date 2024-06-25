@@ -11,6 +11,7 @@ public class ListaDeUsuarios {
 
     ArrayList<Usuario> listaUsuarios = new ArrayList<>();
 
+    //MÉTODOS FIREBASE//
     public boolean guardarEnFirebase(Usuario usuario) {
         try {
             Map<String, Object> datos = new HashMap<>();
@@ -58,27 +59,7 @@ public class ListaDeUsuarios {
         }
     }
 
-    public void iniciarListaDeUsuarios() {
-        listaUsuarios = new ArrayList();
-        ArrayList<String> privilegios = new ArrayList<>();
-        privilegios.add("Laboratorios");
-        privilegios.add("Usuarios");
-        privilegios.add("Productos");
-        privilegios.add("Transacciones");
-        Usuario administradorLaboratorio = new Usuario("Harry1", "1234", "Harry Castellanos", privilegios, "administrador", true);
-        listaUsuarios.add(administradorLaboratorio);
-    }
-
-    public boolean usuarioExistente(String username) {
-        boolean existe = false;
-        for (int cont = 0; cont < listaUsuarios.size(); cont++) {
-            if (listaUsuarios.get(cont).getUsername().equals(username)) {
-                existe = true;
-            }
-        }
-        return existe;
-    }
-
+    //MÉTODOS PRINCIPALES//
     public boolean crearUsuario(Usuario user, String username, String contrasena, String nombreCompleto, ArrayList<String> privilegio, String rol, String status) {
         Validador validar = new Validador();//Declaro objeto Validador
         boolean existe = usuarioExistente(username);//Declaro un booleano y le asigno una funcion para comprobar si un usuario existe en la lista
@@ -106,27 +87,9 @@ public class ListaDeUsuarios {
         return retornar;
     }
 
-    public ArrayList<Usuario> listarUsuarios() {
+    public ArrayList<Usuario> getListaUsuarios() {
+        listaUsuarios = GeneralProvider.cargarInfoUsuario();
         return listaUsuarios;
-    }
-
-    public Usuario listarUsuario(String id) {
-        for (Usuario encontrar : listaUsuarios) {
-            if (encontrar.getId().equals(id)) {
-                return encontrar;
-            }
-        }
-        JOptionPane.showMessageDialog(null, "Usuario no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
-        return null;
-    }
-
-    public String listarUsuarioPorNombre(String nombreDeUsuario) {
-        for (Usuario i : listarUsuarios()) {
-            if (i.getUsername().equals(nombreDeUsuario)) {
-                return i.getId();
-            }
-        }
-        return null;
     }
 
     public boolean actualizarUsuario(Usuario user, String id, String username, String contrasena, String nombreCompleto, ArrayList<String> privilegio, String rol, String status) {
@@ -165,6 +128,36 @@ public class ListaDeUsuarios {
             return false;
         }
 
+    }
+
+    //MÉTODOS VARIOS//
+    public boolean usuarioExistente(String username) {
+        boolean existe = false;
+        for (int cont = 0; cont < listaUsuarios.size(); cont++) {
+            if (listaUsuarios.get(cont).getUsername().equals(username)) {
+                existe = true;
+            }
+        }
+        return existe;
+    }
+
+    public Usuario listarUsuario(String id) {
+        for (Usuario encontrar : listaUsuarios) {
+            if (encontrar.getId().equals(id)) {
+                return encontrar;
+            }
+        }
+        JOptionPane.showMessageDialog(null, "Usuario no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
+        return null;
+    }
+
+    public String listarUsuarioPorNombre(String nombreDeUsuario) {
+        for (Usuario i : getListaUsuarios()) {
+            if (i.getUsername().equals(nombreDeUsuario)) {
+                return i.getId();
+            }
+        }
+        return null;
     }
 
     public Usuario iniciarSesion(String user, String contrasena) {

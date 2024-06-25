@@ -9,9 +9,13 @@ import com.google.cloud.firestore.Precondition;
 import com.google.cloud.firestore.QuerySnapshot;
 import com.google.cloud.firestore.WriteResult;
 import com.google.firebase.cloud.FirestoreClient;
+import controller.ListaDeUsuarios;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
+import model.Usuario;
 
 public class GeneralProvider {
 
@@ -59,7 +63,33 @@ public class GeneralProvider {
         return false;
 
     }
-/*
+
+    public static ArrayList<Usuario> cargarInfoUsuario() {
+        //ListaDeUsuarios listaUsers = new ListaDeUsuarios();
+        ArrayList<Usuario> listaUsuarios = new ArrayList<>();
+
+        try {
+            CollectionReference usuarios = Conexion.db.collection("Usuarios");
+            ApiFuture<QuerySnapshot> querySnap = usuarios.get();
+            for (DocumentSnapshot document : querySnap.get().getDocuments()) {
+                //Convertir a array list
+                String s1 = document.getString("privilegios");
+                String replace = s1.replace("[", "").replace("]", "");
+                List<String> privileges = new ArrayList<>(Arrays.asList(replace.split(",")));
+                
+                //crear user cada vez con parse
+                Usuario user = new Usuario(document.getString("username"), document.getString("contrasena"), document.getString("nombreCompleto"), (ArrayList<String>) privileges, document.getString("rol"), Boolean.parseBoolean(document.getString("estado")));
+                user.setId(document.getId());
+                
+                //listaUsers.crearUsuarioLocal(user);
+                listaUsuarios.add(user);
+            }
+        } catch (InterruptedException | ExecutionException e) {
+            System.out.println("Error al obtener lista: " + e.getMessage());
+        }
+        return listaUsuarios;
+    }
+    /*
     public static ArrayList<Televisor> cargarInfoTelevisor() {
         ListaDeTelevisores listaTv = new ListaDeTelevisores();
         try {
@@ -87,4 +117,3 @@ public class GeneralProvider {
         return listaTv.getListaLocal();
     }*/
 }
-
