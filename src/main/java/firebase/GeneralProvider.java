@@ -31,8 +31,8 @@ public class GeneralProvider {
         return false;
 
     }
-/*
-    public static boolean actualizarTelevisor(String coleccion, String documento, Map<String, Object> data) {
+
+    public static boolean actualizar(String coleccion, String documento, Map<String, Object> data) {
         db = FirestoreClient.getFirestore();
         try {
             DocumentReference docRef = db.collection(coleccion).document(documento);
@@ -45,7 +45,7 @@ public class GeneralProvider {
         return false;
 
     }
-
+/*
     public static boolean eliminarTelevisor(String coleccion, String documento) {
         db = FirestoreClient.getFirestore();
         try {
