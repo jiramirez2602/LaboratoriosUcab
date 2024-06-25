@@ -11,18 +11,6 @@ public class ListaDeSustanciasQuimicas {
 
     ArrayList<SustanciaQuimica> listaSustancias;
 
-    public ListaDeSustanciasQuimicas() {
-        listaSustancias = new ArrayList<>();
-        ArrayList<String> privilegios=new ArrayList<>();
-        privilegios.add("Laboratorios");
-        privilegios.add("Usuarios");
-        privilegios.add("Productos");
-        privilegios.add("Transacciones");
-        Usuario administradorLaboratorio = new Usuario("Harry1", "1234", "Harry Castellanos", privilegios, "administrador", true);
-        Laboratorio lab = new Laboratorio("Aula 2", "Ingenieria", "Industrial", "Laboratorios",administradorLaboratorio);
-        SustanciaQuimica sustancia = new SustanciaQuimica("H20", "Liquido", "estable","Hidrogeno",false,"32232","bajo", "fraseR","FraseS","Sellado en botella","Permitido","laboratorios",100, "LaboratoriosAMAI", "Envasado", "53236", "Hidrogeno", 1,"Seguro",lab);
-        listaSustancias.add(sustancia);
-    }
 
     public ArrayList<SustanciaQuimica> getListaSustanciasQuimicas() {
         return listaSustancias;
@@ -92,26 +80,26 @@ public class ListaDeSustanciasQuimicas {
     }
 
     //Listar un equipo con un Usuario
-    public ArrayList<SustanciaQuimica> listarSustanciaQuimicaPorUsuario(Usuario usuario) {
-        ArrayList<SustanciaQuimica> listaSustanciaQuimicaAux = new ArrayList<>();
-
-        for (SustanciaQuimica i : getListaSustanciasQuimicas()) {
-            if (i.getLaboratorio().getAdministrador().getNombreUser().equals(usuario.getNombreUser())) {
-                listaSustanciaQuimicaAux.add(i);
-            }
-        }
-        return listaSustanciaQuimicaAux;
-    }
+//    public ArrayList<SustanciaQuimica> listarSustanciaQuimicaPorUsuario(Usuario usuario) {
+//        ArrayList<SustanciaQuimica> listaSustanciaQuimicaAux = new ArrayList<>();
+//
+//        for (SustanciaQuimica i : getListaSustanciasQuimicas()) {
+//            if (i.getLaboratorio().getAdministrador().getNombreUser().equals(usuario.getNombreUser())) {
+//                listaSustanciaQuimicaAux.add(i);
+//            }
+//        }
+//        return listaSustanciaQuimicaAux;
+//    }
     
-    //Listar una sustancia Quimica con un nombre 
-    public String listarSustanciaQumicaPorNombre(Usuario usuario, String nombreDeSustancia) {
-        for (SustanciaQuimica i : listarSustanciaQuimicaPorUsuario(usuario)) {
-            if (i.getNombreProducto().toLowerCase().equals(nombreDeSustancia.toLowerCase())) {
-                return i.getId();
-            }
-        }
-        return null;
-    }
+//    //Listar una sustancia Quimica con un nombre 
+//    public String listarSustanciaQumicaPorNombre(Usuario usuario, String nombreDeSustancia) {
+//        for (SustanciaQuimica i : listarSustanciaQuimicaPorUsuario(usuario)) {
+//            if (i.getNombreProducto().toLowerCase().equals(nombreDeSustancia.toLowerCase())) {
+//                return i.getId();
+//            }
+//        }
+//        return null;
+//    }
 
     //TODO: Agregar logica de transacciones
     //Modifica Equipos

@@ -9,23 +9,11 @@ public class ListaLaboratorios {
 
     ArrayList<Laboratorio> lista;
 
-    public ListaLaboratorios() {
-        lista = new ArrayList<>();
-        ArrayList<String> privilegios=new ArrayList<>();
-        privilegios.add("Laboratorios");
-        privilegios.add("Usuarios");
-        privilegios.add("Productos");
-        privilegios.add("Transacciones");
-        Usuario administradorLaboratorio = new Usuario("Harry1", "1234", "Harry Castellanos", privilegios, "administrador", true);
-        Laboratorio lab = new Laboratorio("Aula 2", "Ingenieria", "Industrial", "Laboratorios",administradorLaboratorio);
-        lista.add(lab);
-    }
-
 //    public void iniciarLista() {
 //        //TODO: Leer todos los datos preexistentes de xml
 //    }
     //TODO: Agregar logica de transacciones
-    public boolean crearLaboratorio(Usuario user, String nombreLaboratorio, String facultad, String escuela, String departamento, Usuario administrador) {
+    public boolean crearLaboratorio(Usuario user, String nombreLaboratorio, String facultad, String escuela, String departamento, String idAdministrador) {
         Validador validador = new Validador();
         if (!validador.validarConRegex(nombreLaboratorio, "^[A-Za-z0-9\\s]{5,30}$", "Nombre de laboratorio", "Nombre es invalido, puede usar hasta 30 caractes alfanumericos")
                 || !validador.validarConRegex(facultad, "^[A-Za-z\\s]{5,30}$", "Facultad", "Facultad es invalida, puede usar hasta 30 caractes alfabeticos")
@@ -33,7 +21,7 @@ public class ListaLaboratorios {
                 || !validador.validarConRegex(departamento, "^[A-Za-z\\s]{0,30}$", "Departamento", "Departamento es invalida, puede usar hasta 30 caractes alfabeticos")) {
             return false;
         } else {
-            Laboratorio laboratorioAux = new Laboratorio(nombreLaboratorio, facultad, escuela, departamento, administrador);
+            Laboratorio laboratorioAux = new Laboratorio(nombreLaboratorio, facultad, escuela, departamento, idAdministrador);
             lista.add(laboratorioAux);
             return true;
         }
@@ -64,7 +52,7 @@ public class ListaLaboratorios {
     }
 
     //TODO: Agregar logica de transacciones
-    public boolean modificarLaboratorio(Usuario user, String id, String nombreLaboratorio, String facultad, String escuela, String departamento, Usuario administrador) {
+    public boolean modificarLaboratorio(Usuario user, String id, String nombreLaboratorio, String facultad, String escuela, String departamento, String idAdministrador) {
         Laboratorio lab = listarLaboratorio(id);
         if (lab != null) {
             Validador validador = new Validador();
@@ -74,7 +62,7 @@ public class ListaLaboratorios {
                     || !validador.validarConRegex(departamento, "^[A-Za-z\\s]{0,30}$", "Departamento", "Departamento es invalida, puede usar hasta 30 caractes alfabeticos")) {
                 return false;
             } else {
-                Laboratorio laboratorioAux = new Laboratorio(nombreLaboratorio, facultad, escuela, departamento, administrador);
+                Laboratorio laboratorioAux = new Laboratorio(nombreLaboratorio, facultad, escuela, departamento, idAdministrador);
                 int acumulador = 0;
                 for (Laboratorio i : lista) {
                     if (i.getId().equals(id)) {

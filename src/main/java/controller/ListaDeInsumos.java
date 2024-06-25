@@ -13,22 +13,6 @@ public class ListaDeInsumos {
 
     ArrayList<Insumo> listaInsumos;
 
-    public ListaDeInsumos() {
-        listaInsumos = new ArrayList<>();
-        Date date = new Date(2004,05,06);
-        Date date2= new Date(2024,06,01);
-        Date date3= new Date(2024,06,11);
-        Date date4= new Date(2024,06,13);
-        ArrayList<String> privilegios=new ArrayList<>();
-        privilegios.add("Laboratorios");
-        privilegios.add("Usuarios");
-        privilegios.add("Productos");
-        privilegios.add("Transacciones");
-        Usuario administradorLaboratorio = new Usuario("Harry1", "1234", "Harry Castellanos", privilegios, "administrador", true);
-        Laboratorio lab = new Laboratorio("Aula 2", "Ingenieria", "Industrial", "Laboratorios",administradorLaboratorio);
-        Insumo insumo = new Insumo("Lentes que protege", "GlassesUSA", "modelo2", "Buen estado","objeto fisico","proteccion",date,20,"laboratorios","JuanInsumos","23232","Lentes de proteccion",1,"viejo",lab);
-        listaInsumos.add(insumo);
-    }
 
     public ArrayList<Insumo> getListaInsumos() {
         return listaInsumos;
@@ -102,27 +86,27 @@ public class ListaDeInsumos {
         return null;
     }
 
-    //Listar un insumo con un Usuario
-    public ArrayList<Insumo> listarInsumoPorUsuario(Usuario usuario) {
-        ArrayList<Insumo> listaInsumoAux = new ArrayList<>();
-
-        for (Insumo i : getListaInsumos()) {
-            if (i.getLaboratorio().getAdministrador().getNombreUser().equals(usuario.getNombreUser())) {
-                listaInsumoAux.add(i);
-            }
-        }
-        return listaInsumoAux;
-    }
+//    //Listar un insumo con un Usuario
+//    public ArrayList<Insumo> listarInsumoPorUsuario(Usuario usuario) {
+//        ArrayList<Insumo> listaInsumoAux = new ArrayList<>();
+//
+//        for (Insumo i : getListaInsumos()) {
+//            if (i.getLaboratorio().getAdministrador().getNombreUser().equals(usuario.getNombreUser())) {
+//                listaInsumoAux.add(i);
+//            }
+//        }
+//        return listaInsumoAux;
+//    }
     
-    //Listar un INSUMO con un nombre de Insumo
-    public String listarInsumosPorNombre(Usuario usuario, String nombreDeInsumo) {
-        for (Insumo i : listarInsumoPorUsuario(usuario)) {
-            if (i.getNombreProducto().toLowerCase().equals(nombreDeInsumo.toLowerCase())) {
-                return i.getId();
-            }
-        }
-        return null;
-    }
+//    //Listar un INSUMO con un nombre de Insumo
+//    public String listarInsumosPorNombre(Usuario usuario, String nombreDeInsumo) {
+//        for (Insumo i : listarInsumoPorUsuario(usuario)) {
+//            if (i.getNombreProducto().toLowerCase().equals(nombreDeInsumo.toLowerCase())) {
+//                return i.getId();
+//            }
+//        }
+//        return null;
+//    }
 
     //TODO: Agregar logica de transacciones
     //Modifica Insumos
