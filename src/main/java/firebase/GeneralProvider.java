@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
-public class TelevisorProvider {
+public class GeneralProvider {
 
     CollectionReference reference;
     static Firestore db;

@@ -1,12 +1,56 @@
 package controller;
 
+import firebase.GeneralProvider;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JOptionPane;
 import model.Usuario;
 
 public class ListaDeUsuarios {
     ArrayList <Usuario> listaUsuarios=new ArrayList<>() ;
     
+    public boolean guardarEnFirebase(Usuario usuario) {
+        try {
+            Map<String, Object> datos = new HashMap<>();
+            datos.put("pulgadas", String.valueOf(usuario.getContrasena()));
+            GeneralProvider.guardar("Usuarios", String.valueOf(usuario.getId()), datos);
+            JOptionPane.showMessageDialog(null, "Guardado con exito");
+            return true;
+        } catch (Exception e) {
+            System.out.println("Error al guardar controller: " + e.getMessage());
+            return false;
+        }
+    }
+/*
+    public boolean actualizarEnFirebase(Televisor televisor, String id) {
+        try {
+            Map<String, Object> datos = new HashMap<>();
+            datos.put("pulgadas", String.valueOf(televisor.getPulgadas()));
+            datos.put("TDT", String.valueOf(televisor.isTDT()));
+            datos.put("precioBase", String.valueOf(televisor.getPrecioBase()));
+            datos.put("color", String.valueOf(televisor.getColor()));
+            datos.put("consumoEnergetico", String.valueOf(televisor.getConsumoEnergetico()));
+            datos.put("peso", String.valueOf(televisor.getPeso()));
+            TelevisorProvider.actualizarTelevisor("Televisores", id, datos);
+            JOptionPane.showMessageDialog(null, "Actualizado con exito");
+            return true;
+        } catch (Exception e) {
+            System.out.println("Error al actualizar controller: " + e.getMessage());
+            return false;
+        }
+    }
+
+    public boolean eliminarEnFirebase(String id) {
+        try {
+            TelevisorProvider.eliminarTelevisor("Televisores", id);
+            JOptionPane.showMessageDialog(null, "Eliminado con exito");
+            return true;
+        } catch (Exception e) {
+            System.out.println("Error al eliminar: " + e.getMessage());
+            return false;
+        }
+    }*/
     public void iniciarListaDeUsuarios(){
         listaUsuarios=new ArrayList();
         ArrayList<String> privilegios=new ArrayList<>();
@@ -52,8 +96,7 @@ public class ListaDeUsuarios {
                     estado=false;
                 }
                 Usuario usuario=new Usuario(username,contrasena,nombreCompleto,privilegio,rol,estado);
-                listaUsuarios.add(usuario);
-                retornar=true;
+                retornar=guardarEnFirebase(usuario);
             }
         }
         return retornar;
