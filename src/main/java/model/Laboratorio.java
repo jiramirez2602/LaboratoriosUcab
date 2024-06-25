@@ -30,8 +30,7 @@ public class Laboratorio {
             datos.put("contrasena", String.valueOf(usuario.getContrasena()));
             datos.put("nombreCompleto", String.valueOf(usuario.getNombreUser()));
             datos.put("rol", String.valueOf(usuario.getRolUsuario()));
-            datos.put("estado", String.valueOf(usuario.isStatus()));
-            datos.put("privilegios", String.valueOf(usuario.getPrivilegios()));
+            datos.put("estado", String.valueOf(usuario.getStatus()));
             GeneralProvider.guardar("Usuarios", String.valueOf(usuario.getId()), datos);
             JOptionPane.showMessageDialog(null, "Guardado con exito");
             return true;
@@ -48,8 +47,7 @@ public class Laboratorio {
             datos.put("contrasena", String.valueOf(usuario.getContrasena()));
             datos.put("nombreCompleto", String.valueOf(usuario.getNombreUser()));
             datos.put("rol", String.valueOf(usuario.getRolUsuario()));
-            datos.put("estado", String.valueOf(usuario.isStatus()));
-            datos.put("privilegios", String.valueOf(usuario.getPrivilegios()));
+            datos.put("estado", String.valueOf(usuario.getStatus()));
             GeneralProvider.actualizar("Usuarios", usuario.getId(), datos);
             JOptionPane.showMessageDialog(null, "Actualizado con exito");
             return true;

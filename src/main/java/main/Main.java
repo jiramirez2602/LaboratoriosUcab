@@ -15,7 +15,7 @@ public class Main {
         privilegios.add("Usuarios");
         privilegios.add("Productos");
         privilegios.add("Transacciones");
-        Usuario administradorLaboratorio = new Usuario("Harry1", "1234", "Harry Castellanos", privilegios, "administrador", Boolean.TRUE);
+        Usuario administradorLaboratorio = new Usuario("Harry1", "1234", "Harry Castellanos", "administrador","Activo");
 
         ListaDeUsuarios lista1 = new ListaDeUsuarios();
         //lista1.crearUsuario(administradorLaboratorio, "paula", "1234", "paula sfia", privilegios, "admin", "true");

@@ -8,9 +8,8 @@ public class Usuario {
     private String username;
     private String contrasena;
     private String nombreUser;
-    private ArrayList<String> privilegios;
     private String rolUsuario;
-    private boolean status;
+    private String status;
     private String id;
 
     public static final String generarUUID() {
@@ -18,18 +17,13 @@ public class Usuario {
         return uuid.toString();
     }
     
-    public Usuario(String username, String contrasena, String nombreUser, ArrayList<String> privilegios, String rolUsuario, boolean status) {
+    public Usuario(String username, String contrasena, String nombreUser,String rolUsuario,String status) {
         this.username = username;
         this.contrasena = contrasena;
         this.nombreUser = nombreUser;
-        this.privilegios = privilegios;
         this.rolUsuario = rolUsuario;
         this.status = status;
         this.id=generarUUID();
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getUsername() {
@@ -44,24 +38,17 @@ public class Usuario {
         return nombreUser;
     }
 
-    public ArrayList<String> getPrivilegios() {
-        return privilegios;
-    }
-
     public String getRolUsuario() {
         return rolUsuario;
     }
 
-    public boolean isStatus() {
+    public String getStatus() {
         return status;
     }
 
+
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public void setPrivilegios(ArrayList<String> privilegios) {
-        this.privilegios = privilegios;
     }
 
     public void setContrasena(String contrasena) {
@@ -76,21 +63,26 @@ public class Usuario {
         this.rolUsuario = rolUsuario;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+    
     public String getId() {
         return id;
     }
+
+    public Object getNombreCompleto() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
-    public boolean verificarPrivilegios(Usuario user,String privilegio){
-        ArrayList<String> comprobarPrivi=user.getPrivilegios();
+    public boolean verificarRol(Usuario user,String rol){
         boolean retornar=false;
-        for(String recorrer:comprobarPrivi){
-            if(recorrer.equals(privilegio)){
-                retornar=true;
-            }
+        if(user.getRolUsuario().equals(rol)){
+            retornar=true;
         }
         if(retornar==false){
             JOptionPane.showMessageDialog(null,"No tienes acceso a este modulo", "Error", JOptionPane.ERROR_MESSAGE);

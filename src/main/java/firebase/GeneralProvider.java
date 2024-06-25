@@ -78,7 +78,7 @@ public class GeneralProvider {
                 List<String> privileges = new ArrayList<>(Arrays.asList(replace.split(",")));
                 
                 //crear user cada vez con parse
-                Usuario user = new Usuario(document.getString("username"), document.getString("contrasena"), document.getString("nombreCompleto"), (ArrayList<String>) privileges, document.getString("rol"), Boolean.parseBoolean(document.getString("estado")));
+                Usuario user = new Usuario(document.getString("username"), document.getString("contrasena"), document.getString("nombreCompleto"), document.getString("rol"),document.getString("Estado"));
                 user.setId(document.getId());
                 
                 //listaUsers.crearUsuarioLocal(user);

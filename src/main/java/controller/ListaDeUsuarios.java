@@ -19,8 +19,7 @@ public class ListaDeUsuarios {
             datos.put("contrasena", String.valueOf(usuario.getContrasena()));
             datos.put("nombreCompleto", String.valueOf(usuario.getNombreUser()));
             datos.put("rol", String.valueOf(usuario.getRolUsuario()));
-            datos.put("estado", String.valueOf(usuario.isStatus()));
-            datos.put("privilegios", String.valueOf(usuario.getPrivilegios()));
+            datos.put("estado", String.valueOf(usuario.getStatus()));
             GeneralProvider.guardar("Usuarios", String.valueOf(usuario.getId()), datos);
             JOptionPane.showMessageDialog(null, "Guardado con exito");
             return true;
@@ -37,8 +36,7 @@ public class ListaDeUsuarios {
             datos.put("contrasena", String.valueOf(usuario.getContrasena()));
             datos.put("nombreCompleto", String.valueOf(usuario.getNombreUser()));
             datos.put("rol", String.valueOf(usuario.getRolUsuario()));
-            datos.put("estado", String.valueOf(usuario.isStatus()));
-            datos.put("privilegios", String.valueOf(usuario.getPrivilegios()));
+            datos.put("estado", String.valueOf(usuario.getStatus()));
             GeneralProvider.actualizar("Usuarios", usuario.getId(), datos);
             JOptionPane.showMessageDialog(null, "Actualizado con exito");
             return true;
@@ -71,16 +69,10 @@ public class ListaDeUsuarios {
                     || !validar.validarConRegex(contrasena, "^.{1,30}$", "Contraseña del usuario", "Limite de caracteres sobrepasado, solo se puede ingresar de 5 a 30 caracteres")
                     || !validar.validarConRegex(nombreCompleto, "^[a-zA-Z ]{1,30}$", "Nombre Verdadero del usuario", "El nombre es invalido, solo se aceptan caracteres alfabeticos, con un limite de 5 a 30 caracteres")
                     || !validar.validarConRegex(rol, "^[a-zA-Z]{1,30}$", "Rol del usuario", "El rol es invalido, solo se aceptan caracteres alfabeticos, con un limite de 5 a 30 caracteres")
-                    || !validar.validarConRegex(status, "^(true|false)$", "Estado del usuario", "El estado es invalido")) {
+                    ) {
                 return retornar;
             } else {
-                boolean estado = true;
-                try {
-                    estado = Boolean.parseBoolean(status);
-                } catch (Exception e) {
-                    estado = false;
-                }
-                Usuario usuario = new Usuario(username, contrasena, nombreCompleto, privilegio, rol, estado);
+                Usuario usuario = new Usuario(username, contrasena, nombreCompleto, rol,status);
                 retornar = guardarEnFirebase(usuario);
             }
         }
@@ -101,22 +93,42 @@ public class ListaDeUsuarios {
                 || !validar.validarConRegex(contrasena, "^.{1,30}$", "Contraseña del usuario", "Limite de caracteres sobrepasado, solo se puede ingresar de 5 a 30 caracteres")
                 || !validar.validarConRegex(nombreCompleto, "^[a-zA-Z ]{1,30}$", "Nombre Verdadero del usuario", "El nombre es invalido, solo se aceptan caracteres alfabeticos, con un limite de 5 a 30 caracteres")
                 || !validar.validarConRegex(rol, "^[a-zA-Z]{1,30}$", "Rol del usuario", "El rol es invalido, solo se aceptan caracteres alfabeticos, con un limite de 5 a 30 caracteres")
-                || !validar.validarConRegex(status, "^(true|false)$", "Estado del usuario", "El estado es invalido")) {
+                ) {
             return retornar;
         } else {
-            boolean estado = true;
-            try {
-                estado = Boolean.parseBoolean(status);
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Estado invalido", "Error", JOptionPane.ERROR_MESSAGE);
-                return false;
-            }
-            Usuario userModified = new Usuario(username, contrasena, nombreCompleto, privilegio, rol, estado);
+            Usuario userModified = new Usuario(username, contrasena, nombreCompleto, rol,status);
             userModified.setId(id);
-
             retornar = actualizarEnFirebase(userModified);
         }
 
+        return retornar;
+    }
+    
+    public boolean modificarUsuarios(Usuario user,String nombre, String id, String newUser, String contrasena, String nombreCompleto, String rol, String status) {
+        Validador validar = new Validador();
+        String iD=listarUsuarioPorNombre(nombre);
+        Usuario usuarioExiste = listarUsuario(iD);
+        boolean retornar = false;
+        if (usuarioExiste != null) {
+            if (!validar.validarConRegex(newUser, "^.{1,30}$", "Nombre del usuario", "Limite de caracteres sobrepasado, solo se puede ingresar de 5 a 30 caracteres")
+                    || !validar.validarConRegex(contrasena, "^.{1,30}$", "Contraseña del usuario", "Limite de caracteres sobrepasado, solo se puede ingresar de 5 a 30 caracteres")
+                    || !validar.validarConRegex(nombreCompleto, "^[a-zA-Z ]{1,30}$", "Nombre Verdadero del usuario", "El nombre es invalido, solo se aceptan caracteres alfabeticos, con un limite de 5 a 30 caracteres")
+                    || !validar.validarConRegex(rol, "^[a-zA-Z]{1,30}$", "Rol del usuario", "El rol es invalido, solo se aceptan caracteres alfabeticos, con un limite de 5 a 30 caracteres")
+                    ) {
+                return retornar;
+            } else {
+                Usuario userModded = new Usuario(newUser, contrasena, nombreCompleto, rol, status);
+                for (int cont = 0; cont < listaUsuarios.size(); cont++) {
+                    if (listaUsuarios.get(cont).getId().equals(iD)) {
+                        listaUsuarios.set(cont, userModded);
+                    }
+                }
+                retornar = true;
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Usuario no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
+            return retornar;
+        }
         return retornar;
     }
 
