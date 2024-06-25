@@ -45,8 +45,8 @@ public class GeneralProvider {
         return false;
 
     }
-/*
-    public static boolean eliminarTelevisor(String coleccion, String documento) {
+
+    public static boolean eliminar(String coleccion, String documento) {
         db = FirestoreClient.getFirestore();
         try {
             DocumentReference docRef = db.collection(coleccion).document(documento);
@@ -59,7 +59,7 @@ public class GeneralProvider {
         return false;
 
     }
-
+/*
     public static ArrayList<Televisor> cargarInfoTelevisor() {
         ListaDeTelevisores listaTv = new ListaDeTelevisores();
         try {

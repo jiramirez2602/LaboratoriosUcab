@@ -47,17 +47,17 @@ public class ListaDeUsuarios {
         }
     }
 
-    /*
     public boolean eliminarEnFirebase(String id) {
         try {
-            TelevisorProvider.eliminarTelevisor("Televisores", id);
+            GeneralProvider.eliminar("Usuarios", id);
             JOptionPane.showMessageDialog(null, "Eliminado con exito");
             return true;
         } catch (Exception e) {
             System.out.println("Error al eliminar: " + e.getMessage());
             return false;
         }
-    }*/
+    }
+
     public void iniciarListaDeUsuarios() {
         listaUsuarios = new ArrayList();
         ArrayList<String> privilegios = new ArrayList<>();
@@ -129,7 +129,7 @@ public class ListaDeUsuarios {
         return null;
     }
 
-    public boolean modificarUsuarios(Usuario user, String id, String username, String contrasena, String nombreCompleto, ArrayList<String> privilegio, String rol, String status) {
+    public boolean actualizarUsuario(Usuario user, String id, String username, String contrasena, String nombreCompleto, ArrayList<String> privilegio, String rol, String status) {
         Validador validar = new Validador();
 
         boolean retornar = false;
@@ -157,21 +157,14 @@ public class ListaDeUsuarios {
         return retornar;
     }
 
-    public boolean eliminarUsuarios(Usuario user, String id) {
-        Usuario usuarioExiste = listarUsuario(id);
-        boolean retornar = false;
-        if (usuarioExiste != null) {
-            for (int cont = 0; cont < listaUsuarios.size(); cont++) {
-                if (listaUsuarios.get(cont).getId().equals(id)) {
-                    listaUsuarios.remove(cont);
-                }
-            }
-            retornar = true;
-        } else {
-            JOptionPane.showMessageDialog(null, "Usuario no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
-            return retornar;
+    public boolean eliminarUsuario(Usuario user, String id) {
+        try {
+            return eliminarEnFirebase(id);
+        } catch (Exception e) {
+            System.out.println("Error" + e);
+            return false;
         }
-        return retornar;
+
     }
 
     public Usuario iniciarSesion(String user, String contrasena) {
