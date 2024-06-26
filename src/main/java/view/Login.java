@@ -315,7 +315,7 @@ public class Login extends javax.swing.JFrame {
             ListaDeEquipos listaEquip = new ListaDeEquipos();
             ListaDeInsumos listaInsu = new ListaDeInsumos();
             ListaDeSustanciasQuimicas listaSusQui = new ListaDeSustanciasQuimicas();*/
-            Usuario usuario = usuarios.iniciarSesion(username, password);
+            Usuario usuario = usuarios.iniciarSesion(username.trim(), password.trim());
             if (usuario != null) {
                 Dashboard iniciarMain = new Dashboard(usuario,usuarios);
                 iniciarMain.setVisible(true);
