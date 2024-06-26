@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.ilib;
+package view;
 
 import Views.Productos;
 import Views.Reportes;
@@ -13,6 +13,7 @@ import Views.Principal;
 import Views.Transacciones;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialLighterIJTheme;
+import controller.ListaDeUsuarios;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Insets;
@@ -30,10 +31,10 @@ import org.netbeans.lib.awtextra.AbsoluteConstraints;
  */
 public class Dashboard extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Dashboard
-     */
+    private ListaDeUsuarios listaUsuarios;
+
     public Dashboard() {
+        this.listaUsuarios = listaUsuarios;
         initComponents();
         InitStyles();
         SetDate();
@@ -299,7 +300,7 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_prinActionPerformed
 
     private void BotonUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonUsuariosActionPerformed
-        ShowJPanel(new Usuarios());
+        ShowJPanel(new Usuarios(listaUsuarios));
     }//GEN-LAST:event_BotonUsuariosActionPerformed
 
     private void BotonLaboratoriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonLaboratoriosActionPerformed

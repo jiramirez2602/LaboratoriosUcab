@@ -1,17 +1,14 @@
 package Views;
 
-import com.mycompany.ilib.DAOUsersImpl;
-import com.mycompany.ilib.Dashboard;
-import com.mycompany.interfaces.DAOUsers;
+
 import java.awt.Color;
-import javax.swing.table.DefaultTableModel;
+
 
 public class Laboratorios extends javax.swing.JPanel {
 
     public Laboratorios() {
         initComponents();
         InitStyles();
-        LoadUsers();
     }
 
     private void InitStyles() {
@@ -20,16 +17,7 @@ public class Laboratorios extends javax.swing.JPanel {
         userSearch.putClientProperty("JTextField.placeholderText", "Ingrese el nombre de usuario a buscar.");
     }
 
-    private void LoadUsers() {
-        try {
-            DAOUsers dao = new DAOUsersImpl();
-            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-            dao.listar("").forEach((u) -> model.addRow(new Object[]{u.getId(), u.getName(), u.getLast_name_p(), u.getLast_name_m(), u.getDomicilio(), u.getTel()}));
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
+  
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

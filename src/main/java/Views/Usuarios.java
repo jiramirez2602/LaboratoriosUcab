@@ -1,35 +1,89 @@
 package Views;
 
-import com.mycompany.ilib.DAOUsersImpl;
-import com.mycompany.ilib.Dashboard;
-import com.mycompany.interfaces.DAOUsers;
+import controller.ListaDeUsuarios;
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.util.HashMap;
+import java.util.Map;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import model.Usuario;
 
 public class Usuarios extends javax.swing.JPanel {
-
-    public Usuarios() {
+    
+    private ListaDeUsuarios listaUsuarios;
+    private DefaultTableModel tableModel;
+    private Map<Integer, String> idMap;
+    private Usuario usuarioSeleccionado;
+    
+    public Usuarios(ListaDeUsuarios usuarios) {
+        this.listaUsuarios = usuarios;
         initComponents();
         InitStyles();
-        LoadUsers();
+        idMap = new HashMap<>();
+        inicializarTabla();
+        actualizarTabla();
     }
+    
+     private void inicializarTabla() {
+        String[] columnas = {"Username", "Nombre Completo", "Privilegios", "Rol", "Estado"};
+        tableModel = new DefaultTableModel(columnas, 0);
+        jTable1.setModel(tableModel);
+    }
+     
+    private void actualizarTabla() {
+        tableModel.setRowCount(0); 
+        idMap.clear(); 
+        int row = 0;
 
+       
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+
+        for (Usuario usuario : listaUsuarios.getListaUsuarios()) {
+            String privilegios = String.join(", ", usuario.getPrivilegios());
+            String estado = usuario.isStatus() ? "Activo" : "Inactivo";
+            Object[] fila = {
+                usuario.getUsername(),
+                usuario.getNombreUser(),
+                privilegios,
+                usuario.getRolUsuario(),
+                estado
+            };
+            tableModel.addRow(fila); // Agregar fila al modelo de la tabla
+
+            // Asociar la fila con el ID
+            idMap.put(row, usuario.getId());
+
+            // Aplicar centrado al contenido de las celdas en cada columna
+            for (int i = 0; i < tableModel.getColumnCount(); i++) {
+                jTable1.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+            }
+
+            row++;
+        }
+        jTable1.setDefaultEditor(Object.class, null); // Desactivar la edicion de celdas
+    }
+    
     private void InitStyles() {
         title.putClientProperty("FlatLaf.styleClass", "h1");
         title.setForeground(Color.black);
         userSearch.putClientProperty("JTextField.placeholderText", "Ingrese el nombre de usuario a buscar.");
     }
 
-    private void LoadUsers() {
-        try {
-            DAOUsers dao = new DAOUsersImpl();
-            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-            dao.listar("").forEach((u) -> model.addRow(new Object[]{u.getId(), u.getName(), u.getLast_name_p(), u.getLast_name_m(), u.getDomicilio(), u.getTel()}));
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+    private void MostrarJPanel(JPanel p) {
+        p.setSize(1180, 556);
+        p.setLocation(0,0);
+        BackGroundUsuarios.removeAll();
+        BackGroundUsuarios.add(p, BorderLayout.CENTER);
+        BackGroundUsuarios.revalidate();
+        BackGroundUsuarios.repaint();
     }
-
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -39,7 +93,7 @@ public class Usuarios extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        bg = new javax.swing.JPanel();
+        BackGroundUsuarios = new javax.swing.JPanel();
         title = new javax.swing.JLabel();
         userSearch = new javax.swing.JTextField();
         BotonBuscarUsuarios = new javax.swing.JButton();
@@ -51,7 +105,7 @@ public class Usuarios extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 255));
 
-        bg.setBackground(new java.awt.Color(255, 255, 255));
+        BackGroundUsuarios.setBackground(new java.awt.Color(255, 255, 255));
 
         title.setText("Usuarios");
 
@@ -73,24 +127,9 @@ public class Usuarios extends javax.swing.JPanel {
 
             },
             new String [] {
-                "ID", "Nombre", "Apellido P.", "Apellido M.", "Domicilio", "Teléfono"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, true, true, true, true, true
-            };
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
             }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         jTable1.getTableHeader().setReorderingAllowed(false);
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -135,45 +174,47 @@ public class Usuarios extends javax.swing.JPanel {
             }
         });
 
-        javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);
-        bg.setLayout(bgLayout);
-        bgLayout.setHorizontalGroup(
-            bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(bgLayout.createSequentialGroup()
+        javax.swing.GroupLayout BackGroundUsuariosLayout = new javax.swing.GroupLayout(BackGroundUsuarios);
+        BackGroundUsuarios.setLayout(BackGroundUsuariosLayout);
+        BackGroundUsuariosLayout.setHorizontalGroup(
+            BackGroundUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BackGroundUsuariosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(bgLayout.createSequentialGroup()
-                        .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(BackGroundUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(BackGroundUsuariosLayout.createSequentialGroup()
+                        .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
                         .addGap(699, 699, 699))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgLayout.createSequentialGroup()
-                        .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(bgLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackGroundUsuariosLayout.createSequentialGroup()
+                        .addGroup(BackGroundUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(BackGroundUsuariosLayout.createSequentialGroup()
                                 .addGap(427, 427, 427)
                                 .addComponent(BotonCrearUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(BotonModificarUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(BotonEliminarUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(bgLayout.createSequentialGroup()
+                            .addGroup(BackGroundUsuariosLayout.createSequentialGroup()
                                 .addComponent(userSearch)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(BotonBuscarUsuarios)))
-                        .addGap(50, 50, 50))))
+                        .addGap(50, 50, 50))
+                    .addGroup(BackGroundUsuariosLayout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 739, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
-        bgLayout.setVerticalGroup(
-            bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(bgLayout.createSequentialGroup()
+        BackGroundUsuariosLayout.setVerticalGroup(
+            BackGroundUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BackGroundUsuariosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, 17, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(BackGroundUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(userSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BotonBuscarUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(BackGroundUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotonEliminarUsuario)
                     .addComponent(BotonModificarUsuario)
                     .addComponent(BotonCrearUsuario))
@@ -184,11 +225,11 @@ public class Usuarios extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(BackGroundUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(BackGroundUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -197,15 +238,57 @@ public class Usuarios extends javax.swing.JPanel {
     }//GEN-LAST:event_jTable1MousePressed
 
     private void BotonCrearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCrearUsuarioActionPerformed
-       
+       MostrarJPanel(new CrearUsuario(listaUsuarios));
     }//GEN-LAST:event_BotonCrearUsuarioActionPerformed
 
     private void BotonEliminarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarUsuarioActionPerformed
-       
+       // Obtener el índice de la fila seleccionada
+    int selectedRow = jTable1.getSelectedRow();
+    
+    if (selectedRow != -1) { // Verificar si se seleccionó una fila
+        // Obtener el ID del usuario seleccionado desde el mapa idMap
+        String idUsuarioAEliminar = idMap.get(selectedRow);
+        
+        if (idUsuarioAEliminar != null && !idUsuarioAEliminar.isEmpty()) {
+            // Confirmar eliminación con un mensaje de confirmación
+            int confirmacion = JOptionPane.showConfirmDialog(null, "¿Estás seguro de eliminar este usuario?", "Confirmar Eliminación", JOptionPane.YES_NO_OPTION);
+            
+            if (confirmacion == JOptionPane.YES_OPTION) {
+                // Llamar al método para eliminar usuario en listaUsuarios
+                boolean exito = listaUsuarios.eliminarUsuario(usuarioSeleccionado, idUsuarioAEliminar);
+
+                if (exito) {
+                    JOptionPane.showMessageDialog(null, "Usuario eliminado exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                    // Actualizar visualización de la tabla de usuarios
+                    actualizarTabla();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Error al eliminar el usuario.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No se ha seleccionado ningún usuario para eliminar.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    } else {
+        JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila para eliminar.", "Error", JOptionPane.ERROR_MESSAGE);
+    }
     }//GEN-LAST:event_BotonEliminarUsuarioActionPerformed
 
     private void BotonModificarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarUsuarioActionPerformed
-       
+        int selectedRow = jTable1.getSelectedRow();
+
+        if (selectedRow != -1) {
+
+            String username = (String) jTable1.getValueAt(selectedRow, 0);
+
+
+            ModificarUsuario modificarUsuarioPanel = new ModificarUsuario(listaUsuarios);
+            modificarUsuarioPanel.cargarDatosUsuario(username);
+
+
+            MostrarJPanel(modificarUsuarioPanel);
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione un usuario para modificar.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_BotonModificarUsuarioActionPerformed
 
     private void BotonBuscarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBuscarUsuariosActionPerformed
@@ -214,11 +297,11 @@ public class Usuarios extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel BackGroundUsuarios;
     private javax.swing.JButton BotonBuscarUsuarios;
     private javax.swing.JButton BotonCrearUsuario;
     private javax.swing.JButton BotonEliminarUsuario;
     private javax.swing.JButton BotonModificarUsuario;
-    private javax.swing.JPanel bg;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel title;

@@ -1,16 +1,13 @@
 package Views;
 
-import com.mycompany.ilib.DAOLendingsImpl;
-import com.mycompany.interfaces.DAOLendings;
 import java.awt.Color;
-import javax.swing.table.DefaultTableModel;
 
 public class Reportes extends javax.swing.JPanel {
 
     public Reportes() {
         initComponents();
         InitStyles();
-        LoadLendings();
+      
     }
     
     private void InitStyles() {
@@ -18,17 +15,6 @@ public class Reportes extends javax.swing.JPanel {
         title.setForeground(Color.black);
     }
     
-    private void LoadLendings() {
-        try {
-            DAOLendings dao = new DAOLendingsImpl();
-            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-            // Limpiamos tabla
-            model.setRowCount(0);
-            dao.listar().forEach((u) -> model.addRow(new Object[]{u.getUser_id(), u.getBook_id(), u.getDate_out(), u.getDate_return()}));
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-    }
    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -138,7 +124,7 @@ public class Reportes extends javax.swing.JPanel {
     }//GEN-LAST:event_jTable1InputMethodTextChanged
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        LoadLendings();
+       
     }//GEN-LAST:event_jButton2ActionPerformed
 
 
