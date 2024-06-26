@@ -28,13 +28,15 @@ import model.Usuario;
 public class Dashboard extends javax.swing.JFrame {
 
     private ListaDeUsuarios listaUsuarios;
+    private Usuario userActual;
 
-    public Dashboard(ListaDeUsuarios users) {
+    public Dashboard(Usuario user,ListaDeUsuarios users) {
         initComponents();
         InitStyles();
         SetDate();
         InitContent();
         this.listaUsuarios=users;
+        this.userActual=user;
     }
     
     private void InitStyles() {

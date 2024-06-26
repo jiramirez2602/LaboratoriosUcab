@@ -317,7 +317,7 @@ public class Login extends javax.swing.JFrame {
             ListaDeSustanciasQuimicas listaSusQui = new ListaDeSustanciasQuimicas();*/
             Usuario usuario = usuarios.iniciarSesion(username, password);
             if (usuario != null) {
-                Dashboard iniciarMain = new Dashboard(usuarios);
+                Dashboard iniciarMain = new Dashboard(usuario,usuarios);
                 iniciarMain.setVisible(true);
                 dispose();
             }
