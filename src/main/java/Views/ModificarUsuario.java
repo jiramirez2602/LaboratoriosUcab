@@ -26,18 +26,11 @@ public class ModificarUsuario extends javax.swing.JPanel {
     public void cargarDatosUsuario(String username) {
     String idUsuario = listaUsuarios.listarUsuarioPorNombre(username); // Obtener el ID del usuario por su nombre
     if (idUsuario != null) {
-        usuarioSeleccionado = listaUsuarios.listarUsuario(idUsuario); // Obtener el usuario por su ID
+        Usuario usuarioSeleccionado = listaUsuarios.listarUsuario(idUsuario); // Obtener el usuario por su ID
         if (usuarioSeleccionado != null) {
             NombreUsuarioTxt.setText(usuarioSeleccionado.getUsername());
             ContraseñaTxt.setText(usuarioSeleccionado.getContrasena());
             NombreCompletoTxt.setText(usuarioSeleccionado.getNombreUser());
-
-            // Cargar privilegios
-            ArrayList<String> privilegios = usuarioSeleccionado.getPrivilegios();
-            UsuariosCheckBox.setSelected(privilegios.contains("Usuarios"));
-            LaboratoriosCheckBox.setSelected(privilegios.contains("Laboratorios"));
-            ProductosCheckBox.setSelected(privilegios.contains("Productos"));
-            TransaccionesCheckBox.setSelected(privilegios.contains("Transacciones"));
 
             // Cargar rol
             String rol = usuarioSeleccionado.getRolUsuario();
@@ -48,13 +41,16 @@ public class ModificarUsuario extends javax.swing.JPanel {
                 case "Invitado":
                     InvitadoRadioBtton.setSelected(true);
                     break;
+                case "Tecnico":
+                    TecnicoRadiobtton.setSelected(true);
+                    break;
                 default:
                     // Manejar el caso por defecto si es necesario
                     break;
             }
 
             // Cargar estado
-            boolean estado = usuarioSeleccionado.isStatus();
+            boolean estado = Boolean.parseBoolean(usuarioSeleccionado.getStatus());
             if (estado) {
                 ActivoRadioBtton.setSelected(true);
             } else {
@@ -67,7 +63,8 @@ public class ModificarUsuario extends javax.swing.JPanel {
     } else {
         JOptionPane.showMessageDialog(null, "Usuario no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
     }
-}
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -88,11 +85,6 @@ public class ModificarUsuario extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
         ModificarUsuario = new javax.swing.JButton();
         nameLbl3 = new javax.swing.JLabel();
-        UsuariosCheckBox = new javax.swing.JCheckBox();
-        LaboratoriosCheckBox = new javax.swing.JCheckBox();
-        ProductosCheckBox = new javax.swing.JCheckBox();
-        TransaccionesCheckBox = new javax.swing.JCheckBox();
-        nameLbl4 = new javax.swing.JLabel();
         nameLbl2 = new javax.swing.JLabel();
         AdminRadioBtton = new javax.swing.JRadioButton();
         InvitadoRadioBtton = new javax.swing.JRadioButton();
@@ -102,6 +94,7 @@ public class ModificarUsuario extends javax.swing.JPanel {
         InactivoRadioBtton = new javax.swing.JRadioButton();
         nameLbl6 = new javax.swing.JLabel();
         NombreCompletoTxt = new javax.swing.JTextField();
+        TecnicoRadiobtton = new javax.swing.JRadioButton();
 
         BackgroundCrearUsuario.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -134,16 +127,6 @@ public class ModificarUsuario extends javax.swing.JPanel {
 
         nameLbl3.setText("Contraseña:");
 
-        UsuariosCheckBox.setText("Usuarios\n");
-
-        LaboratoriosCheckBox.setText("Laboratorios");
-
-        ProductosCheckBox.setText("Productos");
-
-        TransaccionesCheckBox.setText("Transacciones");
-
-        nameLbl4.setText("Selecione el/los privilegios: ");
-
         nameLbl2.setText("Seleccione el rol: ");
 
         Rol.add(AdminRadioBtton);
@@ -162,6 +145,9 @@ public class ModificarUsuario extends javax.swing.JPanel {
 
         nameLbl6.setText("Nombre completo:");
 
+        Rol.add(TecnicoRadiobtton);
+        TecnicoRadiobtton.setText("Tecnico");
+
         javax.swing.GroupLayout BackgroundCrearUsuarioLayout = new javax.swing.GroupLayout(BackgroundCrearUsuario);
         BackgroundCrearUsuario.setLayout(BackgroundCrearUsuarioLayout);
         BackgroundCrearUsuarioLayout.setHorizontalGroup(
@@ -173,40 +159,37 @@ public class ModificarUsuario extends javax.swing.JPanel {
                         .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(1004, 1004, 1004))
                     .addGroup(BackgroundCrearUsuarioLayout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(BackgroundCrearUsuarioLayout.createSequentialGroup()
                         .addGroup(BackgroundCrearUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nameLbl1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(BackgroundCrearUsuarioLayout.createSequentialGroup()
-                                .addGroup(BackgroundCrearUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(nameLbl1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(nameLbl3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(147, 147, 147))
-                            .addGroup(BackgroundCrearUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(TransaccionesCheckBox, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(ProductosCheckBox, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(LaboratoriosCheckBox, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(UsuariosCheckBox, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(nameLbl4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 437, Short.MAX_VALUE)
-                                .addComponent(NombreUsuarioTxt, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(ContraseñaTxt, javax.swing.GroupLayout.Alignment.LEADING)))
+                                .addGroup(BackgroundCrearUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(nameLbl3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(BackgroundCrearUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(NombreUsuarioTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+                                        .addComponent(ContraseñaTxt))
+                                    .addComponent(nameLbl5, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(ActivoRadioBtton)
+                                    .addComponent(InactivoRadioBtton))
+                                .addGap(48, 48, 48)))
+                        .addGap(18, 18, 18)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(BackgroundCrearUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(BackgroundCrearUsuarioLayout.createSequentialGroup()
                                 .addComponent(nameLbl6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(7, 7, 7))
+                                .addGap(58, 58, 58))
                             .addGroup(BackgroundCrearUsuarioLayout.createSequentialGroup()
                                 .addComponent(nameLbl2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(62, 62, 62))
+                                .addGap(113, 113, 113))
                             .addComponent(AdminRadioBtton)
                             .addComponent(InvitadoRadioBtton)
-                            .addComponent(nameLbl5, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ActivoRadioBtton)
-                            .addComponent(InactivoRadioBtton)
                             .addComponent(ModificarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(NombreCompletoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(234, 234, 234))
-                    .addGroup(BackgroundCrearUsuarioLayout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addComponent(NombreCompletoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TecnicoRadiobtton))
+                        .addGap(312, 312, 312))))
         );
         BackgroundCrearUsuarioLayout.setVerticalGroup(
             BackgroundCrearUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -225,17 +208,13 @@ public class ModificarUsuario extends javax.swing.JPanel {
                         .addComponent(nameLbl3)
                         .addGap(18, 18, 18)
                         .addComponent(ContraseñaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
-                        .addComponent(nameLbl4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(15, 15, 15)
-                        .addComponent(UsuariosCheckBox)
-                        .addGap(20, 20, 20)
-                        .addComponent(LaboratoriosCheckBox)
-                        .addGap(20, 20, 20)
-                        .addComponent(ProductosCheckBox)
-                        .addGap(20, 20, 20)
-                        .addComponent(TransaccionesCheckBox)
-                        .addGap(100, 100, 100))
+                        .addGap(28, 28, 28)
+                        .addComponent(nameLbl5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(ActivoRadioBtton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(InactivoRadioBtton)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(BackgroundCrearUsuarioLayout.createSequentialGroup()
                         .addGroup(BackgroundCrearUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -249,13 +228,9 @@ public class ModificarUsuario extends javax.swing.JPanel {
                                 .addComponent(AdminRadioBtton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(InvitadoRadioBtton)
-                                .addGap(18, 18, 18)
-                                .addComponent(nameLbl5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(ActivoRadioBtton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(InactivoRadioBtton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
+                                .addComponent(TecnicoRadiobtton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 169, Short.MAX_VALUE)
                                 .addComponent(ModificarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(118, 118, 118))))
         );
@@ -280,12 +255,6 @@ public class ModificarUsuario extends javax.swing.JPanel {
     String contrasena = ContraseñaTxt.getText();
     String nombreCompleto = NombreCompletoTxt.getText();
 
-    ArrayList<String> privilegios = new ArrayList<>();
-    if (UsuariosCheckBox.isSelected()) privilegios.add("Usuarios");
-    if (LaboratoriosCheckBox.isSelected()) privilegios.add("Laboratorios");
-    if (ProductosCheckBox.isSelected()) privilegios.add("Productos");
-    if (TransaccionesCheckBox.isSelected()) privilegios.add("Transacciones");
-
     String rol = "";
     if (AdminRadioBtton.isSelected()) rol = "Administrador";
     else if (InvitadoRadioBtton.isSelected()) rol = "Invitado";
@@ -294,7 +263,7 @@ public class ModificarUsuario extends javax.swing.JPanel {
     String estado = Boolean.toString(ActivoRadioBtton.isSelected());
     
     
-    boolean exito = listaUsuarios.actualizarUsuario(usuarioSeleccionado, rol, username, contrasena, nombreCompleto, privilegios, rol, estado);
+    boolean exito = listaUsuarios.actualizarUsuario(usuarioSeleccionado, rol, username, contrasena, nombreCompleto, rol, estado);
 
     if (exito) {
         JOptionPane.showMessageDialog(null, "Usuario modificado exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
@@ -312,21 +281,17 @@ public class ModificarUsuario extends javax.swing.JPanel {
     private javax.swing.ButtonGroup Estado;
     private javax.swing.JRadioButton InactivoRadioBtton;
     private javax.swing.JRadioButton InvitadoRadioBtton;
-    private javax.swing.JCheckBox LaboratoriosCheckBox;
     private javax.swing.JButton ModificarUsuario;
     private javax.swing.JTextField NombreCompletoTxt;
     private javax.swing.JTextField NombreUsuarioTxt;
-    private javax.swing.JCheckBox ProductosCheckBox;
     private javax.swing.ButtonGroup Rol;
-    private javax.swing.JCheckBox TransaccionesCheckBox;
-    private javax.swing.JCheckBox UsuariosCheckBox;
+    private javax.swing.JRadioButton TecnicoRadiobtton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel nameLbl1;
     private javax.swing.JLabel nameLbl2;
     private javax.swing.JLabel nameLbl3;
-    private javax.swing.JLabel nameLbl4;
     private javax.swing.JLabel nameLbl5;
     private javax.swing.JLabel nameLbl6;
     // End of variables declaration//GEN-END:variables

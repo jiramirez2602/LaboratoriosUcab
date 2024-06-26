@@ -53,6 +53,10 @@
                           <Component id="jLabel1" max="32767" attributes="0"/>
                           <EmptySpace min="-2" pref="1004" max="-2" attributes="0"/>
                       </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
@@ -60,16 +64,19 @@
                                       <Component id="nameLbl1" alignment="0" max="32767" attributes="0"/>
                                       <Component id="nameLbl3" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="147" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="TransaccionesCheckBox" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="ProductosCheckBox" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="LaboratoriosCheckBox" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="UsuariosCheckBox" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="nameLbl4" alignment="0" pref="437" max="32767" attributes="0"/>
-                                  <Component id="NombreUsuarioTxt" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="ContraseñaTxt" alignment="0" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="NombreUsuarioTxt" pref="382" max="32767" attributes="0"/>
+                                          <Component id="ContraseñaTxt" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Component id="nameLbl5" min="-2" pref="57" max="-2" attributes="0"/>
+                                      <Component id="ActivoRadioBtton" min="-2" max="-2" attributes="0"/>
+                                      <Component id="InactivoRadioBtton" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
@@ -77,25 +84,19 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="nameLbl6" max="32767" attributes="0"/>
-                                  <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="nameLbl2" max="32767" attributes="0"/>
-                                  <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="135" max="-2" attributes="0"/>
                               </Group>
                               <Component id="AdminRadioBtton" min="-2" max="-2" attributes="0"/>
                               <Component id="InvitadoRadioBtton" min="-2" max="-2" attributes="0"/>
-                              <Component id="nameLbl5" alignment="0" min="-2" pref="370" max="-2" attributes="0"/>
-                              <Component id="ActivoRadioBtton" min="-2" max="-2" attributes="0"/>
-                              <Component id="InactivoRadioBtton" min="-2" max="-2" attributes="0"/>
                               <Component id="CrearUsuario" min="-2" pref="430" max="-2" attributes="0"/>
                               <Component id="NombreCompletoTxt" alignment="0" min="-2" pref="430" max="-2" attributes="0"/>
+                              <Component id="TecnicoRadiobtton" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="234" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="275" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -118,17 +119,13 @@
                           <Component id="nameLbl3" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="ContraseñaTxt" min="-2" pref="35" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                          <Component id="nameLbl4" min="-2" pref="33" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                          <Component id="UsuariosCheckBox" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                          <Component id="LaboratoriosCheckBox" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                          <Component id="ProductosCheckBox" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                          <Component id="TransaccionesCheckBox" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="nameLbl5" min="-2" pref="22" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="ActivoRadioBtton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="InactivoRadioBtton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="1" attributes="0">
@@ -143,13 +140,9 @@
                                   <Component id="AdminRadioBtton" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="InvitadoRadioBtton" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="nameLbl5" min="-2" pref="22" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="ActivoRadioBtton" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="InactivoRadioBtton" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="90" max="32767" attributes="0"/>
+                                  <Component id="TecnicoRadiobtton" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace pref="169" max="32767" attributes="0"/>
                                   <Component id="CrearUsuario" min="-2" pref="46" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -226,31 +219,6 @@
             <Property name="text" type="java.lang.String" value="Contrase&#xf1;a:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="UsuariosCheckBox">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Usuarios&#xa;"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="LaboratoriosCheckBox">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Laboratorios"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="ProductosCheckBox">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Productos"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="TransaccionesCheckBox">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Transacciones"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="nameLbl4">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Selecione el/los privilegios: "/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JLabel" name="nameLbl2">
           <Properties>
             <Property name="text" type="java.lang.String" value="Seleccione el rol: "/>
@@ -301,6 +269,14 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="NombreCompletoTxt">
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="TecnicoRadiobtton">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="Rol"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Tecnico"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

@@ -29,44 +29,41 @@ public class Usuarios extends javax.swing.JPanel {
     }
     
      private void inicializarTabla() {
-        String[] columnas = {"Username", "Nombre Completo", "Privilegios", "Rol", "Estado"};
+        String[] columnas = {"Username", "Nombre Completo", "Rol", "Estado"};
         tableModel = new DefaultTableModel(columnas, 0);
         jTable1.setModel(tableModel);
     }
      
     private void actualizarTabla() {
-        tableModel.setRowCount(0); 
-        idMap.clear(); 
-        int row = 0;
+    tableModel.setRowCount(0); 
+    idMap.clear(); 
+    int row = 0;
+
+    DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+    centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+
+    for (Usuario usuario : listaUsuarios.getListaUsuarios()) {
+        String estado = Boolean.parseBoolean(usuario.getStatus()) ? "Activo" : "Inactivo";
+        Object[] fila = {
+            usuario.getUsername(),
+            usuario.getNombreUser(),
+            usuario.getRolUsuario(),
+            estado
+        };
+        tableModel.addRow(fila);
 
        
-        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        idMap.put(row, usuario.getId());
 
-        for (Usuario usuario : listaUsuarios.getListaUsuarios()) {
-            String privilegios = String.join(", ", usuario.getPrivilegios());
-            String estado = usuario.isStatus() ? "Activo" : "Inactivo";
-            Object[] fila = {
-                usuario.getUsername(),
-                usuario.getNombreUser(),
-                privilegios,
-                usuario.getRolUsuario(),
-                estado
-            };
-            tableModel.addRow(fila); // Agregar fila al modelo de la tabla
-
-            // Asociar la fila con el ID
-            idMap.put(row, usuario.getId());
-
-            // Aplicar centrado al contenido de las celdas en cada columna
-            for (int i = 0; i < tableModel.getColumnCount(); i++) {
-                jTable1.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
-            }
-
-            row++;
+       
+        for (int i = 0; i < tableModel.getColumnCount(); i++) {
+            jTable1.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
         }
-        jTable1.setDefaultEditor(Object.class, null); // Desactivar la edicion de celdas
+
+        row++;
     }
+    jTable1.setDefaultEditor(Object.class, null); // Desactivar la edicion de celdas
+}
     
     private void InitStyles() {
         title.putClientProperty("FlatLaf.styleClass", "h1");
@@ -242,24 +239,23 @@ public class Usuarios extends javax.swing.JPanel {
     }//GEN-LAST:event_BotonCrearUsuarioActionPerformed
 
     private void BotonEliminarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarUsuarioActionPerformed
-       // Obtener el índice de la fila seleccionada
     int selectedRow = jTable1.getSelectedRow();
     
-    if (selectedRow != -1) { // Verificar si se seleccionó una fila
-        // Obtener el ID del usuario seleccionado desde el mapa idMap
+    if (selectedRow != -1) { 
+        
         String idUsuarioAEliminar = idMap.get(selectedRow);
         
         if (idUsuarioAEliminar != null && !idUsuarioAEliminar.isEmpty()) {
-            // Confirmar eliminación con un mensaje de confirmación
+          
             int confirmacion = JOptionPane.showConfirmDialog(null, "¿Estás seguro de eliminar este usuario?", "Confirmar Eliminación", JOptionPane.YES_NO_OPTION);
             
             if (confirmacion == JOptionPane.YES_OPTION) {
-                // Llamar al método para eliminar usuario en listaUsuarios
+                
                 boolean exito = listaUsuarios.eliminarUsuario(usuarioSeleccionado, idUsuarioAEliminar);
 
                 if (exito) {
                     JOptionPane.showMessageDialog(null, "Usuario eliminado exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                    // Actualizar visualización de la tabla de usuarios
+                
                     actualizarTabla();
                 } else {
                     JOptionPane.showMessageDialog(null, "Error al eliminar el usuario.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -280,10 +276,8 @@ public class Usuarios extends javax.swing.JPanel {
 
             String username = (String) jTable1.getValueAt(selectedRow, 0);
 
-
             ModificarUsuario modificarUsuarioPanel = new ModificarUsuario(listaUsuarios);
             modificarUsuarioPanel.cargarDatosUsuario(username);
-
 
             MostrarJPanel(modificarUsuarioPanel);
         } else {

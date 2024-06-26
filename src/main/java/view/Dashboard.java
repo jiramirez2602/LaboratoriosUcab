@@ -11,19 +11,15 @@ import Views.Laboratorios;
 import Views.Usuarios;
 import Views.Principal;
 import Views.Transacciones;
-import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialLighterIJTheme;
 import controller.ListaDeUsuarios;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Insets;
-import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import javax.swing.JPanel;
-import javax.swing.UIManager;
-import org.netbeans.lib.awtextra.AbsoluteConstraints;
+import model.Usuario;
 
 /**
  *
@@ -34,7 +30,7 @@ public class Dashboard extends javax.swing.JFrame {
     private ListaDeUsuarios listaUsuarios;
 
     public Dashboard() {
-        this.listaUsuarios = listaUsuarios;
+        listaUsuarios = new ListaDeUsuarios();
         initComponents();
         InitStyles();
         SetDate();
