@@ -58,7 +58,7 @@ public class ListaDeUsuarios {
     }
 
     //MÉTODOS PRINCIPALES//
-    public boolean crearUsuario(Usuario user, String username, String contrasena, String nombreCompleto, ArrayList<String> privilegio, String rol, String status) {
+    public boolean crearUsuario(Usuario user, String username, String contrasena, String nombreCompleto, String rol, String status) {
         Validador validar = new Validador();//Declaro objeto Validador
         boolean existe = usuarioExistente(username);//Declaro un booleano y le asigno una funcion para comprobar si un usuario existe en la lista
         boolean retornar = false;
@@ -84,7 +84,7 @@ public class ListaDeUsuarios {
         return listaUsuarios;
     }
 
-    public boolean actualizarUsuario(Usuario user, String id, String username, String contrasena, String nombreCompleto, ArrayList<String> privilegio, String rol, String status) {
+    public boolean actualizarUsuario(Usuario user, String id, String username, String contrasena, String nombreCompleto, String rol, String status) {
         Validador validar = new Validador();
 
         boolean retornar = false;

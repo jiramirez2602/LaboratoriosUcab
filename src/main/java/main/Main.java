@@ -13,7 +13,7 @@ public class Main {
         Usuario administradorLaboratorio = new Usuario("Harry1", "1234", "Harry Castellanos", "administrador","Activo");
 
         ListaDeUsuarios lista1 = new ListaDeUsuarios();
-        //lista1.crearUsuario(administradorLaboratorio, "paula", "1234", "paula sfia", privilegios, "admin", "true");
+        lista1.crearUsuario(administradorLaboratorio, "Harry1", "1234", "Harry Castellanos", "administrador", "Activo");
         //lista1.actualizarUsuario(administradorLaboratorio, "fe8d07e3-2d90-4a6b-bc03-0dc5cb49090a", "Jorge", "4321", "Jorge Ramirez", privilegios, "administrador", "true");
         //lista1.eliminarUsuario(administradorLaboratorio, "469838e0-d985-4558-aaab-5bf154201942");
         //lista1.getListaUsuarios();
