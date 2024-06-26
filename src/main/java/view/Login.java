@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
 import model.Usuario;
 import firebase.Conexion;
 import firebase.GeneralProvider;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -30,7 +31,7 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         usuarios= new ListaDeUsuarios();
-        //setIconImage(getIconImage());
+        setIconImage(new ImageIcon(getClass().getResource("/file.png")).getImage());
         this.setLocationRelativeTo(null);
     }
     /*
@@ -310,7 +311,7 @@ public class Login extends javax.swing.JFrame {
 
     private void labelEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelEntrarMouseClicked
         if ((txtUsuario.getText().equals("Ingrese nombre del usuario"))||(txtUsuario.getText().equals(""))){
-            JOptionPane.showMessageDialog(null,"Campo de usuario vacio, Por favor llenelo", "Error", JOptionPane.ERROR_MESSAGE);
+            error.setText("Campo de usuario vacio, Por favor llenelo");
         }
         else{
             String username = txtUsuario.getText();
