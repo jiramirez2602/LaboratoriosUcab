@@ -29,12 +29,12 @@ public class Dashboard extends javax.swing.JFrame {
 
     private ListaDeUsuarios listaUsuarios;
 
-    public Dashboard() {
-        listaUsuarios = new ListaDeUsuarios();
+    public Dashboard(ListaDeUsuarios users) {
         initComponents();
         InitStyles();
         SetDate();
         InitContent();
+        this.listaUsuarios=users;
     }
     
     private void InitStyles() {
@@ -318,17 +318,17 @@ public class Dashboard extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
+    /*public static void main(String args[]) {
+        /* Set the Nimbus look and feel 
         FlatMaterialLighterIJTheme.setup();
 
-        /* Create and display the form */
+        /* Create and display the form 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Dashboard().setVisible(true);
             }
         });
-    }
+    }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonLaboratorios;

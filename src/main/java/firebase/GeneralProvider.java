@@ -72,10 +72,10 @@ public class GeneralProvider {
             CollectionReference usuarios = Conexion.db.collection("Usuarios");
             ApiFuture<QuerySnapshot> querySnap = usuarios.get();
             for (DocumentSnapshot document : querySnap.get().getDocuments()) {
-                //Convertir a array list
+                /*Convertir a array list
                 String s1 = document.getString("privilegios");
                 String replace = s1.replace("[", "").replace("]", "");
-                List<String> privileges = new ArrayList<>(Arrays.asList(replace.split(",")));
+                List<String> privileges = new ArrayList<>(Arrays.asList(replace.split(",")));*/
                 
                 //crear user cada vez con parse
                 Usuario user = new Usuario(document.getString("username"), document.getString("contrasena"), document.getString("nombreCompleto"), document.getString("rol"),document.getString("Estado"));

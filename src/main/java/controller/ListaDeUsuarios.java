@@ -1,5 +1,6 @@
 package controller;
 
+import firebase.Conexion;
 import firebase.GeneralProvider;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,6 +13,10 @@ public class ListaDeUsuarios {
     ArrayList<Usuario> listaUsuarios = new ArrayList<>();
 
     //MÉTODOS FIREBASE//
+    public ListaDeUsuarios(){
+        Conexion.conectarFirebase();
+        listaUsuarios=GeneralProvider.cargarInfoUsuario();
+    }
     public boolean guardarEnFirebase(Usuario usuario) {
         try {
             Map<String, Object> datos = new HashMap<>();
@@ -151,6 +156,10 @@ public class ListaDeUsuarios {
             }
         }
         return existe;
+    }
+    
+    public void reemplazarLista(ArrayList<Usuario> usuarios){
+        listaUsuarios=usuarios;
     }
 
     public Usuario listarUsuario(String id) {
