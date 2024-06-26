@@ -60,6 +60,7 @@ public class Login extends javax.swing.JFrame {
         txtContraseña = new javax.swing.JPasswordField();
         btnEntrar = new javax.swing.JPanel();
         labelEntrar = new javax.swing.JLabel();
+        error = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -233,6 +234,9 @@ public class Login extends javax.swing.JFrame {
 
         panelPrincipal.add(btnEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 420, 160, 40));
 
+        error.setForeground(new java.awt.Color(255, 0, 0));
+        panelPrincipal.add(error, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 370, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -321,6 +325,9 @@ public class Login extends javax.swing.JFrame {
                 iniciarMain.setVisible(true);
                 dispose();
             }
+            else {
+                error.setText("El usuario y la contraseña no coinciden");
+            }
         }
     }//GEN-LAST:event_labelEntrarMouseClicked
 
@@ -364,6 +371,7 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel btnEntrar;
+    private javax.swing.JLabel error;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
