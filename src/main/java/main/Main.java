@@ -10,11 +10,6 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("hola mundo");
         Conexion.conectarFirebase();
-        ArrayList<String> privilegios = new ArrayList<>();
-        privilegios.add("Laboratorios");
-        privilegios.add("Usuarios");
-        privilegios.add("Productos");
-        privilegios.add("Transacciones");
         Usuario administradorLaboratorio = new Usuario("Harry1", "1234", "Harry Castellanos", "administrador","Activo");
 
         ListaDeUsuarios lista1 = new ListaDeUsuarios();
