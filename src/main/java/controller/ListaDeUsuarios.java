@@ -108,7 +108,7 @@ public class ListaDeUsuarios {
 
         return retornar;
     }
-    
+    /*
     public boolean modificarUsuarios(Usuario user,String nombre, String id, String newUser, String contrasena, String nombreCompleto, String rol, String status) {
         Validador validar = new Validador();
         String iD=listarUsuarioPorNombre(nombre);
@@ -135,7 +135,7 @@ public class ListaDeUsuarios {
             return retornar;
         }
         return retornar;
-    }
+    }*/
 
     public boolean eliminarUsuario(Usuario user, String id) {
         try {
