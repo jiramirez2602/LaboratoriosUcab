@@ -1,16 +1,24 @@
 package Views;
 
 
+import controller.ListaDeUsuarios;
 import controller.ListaLaboratorios;
+import java.awt.BorderLayout;
 import java.awt.Color;
+import javax.swing.JPanel;
+import model.Usuario;
 
 
 public class Laboratorios extends javax.swing.JPanel {
     
-    private ListaLaboratorios listalaboratorios;
+    private ListaDeUsuarios listaUsuarios; 
+    private ListaLaboratorios listalaboratorios; 
+    private Usuario userActual;
     
-    public Laboratorios(ListaLaboratorios laboratorios) {
-        this.listalaboratorios= laboratorios;
+    public Laboratorios(Usuario user,ListaLaboratorios laboratorios,ListaDeUsuarios usuarios) {
+        this.listaUsuarios = usuarios;
+        this.listalaboratorios = laboratorios;
+        this.userActual=user;
         initComponents();
         InitStyles();
     }
@@ -20,7 +28,16 @@ public class Laboratorios extends javax.swing.JPanel {
         title.setForeground(Color.black);
         userSearch.putClientProperty("JTextField.placeholderText", "Ingrese el nombre de usuario a buscar.");
     }
-
+    
+        private void MostrarJPanel(JPanel p) {
+        p.setSize(1180, 556);
+        p.setLocation(0,0);
+        BackgroundLab.removeAll();
+        BackgroundLab.add(p, BorderLayout.CENTER);
+        BackgroundLab.revalidate();
+        BackgroundLab.repaint();
+    }
+    
   
     /**
      * This method is called from within the constructor to initialize the form.
@@ -31,7 +48,7 @@ public class Laboratorios extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        bg = new javax.swing.JPanel();
+        BackgroundLab = new javax.swing.JPanel();
         title = new javax.swing.JLabel();
         userSearch = new javax.swing.JTextField();
         BotonBuscarLab = new javax.swing.JButton();
@@ -43,7 +60,7 @@ public class Laboratorios extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 255));
 
-        bg.setBackground(new java.awt.Color(255, 255, 255));
+        BackgroundLab.setBackground(new java.awt.Color(255, 255, 255));
 
         title.setText("Laboratorios");
 
@@ -127,19 +144,19 @@ public class Laboratorios extends javax.swing.JPanel {
             }
         });
 
-        javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);
-        bg.setLayout(bgLayout);
-        bgLayout.setHorizontalGroup(
-            bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(bgLayout.createSequentialGroup()
+        javax.swing.GroupLayout BackgroundLabLayout = new javax.swing.GroupLayout(BackgroundLab);
+        BackgroundLab.setLayout(BackgroundLabLayout);
+        BackgroundLabLayout.setHorizontalGroup(
+            BackgroundLabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BackgroundLabLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(bgLayout.createSequentialGroup()
+                .addGroup(BackgroundLabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(BackgroundLabLayout.createSequentialGroup()
                         .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(699, 699, 699))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgLayout.createSequentialGroup()
-                        .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(bgLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackgroundLabLayout.createSequentialGroup()
+                        .addGroup(BackgroundLabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(BackgroundLabLayout.createSequentialGroup()
                                 .addGap(427, 427, 427)
                                 .addComponent(BotonCrearLab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -147,25 +164,25 @@ public class Laboratorios extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(BotonEliminarLab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(bgLayout.createSequentialGroup()
+                            .addGroup(BackgroundLabLayout.createSequentialGroup()
                                 .addComponent(userSearch)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(BotonBuscarLab)))
                         .addGap(50, 50, 50))))
         );
-        bgLayout.setVerticalGroup(
-            bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(bgLayout.createSequentialGroup()
+        BackgroundLabLayout.setVerticalGroup(
+            BackgroundLabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BackgroundLabLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(BackgroundLabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(userSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BotonBuscarLab, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(BackgroundLabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotonEliminarLab)
                     .addComponent(BotonModificarLab)
                     .addComponent(BotonCrearLab))
@@ -176,11 +193,11 @@ public class Laboratorios extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(BackgroundLab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(BackgroundLab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -189,7 +206,7 @@ public class Laboratorios extends javax.swing.JPanel {
     }//GEN-LAST:event_jTable1MousePressed
 
     private void BotonCrearLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCrearLabActionPerformed
-        
+        MostrarJPanel(new CrearLaboratorios(userActual,listalaboratorios,listaUsuarios));
     }//GEN-LAST:event_BotonCrearLabActionPerformed
 
     private void BotonEliminarLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarLabActionPerformed
@@ -206,11 +223,11 @@ public class Laboratorios extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel BackgroundLab;
     private javax.swing.JButton BotonBuscarLab;
     private javax.swing.JButton BotonCrearLab;
     private javax.swing.JButton BotonEliminarLab;
     private javax.swing.JButton BotonModificarLab;
-    private javax.swing.JPanel bg;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel title;

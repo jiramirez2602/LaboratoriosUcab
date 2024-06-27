@@ -320,10 +320,10 @@ public class Login extends javax.swing.JFrame {
         else{
             String username = txtUsuario.getText();
             String password = String.valueOf(txtContraseña.getPassword());
-            /*ListaLaboratorios listalab = new ListaLaboratorios();
+            ListaLaboratorios listalab = new ListaLaboratorios();
             ListaDeEquipos listaEquip = new ListaDeEquipos();
             ListaDeInsumos listaInsu = new ListaDeInsumos();
-            ListaDeSustanciasQuimicas listaSusQui = new ListaDeSustanciasQuimicas();*/
+//            ListaDeSustanciasQuimicas listaSusQui = new ListaDeSustanciasQuimicas();*/
             Usuario usuario = usuarios.iniciarSesion(username.trim(), password.trim());
             if (usuario != null) {
                 Dashboard iniciarMain = new Dashboard(usuario,usuarios,laboratorios);
