@@ -17,16 +17,20 @@ public class ModificarUsuario extends javax.swing.JPanel {
     
     private ListaDeUsuarios listaUsuarios;
     private Usuario usuarioSeleccionado;
+    private Usuario userActual;
+    private String usernameSeleccionado;
     
-    public ModificarUsuario(ListaDeUsuarios usuarios) {
+    public ModificarUsuario(Usuario user,ListaDeUsuarios usuarios,String username) {
         this.listaUsuarios = usuarios;
+        this.userActual = user;
+        this.usernameSeleccionado = username;
         initComponents();
     }
     
     public void cargarDatosUsuario(String username) {
-    String idUsuario = listaUsuarios.listarUsuarioPorNombre(username); // Obtener el ID del usuario por su nombre
+    String idUsuario = listaUsuarios.listarUsuarioPorNombre(username); 
     if (idUsuario != null) {
-        Usuario usuarioSeleccionado = listaUsuarios.listarUsuario(idUsuario); // Obtener el usuario por su ID
+        Usuario usuarioSeleccionado = listaUsuarios.listarUsuario(idUsuario);
         if (usuarioSeleccionado != null) {
             NombreUsuarioTxt.setText(usuarioSeleccionado.getUsername());
             ContraseñaTxt.setText(usuarioSeleccionado.getContrasena());
@@ -251,25 +255,36 @@ public class ModificarUsuario extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ModificarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarUsuarioActionPerformed
-    String username = NombreUsuarioTxt.getText();
-    String contrasena = ContraseñaTxt.getText();
-    String nombreCompleto = NombreCompletoTxt.getText();
+        String idUsuario = listaUsuarios.listarUsuarioPorNombre(usernameSeleccionado);
 
-    String rol = "";
-    if (AdminRadioBtton.isSelected()) rol = "Administrador";
-    else if (InvitadoRadioBtton.isSelected()) rol = "Invitado";
+        if (idUsuario == null) {
+            JOptionPane.showMessageDialog(this, "Usuario no encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
-    boolean status = ActivoRadioBtton.isSelected();
-    String estado = Boolean.toString(ActivoRadioBtton.isSelected());
-    
-    
-    boolean exito = listaUsuarios.actualizarUsuario(usuarioSeleccionado, rol, username, contrasena, nombreCompleto, rol, estado);
+        String username = NombreUsuarioTxt.getText();
+        String contrasena = ContraseñaTxt.getText();
+        String nombreCompleto = NombreCompletoTxt.getText();
 
-    if (exito) {
-        JOptionPane.showMessageDialog(null, "Usuario modificado exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-    } else {
-        JOptionPane.showMessageDialog(null, "Error al modificar el usuario.", "Error", JOptionPane.ERROR_MESSAGE);
-    }
+        String rol = "";
+        if (AdminRadioBtton.isSelected()) {
+            rol = "Administrador";
+        } else if (InvitadoRadioBtton.isSelected()) {
+            rol = "Invitado";
+        } else if (TecnicoRadiobtton.isSelected()) {
+            rol = "Tecnico";
+        }
+
+        boolean status = ActivoRadioBtton.isSelected();
+        String estado = Boolean.toString(status);
+
+        boolean exito = listaUsuarios.actualizarUsuario(userActual, idUsuario, username, contrasena, nombreCompleto, rol, estado);
+
+        if (exito) {
+            JOptionPane.showMessageDialog(this, "Usuario modificado exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Error al modificar el usuario.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_ModificarUsuarioActionPerformed
 
 

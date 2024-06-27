@@ -1,12 +1,16 @@
 package Views;
 
 
+import controller.ListaLaboratorios;
 import java.awt.Color;
 
 
 public class Laboratorios extends javax.swing.JPanel {
-
-    public Laboratorios() {
+    
+    private ListaLaboratorios listalaboratorios;
+    
+    public Laboratorios(ListaLaboratorios laboratorios) {
+        this.listalaboratorios= laboratorios;
         initComponents();
         InitStyles();
     }

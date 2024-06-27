@@ -28,10 +28,12 @@ public class Login extends javax.swing.JFrame {
     int xMouse;
     int yMouse;
     private ListaDeUsuarios usuarios;
+    private ListaLaboratorios laboratorios;
     //user: Harry1 password: 1234
     public Login() {
         initComponents();
         usuarios= new ListaDeUsuarios();
+        laboratorios = new ListaLaboratorios();
         setIconImage(new ImageIcon(getClass().getResource("/file.png")).getImage());
         this.setLocationRelativeTo(null);
     }
@@ -72,7 +74,7 @@ public class Login extends javax.swing.JFrame {
         panelPrincipal.setForeground(new java.awt.Color(255, 255, 255));
         panelPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panelDiseño.setBackground(new java.awt.Color(51, 204, 255));
+        panelDiseño.setBackground(new java.awt.Color(13, 71, 161));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Logo_UCAB_1 (1).png"))); // NOI18N
 
@@ -84,7 +86,7 @@ public class Login extends javax.swing.JFrame {
             panelDiseñoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelDiseñoLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addGroup(panelDiseñoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelDiseñoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addContainerGap(28, Short.MAX_VALUE))
@@ -92,11 +94,11 @@ public class Login extends javax.swing.JFrame {
         panelDiseñoLayout.setVerticalGroup(
             panelDiseñoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelDiseñoLayout.createSequentialGroup()
-                .addGap(84, 84, 84)
+                .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addGap(176, 176, 176)
                 .addComponent(jLabel5)
-                .addContainerGap(287, Short.MAX_VALUE))
+                .addContainerGap(217, Short.MAX_VALUE))
         );
 
         panelPrincipal.add(panelDiseño, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 290, 530));
@@ -204,8 +206,9 @@ public class Login extends javax.swing.JFrame {
         });
         panelPrincipal.add(txtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, 570, -1));
 
-        btnEntrar.setBackground(new java.awt.Color(0, 153, 255));
+        btnEntrar.setBackground(new java.awt.Color(13, 71, 161));
 
+        labelEntrar.setBackground(new java.awt.Color(13, 71, 161));
         labelEntrar.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 16)); // NOI18N
         labelEntrar.setForeground(new java.awt.Color(255, 255, 255));
         labelEntrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -323,7 +326,7 @@ public class Login extends javax.swing.JFrame {
             ListaDeSustanciasQuimicas listaSusQui = new ListaDeSustanciasQuimicas();*/
             Usuario usuario = usuarios.iniciarSesion(username.trim(), password.trim());
             if (usuario != null) {
-                Dashboard iniciarMain = new Dashboard(usuario,usuarios);
+                Dashboard iniciarMain = new Dashboard(usuario,usuarios,laboratorios);
                 iniciarMain.setVisible(true);
                 dispose();
             }

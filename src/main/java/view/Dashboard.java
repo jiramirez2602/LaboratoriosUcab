@@ -13,6 +13,7 @@ import Views.Principal;
 import Views.Transacciones;
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialLighterIJTheme;
 import controller.ListaDeUsuarios;
+import controller.ListaLaboratorios;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.time.LocalDate;
@@ -28,14 +29,16 @@ import model.Usuario;
 public class Dashboard extends javax.swing.JFrame {
 
     private ListaDeUsuarios listaUsuarios;
+    private ListaLaboratorios listalaboratorios;
     private Usuario userActual;
 
-    public Dashboard(Usuario user,ListaDeUsuarios users) {
+    public Dashboard(Usuario user,ListaDeUsuarios users, ListaLaboratorios laboratorios) {
         initComponents();
         InitStyles();
         SetDate();
         InitContent();
         this.listaUsuarios=users;
+        this.listalaboratorios=laboratorios;
         this.userActual=user;
     }
     
@@ -46,7 +49,7 @@ public class Dashboard extends javax.swing.JFrame {
     
     private void SetDate() {
         LocalDate now = LocalDate.now();
-        Locale spanishLocale = new Locale("es", "ES");
+        Locale spanishLocale = new Locale("es", "VE");
         dateText.setText(now.format(DateTimeFormatter.ofPattern("'Hoy es' EEEE dd 'de' MMMM 'de' yyyy", spanishLocale)));
     }
     
@@ -298,11 +301,11 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_prinActionPerformed
 
     private void BotonUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonUsuariosActionPerformed
-        ShowJPanel(new Usuarios(listaUsuarios));
+        ShowJPanel(new Usuarios(userActual,listaUsuarios));
     }//GEN-LAST:event_BotonUsuariosActionPerformed
 
     private void BotonLaboratoriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonLaboratoriosActionPerformed
-        ShowJPanel(new Laboratorios());
+        ShowJPanel(new Laboratorios(listalaboratorios));
     }//GEN-LAST:event_BotonLaboratoriosActionPerformed
 
     private void BotonProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonProductosActionPerformed

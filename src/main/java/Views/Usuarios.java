@@ -17,10 +17,11 @@ public class Usuarios extends javax.swing.JPanel {
     private ListaDeUsuarios listaUsuarios;
     private DefaultTableModel tableModel;
     private Map<Integer, String> idMap;
-    private Usuario usuarioSeleccionado;
+    private Usuario userActual;
     
-    public Usuarios(ListaDeUsuarios usuarios) {
+    public Usuarios(Usuario user,ListaDeUsuarios usuarios) {
         this.listaUsuarios = usuarios;
+        this.userActual=user;
         initComponents();
         InitStyles();
         idMap = new HashMap<>();
@@ -34,36 +35,38 @@ public class Usuarios extends javax.swing.JPanel {
         jTable1.setModel(tableModel);
     }
      
-    private void actualizarTabla() {
-    tableModel.setRowCount(0); 
-    idMap.clear(); 
-    int row = 0;
+   private void actualizarTabla() {
+        tableModel.setRowCount(0); 
+        idMap.clear();
+        int row = 0;
 
-    DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-    centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
 
-    for (Usuario usuario : listaUsuarios.getListaUsuarios()) {
-        String estado = Boolean.parseBoolean(usuario.getStatus()) ? "Activo" : "Inactivo";
-        Object[] fila = {
-            usuario.getUsername(),
-            usuario.getNombreUser(),
-            usuario.getRolUsuario(),
-            estado
-        };
-        tableModel.addRow(fila);
+        for (Usuario usuario : listaUsuarios.getListaUsuarios()) {
+            String estadoString = usuario.getStatus();
+            boolean estado = Boolean.parseBoolean(estadoString); 
+            String estadoMostrar = estado ? "Activo" : "Inactivo"; 
 
-       
-        idMap.put(row, usuario.getId());
+            Object[] fila = {
+                usuario.getUsername(),
+                usuario.getNombreUser(),
+                usuario.getRolUsuario(),
+                estadoMostrar 
+            };
+            tableModel.addRow(fila);
 
-       
-        for (int i = 0; i < tableModel.getColumnCount(); i++) {
-            jTable1.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+            idMap.put(row, usuario.getId());
+
+
+            for (int i = 0; i < tableModel.getColumnCount(); i++) {
+                jTable1.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+            }
+
+            row++;
         }
-
-        row++;
+        jTable1.setDefaultEditor(Object.class, null); 
     }
-    jTable1.setDefaultEditor(Object.class, null); // Desactivar la edicion de celdas
-}
     
     private void InitStyles() {
         title.putClientProperty("FlatLaf.styleClass", "h1");
@@ -235,7 +238,7 @@ public class Usuarios extends javax.swing.JPanel {
     }//GEN-LAST:event_jTable1MousePressed
 
     private void BotonCrearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCrearUsuarioActionPerformed
-       MostrarJPanel(new CrearUsuario(listaUsuarios));
+       MostrarJPanel(new CrearUsuario(userActual,listaUsuarios));
     }//GEN-LAST:event_BotonCrearUsuarioActionPerformed
 
     private void BotonEliminarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarUsuarioActionPerformed
@@ -251,7 +254,7 @@ public class Usuarios extends javax.swing.JPanel {
             
             if (confirmacion == JOptionPane.YES_OPTION) {
                 
-                boolean exito = listaUsuarios.eliminarUsuario(usuarioSeleccionado, idUsuarioAEliminar);
+                boolean exito = listaUsuarios.eliminarUsuario(userActual, idUsuarioAEliminar);
 
                 if (exito) {
                     JOptionPane.showMessageDialog(null, "Usuario eliminado exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
@@ -273,10 +276,9 @@ public class Usuarios extends javax.swing.JPanel {
         int selectedRow = jTable1.getSelectedRow();
 
         if (selectedRow != -1) {
-
             String username = (String) jTable1.getValueAt(selectedRow, 0);
-
-            ModificarUsuario modificarUsuarioPanel = new ModificarUsuario(listaUsuarios);
+            
+            ModificarUsuario modificarUsuarioPanel = new ModificarUsuario(userActual, listaUsuarios,username);
             modificarUsuarioPanel.cargarDatosUsuario(username);
 
             MostrarJPanel(modificarUsuarioPanel);

@@ -16,9 +16,11 @@ import model.Usuario;
 public class CrearUsuario extends javax.swing.JPanel {
     
     private ListaDeUsuarios listaUsuarios; 
+    private Usuario userActual;
     
-    public CrearUsuario(ListaDeUsuarios usuarios) {
+    public CrearUsuario(Usuario user,ListaDeUsuarios usuarios) {
         this.listaUsuarios = usuarios;
+        this.userActual=user;
         initComponents();
     }
 
@@ -223,9 +225,9 @@ public class CrearUsuario extends javax.swing.JPanel {
 }
         boolean estado = ActivoRadioBtton.isSelected();
         String estadoStr = String.valueOf(estado);
+        
 
-        Usuario nuevoUsuario = new Usuario(username, contrasena, nombreCompleto, rol,estadoStr );
-        boolean exito = listaUsuarios.crearUsuario(nuevoUsuario, username, contrasena, nombreCompleto, rol,estadoStr);
+        boolean exito = this.listaUsuarios.crearUsuario(this.userActual, username, contrasena, nombreCompleto, rol, estadoStr);
 
         if (exito) {
             JOptionPane.showMessageDialog(this, "Usuario creado exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
