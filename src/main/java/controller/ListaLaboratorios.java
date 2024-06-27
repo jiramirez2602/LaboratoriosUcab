@@ -8,6 +8,9 @@ import model.Usuario;
 public class ListaLaboratorios {
 
     ArrayList<Laboratorio> lista;
+    public ListaLaboratorios(){
+        lista = new ArrayList();
+    }
 
 //    public void iniciarLista() {
 //        //TODO: Leer todos los datos preexistentes de xml
