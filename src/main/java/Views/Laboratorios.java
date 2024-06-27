@@ -266,7 +266,16 @@ public class Laboratorios extends javax.swing.JPanel {
     }//GEN-LAST:event_BotonEliminarLabActionPerformed
 
     private void BotonModificarLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarLabActionPerformed
-        MostrarJPanel(new ModificarLaboratorio(userActual,listalaboratorios,listaUsuarios));
+        int selectedRow = jTable1.getSelectedRow();
+        if (selectedRow != -1) {
+            String idLaboratorio = idMapLab.get(selectedRow);
+            Laboratorio laboratorio = listalaboratorios.listarLaboratorio(idLaboratorio);
+            if (laboratorio != null) {
+                MostrarJPanel(new ModificarLaboratorio(userActual, listalaboratorios, listaUsuarios, laboratorio));
+            } else {
+                JOptionPane.showMessageDialog(null, "Laboratorio no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
     }//GEN-LAST:event_BotonModificarLabActionPerformed
 
     private void BotonBuscarLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBuscarLabActionPerformed

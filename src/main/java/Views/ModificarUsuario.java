@@ -257,6 +257,7 @@ public class ModificarUsuario extends javax.swing.JPanel {
 
     private void ModificarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarUsuarioActionPerformed
         String idUsuario = listaUsuarios.listarUsuarioPorNombre(usernameSeleccionado);
+        
 
         if (idUsuario == null) {
             JOptionPane.showMessageDialog(this, "Usuario no encontrado.", "Error", JOptionPane.ERROR_MESSAGE);

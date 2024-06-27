@@ -63,16 +63,12 @@
                                   <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="nameLbl3" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
-                                          <Component id="jScrollPane1" max="32767" attributes="0"/>
-                                          <Component id="FacultadTxt" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="NombreLaboratorioTxt" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="nameLbl7" alignment="0" min="-2" pref="266" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="nameLbl5" min="-2" pref="266" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="nameLbl3" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
+                                      <Component id="jScrollPane1" max="32767" attributes="0"/>
+                                      <Component id="FacultadTxt" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="NombreLaboratorioTxt" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
@@ -85,7 +81,7 @@
                                   <EmptySpace min="-2" pref="185" max="-2" attributes="0"/>
                               </Group>
                               <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="CrearLaboratorio" max="32767" attributes="0"/>
+                                  <Component id="ModificarLaboratorio" max="32767" attributes="0"/>
                                   <Component id="EscuelaTxt" alignment="0" max="32767" attributes="0"/>
                                   <Component id="DepartamentoTxt" alignment="0" min="-2" pref="430" max="-2" attributes="0"/>
                                   <Component id="nameLbl4" alignment="0" min="-2" pref="123" max="-2" attributes="0"/>
@@ -115,7 +111,7 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="DepartamentoTxt" min="-2" pref="35" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                          <Component id="CrearLaboratorio" min="-2" pref="46" max="-2" attributes="0"/>
+                          <Component id="ModificarLaboratorio" min="-2" pref="46" max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                           <Component id="jSeparator1" alignment="0" max="32767" attributes="0"/>
@@ -127,13 +123,9 @@
                               <Component id="nameLbl3" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="FacultadTxt" min="-2" pref="35" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                              <Component id="nameLbl5" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                               <Component id="jScrollPane1" min="-2" pref="72" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="nameLbl7" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                               <Component id="jScrollPane2" min="-2" pref="185" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                           </Group>
@@ -179,7 +171,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="CrearLaboratorio">
+        <Component class="javax.swing.JButton" name="ModificarLaboratorio">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="c0" green="65" red="15" type="rgb"/>
@@ -202,7 +194,7 @@
             <Property name="inheritsPopupMenu" type="boolean" value="true"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CrearLaboratorioActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ModificarLaboratorioActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="nameLbl3">
@@ -247,11 +239,6 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JLabel" name="nameLbl5">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Usuario asignado como administrador"/>
-          </Properties>
-        </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane2">
           <AuxValues>
             <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
@@ -273,11 +260,6 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JLabel" name="nameLbl7">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Usuarios disponibles como administrador:"/>
-          </Properties>
-        </Component>
       </SubComponents>
     </Container>
   </SubComponents>

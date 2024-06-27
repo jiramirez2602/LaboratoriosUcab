@@ -16,21 +16,79 @@ import model.Usuario;
  *
  * @author derno
  */
-public class ModificarLaboratorio extends javax.swing.JPanel {
-    
-    private ListaDeUsuarios listaUsuarios; 
-    private ListaLaboratorios listalaboratorios; 
-    private Usuario userActual;
-    private DefaultTableModel tableModelAdmin;
-    
-    public ModificarLaboratorio(Usuario user,ListaLaboratorios laboratorios,ListaDeUsuarios usuarios) {
-        this.listaUsuarios = usuarios;
-        this.listalaboratorios = laboratorios;
-        this.userActual=user;
-        initComponents();
+    public class ModificarLaboratorio extends javax.swing.JPanel {
+
+        private ListaDeUsuarios listaUsuarios; 
+        private ListaLaboratorios listalaboratorios; 
+        private Usuario userActual;
+        private DefaultTableModel tableModelAdmin;
+        private DefaultTableModel tableModelAdminDisp;
+        private Laboratorio laboratorioActual;
+
+    public ModificarLaboratorio(Usuario user, ListaLaboratorios laboratorios, ListaDeUsuarios usuarios, Laboratorio laboratorio) {
+            this.listaUsuarios = usuarios;
+            this.listalaboratorios = laboratorios;
+            this.userActual = user;
+            this.laboratorioActual = laboratorio;
+            initComponents();
+            inicializarTablas();
+            cargarDatosLaboratorio();
+            cargarAdminAsignado();
+            cargarAdminsDisponibles();
+        }
+
+    private void inicializarTablas() {
+        String[] columnasAdmin = {"Administrador Asignado"};
+        tableModelAdmin = new DefaultTableModel(columnasAdmin, 0);
+        JTableAdmin.setModel(tableModelAdmin);
+
+        String[] columnasAdminDisp = {"Administradores/Técnicos Disponibles"};
+        tableModelAdminDisp = new DefaultTableModel(columnasAdminDisp, 0);
+        JTableAdminDisp.setModel(tableModelAdminDisp);
     }
+
+    private void cargarDatosLaboratorio() {
+        if (laboratorioActual != null) {
+            NombreLaboratorioTxt.setText(laboratorioActual.getNombreLaboratorio());
+            FacultadTxt.setText(laboratorioActual.getFacultad());
+            EscuelaTxt.setText(laboratorioActual.getEscuela());
+            DepartamentoTxt.setText(laboratorioActual.getDepartamento());
+        }
+    }
+
+    private void cargarAdminAsignado() {
+    tableModelAdmin = new DefaultTableModel(new Object[]{"Administrador Asignado"}, 0) {
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            return false;
+        }
+    };
+    JTableAdmin.setModel(tableModelAdmin);
     
-    
+    if (laboratorioActual != null) {
+        Usuario admin = listaUsuarios.listarUsuario(laboratorioActual.getIdAdministrador());
+        if (admin != null) {
+            tableModelAdmin.addRow(new Object[]{admin.getNombreUser()});
+        }
+    }
+}
+
+    private void cargarAdminsDisponibles() {
+    tableModelAdminDisp = new DefaultTableModel(new Object[]{"Administradores/Técnicos Disponibles"}, 0) {
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            return false;
+        }
+    };
+    JTableAdminDisp.setModel(tableModelAdminDisp);
+
+    for (Usuario usuario : listaUsuarios.getListaUsuarios()) {
+        if (usuario.getRolUsuario().equals("Administrador") || usuario.getRolUsuario().equals("Técnico")) {
+            tableModelAdminDisp.addRow(new Object[]{usuario.getNombreUser()});
+        }
+    }
+}
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -48,7 +106,7 @@ public class ModificarLaboratorio extends javax.swing.JPanel {
         nameLbl1 = new javax.swing.JLabel();
         NombreLaboratorioTxt = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
-        CrearLaboratorio = new javax.swing.JButton();
+        ModificarLaboratorio = new javax.swing.JButton();
         nameLbl3 = new javax.swing.JLabel();
         FacultadTxt = new javax.swing.JTextField();
         nameLbl6 = new javax.swing.JLabel();
@@ -57,10 +115,8 @@ public class ModificarLaboratorio extends javax.swing.JPanel {
         DepartamentoTxt = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         JTableAdmin = new javax.swing.JTable();
-        nameLbl5 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         JTableAdminDisp = new javax.swing.JTable();
-        nameLbl7 = new javax.swing.JLabel();
 
         BackgroundCrearUsuario.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -76,18 +132,18 @@ public class ModificarLaboratorio extends javax.swing.JPanel {
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator1.setPreferredSize(new java.awt.Dimension(200, 10));
 
-        CrearLaboratorio.setBackground(new java.awt.Color(21, 101, 192));
-        CrearLaboratorio.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        CrearLaboratorio.setForeground(new java.awt.Color(255, 255, 255));
-        CrearLaboratorio.setText("Modificar");
-        CrearLaboratorio.setBorder(null);
-        CrearLaboratorio.setBorderPainted(false);
-        CrearLaboratorio.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        CrearLaboratorio.setIconTextGap(13);
-        CrearLaboratorio.setInheritsPopupMenu(true);
-        CrearLaboratorio.addActionListener(new java.awt.event.ActionListener() {
+        ModificarLaboratorio.setBackground(new java.awt.Color(21, 101, 192));
+        ModificarLaboratorio.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        ModificarLaboratorio.setForeground(new java.awt.Color(255, 255, 255));
+        ModificarLaboratorio.setText("Modificar");
+        ModificarLaboratorio.setBorder(null);
+        ModificarLaboratorio.setBorderPainted(false);
+        ModificarLaboratorio.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        ModificarLaboratorio.setIconTextGap(13);
+        ModificarLaboratorio.setInheritsPopupMenu(true);
+        ModificarLaboratorio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CrearLaboratorioActionPerformed(evt);
+                ModificarLaboratorioActionPerformed(evt);
             }
         });
 
@@ -110,8 +166,6 @@ public class ModificarLaboratorio extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(JTableAdmin);
 
-        nameLbl5.setText("Usuario asignado como administrador");
-
         JTableAdminDisp.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -124,8 +178,6 @@ public class ModificarLaboratorio extends javax.swing.JPanel {
             }
         ));
         jScrollPane2.setViewportView(JTableAdminDisp);
-
-        nameLbl7.setText("Usuarios disponibles como administrador:");
 
         javax.swing.GroupLayout BackgroundCrearUsuarioLayout = new javax.swing.GroupLayout(BackgroundCrearUsuario);
         BackgroundCrearUsuario.setLayout(BackgroundCrearUsuarioLayout);
@@ -146,15 +198,12 @@ public class ModificarLaboratorio extends javax.swing.JPanel {
                                 .addComponent(nameLbl1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(95, 95, 95))
                             .addGroup(BackgroundCrearUsuarioLayout.createSequentialGroup()
-                                .addGroup(BackgroundCrearUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(BackgroundCrearUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(nameLbl3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jScrollPane1)
-                                        .addComponent(FacultadTxt)
-                                        .addComponent(NombreLaboratorioTxt)
-                                        .addComponent(jScrollPane2)
-                                        .addComponent(nameLbl7, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(nameLbl5, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(BackgroundCrearUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(nameLbl3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane1)
+                                    .addComponent(FacultadTxt)
+                                    .addComponent(NombreLaboratorioTxt)
+                                    .addComponent(jScrollPane2))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -163,7 +212,7 @@ public class ModificarLaboratorio extends javax.swing.JPanel {
                                 .addComponent(nameLbl6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(185, 185, 185))
                             .addGroup(BackgroundCrearUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(CrearLaboratorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(ModificarLaboratorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(EscuelaTxt)
                                 .addComponent(DepartamentoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(nameLbl4, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -187,7 +236,7 @@ public class ModificarLaboratorio extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(DepartamentoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(42, 42, 42)
-                        .addComponent(CrearLaboratorio, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(ModificarLaboratorio, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(BackgroundCrearUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(BackgroundCrearUsuarioLayout.createSequentialGroup()
@@ -198,13 +247,9 @@ public class ModificarLaboratorio extends javax.swing.JPanel {
                             .addComponent(nameLbl3)
                             .addGap(18, 18, 18)
                             .addComponent(FacultadTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(12, 12, 12)
-                            .addComponent(nameLbl5)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGap(40, 40, 40)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(nameLbl7)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGap(40, 40, 40)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(33, 33, 33))))
                 .addContainerGap(91, Short.MAX_VALUE))
@@ -224,20 +269,44 @@ public class ModificarLaboratorio extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void CrearLaboratorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearLaboratorioActionPerformed
-    
-    }//GEN-LAST:event_CrearLaboratorioActionPerformed
+    private void ModificarLaboratorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarLaboratorioActionPerformed
+        String nombreLaboratorio = NombreLaboratorioTxt.getText();
+        String facultad = FacultadTxt.getText();
+        String escuela = EscuelaTxt.getText();
+        String departamento = DepartamentoTxt.getText();
+
+        int selectedRow = JTableAdminDisp.getSelectedRow();
+        if (selectedRow != -1) {
+            String nombreAdminSeleccionado = (String) tableModelAdminDisp.getValueAt(selectedRow, 0);
+            String adminSeleccionado = listaUsuarios.listarUsuarioPorNombre(nombreAdminSeleccionado);
+
+            if (adminSeleccionado != null) {
+
+                boolean exito = listalaboratorios.modificarLaboratorio(userActual, laboratorioActual.getId(), nombreLaboratorio, facultad, escuela, departamento, adminSeleccionado);
+
+                if (exito) {
+                    JOptionPane.showMessageDialog(this, "Laboratorio modificado exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Error al modificar el laboratorio.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Seleccione un administrador válido.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Seleccione un administrador disponible.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_ModificarLaboratorioActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BackgroundCrearUsuario;
-    private javax.swing.JButton CrearLaboratorio;
     private javax.swing.JTextField DepartamentoTxt;
     private javax.swing.JTextField EscuelaTxt;
     private javax.swing.ButtonGroup Estado;
     private javax.swing.JTextField FacultadTxt;
     private javax.swing.JTable JTableAdmin;
     private javax.swing.JTable JTableAdminDisp;
+    private javax.swing.JButton ModificarLaboratorio;
     private javax.swing.JTextField NombreLaboratorioTxt;
     private javax.swing.ButtonGroup Rol;
     private javax.swing.JLabel jLabel1;
@@ -248,8 +317,6 @@ public class ModificarLaboratorio extends javax.swing.JPanel {
     private javax.swing.JLabel nameLbl1;
     private javax.swing.JLabel nameLbl3;
     private javax.swing.JLabel nameLbl4;
-    private javax.swing.JLabel nameLbl5;
     private javax.swing.JLabel nameLbl6;
-    private javax.swing.JLabel nameLbl7;
     // End of variables declaration//GEN-END:variables
 }
