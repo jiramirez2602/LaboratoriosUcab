@@ -17,6 +17,7 @@ public class Usuarios extends javax.swing.JPanel {
     private ListaDeUsuarios listaUsuarios;
     private DefaultTableModel tableModel;
     private Map<Integer, String> idMap;
+    private DefaultTableModel tableModelLab;
     private Usuario userActual;
     
     public Usuarios(Usuario user,ListaDeUsuarios usuarios) {

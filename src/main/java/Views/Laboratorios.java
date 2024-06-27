@@ -5,7 +5,13 @@ import controller.ListaDeUsuarios;
 import controller.ListaLaboratorios;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.util.HashMap;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import model.Laboratorio;
 import model.Usuario;
 
 
@@ -14,13 +20,18 @@ public class Laboratorios extends javax.swing.JPanel {
     private ListaDeUsuarios listaUsuarios; 
     private ListaLaboratorios listalaboratorios; 
     private Usuario userActual;
+    private DefaultTableModel tableModelLab;
+    private HashMap<Integer, String> idMapLab;
     
     public Laboratorios(Usuario user,ListaLaboratorios laboratorios,ListaDeUsuarios usuarios) {
         this.listaUsuarios = usuarios;
         this.listalaboratorios = laboratorios;
-        this.userActual=user;
+        this.userActual = user;
+        idMapLab = new HashMap<>(); 
         initComponents();
         InitStyles();
+        inicializarTablaLab();
+        actualizarTablaLab();
     }
 
     private void InitStyles() {
@@ -38,7 +49,41 @@ public class Laboratorios extends javax.swing.JPanel {
         BackgroundLab.repaint();
     }
     
-  
+    private void inicializarTablaLab() {
+        String[] columnas = {"Nombre del Laboratorio", "Facultad", "Escuela", "Departamento", "Administrador"};
+        tableModelLab = new DefaultTableModel(columnas, 0);
+        jTable1.setModel(tableModelLab);
+    }
+    private void actualizarTablaLab() {
+        tableModelLab.setRowCount(0);
+        idMapLab.clear();
+        int row = 0;
+
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+
+        for (Laboratorio laboratorio : listalaboratorios.listarLaboratorios()) {
+            Object[] fila = {
+                laboratorio.getNombreLaboratorio(),
+                laboratorio.getFacultad(),
+                laboratorio.getEscuela(),
+                laboratorio.getDepartamento(),
+                laboratorio.getIdAdministrador()
+            };
+            tableModelLab.addRow(fila);
+
+            idMapLab.put(row, laboratorio.getId());
+
+            for (int i = 0; i < tableModelLab.getColumnCount(); i++) {
+                jTable1.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+            }
+
+            row++;
+        }
+
+        jTable1.setDefaultEditor(Object.class, null); 
+    }
+        
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -210,7 +255,26 @@ public class Laboratorios extends javax.swing.JPanel {
     }//GEN-LAST:event_BotonCrearLabActionPerformed
 
     private void BotonEliminarLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarLabActionPerformed
-     
+        int selectedRow = jTable1.getSelectedRow();
+
+           if (selectedRow != -1) {
+               String idLaboratorioAEliminar = idMapLab.get(selectedRow);
+
+               if (idLaboratorioAEliminar != null && !idLaboratorioAEliminar.isEmpty()) {
+                   int confirmacion = JOptionPane.showConfirmDialog(null, "¿Estás seguro de eliminar este laboratorio?", "Confirmar Eliminación", JOptionPane.YES_NO_OPTION);
+
+                   if (confirmacion == JOptionPane.YES_OPTION) {
+                       listalaboratorios.eliminarLaboratorio(userActual, idLaboratorioAEliminar);
+
+                       JOptionPane.showMessageDialog(null, "Laboratorio eliminado exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                       actualizarTablaLab();
+                   }
+               } else {
+                   JOptionPane.showMessageDialog(null, "No se ha seleccionado ningún laboratorio para eliminar.", "Error", JOptionPane.ERROR_MESSAGE);
+               }
+           } else {
+               JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila para eliminar.", "Error", JOptionPane.ERROR_MESSAGE);
+           }
     }//GEN-LAST:event_BotonEliminarLabActionPerformed
 
     private void BotonModificarLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarLabActionPerformed
