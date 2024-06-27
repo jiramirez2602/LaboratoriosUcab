@@ -83,7 +83,7 @@ import model.Usuario;
     JTableAdminDisp.setModel(tableModelAdminDisp);
 
     for (Usuario usuario : listaUsuarios.getListaUsuarios()) {
-        if (usuario.getRolUsuario().equals("Administrador") || usuario.getRolUsuario().equals("Técnico")) {
+        if (usuario.getRolUsuario().equals("Administrador") || usuario.getRolUsuario().equals("Tecnico")) {
             tableModelAdminDisp.addRow(new Object[]{usuario.getNombreUser()});
         }
     }
@@ -278,11 +278,12 @@ import model.Usuario;
         int selectedRow = JTableAdminDisp.getSelectedRow();
         if (selectedRow != -1) {
             String nombreAdminSeleccionado = (String) tableModelAdminDisp.getValueAt(selectedRow, 0);
-            String adminSeleccionado = listaUsuarios.listarUsuarioPorNombre(nombreAdminSeleccionado);
-
+            String adminid = listaUsuarios.listarUsuarioPorNombre(nombreAdminSeleccionado);
+            System.out.print(adminid);
+            Usuario adminSeleccionado = listaUsuarios.listarUsuario(adminid);
             if (adminSeleccionado != null) {
 
-                boolean exito = listalaboratorios.modificarLaboratorio(userActual, laboratorioActual.getId(), nombreLaboratorio, facultad, escuela, departamento, adminSeleccionado);
+                boolean exito = listalaboratorios.modificarLaboratorio(userActual, laboratorioActual.getId(), nombreLaboratorio, facultad, escuela, departamento, adminid);
 
                 if (exito) {
                     JOptionPane.showMessageDialog(this, "Laboratorio modificado exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);

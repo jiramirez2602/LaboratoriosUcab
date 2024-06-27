@@ -179,7 +179,7 @@ public class ListaDeUsuarios {
 
     public String listarUsuarioPorNombre(String nombreDeUsuario) {
         for (Usuario i : getListaUsuarios()) {
-            if (i.getUsername().equals(nombreDeUsuario)) {
+            if ((i.getUsername().equals(nombreDeUsuario))||(i.getNombreUser().equals(nombreDeUsuario))) {
                 return i.getId();
             }
         }

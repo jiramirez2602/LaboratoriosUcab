@@ -47,15 +47,12 @@ public class CrearLaboratorios extends javax.swing.JPanel {
         for (Usuario usuario : listaUsuarios.getListaUsuarios()) {
             String rol = usuario.getRolUsuario();
             if ("Administrador".equals(rol) || "Tecnico".equals(rol)) {
-                String estadoString = usuario.getStatus();
-                boolean estado = Boolean.parseBoolean(estadoString); 
-                String estadoMostrar = estado ? "Activo" : "Inactivo"; 
-
+                 
                 Object[] fila = {
                     usuario.getUsername(),
                     usuario.getNombreUser(),
                     usuario.getRolUsuario(),
-                    estadoMostrar 
+                    usuario.getStatus()
                 };
                 tableModelAdmin.addRow(fila);
             }
