@@ -279,7 +279,6 @@ import model.Usuario;
         if (selectedRow != -1) {
             String nombreAdminSeleccionado = (String) tableModelAdminDisp.getValueAt(selectedRow, 0);
             String adminid = listaUsuarios.listarUsuarioPorNombre(nombreAdminSeleccionado);
-            System.out.print(adminid);
             Usuario adminSeleccionado = listaUsuarios.listarUsuario(adminid);
             if (adminSeleccionado != null) {
 
