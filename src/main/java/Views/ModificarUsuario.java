@@ -54,13 +54,14 @@ public class ModificarUsuario extends javax.swing.JPanel {
             }
 
             // Cargar estado
-            boolean estado = Boolean.parseBoolean(usuarioSeleccionado.getStatus());
-            if (estado) {
+            String state = usuarioSeleccionado.getStatus();
+            if(state.equals(ActivoRadioBtton.getText())){
                 ActivoRadioBtton.setSelected(true);
-            } else {
+            }
+            else if(state.equals(InactivoRadioBtton.getText())){
                 InactivoRadioBtton.setSelected(true);
             }
-
+            
         } else {
             JOptionPane.showMessageDialog(null, "Usuario no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -275,8 +276,13 @@ public class ModificarUsuario extends javax.swing.JPanel {
             rol = "Tecnico";
         }
 
-        boolean status = ActivoRadioBtton.isSelected();
-        String estado = Boolean.toString(status);
+        String estado="";
+        if(ActivoRadioBtton.isSelected()){
+            estado="Activo";
+        }
+        else if(InactivoRadioBtton.isSelected()){
+            estado="Inactivo";
+        }
 
         boolean exito = listaUsuarios.actualizarUsuario(userActual, idUsuario, username, contrasena, nombreCompleto, rol, estado);
 

@@ -45,15 +45,11 @@ public class Usuarios extends javax.swing.JPanel {
         centerRenderer.setHorizontalAlignment(JLabel.CENTER);
 
         for (Usuario usuario : listaUsuarios.getListaUsuarios()) {
-            String estadoString = usuario.getStatus();
-            boolean estado = Boolean.parseBoolean(estadoString); 
-            String estadoMostrar = estado ? "Activo" : "Inactivo"; 
-
             Object[] fila = {
                 usuario.getUsername(),
                 usuario.getNombreUser(),
                 usuario.getRolUsuario(),
-                estadoMostrar 
+                usuario.getStatus()
             };
             tableModel.addRow(fila);
 

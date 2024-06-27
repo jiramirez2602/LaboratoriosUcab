@@ -46,7 +46,6 @@ public class Usuario {
         return status;
     }
 
-
     public void setUsername(String username) {
         this.username = username;
     }

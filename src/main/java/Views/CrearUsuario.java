@@ -222,11 +222,16 @@ public class CrearUsuario extends javax.swing.JPanel {
             rol = "Invitado";
         } else if (TecnicoRadiobtton.isSelected()) {
             rol = "Tecnico";
-}
-        boolean estado = ActivoRadioBtton.isSelected();
-        String estadoStr = String.valueOf(estado);
+        } 
         
-
+        String estadoStr="";
+        if(ActivoRadioBtton.isSelected()){
+            estadoStr="Activo";
+        }
+        else if(InactivoRadioBtton.isSelected()){
+            estadoStr="Inactivo";
+        }
+        
         boolean exito = this.listaUsuarios.crearUsuario(this.userActual, username, contrasena, nombreCompleto, rol, estadoStr);
 
         if (exito) {
