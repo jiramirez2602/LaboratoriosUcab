@@ -19,6 +19,7 @@ import java.awt.Color;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import model.Usuario;
 
@@ -37,6 +38,7 @@ public class Dashboard extends javax.swing.JFrame {
         InitStyles();
         SetDate();
         InitContent();
+        setIconImage(new ImageIcon(getClass().getResource("/file.png")).getImage());
         this.listaUsuarios=users;
         this.listalaboratorios=laboratorios;
         this.userActual=user;
