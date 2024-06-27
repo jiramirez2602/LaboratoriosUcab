@@ -55,34 +55,37 @@ public class Laboratorios extends javax.swing.JPanel {
         jTable1.setModel(tableModelLab);
     }
     private void actualizarTablaLab() {
-        tableModelLab.setRowCount(0);
-        idMapLab.clear();
-        int row = 0;
+    tableModelLab.setRowCount(0);
+    idMapLab.clear();
+    int row = 0;
 
-        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+    DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+    centerRenderer.setHorizontalAlignment(JLabel.CENTER);
 
-        for (Laboratorio laboratorio : listalaboratorios.listarLaboratorios()) {
-            Object[] fila = {
-                laboratorio.getNombreLaboratorio(),
-                laboratorio.getFacultad(),
-                laboratorio.getEscuela(),
-                laboratorio.getDepartamento(),
-                laboratorio.getIdAdministrador()
-            };
-            tableModelLab.addRow(fila);
+    for (Laboratorio laboratorio : listalaboratorios.listarLaboratorios()) {
+        Usuario administrador = listaUsuarios.listarUsuario(laboratorio.getIdAdministrador());
+        String nombreAdministrador = (administrador != null) ? administrador.getNombreUser() : "Desconocido";
 
-            idMapLab.put(row, laboratorio.getId());
+        Object[] fila = {
+            laboratorio.getNombreLaboratorio(),
+            laboratorio.getFacultad(),
+            laboratorio.getEscuela(),
+            laboratorio.getDepartamento(),
+            nombreAdministrador
+        };
+        tableModelLab.addRow(fila);
 
-            for (int i = 0; i < tableModelLab.getColumnCount(); i++) {
-                jTable1.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
-            }
+        idMapLab.put(row, laboratorio.getId());
 
-            row++;
+        for (int i = 0; i < tableModelLab.getColumnCount(); i++) {
+            jTable1.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
         }
 
-        jTable1.setDefaultEditor(Object.class, null); 
+        row++;
     }
+
+    jTable1.setDefaultEditor(Object.class, null); 
+}
         
     /**
      * This method is called from within the constructor to initialize the form.
