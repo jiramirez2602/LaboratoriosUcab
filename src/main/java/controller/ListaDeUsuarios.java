@@ -138,13 +138,18 @@ public class ListaDeUsuarios {
     }*/
 
     public boolean eliminarUsuario(Usuario user, String id) {
-        try {
-            return eliminarEnFirebase(id);
-        } catch (Exception e) {
-            System.out.println("Error" + e);
-            return false;
+        if (!user.getId().equals(id)) {
+            try {
+                return eliminarEnFirebase(id);
+            } catch (Exception e) {
+                System.out.println("Error" + e);
+                return false;
+            }
         }
-
+        else{
+            JOptionPane.showMessageDialog(null, "Error no se puede eliminar el usuario actual dentro del programa", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        return false;
     }
 
     //MÉTODOS VARIOS//
