@@ -130,24 +130,9 @@ public class Laboratorios extends javax.swing.JPanel {
 
             },
             new String [] {
-                "ID", "Nombre", "Apellido P.", "Apellido M.", "Domicilio", "Teléfono"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, true, true, true, true, true
-            };
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
             }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         jTable1.getTableHeader().setReorderingAllowed(false);
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -281,7 +266,7 @@ public class Laboratorios extends javax.swing.JPanel {
     }//GEN-LAST:event_BotonEliminarLabActionPerformed
 
     private void BotonModificarLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarLabActionPerformed
-        
+        MostrarJPanel(new ModificarLaboratorio(userActual,listalaboratorios,listaUsuarios));
     }//GEN-LAST:event_BotonModificarLabActionPerformed
 
     private void BotonBuscarLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBuscarLabActionPerformed
