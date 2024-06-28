@@ -90,6 +90,18 @@ public class ListaLaboratorios {
         return lista;
     }
 
+    public ArrayList<Laboratorio> listarLaboratorioPorUsuario(String idUsuarioLoggeado) {
+        //TODO Mejorar logica para caso de usuario Admin
+        ArrayList<Laboratorio> listaOriginal = listarLaboratorios();
+        ArrayList<Laboratorio> listaFinal = null;
+        for (Laboratorio laboratorio : listaOriginal) {
+            if (laboratorio.getIdAdministrador().equals(idUsuarioLoggeado)) {
+                listaFinal.add(laboratorio);
+            }
+        }
+        return listaFinal;
+    }
+
     public Laboratorio listarLaboratorio(String id) {
         for (Laboratorio i : lista) {
             if (i.getId().equals(id)) {

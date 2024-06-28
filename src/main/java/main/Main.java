@@ -47,6 +47,7 @@ public class Main {
 
         });
          */
+ /*
         //Equipos
         ListaDeEquipos lista3 = new ListaDeEquipos();
         //lista3.crearProductoEquipo(administradorLaboratorio, "Equipo importante", "GM", "ael-88g", "22fdfd-44", "233211", "Normal", "200 V", "true", "Nada", "26/02/2001", "No Aplica", "26/02/2001", "26/02/2030", "26/02/2020", "26/02/2024", "GM Latam", true, "Motor de vapor", "33", "No tengo observaciones", "af473a5b-ab43-4d1a-8bb1-b6f4cd5e392f");
@@ -62,5 +63,6 @@ public class Main {
             System.out.println(elemento.getId());
             System.out.println(elemento.getNombreProducto());
         });
+*/
     }
 }
