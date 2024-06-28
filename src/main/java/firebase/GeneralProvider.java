@@ -20,6 +20,7 @@ import java.util.Map;
 import java.util.concurrent.ExecutionException;
 import model.Equipo;
 import model.Laboratorio;
+import model.SustanciaQuimica;
 import model.Usuario;
 
 public class GeneralProvider {
@@ -159,5 +160,44 @@ public class GeneralProvider {
             System.out.println("Error al obtener lista: " + e.getMessage());
         }
         return listaEquipos;
+    }
+
+    public static ArrayList<SustanciaQuimica> cargarInfoSustancias() throws ParseException {
+        ArrayList<SustanciaQuimica> listaSustancia = new ArrayList<>();
+
+        try {
+            CollectionReference equipos = Conexion.db.collection("SustanciasQuimicas");
+            ApiFuture<QuerySnapshot> querySnap = equipos.get();
+
+            for (DocumentSnapshot document : querySnap.get().getDocuments()) {
+                //crear user cada vez con parse
+                SustanciaQuimica sustancia = new SustanciaQuimica(document.getString("formulaQuimica"),
+                        document.getString("concentracion"),                        
+                        document.getString("presentacion"),
+                        document.getString("nombreComercial"),
+                        Boolean.valueOf(document.getString("poseeMSD")),
+                        document.getString("numeroDeIdentificacion"),
+                        document.getString("grupoDeRiesgo"),
+                        document.getString("fraseR"),
+                        document.getString("fraseS"),
+                        document.getString("metodoDeControl"),
+                        document.getString("permisos"),
+                        document.getString("unidad"),
+                        Float.parseFloat(document.getString("precioEstimado")),
+                        document.getString("proveedor"),
+                        document.getString("almacenadoEnvasado"),
+                        document.getString("nombreProducto"),
+                        Integer.valueOf(document.getString("inventarioExistente")),
+                        document.getString("observaciones"),
+                        document.getString("idLaboratorio")
+                );
+                sustancia.setId(document.getId());
+                //listaUsers.crearUsuarioLocal(user);
+                listaSustancia.add(sustancia);
+            }
+        } catch (InterruptedException | ExecutionException e) {
+            System.out.println("Error al obtener lista: " + e.getMessage());
+        }
+        return listaSustancia;
     }
 }
