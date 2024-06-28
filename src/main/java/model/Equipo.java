@@ -21,8 +21,8 @@ public class Equipo extends Producto{
     String proovedoresDeServicios;
     Boolean encendidoDenoche;
 
-    public Equipo(String descripcion, String marca, String modelo, String numeroSerial, String numeroActivo, String presentacion, String voltaje, String procesable, String materialRequerido, Date añoDeCompra, String aplicacion, Date ultimoMantenimiento, Date proximoMantenimiento, Date ultimaCalibracion, Date proximaCalibracion, String proovedoresDeServicios, Boolean encendidoDenoche, String codigo, String nombreProducto, int inventarioExistente, String observaciones, Laboratorio laboratorio) {
-        super(codigo, nombreProducto, "Equipo", inventarioExistente, observaciones, laboratorio);
+    public Equipo(String descripcion, String marca, String modelo, String numeroSerial, String numeroActivo, String presentacion, String voltaje, String procesable, String materialRequerido, Date añoDeCompra, String aplicacion, Date ultimoMantenimiento, Date proximoMantenimiento, Date ultimaCalibracion, Date proximaCalibracion, String proovedoresDeServicios, Boolean encendidoDenoche, String codigo, String nombreProducto, int inventarioExistente, String observaciones, String idLaboratorio) {
+        super(codigo, nombreProducto, "Equipo", inventarioExistente, observaciones, idLaboratorio);
         this.descripcion = descripcion;
         this.marca = marca;
         this.modelo = modelo;
@@ -41,9 +41,6 @@ public class Equipo extends Producto{
         this.proovedoresDeServicios = proovedoresDeServicios;
         this.encendidoDenoche = encendidoDenoche;
     }
-
-   
-
     
     public String getDescripcion() {
         return descripcion;
