@@ -1,9 +1,13 @@
 package controller;
 
+import firebase.GeneralProvider;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JOptionPane;
 import model.Equipo;
 import model.Laboratorio;
@@ -13,6 +17,71 @@ public class ListaDeEquipos {
 
     ArrayList<Equipo> listaEquipos;
 
+    //FIREBASE
+    public boolean guardarEnFirebase(Equipo equipo) {
+        try {
+
+            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            Map<String, Object> datos = new HashMap<>();
+            datos.put("descripcion", String.valueOf(equipo.getDescripcion()));
+            datos.put("marca", String.valueOf(equipo.getMarca()));
+            datos.put("modelo", String.valueOf(equipo.getModelo()));
+            datos.put("numeroSerial", String.valueOf(equipo.getNumeroSerial()));
+            datos.put("numeroActivo", String.valueOf(equipo.getNumeroActivo()));
+            datos.put("presentacion", String.valueOf(equipo.getPresentacion()));
+            datos.put("voltaje", String.valueOf(equipo.getVoltaje()));
+            datos.put("procesable", String.valueOf(equipo.getProcesable()));
+            datos.put("materialRequerido", String.valueOf(equipo.getMaterialRequerido()));
+            datos.put("añoDeCompraAux", String.valueOf(dateFormat.format(equipo.getAñoDeCompra())));
+            datos.put("aplicacion", String.valueOf(equipo.getAplicacion()));
+            datos.put("ultimoMantenimientoAux", String.valueOf(dateFormat.format(equipo.getUltimoMantenimiento())));
+            datos.put("proximoMantenimientoAux", String.valueOf(dateFormat.format(equipo.getProximoMantenimiento())));
+            datos.put("ultimaCalibracionAux", String.valueOf(dateFormat.format(equipo.getUltimaCalibracion())));
+            datos.put("proximaCalibracionAux", String.valueOf(dateFormat.format(equipo.getProximaCalibracion())));
+            datos.put("proovedoresDeServicios", String.valueOf(equipo.getProovedoresDeServicios()));
+//            datos.put("encendidoDenoche", String.valueOf(equipo.getEncendidoDenoche()));
+            datos.put("nombreProducto", String.valueOf(equipo.getNombreProducto()));
+            datos.put("inventarioExistenteAux", String.valueOf(equipo.getInventarioExistente()));
+            datos.put("observaciones", String.valueOf(equipo.getObservaciones()));
+            datos.put("idLaboratorio", String.valueOf(equipo.getLaboratorio()));
+            GeneralProvider.guardar("Equipos", String.valueOf(equipo.getId()), datos);
+            JOptionPane.showMessageDialog(null, "Guardado con exito");
+            return true;
+        } catch (Exception e) {
+            System.out.println("Error al guardar controller: " + e.getMessage());
+            return false;
+        }
+    }
+
+    /*
+    public boolean actualizarEnFirebase(Equipo equipo) {
+        try {
+            Map<String, Object> datos = new HashMap<>();
+            datos.put("nombreLaboratorio", String.valueOf(labo.getNombreLaboratorio()));
+            datos.put("facultad", String.valueOf(labo.getFacultad()));
+            datos.put("escuela", String.valueOf(labo.getEscuela()));
+            datos.put("departamento", String.valueOf(labo.getDepartamento()));
+            datos.put("administrador", String.valueOf(labo.getIdAdministrador()));
+            GeneralProvider.actualizar("Laboratorios", labo.getId(), datos);
+            JOptionPane.showMessageDialog(null, "Actualizado con exito");
+            return true;
+        } catch (Exception e) {
+            System.out.println("Error al actualizar controller: " + e.getMessage());
+            return false;
+        }
+    }
+
+    public boolean eliminarEnFirebase(Equipo equipo) {
+        try {
+            GeneralProvider.eliminar("Laboratorios", id);
+            JOptionPane.showMessageDialog(null, "Eliminado con exito");
+            return true;
+        } catch (Exception e) {
+            System.out.println("Error al eliminar: " + e.getMessage());
+            return false;
+        }
+    }
+     */
     public ArrayList<Equipo> getListaEquipos() {
         return listaEquipos;
     }
@@ -23,7 +92,7 @@ public class ListaDeEquipos {
 
     //TODO: Agregar logica de transacciones
     //Crear producto Equipos
-    public boolean crearProductoEquipo(Usuario user, String descripcion, String marca, String modelo, String numeroSerial, String numeroActivo, String presentacion, String voltaje, String procesable, String materialRequerido, String añoDeCompra, String aplicacion, String ultimoMantenimiento, String proximoMantenimiento, String ultimaCalibracion, String proximaCalibracion, String proovedoresDeServicios, Boolean encendidoDenoche, String codigo, String nombreProducto, String inventarioExistente, String observaciones, String idLaboratorio) {
+    public boolean crearProductoEquipo(Usuario user, String descripcion, String marca, String modelo, String numeroSerial, String numeroActivo, String presentacion, String voltaje, String procesable, String materialRequerido, String añoDeCompra, String aplicacion, String ultimoMantenimiento, String proximoMantenimiento, String ultimaCalibracion, String proximaCalibracion, String proovedoresDeServicios, Boolean encendidoDenoche, String nombreProducto, String inventarioExistente, String observaciones, String idLaboratorio) {
         Validador validador = new Validador();
 
         if (!validador.validarConRegex(descripcion, "^[^\\n]{0,100}$", "Descripcion", "Descripcion es invalido(a), puede usar hasta 100 caractes alfanumericos")
@@ -44,7 +113,6 @@ public class ListaDeEquipos {
                 || !validador.validarConRegex(proovedoresDeServicios, "^[^\\n]{0,100}$", "Proovedores De Servicios", "Proovedores De Servicios es invalido(a), puede usar hasta 100 caractes alfabeticos")
                 || !validador.validarConRegex(materialRequerido, "^[^\\n]{0,100}$", "Material Requerido", "Material Requerido es invalido(a), puede usar hasta 100 caractes alfabeticos")
                 || !validador.validarConRegex(materialRequerido, "^[^\\n]{0,100}$", "Material Requerido", "Material Requerido es invalido(a), puede usar hasta 100 caractes alfabeticos")
-                || !validador.validarConRegex(codigo, "^[^\\n]{0,100}$", "Codigo", "Codigo es invalido(a), puede usar hasta 100 caractes alfabeticos")
                 || !validador.validarConRegex(nombreProducto, "^[^\\n]{5,50}$", "Nombre Producto", "Nombre Producto es invalido(a), puede usar hasta 50 caractes alfabeticos")
                 || !validador.validarConRegex(inventarioExistente, "^[1-9][0-9]{0,5}(\\.[0-9]{1,2})?$", "Inventario Existente", "Inventario Existente es invalido(a), puede ser hasta de 0 a 999999")
                 || !validador.validarConRegex(observaciones, "^[^\\n]{0,100}$", "Observaciones", "Observaciones es invalido(a), puede usar hasta 100 caractes alfabeticos")) {
@@ -104,8 +172,8 @@ public class ListaDeEquipos {
                 return false;
             }
 
-            Equipo equipoAux = new Equipo(descripcion, marca, modelo, numeroSerial, numeroActivo, presentacion, voltaje, procesable, materialRequerido, añoDeCompraAux, aplicacion, ultimoMantenimientoAux, proximoMantenimientoAux, ultimaCalibracionAux, proximaCalibracionAux, proovedoresDeServicios, encendidoDenoche, codigo, nombreProducto, inventarioExistenteAux, observaciones, idLaboratorio);
-            listaEquipos.add(equipoAux);
+            Equipo equipoAux = new Equipo(descripcion, marca, modelo, numeroSerial, numeroActivo, presentacion, voltaje, procesable, materialRequerido, añoDeCompraAux, aplicacion, ultimoMantenimientoAux, proximoMantenimientoAux, ultimaCalibracionAux, proximaCalibracionAux, proovedoresDeServicios, encendidoDenoche, nombreProducto, inventarioExistenteAux, observaciones, idLaboratorio);
+            guardarEnFirebase(equipoAux);
             return true;
         }
     }
@@ -131,7 +199,6 @@ public class ListaDeEquipos {
 //        }
 //        return listaEquipoAux;
 //    }
-
 //    //Listar un equipo con un nombre de Equipo
 //    public String listarEquipoPorNombre(Usuario usuario, String nombreDeEquipo) {
 //        for (Equipo i : listarEquipoPorUsuario(usuario)) {
@@ -141,10 +208,9 @@ public class ListaDeEquipos {
 //        }
 //        return null;
 //    }
-
     //TODO: Agregar logica de transacciones
     //Modifica Equipos
-    public boolean modificarEquipo(Usuario user, String id, String descripcion, String marca, String modelo, String numeroSerial, String numeroActivo, String presentacion, String voltaje, String procesable, String materialRequerido, String añoDeCompra, String aplicacion, String ultimoMantenimiento, String proximoMantenimiento, String ultimaCalibracion, String proximaCalibracion, String proovedoresDeServicios, Boolean encendidoDenoche, String codigo, String nombreProducto, String inventarioExistente, String observaciones, String idLaboratorio) {
+    public boolean modificarEquipo(Usuario user, String id, String descripcion, String marca, String modelo, String numeroSerial, String numeroActivo, String presentacion, String voltaje, String procesable, String materialRequerido, String añoDeCompra, String aplicacion, String ultimoMantenimiento, String proximoMantenimiento, String ultimaCalibracion, String proximaCalibracion, String proovedoresDeServicios, Boolean encendidoDenoche, String nombreProducto, String inventarioExistente, String observaciones, String idLaboratorio) {
         Equipo product = listarEquipo(id);
         if (product != null) {
             Validador validador = new Validador();
@@ -166,7 +232,6 @@ public class ListaDeEquipos {
                     || !validador.validarConRegex(proovedoresDeServicios, "^[^\\n]{0,100}$", "Proovedores De Servicios", "Proovedores De Servicios es invalido(a), puede usar hasta 100 caractes alfabeticos")
                     || !validador.validarConRegex(materialRequerido, "^[^\\n]{0,100}$", "Material Requerido", "Material Requerido es invalido(a), puede usar hasta 100 caractes alfabeticos")
                     || !validador.validarConRegex(materialRequerido, "^[^\\n]{0,100}$", "Material Requerido", "Material Requerido es invalido(a), puede usar hasta 100 caractes alfabeticos")
-                    || !validador.validarConRegex(codigo, "^[^\\n]{0,100}$", "Codigo", "Codigo es invalido(a), puede usar hasta 100 caractes alfabeticos")
                     || !validador.validarConRegex(nombreProducto, "^[^\\n]{5,50}$", "Nombre Producto", "Nombre Producto es invalido(a), puede usar hasta 50 caractes alfabeticos")
                     || !validador.validarConRegex(inventarioExistente, "^[1-9][0-9]{0,5}(\\.[0-9]{1,2})?$", "Inventario Existente", "Inventario Existente es invalido(a), puede ser hasta de 0 a 999999")
                     || !validador.validarConRegex(observaciones, "^[^\\n]{0,100}$", "Observaciones", "Observaciones es invalido(a), puede usar hasta 100 caractes alfabeticos")) {
@@ -230,7 +295,7 @@ public class ListaDeEquipos {
                     return false;
                 }
 
-                Equipo equipoAux = new Equipo(descripcion, marca, modelo, numeroSerial, numeroActivo, presentacion, voltaje, procesable, materialRequerido, añoDeCompraAux, aplicacion, ultimoMantenimientoAux, proximoMantenimientoAux, ultimaCalibracionAux, proximaCalibracionAux, proovedoresDeServicios, encendidoDenoche, codigo, nombreProducto, inventarioExistenteAux, observaciones, idLaboratorio);
+                Equipo equipoAux = new Equipo(descripcion, marca, modelo, numeroSerial, numeroActivo, presentacion, voltaje, procesable, materialRequerido, añoDeCompraAux, aplicacion, ultimoMantenimientoAux, proximoMantenimientoAux, ultimaCalibracionAux, proximaCalibracionAux, proovedoresDeServicios, encendidoDenoche, nombreProducto, inventarioExistenteAux, observaciones, idLaboratorio);
 
                 equipoAux.setId(id);
 

@@ -19,7 +19,7 @@ public class SustanciaQuimica extends Producto{
     String almacenadoEnvasado;
 
     public SustanciaQuimica(String formulaQuimica, String concentracion, String presentacion, String nombreComercial, Boolean poseeMSD, String numeroDeIdentificacion, String grupoDeRiesgo, String fraseR, String fraseS, String metodoDeControl, String permisos, String unidad, float precioEstimado, String proveedor, String almacenadoEnvasado, String codigo, String nombreProducto, int inventarioExistente, String observaciones, String idLaboratorio) {
-        super(codigo, nombreProducto, "Sustancia quimica", inventarioExistente, observaciones, idLaboratorio);
+        super(nombreProducto, "Sustancia quimica", inventarioExistente, observaciones, idLaboratorio);
         this.formulaQuimica = formulaQuimica;
         this.concentracion = concentracion;
         this.presentacion = presentacion;

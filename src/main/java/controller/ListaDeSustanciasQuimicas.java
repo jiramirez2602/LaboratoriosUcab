@@ -1,7 +1,10 @@
 package controller;
 
+import firebase.GeneralProvider;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JOptionPane;
 import model.Laboratorio;
 import model.SustanciaQuimica;
@@ -11,7 +14,51 @@ public class ListaDeSustanciasQuimicas {
 
     ArrayList<SustanciaQuimica> listaSustancias;
 
+    //FIREBASE
+    public boolean guardarEnFirebase(Laboratorio labo) {
+        try {
+            Map<String, Object> datos = new HashMap<>();
+            datos.put("nombreLaboratorio", String.valueOf(labo.getNombreLaboratorio()));
+            datos.put("facultad", String.valueOf(labo.getFacultad()));
+            datos.put("escuela", String.valueOf(labo.getEscuela()));
+            datos.put("departamento", String.valueOf(labo.getDepartamento()));
+            datos.put("administrador", String.valueOf(labo.getIdAdministrador()));
+            GeneralProvider.guardar("Laboratorios", String.valueOf(labo.getId()), datos);
+            JOptionPane.showMessageDialog(null, "Guardado con exito");
+            return true;
+        } catch (Exception e) {
+            System.out.println("Error al guardar controller: " + e.getMessage());
+            return false;
+        }
+    }
 
+    public boolean actualizarEnFirebase(Laboratorio labo) {
+        try {
+            Map<String, Object> datos = new HashMap<>();
+            datos.put("nombreLaboratorio", String.valueOf(labo.getNombreLaboratorio()));
+            datos.put("facultad", String.valueOf(labo.getFacultad()));
+            datos.put("escuela", String.valueOf(labo.getEscuela()));
+            datos.put("departamento", String.valueOf(labo.getDepartamento()));
+            datos.put("administrador", String.valueOf(labo.getIdAdministrador()));
+            GeneralProvider.actualizar("Laboratorios", labo.getId(), datos);
+            JOptionPane.showMessageDialog(null, "Actualizado con exito");
+            return true;
+        } catch (Exception e) {
+            System.out.println("Error al actualizar controller: " + e.getMessage());
+            return false;
+        }
+    }
+
+    public boolean eliminarEnFirebase(String id) {
+        try {
+            GeneralProvider.eliminar("Laboratorios", id);
+            JOptionPane.showMessageDialog(null, "Eliminado con exito");
+            return true;
+        } catch (Exception e) {
+            System.out.println("Error al eliminar: " + e.getMessage());
+            return false;
+        }
+    }
     public ArrayList<SustanciaQuimica> getListaSustanciasQuimicas() {
         return listaSustancias;
     }
