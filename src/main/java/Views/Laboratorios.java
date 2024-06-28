@@ -32,6 +32,7 @@ public class Laboratorios extends javax.swing.JPanel {
         InitStyles();
         inicializarTablaLab();
         actualizarTablaLab();
+        bloquearPorRol(userActual);
     }
 
     private void InitStyles() {
@@ -54,6 +55,15 @@ public class Laboratorios extends javax.swing.JPanel {
         tableModelLab = new DefaultTableModel(columnas, 0);
         jTable1.setModel(tableModelLab);
     }
+    
+    private void bloquearPorRol(Usuario user){
+        if((user.verificarRol(user,"Invitado"))||(user.verificarRol(user,"Tecnico"))){
+            BotonCrearLab.setEnabled(false);
+            BotonEliminarLab.setEnabled(false);
+            BotonModificarLab.setEnabled(false);
+        }
+    }
+    
     private void actualizarTablaLab() {
     tableModelLab.setRowCount(0);
     idMapLab.clear();

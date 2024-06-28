@@ -84,7 +84,6 @@ public class Usuario {
             retornar=true;
         }
         if(retornar==false){
-            JOptionPane.showMessageDialog(null,"No tienes acceso a este modulo", "Error", JOptionPane.ERROR_MESSAGE);
             return retornar;
         }
         return retornar;

@@ -28,12 +28,21 @@ public class Usuarios extends javax.swing.JPanel {
         idMap = new HashMap<>();
         inicializarTabla();
         actualizarTabla();
+        bloquearPorRol(userActual);
     }
     
      private void inicializarTabla() {
         String[] columnas = {"Username", "Nombre Completo", "Rol", "Estado"};
         tableModel = new DefaultTableModel(columnas, 0);
         jTable1.setModel(tableModel);
+    }
+     
+    private void bloquearPorRol(Usuario user){
+        if((user.verificarRol(user,"Invitado"))||(user.verificarRol(user,"Tecnico"))){
+            BotonCrearUsuario.setEnabled(false);
+            BotonEliminarUsuario.setEnabled(false);
+            BotonModificarUsuario.setEnabled(false);
+        }
     }
      
    private void actualizarTabla() {
