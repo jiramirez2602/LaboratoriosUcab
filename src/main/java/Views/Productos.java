@@ -13,6 +13,10 @@ import javax.swing.JPanel;
  */
 public class Productos extends javax.swing.JPanel {
     
+    public Productos() {
+        initComponents();
+    }
+    
       private void MostrarJpanel(JPanel p){
         p.setSize(760,478);   
         p.setLocation(0,0);
