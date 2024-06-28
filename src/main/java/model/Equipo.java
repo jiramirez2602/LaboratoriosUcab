@@ -19,9 +19,9 @@ public class Equipo extends Producto{
     Date ultimaCalibracion;
     Date proximaCalibracion;
     String proovedoresDeServicios;
-    Boolean encendidoDenoche;
+    String encendidoDenoche;
 
-    public Equipo(String descripcion, String marca, String modelo, String numeroSerial, String numeroActivo, String presentacion, String voltaje, String procesable, String materialRequerido, Date añoDeCompra, String aplicacion, Date ultimoMantenimiento, Date proximoMantenimiento, Date ultimaCalibracion, Date proximaCalibracion, String proovedoresDeServicios, Boolean encendidoDenoche, String nombreProducto, int inventarioExistente, String observaciones, String idLaboratorio) {
+    public Equipo(String descripcion, String marca, String modelo, String numeroSerial, String numeroActivo, String presentacion, String voltaje, String procesable, String materialRequerido, Date añoDeCompra, String aplicacion, Date ultimoMantenimiento, Date proximoMantenimiento, Date ultimaCalibracion, Date proximaCalibracion, String proovedoresDeServicios, String encendidoDenoche, String nombreProducto, int inventarioExistente, String observaciones, String idLaboratorio) {
         super(nombreProducto, "Equipo", inventarioExistente, observaciones, idLaboratorio);
         this.descripcion = descripcion;
         this.marca = marca;
@@ -106,7 +106,7 @@ public class Equipo extends Producto{
         return proovedoresDeServicios;
     }
 
-    public Boolean getEncendidoDenoche() {
+    public String getEncendidoDenoche() {
         return encendidoDenoche;
     }
 
@@ -174,7 +174,7 @@ public class Equipo extends Producto{
         this.proovedoresDeServicios = proovedoresDeServicios;
     }
 
-    public void setEncendidoDenoche(Boolean encendidoDenoche) {
+    public void setEncendidoDenoche(String encendidoDenoche) {
         this.encendidoDenoche = encendidoDenoche;
     }
     

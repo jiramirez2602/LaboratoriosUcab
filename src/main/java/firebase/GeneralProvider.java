@@ -10,11 +10,15 @@ import com.google.cloud.firestore.QuerySnapshot;
 import com.google.cloud.firestore.WriteResult;
 import com.google.firebase.cloud.FirestoreClient;
 import controller.ListaDeUsuarios;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
+import model.Equipo;
 import model.Laboratorio;
 import model.Usuario;
 
@@ -110,5 +114,50 @@ public class GeneralProvider {
             System.out.println("Error al obtener lista: " + e.getMessage());
         }
         return listaLaboratorios;
+    }
+
+    public static ArrayList<Equipo> cargarInfoEquipos() throws ParseException {
+        //ListaDeUsuarios listaUsers = new ListaDeUsuarios();
+        ArrayList<Equipo> listaEquipos = new ArrayList<>();
+
+        try {
+            CollectionReference equipos = Conexion.db.collection("Equipos");
+            ApiFuture<QuerySnapshot> querySnap = equipos.get();
+            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+
+            for (DocumentSnapshot document : querySnap.get().getDocuments()) {
+                //crear user cada vez con parse
+
+                Equipo equipo = new Equipo(document.getString("descripcion"),
+                        document.getString("marca"),
+                        document.getString("modelo"),
+                        document.getString("numeroSerial"),
+                        document.getString("numeroActivo"),
+                        document.getString("presentacion"),
+                        document.getString("voltaje"),
+                        document.getString("procesable"),
+                        document.getString("materialRequerido"),
+                        formatter.parse(document.getString("añoDeCompraAux")),
+                        document.getString("aplicacion"),
+                        formatter.parse(document.getString("ultimoMantenimientoAux")),
+                        formatter.parse(document.getString("proximoMantenimientoAux")),
+                        formatter.parse(document.getString("ultimaCalibracionAux")),
+                        formatter.parse(document.getString("proximaCalibracionAux")),
+                        document.getString("proovedoresDeServicios"),
+                        document.getString("encendidoDenoche"),
+                        document.getString("nombreProducto"),
+                        Integer.valueOf(document.getString("inventarioExistenteAux")),
+                        document.getString("observaciones"),
+                        document.getString("idLaboratorio")
+                );
+                equipo.setId(document.getId());
+
+                //listaUsers.crearUsuarioLocal(user);
+                listaEquipos.add(equipo);
+            }
+        } catch (InterruptedException | ExecutionException e) {
+            System.out.println("Error al obtener lista: " + e.getMessage());
+        }
+        return listaEquipos;
     }
 }

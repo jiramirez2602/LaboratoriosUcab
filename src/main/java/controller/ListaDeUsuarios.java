@@ -114,7 +114,7 @@ public class ListaDeUsuarios {
             try {
                 return eliminarEnFirebase(id);
             } catch (Exception e) {
-                System.out.println("Error" + e);
+                System.out.println("Error al eliminar" + e);
                 return false;
             }
         }

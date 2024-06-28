@@ -20,7 +20,6 @@ public class ListaDeEquipos {
     //FIREBASE
     public boolean guardarEnFirebase(Equipo equipo) {
         try {
-
             DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
             Map<String, Object> datos = new HashMap<>();
             datos.put("descripcion", String.valueOf(equipo.getDescripcion()));
@@ -39,7 +38,7 @@ public class ListaDeEquipos {
             datos.put("ultimaCalibracionAux", String.valueOf(dateFormat.format(equipo.getUltimaCalibracion())));
             datos.put("proximaCalibracionAux", String.valueOf(dateFormat.format(equipo.getProximaCalibracion())));
             datos.put("proovedoresDeServicios", String.valueOf(equipo.getProovedoresDeServicios()));
-//            datos.put("encendidoDenoche", String.valueOf(equipo.getEncendidoDenoche()));
+            datos.put("encendidoDenoche", String.valueOf(equipo.getEncendidoDenoche()));
             datos.put("nombreProducto", String.valueOf(equipo.getNombreProducto()));
             datos.put("inventarioExistenteAux", String.valueOf(equipo.getInventarioExistente()));
             datos.put("observaciones", String.valueOf(equipo.getObservaciones()));
@@ -53,16 +52,32 @@ public class ListaDeEquipos {
         }
     }
 
-    /*
     public boolean actualizarEnFirebase(Equipo equipo) {
         try {
+            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
             Map<String, Object> datos = new HashMap<>();
-            datos.put("nombreLaboratorio", String.valueOf(labo.getNombreLaboratorio()));
-            datos.put("facultad", String.valueOf(labo.getFacultad()));
-            datos.put("escuela", String.valueOf(labo.getEscuela()));
-            datos.put("departamento", String.valueOf(labo.getDepartamento()));
-            datos.put("administrador", String.valueOf(labo.getIdAdministrador()));
-            GeneralProvider.actualizar("Laboratorios", labo.getId(), datos);
+            datos.put("descripcion", String.valueOf(equipo.getDescripcion()));
+            datos.put("marca", String.valueOf(equipo.getMarca()));
+            datos.put("modelo", String.valueOf(equipo.getModelo()));
+            datos.put("numeroSerial", String.valueOf(equipo.getNumeroSerial()));
+            datos.put("numeroActivo", String.valueOf(equipo.getNumeroActivo()));
+            datos.put("presentacion", String.valueOf(equipo.getPresentacion()));
+            datos.put("voltaje", String.valueOf(equipo.getVoltaje()));
+            datos.put("procesable", String.valueOf(equipo.getProcesable()));
+            datos.put("materialRequerido", String.valueOf(equipo.getMaterialRequerido()));
+            datos.put("añoDeCompraAux", String.valueOf(dateFormat.format(equipo.getAñoDeCompra())));
+            datos.put("aplicacion", String.valueOf(equipo.getAplicacion()));
+            datos.put("ultimoMantenimientoAux", String.valueOf(dateFormat.format(equipo.getUltimoMantenimiento())));
+            datos.put("proximoMantenimientoAux", String.valueOf(dateFormat.format(equipo.getProximoMantenimiento())));
+            datos.put("ultimaCalibracionAux", String.valueOf(dateFormat.format(equipo.getUltimaCalibracion())));
+            datos.put("proximaCalibracionAux", String.valueOf(dateFormat.format(equipo.getProximaCalibracion())));
+            datos.put("proovedoresDeServicios", String.valueOf(equipo.getProovedoresDeServicios()));
+            datos.put("encendidoDenoche", String.valueOf(equipo.getEncendidoDenoche()));
+            datos.put("nombreProducto", String.valueOf(equipo.getNombreProducto()));
+            datos.put("inventarioExistenteAux", String.valueOf(equipo.getInventarioExistente()));
+            datos.put("observaciones", String.valueOf(equipo.getObservaciones()));
+            datos.put("idLaboratorio", String.valueOf(equipo.getLaboratorio()));
+            GeneralProvider.actualizar("Equipos", equipo.getId(), datos);
             JOptionPane.showMessageDialog(null, "Actualizado con exito");
             return true;
         } catch (Exception e) {
@@ -71,19 +86,15 @@ public class ListaDeEquipos {
         }
     }
 
-    public boolean eliminarEnFirebase(Equipo equipo) {
+    public boolean eliminarEnFirebase(String id) {
         try {
-            GeneralProvider.eliminar("Laboratorios", id);
+            GeneralProvider.eliminar("Equipos", id);
             JOptionPane.showMessageDialog(null, "Eliminado con exito");
             return true;
         } catch (Exception e) {
             System.out.println("Error al eliminar: " + e.getMessage());
             return false;
         }
-    }
-     */
-    public ArrayList<Equipo> getListaEquipos() {
-        return listaEquipos;
     }
 
     public void setListaEquipos(ArrayList<Equipo> listaEquipos) {
@@ -92,7 +103,7 @@ public class ListaDeEquipos {
 
     //TODO: Agregar logica de transacciones
     //Crear producto Equipos
-    public boolean crearProductoEquipo(Usuario user, String descripcion, String marca, String modelo, String numeroSerial, String numeroActivo, String presentacion, String voltaje, String procesable, String materialRequerido, String añoDeCompra, String aplicacion, String ultimoMantenimiento, String proximoMantenimiento, String ultimaCalibracion, String proximaCalibracion, String proovedoresDeServicios, Boolean encendidoDenoche, String nombreProducto, String inventarioExistente, String observaciones, String idLaboratorio) {
+    public boolean crearProductoEquipo(Usuario user, String descripcion, String marca, String modelo, String numeroSerial, String numeroActivo, String presentacion, String voltaje, String procesable, String materialRequerido, String añoDeCompra, String aplicacion, String ultimoMantenimiento, String proximoMantenimiento, String ultimaCalibracion, String proximaCalibracion, String proovedoresDeServicios, String encendidoDenoche, String nombreProducto, String inventarioExistente, String observaciones, String idLaboratorio) {
         Validador validador = new Validador();
 
         if (!validador.validarConRegex(descripcion, "^[^\\n]{0,100}$", "Descripcion", "Descripcion es invalido(a), puede usar hasta 100 caractes alfanumericos")
@@ -178,14 +189,19 @@ public class ListaDeEquipos {
         }
     }
 
-    //Listar un equipo con un ID
-    public Equipo listarEquipo(String id) {
-        for (Equipo i : getListaEquipos()) {
-            if (i.getId().equals(id)) {
-                return i;
-            }
-        }
-        return null;
+//    //Listar un equipo con un ID
+//    public Equipo listarEquipo(String id) {
+//        for (Equipo i : getListaEquipos()) {
+//            if (i.getId().equals(id)) {
+//                return i;
+//            }
+//        }
+//        return null;
+//    }
+
+    public ArrayList<Equipo> getListaEquipos() throws ParseException {
+        listaEquipos = GeneralProvider.cargarInfoEquipos();
+        return listaEquipos;
     }
 
 //    //Listar un equipo con un Usuario
@@ -210,125 +226,104 @@ public class ListaDeEquipos {
 //    }
     //TODO: Agregar logica de transacciones
     //Modifica Equipos
-    public boolean modificarEquipo(Usuario user, String id, String descripcion, String marca, String modelo, String numeroSerial, String numeroActivo, String presentacion, String voltaje, String procesable, String materialRequerido, String añoDeCompra, String aplicacion, String ultimoMantenimiento, String proximoMantenimiento, String ultimaCalibracion, String proximaCalibracion, String proovedoresDeServicios, Boolean encendidoDenoche, String nombreProducto, String inventarioExistente, String observaciones, String idLaboratorio) {
-        Equipo product = listarEquipo(id);
-        if (product != null) {
-            Validador validador = new Validador();
-            if (!validador.validarConRegex(descripcion, "^[^\\n]{0,100}$", "Descripcion", "Descripcion es invalido(a), puede usar hasta 100 caractes alfanumericos")
-                    || !validador.validarConRegex(marca, "^[^\\n]{0,100}$", "Marca", "Marca es invalido(a), puede usar hasta 100 caractes alfabeticos")
-                    || !validador.validarConRegex(modelo, "^[^\\n]{5,100}$", "Modelo", "Modelo es invalido(a), puede usar hasta 100 caractes alfabeticos")
-                    || !validador.validarConRegex(presentacion, "^[^\\n]{0,100}$", "Presentacion", "Presentacion es invalido(a), puede usar hasta 100 caractes alfabeticos")
-                    || !validador.validarConRegex(numeroSerial, "^[^\\n]{0,100}$", "Numero de serial", "Numero de serial es invalido(a), puede usar hasta 100 caractes alfabeticos")
-                    || !validador.validarConRegex(numeroActivo, "^[^\\n]{0,100}$", "Numero de activo", "Numero de activo es invalido(a), puede usar hasta 100 caractes alfabeticos")
-                    || !validador.validarConRegex(voltaje, "^[^\\n]{0,100}$", "Voltaje", "Voltaje es invalido(a), puede usar hasta 100 caractes alfabeticos")
-                    || !validador.validarConRegex(procesable, "^[^\\n]{0,100}$", "Procesable", "Procesable es invalido(a), puede usar hasta 100 caractes alfabeticos")
-                    || !validador.validarConRegex(materialRequerido, "^[^\\n]{0,100}$", "Material Requerido", "Material Requerido es invalido(a), puede usar hasta 100 caractes alfabeticos")
-                    || !validador.validarConRegex(aplicacion, "^[^\\n]{0,100}$", "Aplicacion", "Aplicacion es invalido(a), puede usar hasta 100 caractes alfabeticos")
-                    || !validador.validarConRegex(añoDeCompra, "^([0-2][0-9]|3[0-1])(\\/|-)(0[1-9]|1[0-2])\\2(\\d{4})$", "Año de Compra", "Año de Compra es invalido(a), use el formato dd/mm/yyyy")
-                    || !validador.validarConRegex(ultimoMantenimiento, "^([0-2][0-9]|3[0-1])(\\/|-)(0[1-9]|1[0-2])\\2(\\d{4})$", "Ultimo Mantenimiento", "Ultimo Mantenimiento es invalido(a), use el formato dd/mm/yyyy")
-                    || !validador.validarConRegex(proximoMantenimiento, "^([0-2][0-9]|3[0-1])(\\/|-)(0[1-9]|1[0-2])\\2(\\d{4})$", "Proximo Mantenimiento", "Proximo Mantenimiento es invalido(a), use el formato dd/mm/yyyy")
-                    || !validador.validarConRegex(ultimaCalibracion, "^([0-2][0-9]|3[0-1])(\\/|-)(0[1-9]|1[0-2])\\2(\\d{4})$", "Ultima Calibracion", "Ultima Calibracion es invalido(a), use el formato dd/mm/yyyy")
-                    || !validador.validarConRegex(proximaCalibracion, "^([0-2][0-9]|3[0-1])(\\/|-)(0[1-9]|1[0-2])\\2(\\d{4})$", "Proxima Calibracion", "Proxima Calibracion es invalido(a), use el formato dd/mm/yyyy")
-                    || !validador.validarConRegex(proovedoresDeServicios, "^[^\\n]{0,100}$", "Proovedores De Servicios", "Proovedores De Servicios es invalido(a), puede usar hasta 100 caractes alfabeticos")
-                    || !validador.validarConRegex(materialRequerido, "^[^\\n]{0,100}$", "Material Requerido", "Material Requerido es invalido(a), puede usar hasta 100 caractes alfabeticos")
-                    || !validador.validarConRegex(materialRequerido, "^[^\\n]{0,100}$", "Material Requerido", "Material Requerido es invalido(a), puede usar hasta 100 caractes alfabeticos")
-                    || !validador.validarConRegex(nombreProducto, "^[^\\n]{5,50}$", "Nombre Producto", "Nombre Producto es invalido(a), puede usar hasta 50 caractes alfabeticos")
-                    || !validador.validarConRegex(inventarioExistente, "^[1-9][0-9]{0,5}(\\.[0-9]{1,2})?$", "Inventario Existente", "Inventario Existente es invalido(a), puede ser hasta de 0 a 999999")
-                    || !validador.validarConRegex(observaciones, "^[^\\n]{0,100}$", "Observaciones", "Observaciones es invalido(a), puede usar hasta 100 caractes alfabeticos")) {
-                return false;
-            } else {
-                Date añoDeCompraAux;
-                Date ultimoMantenimientoAux;
-                Date proximoMantenimientoAux;
-                Date ultimaCalibracionAux;
-                Date proximaCalibracionAux;
-                int inventarioExistenteAux;
-
-                try {
-                    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-                    añoDeCompraAux = formatter.parse(añoDeCompra);
-                } catch (ParseException e) {
-                    JOptionPane.showMessageDialog(null, "Fecha ingresada invalida", "Error", JOptionPane.ERROR_MESSAGE);
-                    return false;
-                }
-
-                try {
-                    //Convertir a Date ultimaCompra
-                    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-                    ultimoMantenimientoAux = formatter.parse(ultimoMantenimiento);
-                } catch (ParseException e) {
-                    JOptionPane.showMessageDialog(null, "Fecha ingresada invalida", "Error", JOptionPane.ERROR_MESSAGE);
-                    return false;
-                }
-
-                try {
-                    //Convertir a Date ultimaCompra
-                    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-                    proximoMantenimientoAux = formatter.parse(proximoMantenimiento);
-                } catch (ParseException e) {
-                    JOptionPane.showMessageDialog(null, "Fecha ingresada invalida", "Error", JOptionPane.ERROR_MESSAGE);
-                    return false;
-                }
-
-                try {
-                    //Convertir a Date ultimaCompra
-                    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-                    ultimaCalibracionAux = formatter.parse(ultimaCalibracion);
-                } catch (ParseException e) {
-                    JOptionPane.showMessageDialog(null, "Fecha ingresada invalida", "Error", JOptionPane.ERROR_MESSAGE);
-                    return false;
-                }
-
-                try {
-                    //Convertir a Date ultimaCompra
-                    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-                    proximaCalibracionAux = formatter.parse(proximaCalibracion);
-                } catch (ParseException e) {
-                    JOptionPane.showMessageDialog(null, "Fecha ingresada invalida", "Error", JOptionPane.ERROR_MESSAGE);
-                    return false;
-                }
-
-                try {
-                    inventarioExistenteAux = Integer.parseInt(inventarioExistente);
-                } catch (NumberFormatException e) {
-                    JOptionPane.showMessageDialog(null, "Existencias invalidas", "Error", JOptionPane.ERROR_MESSAGE);
-                    return false;
-                }
-
-                Equipo equipoAux = new Equipo(descripcion, marca, modelo, numeroSerial, numeroActivo, presentacion, voltaje, procesable, materialRequerido, añoDeCompraAux, aplicacion, ultimoMantenimientoAux, proximoMantenimientoAux, ultimaCalibracionAux, proximaCalibracionAux, proovedoresDeServicios, encendidoDenoche, nombreProducto, inventarioExistenteAux, observaciones, idLaboratorio);
-
-                equipoAux.setId(id);
-
-                int acumulador = 0;
-                for (Equipo i : listaEquipos) {
-                    if (i.getId().equals(id)) {
-                        listaEquipos.set(acumulador, equipoAux);
-                    }
-                    acumulador++;
-                }
-                return true;
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "Equipo no se puede modificar", "Error", JOptionPane.ERROR_MESSAGE);
+    public boolean modificarEquipo(Usuario user, String id, String descripcion, String marca, String modelo, String numeroSerial, String numeroActivo, String presentacion, String voltaje, String procesable, String materialRequerido, String añoDeCompra, String aplicacion, String ultimoMantenimiento, String proximoMantenimiento, String ultimaCalibracion, String proximaCalibracion, String proovedoresDeServicios, String encendidoDenoche, String nombreProducto, String inventarioExistente, String observaciones, String idLaboratorio) {
+        Validador validador = new Validador();
+        if (!validador.validarConRegex(descripcion, "^[^\\n]{0,100}$", "Descripcion", "Descripcion es invalido(a), puede usar hasta 100 caractes alfanumericos")
+                || !validador.validarConRegex(marca, "^[^\\n]{0,100}$", "Marca", "Marca es invalido(a), puede usar hasta 100 caractes alfabeticos")
+                || !validador.validarConRegex(modelo, "^[^\\n]{5,100}$", "Modelo", "Modelo es invalido(a), puede usar hasta 100 caractes alfabeticos")
+                || !validador.validarConRegex(presentacion, "^[^\\n]{0,100}$", "Presentacion", "Presentacion es invalido(a), puede usar hasta 100 caractes alfabeticos")
+                || !validador.validarConRegex(numeroSerial, "^[^\\n]{0,100}$", "Numero de serial", "Numero de serial es invalido(a), puede usar hasta 100 caractes alfabeticos")
+                || !validador.validarConRegex(numeroActivo, "^[^\\n]{0,100}$", "Numero de activo", "Numero de activo es invalido(a), puede usar hasta 100 caractes alfabeticos")
+                || !validador.validarConRegex(voltaje, "^[^\\n]{0,100}$", "Voltaje", "Voltaje es invalido(a), puede usar hasta 100 caractes alfabeticos")
+                || !validador.validarConRegex(procesable, "^[^\\n]{0,100}$", "Procesable", "Procesable es invalido(a), puede usar hasta 100 caractes alfabeticos")
+                || !validador.validarConRegex(materialRequerido, "^[^\\n]{0,100}$", "Material Requerido", "Material Requerido es invalido(a), puede usar hasta 100 caractes alfabeticos")
+                || !validador.validarConRegex(aplicacion, "^[^\\n]{0,100}$", "Aplicacion", "Aplicacion es invalido(a), puede usar hasta 100 caractes alfabeticos")
+                || !validador.validarConRegex(añoDeCompra, "^([0-2][0-9]|3[0-1])(\\/|-)(0[1-9]|1[0-2])\\2(\\d{4})$", "Año de Compra", "Año de Compra es invalido(a), use el formato dd/mm/yyyy")
+                || !validador.validarConRegex(ultimoMantenimiento, "^([0-2][0-9]|3[0-1])(\\/|-)(0[1-9]|1[0-2])\\2(\\d{4})$", "Ultimo Mantenimiento", "Ultimo Mantenimiento es invalido(a), use el formato dd/mm/yyyy")
+                || !validador.validarConRegex(proximoMantenimiento, "^([0-2][0-9]|3[0-1])(\\/|-)(0[1-9]|1[0-2])\\2(\\d{4})$", "Proximo Mantenimiento", "Proximo Mantenimiento es invalido(a), use el formato dd/mm/yyyy")
+                || !validador.validarConRegex(ultimaCalibracion, "^([0-2][0-9]|3[0-1])(\\/|-)(0[1-9]|1[0-2])\\2(\\d{4})$", "Ultima Calibracion", "Ultima Calibracion es invalido(a), use el formato dd/mm/yyyy")
+                || !validador.validarConRegex(proximaCalibracion, "^([0-2][0-9]|3[0-1])(\\/|-)(0[1-9]|1[0-2])\\2(\\d{4})$", "Proxima Calibracion", "Proxima Calibracion es invalido(a), use el formato dd/mm/yyyy")
+                || !validador.validarConRegex(proovedoresDeServicios, "^[^\\n]{0,100}$", "Proovedores De Servicios", "Proovedores De Servicios es invalido(a), puede usar hasta 100 caractes alfabeticos")
+                || !validador.validarConRegex(materialRequerido, "^[^\\n]{0,100}$", "Material Requerido", "Material Requerido es invalido(a), puede usar hasta 100 caractes alfabeticos")
+                || !validador.validarConRegex(materialRequerido, "^[^\\n]{0,100}$", "Material Requerido", "Material Requerido es invalido(a), puede usar hasta 100 caractes alfabeticos")
+                || !validador.validarConRegex(nombreProducto, "^[^\\n]{5,50}$", "Nombre Producto", "Nombre Producto es invalido(a), puede usar hasta 50 caractes alfabeticos")
+                || !validador.validarConRegex(inventarioExistente, "^[1-9][0-9]{0,5}(\\.[0-9]{1,2})?$", "Inventario Existente", "Inventario Existente es invalido(a), puede ser hasta de 0 a 999999")
+                || !validador.validarConRegex(observaciones, "^[^\\n]{0,100}$", "Observaciones", "Observaciones es invalido(a), puede usar hasta 100 caractes alfabeticos")) {
             return false;
+        } else {
+            Date añoDeCompraAux;
+            Date ultimoMantenimientoAux;
+            Date proximoMantenimientoAux;
+            Date ultimaCalibracionAux;
+            Date proximaCalibracionAux;
+            int inventarioExistenteAux;
+
+            try {
+                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                añoDeCompraAux = formatter.parse(añoDeCompra);
+            } catch (ParseException e) {
+                JOptionPane.showMessageDialog(null, "Fecha ingresada invalida", "Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+
+            try {
+                //Convertir a Date ultimaCompra
+                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                ultimoMantenimientoAux = formatter.parse(ultimoMantenimiento);
+            } catch (ParseException e) {
+                JOptionPane.showMessageDialog(null, "Fecha ingresada invalida", "Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+
+            try {
+                //Convertir a Date ultimaCompra
+                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                proximoMantenimientoAux = formatter.parse(proximoMantenimiento);
+            } catch (ParseException e) {
+                JOptionPane.showMessageDialog(null, "Fecha ingresada invalida", "Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+
+            try {
+                //Convertir a Date ultimaCompra
+                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                ultimaCalibracionAux = formatter.parse(ultimaCalibracion);
+            } catch (ParseException e) {
+                JOptionPane.showMessageDialog(null, "Fecha ingresada invalida", "Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+
+            try {
+                //Convertir a Date ultimaCompra
+                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                proximaCalibracionAux = formatter.parse(proximaCalibracion);
+            } catch (ParseException e) {
+                JOptionPane.showMessageDialog(null, "Fecha ingresada invalida", "Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+
+            try {
+                inventarioExistenteAux = Integer.parseInt(inventarioExistente);
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Existencias invalidas", "Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+
+            Equipo equipoModified = new Equipo(descripcion, marca, modelo, numeroSerial, numeroActivo, presentacion, voltaje, procesable, materialRequerido, añoDeCompraAux, aplicacion, ultimoMantenimientoAux, proximoMantenimientoAux, ultimaCalibracionAux, proximaCalibracionAux, proovedoresDeServicios, encendidoDenoche, nombreProducto, inventarioExistenteAux, observaciones, idLaboratorio);
+            equipoModified.setId(id);
+            actualizarEnFirebase(equipoModified);
+            return true;
         }
     }
 
     //TODO: Agregar logica de transacciones
     //Eliminar Equipos
     public boolean eliminarEquipo(Usuario user, String id) {
-        Equipo equipo = listarEquipo(id);
-        if (equipo != null) {
-            int acumulador = 0;
-            for (Equipo i : listaEquipos) {
-                if (i.getId().equals(id)) {
-                    listaEquipos.remove(acumulador);
-                    return Boolean.TRUE;
-                }
-                acumulador++;
-            }
+        try {
+            return eliminarEnFirebase(id);
+        } catch (Exception e) {
+            System.out.println("Error" + e);
+            return false;
         }
-        JOptionPane.showMessageDialog(null, "Equipo no encontrado, no pudo eliminarse", "Error", JOptionPane.ERROR_MESSAGE);
-        return Boolean.FALSE;
     }
 }
