@@ -15,6 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
+import model.Laboratorio;
 import model.Usuario;
 
 public class GeneralProvider {
@@ -76,11 +77,11 @@ public class GeneralProvider {
                 String s1 = document.getString("privilegios");
                 String replace = s1.replace("[", "").replace("]", "");
                 List<String> privileges = new ArrayList<>(Arrays.asList(replace.split(",")));*/
-                
+
                 //crear user cada vez con parse
-                Usuario user = new Usuario(document.getString("username"), document.getString("contrasena"), document.getString("nombreCompleto"), document.getString("rol"),document.getString("estado"));
+                Usuario user = new Usuario(document.getString("username"), document.getString("contrasena"), document.getString("nombreCompleto"), document.getString("rol"), document.getString("estado"));
                 user.setId(document.getId());
-                
+
                 //listaUsers.crearUsuarioLocal(user);
                 listaUsuarios.add(user);
             }
@@ -89,31 +90,25 @@ public class GeneralProvider {
         }
         return listaUsuarios;
     }
-    /*
-    public static ArrayList<Televisor> cargarInfoTelevisor() {
-        ListaDeTelevisores listaTv = new ListaDeTelevisores();
+
+    public static ArrayList<Laboratorio> cargarInfoLaboratorios() {
+        //ListaDeUsuarios listaUsers = new ListaDeUsuarios();
+        ArrayList<Laboratorio> listaLaboratorios = new ArrayList<>();
+
         try {
-            CollectionReference televisores = Conexion.db.collection("Televisores");
-            ApiFuture<QuerySnapshot> querySnap = televisores.get();
+            CollectionReference laboratorios = Conexion.db.collection("Laboratorios");
+            ApiFuture<QuerySnapshot> querySnap = laboratorios.get();
             for (DocumentSnapshot document : querySnap.get().getDocuments()) {
-                String TDT;
-                if ("false".equals(document.getString("TDT"))) {
-                    TDT = "No";
-                } else {
-                    TDT = "Si";
-                }
-                listaTv.crearTelevisorLocal(document.getId(),
-                        document.getString("precioBase"),
-                        document.getString("color"),
-                        document.getString("consumoEnergetico"),
-                        document.getString("peso"),
-                        document.getString("pulgadas"),
-                        TDT
-                );
+                //crear user cada vez con parse
+                Laboratorio labo = new Laboratorio(document.getString("nombreLaboratorio"), document.getString("facultad"), document.getString("escuela"), document.getString("departamento"), document.getString("administrador"));
+                labo.setId(document.getId());
+
+                //listaUsers.crearUsuarioLocal(user);
+                listaLaboratorios.add(labo);
             }
         } catch (InterruptedException | ExecutionException e) {
-            System.out.println("Error al obtener: " + e.getMessage());
+            System.out.println("Error al obtener lista: " + e.getMessage());
         }
-        return listaTv.getListaLocal();
-    }*/
+        return listaLaboratorios;
+    }
 }

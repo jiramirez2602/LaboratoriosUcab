@@ -108,6 +108,14 @@ public class Laboratorio {
         return departamento;
     }
 
+    public void setIdAdministrador(String idAdministrador) {
+        this.idAdministrador = idAdministrador;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public void setNombreLaboratorio(String nombreLaboratorio) {
         this.nombreLaboratorio = nombreLaboratorio;
     }
