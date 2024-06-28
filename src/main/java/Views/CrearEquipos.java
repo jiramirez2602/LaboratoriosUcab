@@ -4,8 +4,11 @@
  */
 package Views;
 
+import controller.ListaDeEquipos;
+import controller.ListaLaboratorios;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
+import model.Usuario;
 
 /**
  *
@@ -13,9 +16,14 @@ import javax.swing.JPanel;
  */
 public class CrearEquipos extends javax.swing.JPanel {
     
-    
-    public CrearEquipos() {
+    private Usuario userActual;
+    private ListaLaboratorios listalaboratorios;
+    private ListaDeEquipos listaequipos;
+    public CrearEquipos(Usuario user,ListaLaboratorios listaLab,ListaDeEquipos equipos ) {
         initComponents();
+        this.userActual=user;
+        this.listalaboratorios=listaLab;
+        this.listaequipos=equipos;
     }
     
       private void MostrarJpanel(JPanel p){
@@ -241,7 +249,7 @@ public class CrearEquipos extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void CrearEquipoSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearEquipoSiguienteActionPerformed
-        MostrarJpanel(new CrearEquipos2());
+        MostrarJpanel(new CrearEquipos2(userActual,listalaboratorios,listaequipos));
     }//GEN-LAST:event_CrearEquipoSiguienteActionPerformed
 
 

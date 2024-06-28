@@ -4,8 +4,12 @@
  */
 package Views;
 
+import controller.ListaDeEquipos;
+import controller.ListaDeUsuarios;
+import controller.ListaLaboratorios;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
+import model.Usuario;
 
 /**
  *
@@ -13,9 +17,15 @@ import javax.swing.JPanel;
  */
 public class CrearEquipos2 extends javax.swing.JPanel {
     
+    private Usuario userActual;
+    private ListaLaboratorios listalaboratorios;
+    private ListaDeEquipos listaequipos;
     
-    public CrearEquipos2() {
+    public CrearEquipos2(Usuario user,ListaLaboratorios listaLab,ListaDeEquipos equipos ) {
         initComponents();
+        this.userActual=user;
+        this.listalaboratorios=listaLab;
+        this.listaequipos=equipos;
     }
     
       private void MostrarJpanel(JPanel p){

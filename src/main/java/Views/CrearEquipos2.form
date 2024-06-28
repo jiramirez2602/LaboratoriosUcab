@@ -51,11 +51,9 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                               <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
-                              <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="UltimoMantenimientoTXT" alignment="0" pref="389" max="32767" attributes="0"/>
-                                  <Component id="AplicacionTXT" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="nameLbl3" alignment="0" min="-2" pref="210" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="UltimoMantenimientoTXT" alignment="0" max="32767" attributes="0"/>
+                              <Component id="AplicacionTXT" alignment="0" max="32767" attributes="0"/>
+                              <Component id="nameLbl3" alignment="0" min="-2" pref="210" max="-2" attributes="0"/>
                               <Component id="UltimaCalibracionTXT" alignment="0" min="-2" pref="389" max="-2" attributes="0"/>
                               <Component id="ProvedorServiciosTXT" alignment="0" min="-2" pref="389" max="-2" attributes="0"/>
                               <Component id="nameLbl8" alignment="0" min="-2" pref="165" max="-2" attributes="0"/>
