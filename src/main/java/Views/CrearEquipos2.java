@@ -8,6 +8,7 @@ import controller.ListaDeEquipos;
 import controller.ListaDeUsuarios;
 import controller.ListaLaboratorios;
 import java.awt.BorderLayout;
+import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -53,6 +54,12 @@ public class CrearEquipos2 extends javax.swing.JPanel {
         this.procesable = procesable;
         this.materialRequerido = materialRequerido;
         this.añoDeCompra = añoDeCompra;
+        initLabDisponible();
+        LabDisponible.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            LabDisponibleActionPerformed(evt);
+        }
+    });
     }
     
       private void MostrarJpanel(JPanel p){
@@ -63,7 +70,21 @@ public class CrearEquipos2 extends javax.swing.JPanel {
         BackgroundCrearEquipos2.revalidate();
         BackgroundCrearEquipos2.repaint();
     }
-    
+    private void initLabDisponible() {
+        ArrayList<Laboratorio> laboratorios = listalaboratorios.getListaLaboratorios();
+        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
+
+        for (Laboratorio lab : laboratorios) {
+            model.addElement(lab.getNombreLaboratorio());
+        }
+
+        LabDisponible.setModel(model);
+    }
+
+    private void LabDisponibleActionPerformed(java.awt.event.ActionEvent evt) {                                              
+        String nombreLaboratorioSeleccionado = (String) LabDisponible.getSelectedItem();
+        String idLaboratorio = listalaboratorios.listarLaboratorioPorNombre(nombreLaboratorioSeleccionado);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -101,6 +122,8 @@ public class CrearEquipos2 extends javax.swing.JPanel {
         nameLbl12 = new javax.swing.JLabel();
         InventarioExistenteTXT = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
+        nameLbl11 = new javax.swing.JLabel();
+        LabDisponible = new javax.swing.JComboBox<>();
 
         BackgroundCrearEquipos2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -159,6 +182,10 @@ public class CrearEquipos2 extends javax.swing.JPanel {
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator2.setPreferredSize(new java.awt.Dimension(200, 10));
 
+        nameLbl11.setText("Escoja el laboratorio a asignar:");
+
+        LabDisponible.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout BackgroundCrearEquipos2Layout = new javax.swing.GroupLayout(BackgroundCrearEquipos2);
         BackgroundCrearEquipos2.setLayout(BackgroundCrearEquipos2Layout);
         BackgroundCrearEquipos2Layout.setHorizontalGroup(
@@ -196,42 +223,45 @@ public class CrearEquipos2 extends javax.swing.JPanel {
                             .addGroup(BackgroundCrearEquipos2Layout.createSequentialGroup()
                                 .addComponent(ProvedorServicioTXT)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 1, Short.MAX_VALUE))
                     .addGroup(BackgroundCrearEquipos2Layout.createSequentialGroup()
-                        .addGroup(BackgroundCrearEquipos2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(BackgroundCrearEquipos2Layout.createSequentialGroup()
-                                .addComponent(nameLbl6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(25, 25, 25))
-                            .addComponent(ProximaCalibracionTXT))
-                        .addGap(24, 24, 24)))
+                        .addComponent(nameLbl6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(49, 49, 49))
+                    .addGroup(BackgroundCrearEquipos2Layout.createSequentialGroup()
+                        .addComponent(ProximaCalibracionTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
                 .addGroup(BackgroundCrearEquipos2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ObservacionesTXT)
                     .addGroup(BackgroundCrearEquipos2Layout.createSequentialGroup()
-                        .addComponent(CrearEquiposFinal, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
-                        .addGap(1, 1, 1))
+                        .addGroup(BackgroundCrearEquipos2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ObservacionesTXT)
+                            .addGroup(BackgroundCrearEquipos2Layout.createSequentialGroup()
+                                .addComponent(nameLbl10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(187, 187, 187))
+                            .addGroup(BackgroundCrearEquipos2Layout.createSequentialGroup()
+                                .addComponent(nameLbl8, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
+                                .addGap(319, 319, 319))
+                            .addGroup(BackgroundCrearEquipos2Layout.createSequentialGroup()
+                                .addComponent(EncendidoNocheSi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(26, 26, 26)
+                                .addComponent(EncendidoNocheNo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(333, 333, 333))
+                            .addComponent(NombreProductoTXT, javax.swing.GroupLayout.DEFAULT_SIZE, 431, Short.MAX_VALUE)
+                            .addGroup(BackgroundCrearEquipos2Layout.createSequentialGroup()
+                                .addComponent(nameLbl9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(243, 243, 243))
+                            .addComponent(InventarioExistenteTXT)
+                            .addGroup(BackgroundCrearEquipos2Layout.createSequentialGroup()
+                                .addComponent(nameLbl12, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(CrearEquiposFinal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 431, Short.MAX_VALUE)
+                            .addComponent(nameLbl11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(157, 157, 157))
                     .addGroup(BackgroundCrearEquipos2Layout.createSequentialGroup()
-                        .addComponent(nameLbl10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(187, 187, 187))
-                    .addGroup(BackgroundCrearEquipos2Layout.createSequentialGroup()
-                        .addComponent(nameLbl8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(319, 319, 319))
-                    .addGroup(BackgroundCrearEquipos2Layout.createSequentialGroup()
-                        .addComponent(EncendidoNocheSi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(26, 26, 26)
-                        .addComponent(EncendidoNocheNo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(333, 333, 333))
-                    .addComponent(NombreProductoTXT, javax.swing.GroupLayout.DEFAULT_SIZE, 431, Short.MAX_VALUE)
-                    .addGroup(BackgroundCrearEquipos2Layout.createSequentialGroup()
-                        .addComponent(nameLbl9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(243, 243, 243))
-                    .addComponent(InventarioExistenteTXT)
-                    .addGroup(BackgroundCrearEquipos2Layout.createSequentialGroup()
-                        .addComponent(nameLbl12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(243, 243, 243)))
-                .addGap(157, 157, 157))
+                        .addComponent(LabDisponible, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         BackgroundCrearEquipos2Layout.setVerticalGroup(
             BackgroundCrearEquipos2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -240,7 +270,7 @@ public class CrearEquipos2 extends javax.swing.JPanel {
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(7, 7, 7)
                 .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(35, 35, 35)
+                .addGap(31, 31, 31)
                 .addGroup(BackgroundCrearEquipos2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(BackgroundCrearEquipos2Layout.createSequentialGroup()
                         .addComponent(nameLbl1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -269,32 +299,36 @@ public class CrearEquipos2 extends javax.swing.JPanel {
                         .addGap(12, 12, 12))
                     .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, BackgroundCrearEquipos2Layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addGroup(BackgroundCrearEquipos2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(BackgroundCrearEquipos2Layout.createSequentialGroup()
-                                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(BackgroundCrearEquipos2Layout.createSequentialGroup()
-                                .addComponent(nameLbl8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(BackgroundCrearEquipos2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(EncendidoNocheNo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(EncendidoNocheSi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(18, 18, 18)
-                                .addComponent(nameLbl9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(10, 10, 10)
-                                .addComponent(NombreProductoTXT)
-                                .addGap(15, 15, 15)
-                                .addComponent(nameLbl12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(10, 10, 10)
-                                .addComponent(InventarioExistenteTXT)
-                                .addGap(18, 18, 18)
-                                .addComponent(nameLbl10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ObservacionesTXT)
-                                .addGap(42, 42, 42)
-                                .addComponent(CrearEquiposFinal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                        .addGap(12, 12, 12)
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 2, Short.MAX_VALUE)))
                 .addGap(80, 80, 80))
+            .addGroup(BackgroundCrearEquipos2Layout.createSequentialGroup()
+                .addGap(93, 93, 93)
+                .addComponent(nameLbl8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(BackgroundCrearEquipos2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(EncendidoNocheNo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(EncendidoNocheSi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(nameLbl9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(NombreProductoTXT)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(nameLbl12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(InventarioExistenteTXT)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(nameLbl10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ObservacionesTXT)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(nameLbl11)
+                .addGap(18, 18, 18)
+                .addComponent(LabDisponible, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(84, 84, 84)
+                .addComponent(CrearEquiposFinal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(56, 56, 56))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -321,7 +355,6 @@ public class CrearEquipos2 extends javax.swing.JPanel {
         String inventarioExistente = InventarioExistenteTXT.getText();
         String observaciones = ObservacionesTXT.getText();
         
-        MostrarJpanel(new CrearEquiposUltimo(userActual, listalaboratorios, listaequipos, aplicacion, ultimoMantenimiento, proximoMantenimiento, ultimaCalibracion, proximaCalibracion, proovedoresDeServicios, encendidoDenoche, nombreProducto, inventarioExistente, observaciones));
     }//GEN-LAST:event_CrearEquiposFinalActionPerformed
 
 
@@ -333,6 +366,7 @@ public class CrearEquipos2 extends javax.swing.JPanel {
     private javax.swing.JRadioButton EncendidoNocheNo;
     private javax.swing.JRadioButton EncendidoNocheSi;
     private javax.swing.JTextField InventarioExistenteTXT;
+    private javax.swing.JComboBox<String> LabDisponible;
     private javax.swing.JTextField NombreProductoTXT;
     private javax.swing.JTextField ObservacionesTXT;
     private javax.swing.JTextField ProvedorServicioTXT;
@@ -346,6 +380,7 @@ public class CrearEquipos2 extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel nameLbl1;
     private javax.swing.JLabel nameLbl10;
+    private javax.swing.JLabel nameLbl11;
     private javax.swing.JLabel nameLbl12;
     private javax.swing.JLabel nameLbl3;
     private javax.swing.JLabel nameLbl4;

@@ -1,11 +1,13 @@
 package Views;
 
+
 import controller.ListaDeEquipos;
 import controller.ListaLaboratorios;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.JPanel;
 import model.Usuario;
+
 
 public class Equipos extends javax.swing.JPanel {
     
@@ -20,24 +22,21 @@ public class Equipos extends javax.swing.JPanel {
         initComponents();
         InitStyles();
     }
-
+    
     private void InitStyles() {
         title.putClientProperty("FlatLaf.styleClass", "h1");
         title.setForeground(Color.black);
         userSearch.putClientProperty("JTextField.placeholderText", "Ingrese el nombre de usuario a buscar.");
     }
-
     
-      private void MostrarJpanel(JPanel p){
-        p.setSize(1180,780);   
+    private void MostrarJPanel(JPanel p) {
+        p.setSize(1180, 556);
         p.setLocation(0,0);
         BackgroundEquipos.removeAll();
-        BackgroundEquipos.add(p,BorderLayout.CENTER);
+        BackgroundEquipos.add(p, BorderLayout.CENTER);
         BackgroundEquipos.revalidate();
         BackgroundEquipos.repaint();
     }
-    
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -50,7 +49,7 @@ public class Equipos extends javax.swing.JPanel {
         BackgroundEquipos = new javax.swing.JPanel();
         title = new javax.swing.JLabel();
         userSearch = new javax.swing.JTextField();
-        BotonBuscarEquipo = new javax.swing.JButton();
+        BotonBuscarLab = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         BotonEliminarEquipo = new javax.swing.JButton();
@@ -63,15 +62,15 @@ public class Equipos extends javax.swing.JPanel {
 
         title.setText("Equipos");
 
-        BotonBuscarEquipo.setBackground(new java.awt.Color(18, 90, 173));
-        BotonBuscarEquipo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        BotonBuscarEquipo.setForeground(new java.awt.Color(255, 255, 255));
-        BotonBuscarEquipo.setText("Buscar");
-        BotonBuscarEquipo.setBorderPainted(false);
-        BotonBuscarEquipo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        BotonBuscarEquipo.addActionListener(new java.awt.event.ActionListener() {
+        BotonBuscarLab.setBackground(new java.awt.Color(18, 90, 173));
+        BotonBuscarLab.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        BotonBuscarLab.setForeground(new java.awt.Color(255, 255, 255));
+        BotonBuscarLab.setText("Buscar");
+        BotonBuscarLab.setBorderPainted(false);
+        BotonBuscarLab.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        BotonBuscarLab.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonBuscarEquipoActionPerformed(evt);
+                BotonBuscarLabActionPerformed(evt);
             }
         });
 
@@ -140,7 +139,6 @@ public class Equipos extends javax.swing.JPanel {
                         .addGap(699, 699, 699))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackgroundEquiposLayout.createSequentialGroup()
                         .addGroup(BackgroundEquiposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(BackgroundEquiposLayout.createSequentialGroup()
                                 .addGap(427, 427, 427)
                                 .addComponent(BotonCrearEquipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -151,8 +149,11 @@ public class Equipos extends javax.swing.JPanel {
                             .addGroup(BackgroundEquiposLayout.createSequentialGroup()
                                 .addComponent(userSearch)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(BotonBuscarEquipo)))
-                        .addGap(50, 50, 50))))
+                                .addComponent(BotonBuscarLab)))
+                        .addGap(50, 50, 50))
+                    .addGroup(BackgroundEquiposLayout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 702, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         BackgroundEquiposLayout.setVerticalGroup(
             BackgroundEquiposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -160,17 +161,17 @@ public class Equipos extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(BackgroundEquiposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(userSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BotonBuscarEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 336, Short.MAX_VALUE)
+                .addGroup(BackgroundEquiposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(userSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BotonBuscarLab, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+                .addGap(48, 48, 48)
                 .addGroup(BackgroundEquiposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotonEliminarEquipo)
                     .addComponent(BotonModificarEquipo)
                     .addComponent(BotonCrearEquipo))
-                .addGap(25, 25, 25))
+                .addGap(31, 31, 31))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -190,25 +191,25 @@ public class Equipos extends javax.swing.JPanel {
     }//GEN-LAST:event_jTable1MousePressed
 
     private void BotonCrearEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCrearEquipoActionPerformed
-        MostrarJpanel(new CrearEquipos(userActual,listalaboratorios,listaequipos));
+        MostrarJPanel(new CrearEquipos(userActual,listalaboratorios,listaequipos));
     }//GEN-LAST:event_BotonCrearEquipoActionPerformed
 
     private void BotonEliminarEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarEquipoActionPerformed
-     
+        
     }//GEN-LAST:event_BotonEliminarEquipoActionPerformed
 
     private void BotonModificarEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarEquipoActionPerformed
-        
+       
     }//GEN-LAST:event_BotonModificarEquipoActionPerformed
 
-    private void BotonBuscarEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBuscarEquipoActionPerformed
+    private void BotonBuscarLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBuscarLabActionPerformed
        
-    }//GEN-LAST:event_BotonBuscarEquipoActionPerformed
+    }//GEN-LAST:event_BotonBuscarLabActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BackgroundEquipos;
-    private javax.swing.JButton BotonBuscarEquipo;
+    private javax.swing.JButton BotonBuscarLab;
     private javax.swing.JButton BotonCrearEquipo;
     private javax.swing.JButton BotonEliminarEquipo;
     private javax.swing.JButton BotonModificarEquipo;

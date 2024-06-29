@@ -142,11 +142,11 @@
                           <Component id="nameLbl11" min="-2" pref="22" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                           <Component id="AñodeCompraTXT" min="-2" pref="33" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="CrearEquipoSiguiente" min="-2" pref="47" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="59" max="32767" attributes="0"/>
+                  <EmptySpace pref="70" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
