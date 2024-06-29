@@ -9,11 +9,13 @@ import java.util.Map;
 import javax.swing.JOptionPane;
 import model.Laboratorio;
 import model.SustanciaQuimica;
+import model.Transaccion;
 import model.Usuario;
 
 public class ListaDeSustanciasQuimicas {
 
     ArrayList<SustanciaQuimica> listaSustancias;
+    ListaDeTransacciones listaDeTransacciones = new ListaDeTransacciones();
 
     //FIREBASE
     public boolean guardarEnFirebase(SustanciaQuimica sustancia) {
@@ -98,7 +100,6 @@ public class ListaDeSustanciasQuimicas {
         this.listaSustancias = listaSustancias;
     }
 
-    //TODO: Agregar logica de transacciones
     //Crear producto Sustancia Quimica
     public boolean crearProductoSustanciaQuimica(Usuario user, String formulaQuimica, String concentracion, String presentacion, String nombreComercial, Boolean poseeMSD, String numeroDeIdentificacion, String grupoDeRiesgo, String fraseR, String fraseS, String metodoDeControl, String permisos, String unidad, String precioEstimado, String proveedor, String almacenadoEnvasado, String nombreProducto, String inventarioExistente, String observaciones, String idLaboratorio) {
         Validador validador = new Validador();
@@ -142,6 +143,7 @@ public class ListaDeSustanciasQuimicas {
 
             SustanciaQuimica sustanciaAux = new SustanciaQuimica(formulaQuimica, concentracion, presentacion, nombreComercial, poseeMSD, numeroDeIdentificacion, grupoDeRiesgo, fraseR, fraseS, metodoDeControl, permisos, unidad, precioEstimadoAux, proveedor, almacenadoEnvasado, nombreProducto, inventarioExistenteAux, observaciones, idLaboratorio);
             guardarEnFirebase(sustanciaAux);
+            listaDeTransacciones.guardarEnFirebase(new Transaccion(sustanciaAux, user, "Crear Sustancia Química"));
             return true;
         }
     }
@@ -176,7 +178,6 @@ public class ListaDeSustanciasQuimicas {
 //        }
 //        return null;
 //    }
-    //TODO: Agregar logica de transacciones
     //Modifica Equipos
     public boolean modificarSustancia(Usuario user, String id, String formulaQuimica, String concentracion, String presentacion, String nombreComercial, Boolean poseeMSD, String numeroDeIdentificacion, String grupoDeRiesgo, String fraseR, String fraseS, String metodoDeControl, String permisos, String unidad, String precioEstimado, String proveedor, String almacenadoEnvasado, String nombreProducto, String inventarioExistente, String observaciones, String idLaboratorio) {
         Validador validador = new Validador();
@@ -219,15 +220,19 @@ public class ListaDeSustanciasQuimicas {
 
             SustanciaQuimica sustanciaAux = new SustanciaQuimica(formulaQuimica, concentracion, presentacion, nombreComercial, poseeMSD, numeroDeIdentificacion, grupoDeRiesgo, fraseR, fraseS, metodoDeControl, permisos, unidad, precioEstimadoAux, proveedor, almacenadoEnvasado, nombreProducto, inventarioExistenteAux, observaciones, idLaboratorio);
             sustanciaAux.setId(id);
-            return actualizarEnFirebase(sustanciaAux);
+            actualizarEnFirebase(sustanciaAux);
+            listaDeTransacciones.guardarEnFirebase(new Transaccion(sustanciaAux, user, "Modificar Sustancia Quimica"));
+            return true;
         }
     }
 
-    //TODO: Agregar logica de transacciones
     //Eliminar Equipos
     public boolean eliminarSustanciaQuimica(Usuario user, String id) {
         try {
-            return eliminarEnFirebase(id);
+            SustanciaQuimica sustancia = listarSustanciaQuimica(id);
+            eliminarEnFirebase(id);
+            listaDeTransacciones.guardarEnFirebase(new Transaccion(sustancia, user, "Eliminar Sustancia Química"));
+            return true;
         } catch (Exception e) {
             System.out.println("Error" + e);
             return false;
