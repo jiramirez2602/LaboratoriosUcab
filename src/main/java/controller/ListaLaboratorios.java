@@ -13,7 +13,7 @@ public class ListaLaboratorios {
     ArrayList<Laboratorio> lista;
 
     public ListaLaboratorios() {
-        lista = new ArrayList();
+        lista = GeneralProvider.cargarInfoLaboratorios();
     }
 
     //MÉTODOS FIREBASE//
