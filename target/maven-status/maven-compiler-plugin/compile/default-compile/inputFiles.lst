@@ -11,10 +11,13 @@ C:\Users\derno\OneDrive\Documentos\GitHub\ProyectoPooFinal\src\main\java\model\E
 C:\Users\derno\OneDrive\Documentos\GitHub\ProyectoPooFinal\src\main\java\Views\Productos.java
 C:\Users\derno\OneDrive\Documentos\GitHub\ProyectoPooFinal\src\main\java\firebase\Conexion.java
 C:\Users\derno\OneDrive\Documentos\GitHub\ProyectoPooFinal\src\main\java\model\Laboratorio.java
+C:\Users\derno\OneDrive\Documentos\GitHub\ProyectoPooFinal\src\main\java\Views\CrearEquiposUltimo.java
 C:\Users\derno\OneDrive\Documentos\GitHub\ProyectoPooFinal\src\main\java\model\SustanciaQuimica.java
 C:\Users\derno\OneDrive\Documentos\GitHub\ProyectoPooFinal\src\main\java\Views\ModificarUsuario.java
+C:\Users\derno\OneDrive\Documentos\GitHub\ProyectoPooFinal\src\main\java\Views\ModificarLaboratorio.java
 C:\Users\derno\OneDrive\Documentos\GitHub\ProyectoPooFinal\src\main\java\Views\Reportes.java
 C:\Users\derno\OneDrive\Documentos\GitHub\ProyectoPooFinal\src\main\java\controller\ListaDeEquipos.java
+C:\Users\derno\OneDrive\Documentos\GitHub\ProyectoPooFinal\src\main\java\Views\CrearEquipos.java
 C:\Users\derno\OneDrive\Documentos\GitHub\ProyectoPooFinal\src\main\java\Views\SustanciasQuimicas.java
 C:\Users\derno\OneDrive\Documentos\GitHub\ProyectoPooFinal\src\main\java\model\Usuario.java
 C:\Users\derno\OneDrive\Documentos\GitHub\ProyectoPooFinal\src\main\java\model\Producto.java
@@ -24,6 +27,8 @@ C:\Users\derno\OneDrive\Documentos\GitHub\ProyectoPooFinal\src\main\java\firebas
 C:\Users\derno\OneDrive\Documentos\GitHub\ProyectoPooFinal\src\main\java\Views\Principal.java
 C:\Users\derno\OneDrive\Documentos\GitHub\ProyectoPooFinal\src\main\java\controller\Validador.java
 C:\Users\derno\OneDrive\Documentos\GitHub\ProyectoPooFinal\src\main\java\Views\Equipos.java
+C:\Users\derno\OneDrive\Documentos\GitHub\ProyectoPooFinal\src\main\java\Views\CrearEquipos2.java
 C:\Users\derno\OneDrive\Documentos\GitHub\ProyectoPooFinal\src\main\java\Views\Usuarios.java
+C:\Users\derno\OneDrive\Documentos\GitHub\ProyectoPooFinal\src\main\java\Views\CrearLaboratorios.java
 C:\Users\derno\OneDrive\Documentos\GitHub\ProyectoPooFinal\src\main\java\controller\ListaLaboratorios.java
 C:\Users\derno\OneDrive\Documentos\GitHub\ProyectoPooFinal\src\main\java\controller\ListaDeSustanciasQuimicas.java
