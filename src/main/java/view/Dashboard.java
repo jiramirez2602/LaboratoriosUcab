@@ -12,6 +12,7 @@ import Views.Usuarios;
 import Views.Principal;
 import Views.Transacciones;
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialLighterIJTheme;
+import controller.ListaDeEquipos;
 import controller.ListaDeUsuarios;
 import controller.ListaLaboratorios;
 import java.awt.BorderLayout;
@@ -32,8 +33,9 @@ public class Dashboard extends javax.swing.JFrame {
     private ListaDeUsuarios listaUsuarios;
     private ListaLaboratorios listalaboratorios;
     private Usuario userActual;
+    private ListaDeEquipos listaequipos;
 
-    public Dashboard(Usuario user,ListaDeUsuarios users, ListaLaboratorios laboratorios) {
+    public Dashboard(Usuario user,ListaDeUsuarios users, ListaLaboratorios laboratorios,ListaDeEquipos equipos) {
         initComponents();
         InitStyles();
         SetDate();
@@ -41,6 +43,7 @@ public class Dashboard extends javax.swing.JFrame {
         setIconImage(new ImageIcon(getClass().getResource("/file.png")).getImage());
         this.listaUsuarios=users;
         this.listalaboratorios=laboratorios;
+        this.listaequipos = equipos;
         this.userActual=user;
         usuarioLabel.setText(userActual.getUsername());
     }
@@ -68,6 +71,7 @@ public class Dashboard extends javax.swing.JFrame {
         content.revalidate();
         content.repaint();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -326,7 +330,7 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonLaboratoriosActionPerformed
 
     private void BotonProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonProductosActionPerformed
-        ShowJPanel(new Productos());
+        ShowJPanel(new Productos(userActual,listalaboratorios,listaequipos));
     }//GEN-LAST:event_BotonProductosActionPerformed
 
     private void BotonTransaccionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonTransaccionesActionPerformed

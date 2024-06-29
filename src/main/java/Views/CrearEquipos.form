@@ -6,6 +6,8 @@
     </Component>
     <Component class="javax.swing.ButtonGroup" name="Estado">
     </Component>
+    <Component class="javax.swing.ButtonGroup" name="Procesable">
+    </Component>
   </NonVisualComponents>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -22,10 +24,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <Component id="BackgroundCrearEquipo1" pref="1135" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-          </Group>
+          <Component id="BackgroundCrearEquipo1" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -45,139 +44,109 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" attributes="0">
                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="jLabel1" max="32767" attributes="0"/>
-                          <EmptySpace min="-2" pref="1004" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="nameLbl1" max="32767" attributes="0"/>
-                                  <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="MarcaTXT" alignment="0" pref="389" max="32767" attributes="0"/>
-                                          <Component id="DescripcionTXT" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="nameLbl3" alignment="0" min="-2" pref="134" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="ModeloTXT" alignment="0" pref="389" max="32767" attributes="0"/>
-                                          <Component id="nameLbl5" alignment="0" min="-2" pref="134" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="NumSerialTXT" alignment="0" min="-2" pref="389" max="-2" attributes="0"/>
-                                      <Component id="nameLbl7" alignment="0" min="-2" pref="165" max="-2" attributes="0"/>
-                                      <Component id="NumActivoTXT" alignment="0" min="-2" pref="389" max="-2" attributes="0"/>
-                                      <Component id="nameLbl8" alignment="0" min="-2" pref="165" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="nameLbl1" min="-2" pref="339" max="-2" attributes="0"/>
+                              <Component id="DescripcionTXT" min="-2" pref="380" max="-2" attributes="0"/>
+                              <Component id="nameLbl3" min="-2" pref="125" max="-2" attributes="0"/>
+                              <Component id="MarcaTXT" min="-2" pref="380" max="-2" attributes="0"/>
+                              <Component id="nameLbl5" min="-2" pref="125" max="-2" attributes="0"/>
+                              <Component id="ModeloTXT" min="-2" pref="380" max="-2" attributes="0"/>
+                              <Component id="nameLbl7" min="-2" pref="156" max="-2" attributes="0"/>
+                              <Component id="NumSerialTXT" min="-2" pref="380" max="-2" attributes="0"/>
+                              <Component id="nameLbl8" min="-2" pref="156" max="-2" attributes="0"/>
+                              <Component id="NumActivoTXT" min="-2" pref="380" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                           <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="nameLbl6" min="-2" pref="301" max="-2" attributes="0"/>
+                              <Component id="PresentacionTXT" min="-2" pref="439" max="-2" attributes="0"/>
+                              <Component id="nameLbl4" min="-2" pref="132" max="-2" attributes="0"/>
+                              <Component id="VoltajeTXT" min="-2" pref="439" max="-2" attributes="0"/>
+                              <Component id="nameLbl9" min="-2" pref="132" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="nameLbl6" max="32767" attributes="0"/>
-                                          <EmptySpace min="-2" pref="185" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="PresentacionTXT" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="VoltajeTXT" alignment="0" min="-2" pref="430" max="-2" attributes="0"/>
-                                          <Component id="nameLbl4" alignment="0" min="-2" pref="123" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="193" max="-2" attributes="0"/>
+                                  <Component id="ProcesableSIRadioBtton" min="-2" pref="37" max="-2" attributes="0"/>
+                                  <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
+                                  <Component id="ProcesableNoRadioBtton" min="-2" pref="43" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="CrearEquipoSiguiente" alignment="0" min="-2" pref="430" max="-2" attributes="0"/>
-                                      <Component id="ProcesableTXT" alignment="0" min="-2" pref="430" max="-2" attributes="0"/>
-                                      <Component id="nameLbl9" alignment="0" min="-2" pref="123" max="-2" attributes="0"/>
-                                      <Component id="MaterialRequeridoTXT" alignment="0" min="-2" pref="430" max="-2" attributes="0"/>
-                                      <Component id="MaterialRequeridoTXT1" alignment="0" min="-2" pref="430" max="-2" attributes="0"/>
-                                      <Component id="nameLbl10" alignment="0" min="-2" pref="243" max="-2" attributes="0"/>
-                                      <Component id="nameLbl11" alignment="0" min="-2" pref="159" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="nameLbl10" min="-2" pref="252" max="-2" attributes="0"/>
+                              <Component id="MaterialRequeridoTXT" min="-2" pref="439" max="-2" attributes="0"/>
+                              <Component id="nameLbl11" min="-2" pref="168" max="-2" attributes="0"/>
+                              <Component id="AñodeCompraTXT" min="-2" pref="439" max="-2" attributes="0"/>
+                              <Component id="CrearEquipoSiguiente" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
+                  <EmptySpace min="83" pref="83" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" attributes="0">
                   <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                  <Component id="jLabel1" pref="30" max="32767" attributes="0"/>
+                  <Component id="jLabel1" min="-2" pref="27" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                  <Component id="jLabel2" max="32767" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="jLabel2" min="-2" pref="22" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="jSeparator1" alignment="0" max="32767" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Component id="nameLbl1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="DescripcionTXT" min="-2" pref="95" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="nameLbl3" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="MarcaTXT" min="-2" pref="35" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="nameLbl5" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="ModeloTXT" min="-2" pref="35" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="nameLbl7" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="NumSerialTXT" min="-2" pref="35" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="nameLbl8" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="NumActivoTXT" min="-2" pref="35" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace pref="91" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="nameLbl1" min="-2" pref="19" max="-2" attributes="0"/>
+                          <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
+                          <Component id="DescripcionTXT" min="-2" pref="37" max="-2" attributes="0"/>
+                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                          <Component id="nameLbl3" min="-2" pref="19" max="-2" attributes="0"/>
+                          <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
+                          <Component id="MarcaTXT" min="-2" pref="37" max="-2" attributes="0"/>
+                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                          <Component id="nameLbl5" min="-2" pref="19" max="-2" attributes="0"/>
+                          <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
+                          <Component id="ModeloTXT" min="-2" pref="31" max="-2" attributes="0"/>
+                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                          <Component id="nameLbl7" min="-2" pref="19" max="-2" attributes="0"/>
+                          <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
+                          <Component id="NumSerialTXT" min="-2" pref="36" max="-2" attributes="0"/>
+                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                          <Component id="nameLbl8" min="-2" pref="19" max="-2" attributes="0"/>
+                          <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
+                          <Component id="NumActivoTXT" min="-2" pref="37" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
+                      <Component id="jSeparator1" min="-2" pref="374" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
                           <Component id="nameLbl6" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="PresentacionTXT" min="-2" pref="35" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                          <Component id="PresentacionTXT" min="-2" pref="28" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                           <Component id="nameLbl4" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="VoltajeTXT" min="-2" pref="35" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                          <Component id="VoltajeTXT" min="-2" pref="28" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                           <Component id="nameLbl9" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="ProcesableTXT" min="-2" pref="35" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="ProcesableSIRadioBtton" min="-2" max="-2" attributes="0"/>
+                              <Component id="ProcesableNoRadioBtton" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                           <Component id="nameLbl10" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="MaterialRequeridoTXT" min="-2" pref="35" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="nameLbl11" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="MaterialRequeridoTXT1" min="-2" pref="35" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="CrearEquipoSiguiente" min="-2" pref="46" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="137" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                          <Component id="MaterialRequeridoTXT" min="-2" pref="34" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                          <Component id="nameLbl11" min="-2" pref="22" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                          <Component id="AñodeCompraTXT" min="-2" pref="33" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                          <Component id="CrearEquipoSiguiente" min="-2" pref="47" max="-2" attributes="0"/>
                       </Group>
                   </Group>
+                  <EmptySpace pref="59" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -290,8 +259,6 @@
             <Property name="text" type="java.lang.String" value="Ingrese el procesable:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="ProcesableTXT">
-        </Component>
         <Component class="javax.swing.JLabel" name="nameLbl10">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ingrese el material requerido:"/>
@@ -304,7 +271,17 @@
             <Property name="text" type="java.lang.String" value="Ingrese el a&#xf1;o de compra:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="MaterialRequeridoTXT1">
+        <Component class="javax.swing.JTextField" name="A&#xf1;odeCompraTXT">
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="ProcesableSIRadioBtton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Si"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="ProcesableNoRadioBtton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="No"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

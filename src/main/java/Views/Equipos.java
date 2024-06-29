@@ -1,12 +1,22 @@
 package Views;
 
+import controller.ListaDeEquipos;
+import controller.ListaLaboratorios;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.JPanel;
+import model.Usuario;
 
 public class Equipos extends javax.swing.JPanel {
-
-    public Equipos() {
+    
+    private ListaLaboratorios listalaboratorios;
+    private Usuario userActual;
+    private ListaDeEquipos listaequipos;
+    
+    public Equipos(Usuario user,ListaLaboratorios listaLab,ListaDeEquipos equipos ) {
+        this.listalaboratorios=listaLab;
+        this.listaequipos = equipos;
+        this.userActual=user;
         initComponents();
         InitStyles();
     }
@@ -19,7 +29,7 @@ public class Equipos extends javax.swing.JPanel {
 
     
       private void MostrarJpanel(JPanel p){
-        p.setSize(760,478);   
+        p.setSize(1180,780);   
         p.setLocation(0,0);
         BackgroundEquipos.removeAll();
         BackgroundEquipos.add(p,BorderLayout.CENTER);
@@ -71,24 +81,9 @@ public class Equipos extends javax.swing.JPanel {
 
             },
             new String [] {
-                "ID", "Nombre", "Apellido P.", "Apellido M.", "Domicilio", "Teléfono"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, true, true, true, true, true
-            };
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
             }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         jTable1.getTableHeader().setReorderingAllowed(false);
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -145,6 +140,7 @@ public class Equipos extends javax.swing.JPanel {
                         .addGap(699, 699, 699))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackgroundEquiposLayout.createSequentialGroup()
                         .addGroup(BackgroundEquiposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(BackgroundEquiposLayout.createSequentialGroup()
                                 .addGap(427, 427, 427)
                                 .addComponent(BotonCrearEquipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -152,7 +148,6 @@ public class Equipos extends javax.swing.JPanel {
                                 .addComponent(BotonModificarEquipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(BotonEliminarEquipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(BackgroundEquiposLayout.createSequentialGroup()
                                 .addComponent(userSearch)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -169,7 +164,7 @@ public class Equipos extends javax.swing.JPanel {
                     .addComponent(userSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BotonBuscarEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 336, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(BackgroundEquiposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotonEliminarEquipo)
@@ -195,7 +190,7 @@ public class Equipos extends javax.swing.JPanel {
     }//GEN-LAST:event_jTable1MousePressed
 
     private void BotonCrearEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCrearEquipoActionPerformed
-        
+        MostrarJpanel(new CrearEquipos(userActual,listalaboratorios,listaequipos));
     }//GEN-LAST:event_BotonCrearEquipoActionPerformed
 
     private void BotonEliminarEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarEquipoActionPerformed

@@ -29,11 +29,13 @@ public class Login extends javax.swing.JFrame {
     int yMouse;
     private ListaDeUsuarios usuarios;
     private ListaLaboratorios laboratorios;
+    private ListaDeEquipos equipos;
     //user: Harry1 password: 1234
     public Login() {
         initComponents();
         usuarios= new ListaDeUsuarios();
         laboratorios = new ListaLaboratorios();
+        equipos = new ListaDeEquipos();
         setIconImage(new ImageIcon(getClass().getResource("/file.png")).getImage());
         this.setLocationRelativeTo(null);
     }
@@ -326,7 +328,7 @@ public class Login extends javax.swing.JFrame {
 //            ListaDeSustanciasQuimicas listaSusQui = new ListaDeSustanciasQuimicas();*/
             Usuario usuario = usuarios.iniciarSesion(username.trim(), password.trim());
             if (usuario != null) {
-                Dashboard iniciarMain = new Dashboard(usuario,usuarios,laboratorios);
+                Dashboard iniciarMain = new Dashboard(usuario,usuarios,laboratorios,equipos);
                 iniciarMain.setVisible(true);
                 dispose();
             }

@@ -4,8 +4,11 @@
  */
 package Views;
 
+import controller.ListaDeEquipos;
+import controller.ListaLaboratorios;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
+import model.Usuario;
 
 /**
  *
@@ -13,12 +16,19 @@ import javax.swing.JPanel;
  */
 public class Productos extends javax.swing.JPanel {
     
-    public Productos() {
+    private ListaLaboratorios listalaboratorios;
+    private Usuario userActual;
+    private ListaDeEquipos listaequipos;
+    
+    public Productos(Usuario user,ListaLaboratorios listaLab,ListaDeEquipos equipos) {
+        this.listalaboratorios=listaLab;
+        this.listaequipos = equipos;
+        this.userActual=user;
         initComponents();
     }
     
       private void MostrarJpanel(JPanel p){
-        p.setSize(760,478);   
+        p.setSize(1180,556);   
         p.setLocation(0,0);
         BackgroundTelevisor.removeAll();
         BackgroundTelevisor.add(p,BorderLayout.CENTER);
@@ -153,7 +163,7 @@ public class Productos extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotonEquiposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEquiposActionPerformed
-        MostrarJpanel(new Equipos());
+        MostrarJpanel(new Equipos(userActual,listalaboratorios,listaequipos));
     }//GEN-LAST:event_BotonEquiposActionPerformed
 
     private void BotonSustanciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonSustanciasActionPerformed
