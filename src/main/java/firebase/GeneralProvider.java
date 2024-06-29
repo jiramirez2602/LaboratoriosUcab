@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 import model.Equipo;
+import model.Insumo;
 import model.Laboratorio;
 import model.SustanciaQuimica;
 import model.Usuario;
@@ -166,13 +167,13 @@ public class GeneralProvider {
         ArrayList<SustanciaQuimica> listaSustancia = new ArrayList<>();
 
         try {
-            CollectionReference equipos = Conexion.db.collection("SustanciasQuimicas");
-            ApiFuture<QuerySnapshot> querySnap = equipos.get();
+            CollectionReference sustanciaAux = Conexion.db.collection("SustanciasQuimicas");
+            ApiFuture<QuerySnapshot> querySnap = sustanciaAux.get();
 
             for (DocumentSnapshot document : querySnap.get().getDocuments()) {
                 //crear user cada vez con parse
                 SustanciaQuimica sustancia = new SustanciaQuimica(document.getString("formulaQuimica"),
-                        document.getString("concentracion"),                        
+                        document.getString("concentracion"),
                         document.getString("presentacion"),
                         document.getString("nombreComercial"),
                         Boolean.valueOf(document.getString("poseeMSD")),
@@ -199,5 +200,41 @@ public class GeneralProvider {
             System.out.println("Error al obtener lista: " + e.getMessage());
         }
         return listaSustancia;
+    }
+
+    public static ArrayList<Insumo> cargarInfoInsumos() throws ParseException {
+        ArrayList<Insumo> listaInsumo = new ArrayList<>();
+
+        try {
+            CollectionReference insumoAux = Conexion.db.collection("Insumos");
+            ApiFuture<QuerySnapshot> querySnap = insumoAux.get();
+            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+
+            for (DocumentSnapshot document : querySnap.get().getDocuments()) {
+                //crear user cada vez con parse
+
+                Insumo insum = new Insumo(document.getString("descripcion"),
+                        document.getString("marca"),
+                        document.getString("modelo"),
+                        document.getString("presentacion"),
+                        document.getString("clasificacion"),
+                        document.getString("categoria"),
+                        formatter.parse(document.getString("ultimaCompra")),
+                        Float.parseFloat(document.getString("precioEstimado")),
+                        document.getString("unidad"),
+                        document.getString("proveedor"),
+                        document.getString("nombreProducto"),
+                        Integer.valueOf(document.getString("existencias")),
+                        document.getString("observaciones"),
+                        document.getString("idLaboratorio")
+                );
+                insum.setId(document.getId());
+                //listaUsers.crearUsuarioLocal(user);
+                listaInsumo.add(insum);
+            }
+        } catch (InterruptedException | ExecutionException e) {
+            System.out.println("Error al obtener lista: " + e.getMessage());
+        }
+        return listaInsumo;
     }
 }

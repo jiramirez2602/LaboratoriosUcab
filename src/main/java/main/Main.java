@@ -1,6 +1,7 @@
 package main;
 
 import controller.ListaDeEquipos;
+import controller.ListaDeInsumos;
 import controller.ListaDeSustanciasQuimicas;
 import controller.ListaDeUsuarios;
 import controller.ListaLaboratorios;
@@ -8,6 +9,7 @@ import firebase.Conexion;
 import java.text.ParseException;
 import java.util.ArrayList;
 import model.Equipo;
+import model.Insumo;
 import model.Laboratorio;
 import model.SustanciaQuimica;
 import model.Usuario;
@@ -66,6 +68,7 @@ public class Main {
             System.out.println(elemento.getNombreProducto());
         });
          */
+ /*
         //Sustancia Quimica:
         ListaDeSustanciasQuimicas lista4 = new ListaDeSustanciasQuimicas();
         //lista4.crearProductoSustanciaQuimica(administradorLaboratorio, "H2O", "100", "Liquida", "Agua", Boolean.TRUE, "aaiituktuk", "Riesgo es no tomarla", "NA", "NA", "Tuberias", "Hidro Capial", "ml", "100", "Estado", "Si", "Agua", "3", "No tengo Sed", "af473a5b-ab43-4d1a-8bb1-b6f4cd5e392f");
@@ -81,6 +84,23 @@ public class Main {
             System.out.println(elemento.getId());
             System.out.println(elemento.getNombreProducto());
         });
+         */
+ /*
+        //Insumos
+        ListaDeInsumos lista5 = new ListaDeInsumos();
+        //lista5.crearProductoInsumo(administradorLaboratorio, "descripcion", "BlackAndDecker", "3000", "Acero", "Repuesto", "Taladros", "26/02/2001", "20", "Unidad", "Importadora Harry", "Punta de destornillador", "2", "Estan oxidados", "af473a5b-ab43-4d1a-8bb1-b6f4cd5e392f");
+        //lista5.modificarInsumo(administradorLaboratorio, "85b92edb-f82c-4e4a-8924-8542bac5ba5a","descripcionx", "BlackAndDeckerx", "333", "Acerox", "Repuestox", "Taladrosx", "26/02/2011", "200", "Unidadx", "Importadora Harryx", "Punta de destornilladorx", "22", "Estan oxidadosx", "af473a5b-ab43-4d1a-8bb1-b6f4cd5e392f");
+        //lista5.eliminarInsumo(administradorLaboratorio, "e30f4f3f-ffb0-4c1c-9101-a030a65f7efd");
+        //lista5.getListaInsumos();
 
+        //Iteramos para ejemplificar:
+        ArrayList<Insumo> listaInsumosAux = new ArrayList<>();
+        listaInsumosAux = lista5.getListaInsumos();
+
+        listaInsumosAux.forEach(elemento -> {
+            System.out.println(elemento.getId());
+            System.out.println(elemento.getNombreProducto());
+        });
+         */
     }
 }

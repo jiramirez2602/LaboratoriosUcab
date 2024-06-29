@@ -1,6 +1,7 @@
 package controller;
 
 import firebase.GeneralProvider;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -16,15 +17,26 @@ public class ListaDeInsumos {
 
     ArrayList<Insumo> listaInsumos;
 //FIREBASE
-    public boolean guardarEnFirebase(Laboratorio labo) {
+
+    public boolean guardarEnFirebase(Insumo insumo) {
         try {
+            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
             Map<String, Object> datos = new HashMap<>();
-            datos.put("nombreLaboratorio", String.valueOf(labo.getNombreLaboratorio()));
-            datos.put("facultad", String.valueOf(labo.getFacultad()));
-            datos.put("escuela", String.valueOf(labo.getEscuela()));
-            datos.put("departamento", String.valueOf(labo.getDepartamento()));
-            datos.put("administrador", String.valueOf(labo.getIdAdministrador()));
-            GeneralProvider.guardar("Laboratorios", String.valueOf(labo.getId()), datos);
+            datos.put("descripcion", String.valueOf(insumo.getDescripcion()));
+            datos.put("marca", String.valueOf(insumo.getMarca()));
+            datos.put("modelo", String.valueOf(insumo.getModelo()));
+            datos.put("presentacion", String.valueOf(insumo.getPresentacion()));
+            datos.put("clasificacion", String.valueOf(insumo.getClasificacion()));
+            datos.put("categoria", String.valueOf(insumo.getCategoria()));
+            datos.put("ultimaCompra", String.valueOf(dateFormat.format(insumo.getUltimaCompra())));
+            datos.put("precioEstimado", String.valueOf(insumo.getPrecioEstimado()));
+            datos.put("unidad", String.valueOf(insumo.getUnidad()));
+            datos.put("proveedor", String.valueOf(insumo.getProveedor()));
+            datos.put("nombreProducto", String.valueOf(insumo.getNombreProducto()));
+            datos.put("existencias", String.valueOf(insumo.getInventarioExistente()));
+            datos.put("observaciones", String.valueOf(insumo.getObservaciones()));
+            datos.put("idLaboratorio", String.valueOf(insumo.getLaboratorio()));
+            GeneralProvider.guardar("Insumos", String.valueOf(insumo.getId()), datos);
             JOptionPane.showMessageDialog(null, "Guardado con exito");
             return true;
         } catch (Exception e) {
@@ -33,15 +45,25 @@ public class ListaDeInsumos {
         }
     }
 
-    public boolean actualizarEnFirebase(Laboratorio labo) {
+    public boolean actualizarEnFirebase(Insumo insumo) {
         try {
+            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
             Map<String, Object> datos = new HashMap<>();
-            datos.put("nombreLaboratorio", String.valueOf(labo.getNombreLaboratorio()));
-            datos.put("facultad", String.valueOf(labo.getFacultad()));
-            datos.put("escuela", String.valueOf(labo.getEscuela()));
-            datos.put("departamento", String.valueOf(labo.getDepartamento()));
-            datos.put("administrador", String.valueOf(labo.getIdAdministrador()));
-            GeneralProvider.actualizar("Laboratorios", labo.getId(), datos);
+            datos.put("descripcion", String.valueOf(insumo.getDescripcion()));
+            datos.put("marca", String.valueOf(insumo.getMarca()));
+            datos.put("modelo", String.valueOf(insumo.getModelo()));
+            datos.put("presentacion", String.valueOf(insumo.getPresentacion()));
+            datos.put("clasificacion", String.valueOf(insumo.getClasificacion()));
+            datos.put("categoria", String.valueOf(insumo.getCategoria()));
+            datos.put("ultimaCompra", String.valueOf(dateFormat.format(insumo.getUltimaCompra())));
+            datos.put("precioEstimado", String.valueOf(insumo.getPrecioEstimado()));
+            datos.put("unidad", String.valueOf(insumo.getUnidad()));
+            datos.put("proveedor", String.valueOf(insumo.getProveedor()));
+            datos.put("nombreProducto", String.valueOf(insumo.getNombreProducto()));
+            datos.put("existencias", String.valueOf(insumo.getInventarioExistente()));
+            datos.put("observaciones", String.valueOf(insumo.getObservaciones()));
+            datos.put("idLaboratorio", String.valueOf(insumo.getLaboratorio()));
+            GeneralProvider.actualizar("Insumos", insumo.getId(), datos);
             JOptionPane.showMessageDialog(null, "Actualizado con exito");
             return true;
         } catch (Exception e) {
@@ -52,7 +74,7 @@ public class ListaDeInsumos {
 
     public boolean eliminarEnFirebase(String id) {
         try {
-            GeneralProvider.eliminar("Laboratorios", id);
+            GeneralProvider.eliminar("Insumos", id);
             JOptionPane.showMessageDialog(null, "Eliminado con exito");
             return true;
         } catch (Exception e) {
@@ -60,7 +82,9 @@ public class ListaDeInsumos {
             return false;
         }
     }
-    public ArrayList<Insumo> getListaInsumos() {
+
+    public ArrayList<Insumo> getListaInsumos() throws ParseException {
+        listaInsumos = GeneralProvider.cargarInfoInsumos();
         return listaInsumos;
     }
 
@@ -70,12 +94,12 @@ public class ListaDeInsumos {
 
     //TODO: Agregar logica de transacciones
     //Crear producto Insumo
-    public boolean crearProductoInsumo(Usuario user, String descripcion, String marca, String modelo, String presentacion, String clasificacion, String categoria, String ultimaCompra, String precioEstimado, String unidad, String proveedor, String codigo, String nombreProducto, String inventarioExistente, String observaciones, String idLaboratorio) {
+    public boolean crearProductoInsumo(Usuario user, String descripcion, String marca, String modelo, String presentacion, String clasificacion, String categoria, String ultimaCompra, String precioEstimado, String unidad, String proveedor, String nombreProducto, String inventarioExistente, String observaciones, String idLaboratorio) {
         Validador validador = new Validador();
 
         if (!validador.validarConRegex(descripcion, "^[^\\n]{0,100}$", "Descripcion", "Descripcion es invalido(a), puede usar hasta 100 caractes alfanumericos")
                 || !validador.validarConRegex(marca, "^[^\\n]{0,100}$", "Marca", "Marca es invalido(a), puede usar hasta 100 caractes alfabeticos")
-                || !validador.validarConRegex(modelo, "^[^\\n]{5,100}$", "Modelo", "Modelo es invalido(a), puede usar hasta 100 caractes alfabeticos")
+                || !validador.validarConRegex(modelo, "^[^\\n]{1,100}$", "Modelo", "Modelo es invalido(a), puede usar hasta 100 caractes alfabeticos")
                 || !validador.validarConRegex(presentacion, "^[^\\n]{0,100}$", "Presentacion", "Presentacion es invalido(a), puede usar hasta 100 caractes alfabeticos")
                 || !validador.validarConRegex(clasificacion, "^[^\\n]{0,100}$", "Clasificacion", "Clasificacion es invalido(a), puede usar hasta 100 caractes alfabeticos")
                 || !validador.validarConRegex(categoria, "^[^\\n]{0,100}$", "Categoria", "Categoria es invalido(a), puede usar hasta 100 caractes alfabeticos")
@@ -83,8 +107,7 @@ public class ListaDeInsumos {
                 || !validador.validarConRegex(precioEstimado, "[+-]?((\\d+\\.?\\d*)|(\\.\\d+))", "Precio Estimado", "Precio Estimado es invalido(a), puede usar punto(.) y numeros")
                 || !validador.validarConRegex(unidad, "^[^\\n]{0,10}$", "Unidad", "Unidad es invalido(a), puede usar hasta 10 caractes alfabeticos")
                 || !validador.validarConRegex(proveedor, "^[^\\n]{0,50}$", "Proveedor", "Proveedor es invalido(a), puede usar hasta 50 caractes alfabeticos")
-                || !validador.validarConRegex(codigo, "^[^\\n]{0,100}$", "Codigo", "Codigo es invalido(a), puede usar hasta 100 caractes alfabeticos")
-                || !validador.validarConRegex(nombreProducto, "^[^\\n]{5,50}$", "Nombre Producto", "Nombre Producto es invalido(a), puede usar hasta 50 caractes alfabeticos")
+                || !validador.validarConRegex(nombreProducto, "^[^\\n]{1,50}$", "Nombre Producto", "Nombre Producto es invalido(a), puede usar hasta 50 caractes alfabeticos")
                 || !validador.validarConRegex(inventarioExistente, "^[1-9][0-9]{0,5}(\\.[0-9]{1,2})?$", "Inventario Existente", "Inventario Existente es invalido(a), puede ser hasta de 0 a 999999")
                 || !validador.validarConRegex(observaciones, "^[^\\n]{0,100}$", "Observaciones", "Observaciones es invalido(a), puede usar hasta 100 caractes alfabeticos")) {
             return false;
@@ -116,14 +139,14 @@ public class ListaDeInsumos {
                 return false;
             }
 
-            Insumo insumoAux = new Insumo(descripcion, marca, modelo, presentacion, clasificacion, categoria, ultimaCompraAux, precioEstimadoAux, unidad, proveedor, codigo, nombreProducto, existenciasAux, observaciones, idLaboratorio);
-            listaInsumos.add(insumoAux);
+            Insumo insumoAux = new Insumo(descripcion, marca, modelo, presentacion, clasificacion, categoria, ultimaCompraAux, precioEstimadoAux, unidad, proveedor, nombreProducto, existenciasAux, observaciones, idLaboratorio);
+            guardarEnFirebase(insumoAux);
             return true;
         }
     }
 
     //Listar un insumo con un ID
-    public Insumo listarInsumo(String id) {
+    public Insumo listarInsumo(String id) throws ParseException {
         for (Insumo i : getListaInsumos()) {
             if (i.getId().equals(id)) {
                 return i;
@@ -143,7 +166,6 @@ public class ListaDeInsumos {
 //        }
 //        return listaInsumoAux;
 //    }
-    
 //    //Listar un INSUMO con un nombre de Insumo
 //    public String listarInsumosPorNombre(Usuario usuario, String nombreDeInsumo) {
 //        for (Insumo i : listarInsumoPorUsuario(usuario)) {
@@ -153,89 +175,67 @@ public class ListaDeInsumos {
 //        }
 //        return null;
 //    }
-
     //TODO: Agregar logica de transacciones
     //Modifica Insumos
-    public boolean modificarInsumo(Usuario user, String id, String descripcion, String marca, String modelo, String presentacion, String clasificacion, String categoria, String ultimaCompra, String precioEstimado, String unidad, String proveedor, String codigo, String nombreProducto, String inventarioExistente, String observaciones, String idLaboratorio) {
-        Insumo product = listarInsumo(id);
-        if (product != null) {
-            Validador validador = new Validador();
-            if (!validador.validarConRegex(descripcion, "^[^\\n]{0,100}$", "Descripcion", "Descripcion es invalido(a), puede usar hasta 100 caractes alfanumericos")
-                    || !validador.validarConRegex(marca, "^[^\\n]{0,100}$", "Marca", "Marca es invalido(a), puede usar hasta 100 caractes alfabeticos")
-                    || !validador.validarConRegex(modelo, "^[^\\n]{5,100}$", "Modelo", "Modelo es invalido(a), puede usar hasta 100 caractes alfabeticos")
-                    || !validador.validarConRegex(presentacion, "^[^\\n]{0,100}$", "Presentacion", "Presentacion es invalido(a), puede usar hasta 100 caractes alfabeticos")
-                    || !validador.validarConRegex(clasificacion, "^[^\\n]{0,100}$", "Clasificacion", "Clasificacion es invalido(a), puede usar hasta 100 caractes alfabeticos")
-                    || !validador.validarConRegex(categoria, "^[^\\n]{0,100}$", "Categoria", "Categoria es invalido(a), puede usar hasta 100 caractes alfabeticos")
-                    || !validador.validarConRegex(ultimaCompra, "^([0-2][0-9]|3[0-1])(\\/|-)(0[1-9]|1[0-2])\\2(\\d{4})$", "Ultima Compra", "Ultima Compra es invalido(a), use el formato dd/mm/yyyy")
-                    || !validador.validarConRegex(precioEstimado, "[+-]?((\\d+\\.?\\d*)|(\\.\\d+))", "Precio Estimado", "Precio Estimado es invalido(a), puede usar punto(.) y numeros")
-                    || !validador.validarConRegex(unidad, "^[^\\n]{0,10}$", "Unidad", "Unidad es invalido(a), puede usar hasta 10 caractes alfabeticos")
-                    || !validador.validarConRegex(proveedor, "^[^\\n]{0,50}$", "Proveedor", "Proveedor es invalido(a), puede usar hasta 50 caractes alfabeticos")
-                    || !validador.validarConRegex(codigo, "^[^\\n]{0,100}$", "Codigo", "Codigo es invalido(a), puede usar hasta 100 caractes alfabeticos")
-                    || !validador.validarConRegex(nombreProducto, "^[^\\n]{5,50}$", "Nombre Producto", "Nombre Producto es invalido(a), puede usar hasta 50 caractes alfabeticos")
-                    || !validador.validarConRegex(inventarioExistente, "^[1-9][0-9]{0,5}(\\.[0-9]{1,2})?$", "Inventario Existente", "Inventario Existente es invalido(a), puede ser hasta de 0 a 999999")
-                    || !validador.validarConRegex(observaciones, "^[^\\n]{0,100}$", "Observaciones", "Observaciones es invalido(a), puede usar hasta 100 caractes alfabeticos")) {
-                return false;
-            } else {
-                Date ultimaCompraAux;
-                float precioEstimadoAux;
-                int existenciasAux;
-
-                try {
-                    //Convertir a Date ultimaCompra
-                    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-                    ultimaCompraAux = formatter.parse(ultimaCompra);
-                } catch (ParseException e) {
-                    JOptionPane.showMessageDialog(null, "Fecha ingresada invalida", "Error", JOptionPane.ERROR_MESSAGE);
-                    return false;
-                }
-
-                try {
-                    precioEstimadoAux = Float.parseFloat(precioEstimado);
-                } catch (NumberFormatException e) {
-                    JOptionPane.showMessageDialog(null, "Precio ingresado invalido", "Error", JOptionPane.ERROR_MESSAGE);
-                    return false;
-                }
-
-                try {
-                    existenciasAux = Integer.parseInt(inventarioExistente);
-                } catch (NumberFormatException e) {
-                    JOptionPane.showMessageDialog(null, "Existencias invalidas", "Error", JOptionPane.ERROR_MESSAGE);
-                    return false;
-                }
-
-                Insumo insumoAux = new Insumo(descripcion, marca, modelo, presentacion, clasificacion, categoria, ultimaCompraAux, precioEstimadoAux, unidad, proveedor, codigo, nombreProducto, existenciasAux, observaciones, idLaboratorio);
-                insumoAux.setId(id);
-                
-                int acumulador = 0;
-                for (Insumo i : listaInsumos) {
-                    if (i.getId().equals(id)) {
-                        listaInsumos.set(acumulador, insumoAux);
-                    }
-                    acumulador++;
-                }
-                return true;
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "Insumo no se puede modificar", "Error", JOptionPane.ERROR_MESSAGE);
+    public boolean modificarInsumo(Usuario user, String id, String descripcion, String marca, String modelo, String presentacion, String clasificacion, String categoria, String ultimaCompra, String precioEstimado, String unidad, String proveedor, String nombreProducto, String inventarioExistente, String observaciones, String idLaboratorio) {
+        Validador validador = new Validador();
+        if (!validador.validarConRegex(descripcion, "^[^\\n]{0,100}$", "Descripcion", "Descripcion es invalido(a), puede usar hasta 100 caractes alfanumericos")
+                || !validador.validarConRegex(marca, "^[^\\n]{0,100}$", "Marca", "Marca es invalido(a), puede usar hasta 100 caractes alfabeticos")
+                || !validador.validarConRegex(modelo, "^[^\\n]{1,100}$", "Modelo", "Modelo es invalido(a), puede usar hasta 100 caractes alfabeticos")
+                || !validador.validarConRegex(presentacion, "^[^\\n]{0,100}$", "Presentacion", "Presentacion es invalido(a), puede usar hasta 100 caractes alfabeticos")
+                || !validador.validarConRegex(clasificacion, "^[^\\n]{0,100}$", "Clasificacion", "Clasificacion es invalido(a), puede usar hasta 100 caractes alfabeticos")
+                || !validador.validarConRegex(categoria, "^[^\\n]{0,100}$", "Categoria", "Categoria es invalido(a), puede usar hasta 100 caractes alfabeticos")
+                || !validador.validarConRegex(ultimaCompra, "^([0-2][0-9]|3[0-1])(\\/|-)(0[1-9]|1[0-2])\\2(\\d{4})$", "Ultima Compra", "Ultima Compra es invalido(a), use el formato dd/mm/yyyy")
+                || !validador.validarConRegex(precioEstimado, "[+-]?((\\d+\\.?\\d*)|(\\.\\d+))", "Precio Estimado", "Precio Estimado es invalido(a), puede usar punto(.) y numeros")
+                || !validador.validarConRegex(unidad, "^[^\\n]{0,10}$", "Unidad", "Unidad es invalido(a), puede usar hasta 10 caractes alfabeticos")
+                || !validador.validarConRegex(proveedor, "^[^\\n]{0,50}$", "Proveedor", "Proveedor es invalido(a), puede usar hasta 50 caractes alfabeticos")
+                || !validador.validarConRegex(nombreProducto, "^[^\\n]{1,50}$", "Nombre Producto", "Nombre Producto es invalido(a), puede usar hasta 50 caractes alfabeticos")
+                || !validador.validarConRegex(inventarioExistente, "^[1-9][0-9]{0,5}(\\.[0-9]{1,2})?$", "Inventario Existente", "Inventario Existente es invalido(a), puede ser hasta de 0 a 999999")
+                || !validador.validarConRegex(observaciones, "^[^\\n]{0,100}$", "Observaciones", "Observaciones es invalido(a), puede usar hasta 100 caractes alfabeticos")) {
             return false;
+        } else {
+            Date ultimaCompraAux;
+            float precioEstimadoAux;
+            int existenciasAux;
+
+            try {
+                //Convertir a Date ultimaCompra
+                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                ultimaCompraAux = formatter.parse(ultimaCompra);
+            } catch (ParseException e) {
+                JOptionPane.showMessageDialog(null, "Fecha ingresada invalida", "Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+
+            try {
+                precioEstimadoAux = Float.parseFloat(precioEstimado);
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Precio ingresado invalido", "Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+
+            try {
+                existenciasAux = Integer.parseInt(inventarioExistente);
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Existencias invalidas", "Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+
+            Insumo insumoAux = new Insumo(descripcion, marca, modelo, presentacion, clasificacion, categoria, ultimaCompraAux, precioEstimadoAux, unidad, proveedor, nombreProducto, existenciasAux, observaciones, idLaboratorio);
+            insumoAux.setId(id);
+
+            return actualizarEnFirebase(insumoAux);
         }
     }
 
-    //TODO: Agregar logica de transacciones
-    //Eliminar Equipos
+//TODO: Agregar logica de transacciones
+//Eliminar Equipos
     public boolean eliminarInsumo(Usuario user, String id) {
-        Insumo insumo = listarInsumo(id);
-        if (insumo != null) {
-            int acumulador = 0;
-            for (Insumo i : listaInsumos) {
-                if (i.getId().equals(id)) {
-                    listaInsumos.remove(acumulador);
-                    return Boolean.TRUE;
-                }
-                acumulador++;
-            }
+        try {
+            return eliminarEnFirebase(id);
+        } catch (Exception e) {
+            System.out.println("Error" + e);
+            return false;
         }
-        JOptionPane.showMessageDialog(null, "Insumo no encontrado, no pudo eliminarse", "Error", JOptionPane.ERROR_MESSAGE);
-        return Boolean.FALSE;
     }
 }
