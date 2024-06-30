@@ -35,12 +35,21 @@ public class Equipos extends javax.swing.JPanel {
         InitStyles();
         inicializarTablaEquipos(); 
         actualizarTablaEquipos();
+        bloquearPorRol(userActual);
     }
 
     private void inicializarTablaEquipos() {
         String[] columnas = {"Nombre", "Laboratorio"};
         tableModelEquipos = new DefaultTableModel(columnas, 0);
         jTable1.setModel(tableModelEquipos);
+    }
+    
+    private void bloquearPorRol(Usuario user){
+        if((user.verificarRol(user,"Invitado"))||(user.verificarRol(user,"Tecnico"))){
+            BotonCrearEquipo.setEnabled(false);
+            BotonEliminarEquipo.setEnabled(false);
+            BotonModificarEquipo.setEnabled(false);
+        }
     }
 
     private void actualizarTablaEquipos() {
