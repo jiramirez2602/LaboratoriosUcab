@@ -3,8 +3,6 @@ package model;
 import java.util.UUID;
 
 public class Producto {
-
-    //String codigo;
     String nombreProducto;
     String tipoDeProducto;
     int inventarioExistente;
@@ -17,8 +15,7 @@ public class Producto {
         return uuid.toString();
     }
 
-    public Producto(/*String codigo,*/ String nombreProducto, String tipoDeProducto, int inventarioExistente, String observaciones, String idLaboratorio) {
-        //this.codigo = codigo;
+    public Producto(String nombreProducto, String tipoDeProducto, int inventarioExistente, String observaciones, String idLaboratorio) {
         this.nombreProducto = nombreProducto;
         this.tipoDeProducto = tipoDeProducto;
         this.inventarioExistente = inventarioExistente;
@@ -34,10 +31,6 @@ public class Producto {
     public String getId() {
         return id;
     }
-
-//    public String getCodigo() {
-//        return codigo;
-//    }
 
     public String getNombreProducto() {
         return nombreProducto;
@@ -58,10 +51,6 @@ public class Producto {
     public String getLaboratorio() {
         return idLaboratorio;
     }
-
-//    public void setCodigo(String codigo) {
-//        this.codigo = codigo;
-//    }
 
     public void setNombreProducto(String nombreProducto) {
         this.nombreProducto = nombreProducto;

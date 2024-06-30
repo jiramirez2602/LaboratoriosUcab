@@ -102,7 +102,7 @@ public class ListaDeEquipos {
     public void setListaEquipos(ArrayList<Equipo> listaEquipos) {
         this.listaEquipos = listaEquipos;
     }
-    
+
     //Crear producto Equipos
     public boolean crearProductoEquipo(Usuario user, String descripcion, String marca, String modelo, String numeroSerial, String numeroActivo, String presentacion, String voltaje, String procesable, String materialRequerido, String añoDeCompra, String aplicacion, String ultimoMantenimiento, String proximoMantenimiento, String ultimaCalibracion, String proximaCalibracion, String proovedoresDeServicios, String encendidoDenoche, String nombreProducto, String inventarioExistente, String observaciones, String idLaboratorio) {
         Validador validador = new Validador();
@@ -205,6 +205,42 @@ public class ListaDeEquipos {
         return listaEquipos;
     }
 
+    public ArrayList<Equipo> getListaEquiposMantenimiento() throws ParseException {
+        ArrayList<Equipo> listaEquiposAux = getListaEquipos();
+        ArrayList<Equipo> listaEquiposFiltrada = new ArrayList<>();
+
+        for (Equipo i : listaEquiposAux) {
+            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+            long fechaActual = System.currentTimeMillis();
+
+            Date fechaMantenimiento = i.getProximoMantenimiento();
+            long fechaDada1 = fechaMantenimiento.getTime();
+            long diferencia11 = fechaDada1 - fechaActual;
+
+            Date fechaCalibracion = i.getProximaCalibracion();
+            long fechaDada2 = fechaCalibracion.getTime();
+            long diferencia12 = fechaDada2 - fechaActual;
+
+//            System.out.println("Id: " + i.getId());
+//            System.out.println("Calibracion: " + i.getProximaCalibracion());
+//            System.out.println("Actual: " + fechaActual);
+//            System.out.println("Dada: "+ fechaDada2);
+//            System.out.println("Diferencial: "+ diferencia12);
+            
+//            Se nos paso la fecha
+            if (fechaDada1 < fechaActual || fechaDada2 < fechaActual){
+                listaEquiposFiltrada.add(i);
+                continue;
+            }
+
+            //Si falta menos de un mes para proximo mantenimiento o proxima calibración agragar a lista para front:
+            if (diferencia11 < 2700000000L || diferencia12 < 2700000000L) {
+                listaEquiposFiltrada.add(i);
+            }
+        }
+        return listaEquiposFiltrada;
+    }
+
 //    //Listar un equipo con un Usuario
 //    public ArrayList<Equipo> listarEquipoPorUsuario(Usuario usuario) {
 //        ArrayList<Equipo> listaEquipoAux = new ArrayList<>();
@@ -225,7 +261,6 @@ public class ListaDeEquipos {
 //        }
 //        return null;
 //    }
-    
     //Modifica Equipos
     public boolean modificarEquipo(Usuario user, String id, String descripcion, String marca, String modelo, String numeroSerial, String numeroActivo, String presentacion, String voltaje, String procesable, String materialRequerido, String añoDeCompra, String aplicacion, String ultimoMantenimiento, String proximoMantenimiento, String ultimaCalibracion, String proximaCalibracion, String proovedoresDeServicios, String encendidoDenoche, String nombreProducto, String inventarioExistente, String observaciones, String idLaboratorio) {
         Validador validador = new Validador();
