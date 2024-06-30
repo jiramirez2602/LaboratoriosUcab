@@ -1,21 +1,107 @@
 package Views;
 
+import controller.ListaDeEquipos;
+import controller.ListaDeInsumos;
+import controller.ListaLaboratorios;
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.io.IOException;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import model.Insumo;
+import model.Usuario;
 
 public class Insumos extends javax.swing.JPanel {
-
-    public Insumos() {
+    
+    private ListaLaboratorios listalaboratorios;
+    private Usuario userActual;
+    private ListaDeInsumos listaInsumos;
+    private DefaultTableModel tableModelEquipos;
+     private DefaultTableModel tableModelInsumo;
+    private HashMap<Integer, String> idMapInsumos;
+    
+    public Insumos(Usuario user, ListaLaboratorios listaLab, ListaDeInsumos insumos) {
+        this.listalaboratorios = listaLab;
+        this.listaInsumos = insumos;
+        this.userActual = user;
+        idMapInsumos = new HashMap<>();
         initComponents();
         InitStyles();
+        inicializarTablaInsumos();
+        actualizarTablaInsumos();
 
     }
+    
+    private void inicializarTablaInsumos() {
+        String[] columnas = {"Nombre de producto", "Tipo de producto", "Inventario Existente", "Observaciones", "Descripcion", "Marca", "Modelo", "Precio Estimado"};
+        tableModelInsumo = new DefaultTableModel(columnas, 0);
+        JTableInsumos.setModel(tableModelInsumo);
+    }
+    
+    private void actualizarTablaInsumos() {
+        tableModelInsumo.setRowCount(0);
+        idMapInsumos.clear();
+        int row = 0;
 
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+
+        try {
+            ArrayList<Insumo> insumos = listaInsumos.getListaInsumos();
+
+            for (Insumo insumo : insumos) {
+                Object[] fila = {
+                    insumo.getNombreProducto(),
+                    insumo.getTipoDeProducto(),
+                    insumo.getInventarioExistente(),
+                    insumo.getObservaciones(),
+                    insumo.getDescripcion(),
+                    insumo.getMarca(),
+                    insumo.getModelo(),
+                    insumo.getPrecioEstimado()
+                };
+                tableModelInsumo.addRow(fila);
+
+                idMapInsumos.put(row, insumo.getId());
+
+                for (int i = 0; i < tableModelInsumo.getColumnCount(); i++) {
+                    JTableInsumos.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+                }
+
+                row++;
+            }
+        } catch (ParseException ex) {
+            JOptionPane.showMessageDialog(this, "Error al obtener la lista de insumos.", "Error", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+        }
+
+        JTableInsumos.setDefaultEditor(Object.class, null);
+    }
+    
     private void InitStyles() {
         title.putClientProperty("FlatLaf.styleClass", "h1");
         title.setForeground(Color.black);
-        userSearch.putClientProperty("JTextField.placeholderText", "Ingrese el nombre de usuario a buscar.");
     }
-
+    
+    
+    public  void ShowJPanel(JPanel p) {
+        p.setSize(1038, 666);
+        p.setLocation(0,0);
+        BackGroundInsumos.removeAll();
+        BackGroundInsumos.add(p,BorderLayout.CENTER);
+        BackGroundInsumos.revalidate();
+        BackGroundInsumos.repaint();
+    }
+    
+    
 
 
     /**
@@ -27,65 +113,36 @@ public class Insumos extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        bg = new javax.swing.JPanel();
+        BackGroundInsumos = new javax.swing.JPanel();
         title = new javax.swing.JLabel();
-        userSearch = new javax.swing.JTextField();
-        BotonBuscarInsumo = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        JTableInsumos = new javax.swing.JTable();
         BotonEliminarInsumo = new javax.swing.JButton();
         BotonModificarInsumo = new javax.swing.JButton();
         BotonCrearInsumo = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
-        bg.setBackground(new java.awt.Color(255, 255, 255));
+        BackGroundInsumos.setBackground(new java.awt.Color(255, 255, 255));
 
         title.setText("Insumos");
 
-        BotonBuscarInsumo.setBackground(new java.awt.Color(18, 90, 173));
-        BotonBuscarInsumo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        BotonBuscarInsumo.setForeground(new java.awt.Color(255, 255, 255));
-        BotonBuscarInsumo.setText("Buscar");
-        BotonBuscarInsumo.setBorderPainted(false);
-        BotonBuscarInsumo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        BotonBuscarInsumo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonBuscarInsumoActionPerformed(evt);
-            }
-        });
-
-        jTable1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        JTableInsumos.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        JTableInsumos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "Nombre", "Apellido P.", "Apellido M.", "Domicilio", "Teléfono"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, true, true, true, true, true
-            };
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
             }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+        ));
+        JTableInsumos.getTableHeader().setReorderingAllowed(false);
+        JTableInsumos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jTable1MousePressed(evt);
+                JTableInsumosMousePressed(evt);
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(JTableInsumos);
 
         BotonEliminarInsumo.setBackground(new java.awt.Color(18, 90, 173));
         BotonEliminarInsumo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -123,45 +180,37 @@ public class Insumos extends javax.swing.JPanel {
             }
         });
 
-        javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);
-        bg.setLayout(bgLayout);
-        bgLayout.setHorizontalGroup(
-            bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(bgLayout.createSequentialGroup()
+        javax.swing.GroupLayout BackGroundInsumosLayout = new javax.swing.GroupLayout(BackGroundInsumos);
+        BackGroundInsumos.setLayout(BackGroundInsumosLayout);
+        BackGroundInsumosLayout.setHorizontalGroup(
+            BackGroundInsumosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BackGroundInsumosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(bgLayout.createSequentialGroup()
+                .addGroup(BackGroundInsumosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(BackGroundInsumosLayout.createSequentialGroup()
                         .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(699, 699, 699))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgLayout.createSequentialGroup()
-                        .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(bgLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackGroundInsumosLayout.createSequentialGroup()
+                        .addGroup(BackGroundInsumosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(BackGroundInsumosLayout.createSequentialGroup()
                                 .addGap(427, 427, 427)
                                 .addComponent(BotonCrearInsumo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(BotonModificarInsumo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(BotonEliminarInsumo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(bgLayout.createSequentialGroup()
-                                .addComponent(userSearch)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(BotonBuscarInsumo)))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGap(50, 50, 50))))
         );
-        bgLayout.setVerticalGroup(
-            bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(bgLayout.createSequentialGroup()
+        BackGroundInsumosLayout.setVerticalGroup(
+            BackGroundInsumosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BackGroundInsumosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(userSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BotonBuscarInsumo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(64, 64, 64)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(BackGroundInsumosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotonEliminarInsumo)
                     .addComponent(BotonModificarInsumo)
                     .addComponent(BotonCrearInsumo))
@@ -172,44 +221,79 @@ public class Insumos extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(BackGroundInsumos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(BackGroundInsumos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTable1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MousePressed
+    private void JTableInsumosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTableInsumosMousePressed
 
-    }//GEN-LAST:event_jTable1MousePressed
+    }//GEN-LAST:event_JTableInsumosMousePressed
 
     private void BotonCrearInsumoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCrearInsumoActionPerformed
-        
+        ShowJPanel(new Crearinsumos(userActual,listalaboratorios,listaInsumos));
     }//GEN-LAST:event_BotonCrearInsumoActionPerformed
 
     private void BotonEliminarInsumoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarInsumoActionPerformed
-     
+     int selectedRow = JTableInsumos.getSelectedRow(); // Obtener la fila seleccionada en la tabla
+
+    if (selectedRow != -1) { // Verificar que se ha seleccionado una fila
+        String idInsumoAEliminar = idMapInsumos.get(selectedRow); // Obtener el ID del insumo a eliminar
+
+        if (idInsumoAEliminar != null && !idInsumoAEliminar.isEmpty()) { // Verificar que el ID no es nulo o vacío
+            int confirmacion = JOptionPane.showConfirmDialog(null, "¿Estás seguro de eliminar este insumo?", "Confirmar Eliminación", JOptionPane.YES_NO_OPTION); // Mostrar diálogo de confirmación
+
+            if (confirmacion == JOptionPane.YES_OPTION) { // Si el usuario confirma la eliminación
+                boolean eliminacionExitosa = listaInsumos.eliminarInsumo(userActual, idInsumoAEliminar); // Intentar eliminar el insumo
+
+                if (eliminacionExitosa) { // Verificar si la eliminación fue exitosa
+                    JOptionPane.showMessageDialog(null, "Insumo eliminado exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE); // Mostrar mensaje de éxito
+                    actualizarTablaInsumos(); // Actualizar la tabla de insumos
+                } else {
+                    JOptionPane.showMessageDialog(null, "Error al eliminar el insumo.", "Error", JOptionPane.ERROR_MESSAGE); // Mostrar mensaje de error
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No se ha seleccionado ningún insumo para eliminar.", "Error", JOptionPane.ERROR_MESSAGE); // Mensaje de error si no hay insumo seleccionado
+        }
+    } else {
+        JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila para eliminar.", "Error", JOptionPane.ERROR_MESSAGE); // Mensaje de error si no se ha seleccionado ninguna fila
+    }
     }//GEN-LAST:event_BotonEliminarInsumoActionPerformed
 
     private void BotonModificarInsumoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarInsumoActionPerformed
-        
-    }//GEN-LAST:event_BotonModificarInsumoActionPerformed
+        int selectedRow = JTableInsumos.getSelectedRow();
 
-    private void BotonBuscarInsumoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBuscarInsumoActionPerformed
-       
-    }//GEN-LAST:event_BotonBuscarInsumoActionPerformed
+    if (selectedRow != -1) {
+        String idInsumo = idMapInsumos.get(selectedRow); 
+        Insumo insumo = null;
+
+        try {
+            insumo = listaInsumos.listarInsumo(idInsumo);
+        } catch (ParseException ex) {
+            Logger.getLogger(Insumos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if (insumo != null) {
+            ShowJPanel(new ModificarInsumos(userActual, listalaboratorios, listaInsumos,insumo));
+        } else {
+            JOptionPane.showMessageDialog(null, "Insumo no encontrado", "Error", JOptionPane.ERROR_MESSAGE); // Mostrar mensaje de error si no se encuentra el insumo
+        }
+    } else {
+        JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila para modificar.", "Error", JOptionPane.ERROR_MESSAGE); // Mensaje de error si no se ha seleccionado ninguna fila
+    }
+    }//GEN-LAST:event_BotonModificarInsumoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BotonBuscarInsumo;
+    private javax.swing.JPanel BackGroundInsumos;
     private javax.swing.JButton BotonCrearInsumo;
     private javax.swing.JButton BotonEliminarInsumo;
     private javax.swing.JButton BotonModificarInsumo;
-    private javax.swing.JPanel bg;
+    private javax.swing.JTable JTableInsumos;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel title;
-    private javax.swing.JTextField userSearch;
     // End of variables declaration//GEN-END:variables
 }

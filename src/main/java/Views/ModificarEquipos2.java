@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 import model.Equipo;
 import model.Laboratorio;
 import model.Usuario;
@@ -33,6 +34,7 @@ public class ModificarEquipos2 extends javax.swing.JPanel {
     private String procesable;
     private String materialRequerido;
     private String añoDeCompra;
+    private DefaultTableModel tableModelLab;
     
     public ModificarEquipos2(Usuario user, ListaLaboratorios listaLab, ListaDeEquipos equipos, Equipo equipo, 
                      String descripcion, String marca, String modelo, String numeroSerial, 
@@ -55,6 +57,7 @@ public class ModificarEquipos2 extends javax.swing.JPanel {
         this.añoDeCompra = añoDeCompra;
         cargarDatosEquipo();
         initLabDisponible();
+        inicializarTablaLabActual();
         cargarLabActual();
     }
     
@@ -89,18 +92,30 @@ public class ModificarEquipos2 extends javax.swing.JPanel {
             System.out.println("No hay laboratorios disponibles.");
         }
     }
-
+    
+    private void inicializarTablaLabActual() {
+        String[] columnas = {"Nombre Laboratorio"};
+        tableModelLab = new DefaultTableModel(columnas, 0);
+        LabActual.setModel(tableModelLab);
+    }
+    
     private void cargarLabActual() {
+        tableModelLab.setRowCount(0);
+
         if (equipoActual != null) {
             String idLaboratorio = equipoActual.getLaboratorio();
             Laboratorio laboratorioActual = listalaboratorios.listarLaboratorio(idLaboratorio);
+
             if (laboratorioActual != null) {
-                LabActual.setSelectedItem(laboratorioActual.getNombreLaboratorio());
+                Object[] fila = {laboratorioActual.getNombreLaboratorio()};
+                tableModelLab.addRow(fila);
             } else {
                 System.out.println("Laboratorio no encontrado");
             }
         }
     }
+
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -136,11 +151,12 @@ public class ModificarEquipos2 extends javax.swing.JPanel {
         EncendidoNocheSi = new javax.swing.JRadioButton();
         EncendidoNocheNo = new javax.swing.JRadioButton();
         nameLbl13 = new javax.swing.JLabel();
-        LabActual = new javax.swing.JComboBox<>();
         nameLbl9 = new javax.swing.JLabel();
         NombreProductoTXT = new javax.swing.JTextField();
         nameLbl14 = new javax.swing.JLabel();
         LabDisponible = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        LabActual = new javax.swing.JTable();
 
         BackgroundCrearEquipo1.setBackground(new java.awt.Color(255, 255, 255));
         BackgroundCrearEquipo1.setMinimumSize(new java.awt.Dimension(1038, 666));
@@ -197,63 +213,79 @@ public class ModificarEquipos2 extends javax.swing.JPanel {
 
         nameLbl13.setText("Laboratorio Actual");
 
-        LabActual.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         nameLbl9.setText("Nombre del producto:");
 
         nameLbl14.setText("Laboratorios Disponibles:");
 
         LabDisponible.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        LabActual.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(LabActual);
+
         javax.swing.GroupLayout BackgroundCrearEquipo1Layout = new javax.swing.GroupLayout(BackgroundCrearEquipo1);
         BackgroundCrearEquipo1.setLayout(BackgroundCrearEquipo1Layout);
         BackgroundCrearEquipo1Layout.setHorizontalGroup(
             BackgroundCrearEquipo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BackgroundCrearEquipo1Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(BackgroundCrearEquipo1Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(BackgroundCrearEquipo1Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
                 .addGroup(BackgroundCrearEquipo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(nameLbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(AplicacionTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nameLbl3, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(UltimoMantenimientoTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nameLbl5)
-                    .addComponent(ProximoMantenimientoTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nameLbl7, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(UltimaCalibracionTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nameLbl8, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ProximaCalibracionTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nameLbl6, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ProvedorServicioTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(55, 55, 55)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14)
-                .addGroup(BackgroundCrearEquipo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(nameLbl12, javax.swing.GroupLayout.PREFERRED_SIZE, 519, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(BackgroundCrearEquipo1Layout.createSequentialGroup()
-                        .addComponent(EncendidoNocheSi, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
-                        .addComponent(EncendidoNocheNo, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(nameLbl9, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(NombreProductoTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nameLbl10, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(InventarioExistenteTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nameLbl11, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ObservacionesTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(BackgroundCrearEquipo1Layout.createSequentialGroup()
-                        .addComponent(nameLbl13, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)
-                        .addComponent(nameLbl14))
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(BackgroundCrearEquipo1Layout.createSequentialGroup()
-                        .addComponent(LabActual, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)
-                        .addComponent(LabDisponible, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(CrearEquipoSiguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(30, 30, 30)
+                        .addGroup(BackgroundCrearEquipo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nameLbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(AplicacionTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nameLbl3, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(UltimoMantenimientoTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nameLbl5)
+                            .addComponent(ProximoMantenimientoTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nameLbl7, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(UltimaCalibracionTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nameLbl8, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ProximaCalibracionTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nameLbl6, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ProvedorServicioTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(55, 55, 55)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(14, 14, 14)
+                        .addGroup(BackgroundCrearEquipo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nameLbl12, javax.swing.GroupLayout.PREFERRED_SIZE, 519, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(BackgroundCrearEquipo1Layout.createSequentialGroup()
+                                .addComponent(EncendidoNocheSi, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(12, 12, 12)
+                                .addComponent(EncendidoNocheNo, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(nameLbl9, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(NombreProductoTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nameLbl10, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(InventarioExistenteTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nameLbl11, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ObservacionesTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CrearEquipoSiguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(BackgroundCrearEquipo1Layout.createSequentialGroup()
+                                .addGroup(BackgroundCrearEquipo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(BackgroundCrearEquipo1Layout.createSequentialGroup()
+                                        .addGap(71, 71, 71)
+                                        .addComponent(nameLbl13, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(29, 29, 29)
+                                .addGroup(BackgroundCrearEquipo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(nameLbl14)
+                                    .addComponent(LabDisponible, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
         BackgroundCrearEquipo1Layout.setVerticalGroup(
             BackgroundCrearEquipo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -311,14 +343,17 @@ public class ModificarEquipos2 extends javax.swing.JPanel {
                         .addComponent(ObservacionesTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(27, 27, 27)
                         .addGroup(BackgroundCrearEquipo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nameLbl13)
-                            .addComponent(nameLbl14))
-                        .addGap(14, 14, 14)
-                        .addGroup(BackgroundCrearEquipo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LabActual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(LabDisponible, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(58, 58, 58)
-                        .addComponent(CrearEquipoSiguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(BackgroundCrearEquipo1Layout.createSequentialGroup()
+                                .addComponent(nameLbl13)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(BackgroundCrearEquipo1Layout.createSequentialGroup()
+                                .addComponent(nameLbl14)
+                                .addGap(14, 14, 14)
+                                .addComponent(LabDisponible, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addComponent(CrearEquipoSiguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -346,7 +381,7 @@ public class ModificarEquipos2 extends javax.swing.JPanel {
         String observaciones = ObservacionesTXT.getText();
         String nombreLaboratorioSeleccionado = (String) LabDisponible.getSelectedItem();
         String idLaboratorio = listalaboratorios.listarLaboratorioPorNombre(nombreLaboratorioSeleccionado);
-        boolean creado = listaequipos.crearProductoEquipo(userActual, descripcion, marca, modelo, numeroSerial, numeroActivo,
+        boolean creado = listaequipos.modificarEquipo(userActual,equipoActual.getId(), descripcion, marca, modelo, numeroSerial, numeroActivo,
                 presentacion, voltaje, procesable, materialRequerido, añoDeCompra, aplicacion, ultimoMantenimiento,
                 proximoMantenimiento, ultimaCalibracion, proximaCalibracion, proovedoresDeServicios, encendidoDenoche,
                 nombreProducto, inventarioExistente, observaciones, idLaboratorio);
@@ -368,7 +403,7 @@ public class ModificarEquipos2 extends javax.swing.JPanel {
     private javax.swing.JRadioButton EncendidoNocheNo;
     private javax.swing.JRadioButton EncendidoNocheSi;
     private javax.swing.JTextField InventarioExistenteTXT;
-    private javax.swing.JComboBox<String> LabActual;
+    private javax.swing.JTable LabActual;
     private javax.swing.JComboBox<String> LabDisponible;
     private javax.swing.JTextField NombreProductoTXT;
     private javax.swing.JTextField ObservacionesTXT;
@@ -379,6 +414,7 @@ public class ModificarEquipos2 extends javax.swing.JPanel {
     private javax.swing.JTextField UltimoMantenimientoTXT;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel nameLbl1;
     private javax.swing.JLabel nameLbl10;

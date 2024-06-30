@@ -38,7 +38,6 @@ public class Laboratorios extends javax.swing.JPanel {
     private void InitStyles() {
         title.putClientProperty("FlatLaf.styleClass", "h1");
         title.setForeground(Color.black);
-        userSearch.putClientProperty("JTextField.placeholderText", "Ingrese el nombre de usuario a buscar.");
     }
     
         private void MostrarJPanel(JPanel p) {
@@ -65,38 +64,38 @@ public class Laboratorios extends javax.swing.JPanel {
     }
     
     private void actualizarTablaLab() {
-    listalaboratorios.getListaLaboratorios();
-    tableModelLab.setRowCount(0);
-    idMapLab.clear();
-    int row = 0;
+        listalaboratorios.getListaLaboratorios();
+        tableModelLab.setRowCount(0);
+        idMapLab.clear();
+        int row = 0;
 
-    DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-    centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
 
-    for (Laboratorio laboratorio : listalaboratorios.listarLaboratorios()) {
-        Usuario administrador = listaUsuarios.listarUsuario(laboratorio.getIdAdministrador());
-        String nombreAdministrador = (administrador != null) ? administrador.getNombreUser() : "Desconocido";
+        for (Laboratorio laboratorio : listalaboratorios.listarLaboratorios()) {
+            Usuario administrador = listaUsuarios.listarUsuario(laboratorio.getIdAdministrador());
+            String nombreAdministrador = (administrador != null) ? administrador.getNombreUser() : "Desconocido";
 
-        Object[] fila = {
-            laboratorio.getNombreLaboratorio(),
-            laboratorio.getFacultad(),
-            laboratorio.getEscuela(),
-            laboratorio.getDepartamento(),
-            nombreAdministrador
-        };
-        tableModelLab.addRow(fila);
+            Object[] fila = {
+                laboratorio.getNombreLaboratorio(),
+                laboratorio.getFacultad(),
+                laboratorio.getEscuela(),
+                laboratorio.getDepartamento(),
+                nombreAdministrador
+            };
+            tableModelLab.addRow(fila);
 
-        idMapLab.put(row, laboratorio.getId());
+            idMapLab.put(row, laboratorio.getId());
 
-        for (int i = 0; i < tableModelLab.getColumnCount(); i++) {
-            jTable1.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+            for (int i = 0; i < tableModelLab.getColumnCount(); i++) {
+                jTable1.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+            }
+
+            row++;
         }
 
-        row++;
+        jTable1.setDefaultEditor(Object.class, null); 
     }
-
-    jTable1.setDefaultEditor(Object.class, null); 
-}
         
     /**
      * This method is called from within the constructor to initialize the form.
@@ -109,8 +108,6 @@ public class Laboratorios extends javax.swing.JPanel {
 
         BackgroundLab = new javax.swing.JPanel();
         title = new javax.swing.JLabel();
-        userSearch = new javax.swing.JTextField();
-        BotonBuscarLab = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         BotonEliminarLab = new javax.swing.JButton();
@@ -122,18 +119,6 @@ public class Laboratorios extends javax.swing.JPanel {
         BackgroundLab.setBackground(new java.awt.Color(255, 255, 255));
 
         title.setText("Laboratorios");
-
-        BotonBuscarLab.setBackground(new java.awt.Color(18, 90, 173));
-        BotonBuscarLab.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        BotonBuscarLab.setForeground(new java.awt.Color(255, 255, 255));
-        BotonBuscarLab.setText("Buscar");
-        BotonBuscarLab.setBorderPainted(false);
-        BotonBuscarLab.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        BotonBuscarLab.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonBuscarLabActionPerformed(evt);
-            }
-        });
 
         jTable1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -207,31 +192,22 @@ public class Laboratorios extends javax.swing.JPanel {
                                 .addComponent(BotonModificarLab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(BotonEliminarLab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(BackgroundLabLayout.createSequentialGroup()
-                                .addComponent(userSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 602, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(BotonBuscarLab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGap(50, 50, 50))))
         );
         BackgroundLabLayout.setVerticalGroup(
             BackgroundLabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BackgroundLabLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, 18, Short.MAX_VALUE)
-                .addGroup(BackgroundLabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(BackgroundLabLayout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(BotonBuscarLab, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(userSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
+                .addGap(29, 29, 29)
                 .addGroup(BackgroundLabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotonEliminarLab)
                     .addComponent(BotonModificarLab)
                     .addComponent(BotonCrearLab))
-                .addGap(25, 25, 25))
+                .addGap(58, 58, 58))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -290,20 +266,14 @@ public class Laboratorios extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_BotonModificarLabActionPerformed
 
-    private void BotonBuscarLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBuscarLabActionPerformed
-       
-    }//GEN-LAST:event_BotonBuscarLabActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BackgroundLab;
-    private javax.swing.JButton BotonBuscarLab;
     private javax.swing.JButton BotonCrearLab;
     private javax.swing.JButton BotonEliminarLab;
     private javax.swing.JButton BotonModificarLab;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel title;
-    private javax.swing.JTextField userSearch;
     // End of variables declaration//GEN-END:variables
 }

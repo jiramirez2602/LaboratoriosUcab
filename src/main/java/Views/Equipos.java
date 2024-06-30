@@ -18,6 +18,7 @@ import model.Equipo;
 import model.Laboratorio;
 import model.Usuario;
 import Views.EquiposExcel;
+import java.text.SimpleDateFormat;
 
 public class Equipos extends javax.swing.JPanel {
 
@@ -40,7 +41,7 @@ public class Equipos extends javax.swing.JPanel {
     }
 
     private void inicializarTablaEquipos() {
-        String[] columnas = {"Nombre", "Laboratorio"};
+        String[] columnas = {"Nombre","Tipo de Productos","Inventario","Observaciones","Numero de Activo","Proximo Mantenimiento","Proxima Calibracion","Descripcion","Laboratorio"};
         tableModelEquipos = new DefaultTableModel(columnas, 0);
         jTable1.setModel(tableModelEquipos);
     }
@@ -63,14 +64,25 @@ public class Equipos extends javax.swing.JPanel {
 
         try {
             ArrayList<Equipo> equipos = listaequipos.getListaEquipos();
+            SimpleDateFormat dateFormatter = new SimpleDateFormat("dd/MM/yyyy");
 
             for (Equipo equipo : equipos) {
                 Laboratorio laboratorio = listalaboratorios.listarLaboratorio(equipo.getLaboratorio());
                 String nombreLaboratorio = (laboratorio != null) ? laboratorio.getNombreLaboratorio() : "Desconocido";
 
+                String proximoMantenimiento = (equipo.getProximoMantenimiento() != null) ? dateFormatter.format(equipo.getProximoMantenimiento()) : "N/A";
+                String proximaCalibracion = (equipo.getProximaCalibracion() != null) ? dateFormatter.format(equipo.getProximaCalibracion()) : "N/A";
+
                 Object[] fila = {
-                    equipo.getNombreProducto(), 
-                    nombreLaboratorio 
+                    equipo.getNombreProducto(),
+                    equipo.getTipoDeProducto(),
+                    equipo.getInventarioExistente(),
+                    equipo.getObservaciones(),
+                    equipo.getNumeroActivo(),
+                    proximoMantenimiento,
+                    proximaCalibracion,
+                    equipo.getDescripcion(),
+                    nombreLaboratorio
                 };
                 tableModelEquipos.addRow(fila);
 
@@ -85,12 +97,12 @@ public class Equipos extends javax.swing.JPanel {
         } catch (ParseException ex) {
             JOptionPane.showMessageDialog(this, "Error al obtener la lista de equipos.", "Error", JOptionPane.ERROR_MESSAGE);
         }
+        jTable1.setDefaultEditor(Object.class, null); 
     }
 
     private void InitStyles() {
         title.putClientProperty("FlatLaf.styleClass", "h1");
         title.setForeground(Color.black);
-        userSearch.putClientProperty("JTextField.placeholderText", "Ingrese el nombre de usuario a buscar.");
     }
 
     private void MostrarJPanel(JPanel p) {

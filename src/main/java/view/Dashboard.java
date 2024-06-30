@@ -16,6 +16,7 @@ import Views.Principal;
 import Views.SustanciasQuimicas;
 import Views.Transacciones;
 import controller.ListaDeEquipos;
+import controller.ListaDeInsumos;
 import controller.ListaDeUsuarios;
 import controller.ListaLaboratorios;
 import java.awt.BorderLayout;
@@ -40,8 +41,9 @@ public class Dashboard extends javax.swing.JFrame {
     private ListaLaboratorios listalaboratorios;
     private Usuario userActual;
     private ListaDeEquipos listaequipos;
+    private ListaDeInsumos listaInsumos;
 
-    public Dashboard(Usuario user,ListaDeUsuarios users, ListaLaboratorios laboratorios,ListaDeEquipos equipos) {
+    public Dashboard(Usuario user,ListaDeUsuarios users, ListaLaboratorios laboratorios,ListaDeEquipos equipos, ListaDeInsumos insumos) {
         initComponents();
         InitStyles();
         SetDate();
@@ -50,6 +52,7 @@ public class Dashboard extends javax.swing.JFrame {
         this.listaUsuarios=users;
         this.listalaboratorios=laboratorios;
         this.listaequipos = equipos;
+        this.listaInsumos = insumos;
         this.userActual=user;
         usuarioLabel.setText(userActual.getUsername());
     }
@@ -395,7 +398,7 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonEquiposActionPerformed
 
     private void BotonTransaccionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonTransaccionesActionPerformed
-        ShowJPanel(new EquiposExcel(userActual,listalaboratorios,listaequipos));
+        
     }//GEN-LAST:event_BotonTransaccionesActionPerformed
 
     private void BotonReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonReportesActionPerformed
@@ -403,7 +406,7 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonReportesActionPerformed
 
     private void BotonInsumosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonInsumosActionPerformed
-        ShowJPanel(new Insumos());
+        ShowJPanel(new Insumos(userActual,listalaboratorios,listaInsumos));
     }//GEN-LAST:event_BotonInsumosActionPerformed
 
     private void BotonSustanciasQuimicasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonSustanciasQuimicasActionPerformed

@@ -77,7 +77,6 @@ public class Usuarios extends javax.swing.JPanel {
     private void InitStyles() {
         title.putClientProperty("FlatLaf.styleClass", "h1");
         title.setForeground(Color.black);
-        userSearch.putClientProperty("JTextField.placeholderText", "Ingrese el nombre de usuario a buscar.");
     }
 
     private void MostrarJPanel(JPanel p) {
@@ -101,8 +100,6 @@ public class Usuarios extends javax.swing.JPanel {
 
         BackGroundUsuarios = new javax.swing.JPanel();
         title = new javax.swing.JLabel();
-        userSearch = new javax.swing.JTextField();
-        BotonBuscarUsuarios = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         BotonEliminarUsuario = new javax.swing.JButton();
@@ -114,18 +111,6 @@ public class Usuarios extends javax.swing.JPanel {
         BackGroundUsuarios.setBackground(new java.awt.Color(255, 255, 255));
 
         title.setText("Usuarios");
-
-        BotonBuscarUsuarios.setBackground(new java.awt.Color(18, 90, 173));
-        BotonBuscarUsuarios.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        BotonBuscarUsuarios.setForeground(new java.awt.Color(255, 255, 255));
-        BotonBuscarUsuarios.setText("Buscar");
-        BotonBuscarUsuarios.setBorderPainted(false);
-        BotonBuscarUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        BotonBuscarUsuarios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonBuscarUsuariosActionPerformed(evt);
-            }
-        });
 
         jTable1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -194,39 +179,26 @@ public class Usuarios extends javax.swing.JPanel {
                 .addGap(44, 44, 44))
             .addGroup(BackGroundUsuariosLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addGroup(BackGroundUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackGroundUsuariosLayout.createSequentialGroup()
-                        .addComponent(userSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 871, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(BotonBuscarUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(50, 50, 50))
-                    .addGroup(BackGroundUsuariosLayout.createSequentialGroup()
-                        .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, 1017, Short.MAX_VALUE)
-                        .addContainerGap())))
+                .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, 1017, Short.MAX_VALUE)
+                .addContainerGap())
             .addGroup(BackGroundUsuariosLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1007, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1007, Short.MAX_VALUE)
+                .addGap(16, 16, 16))
         );
         BackGroundUsuariosLayout.setVerticalGroup(
             BackGroundUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BackGroundUsuariosLayout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(BackGroundUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(BackGroundUsuariosLayout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(BotonBuscarUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 30, Short.MAX_VALUE))
-                    .addComponent(userSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
                 .addGap(27, 27, 27)
                 .addGroup(BackGroundUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotonEliminarUsuario)
                     .addComponent(BotonModificarUsuario)
                     .addComponent(BotonCrearUsuario))
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addGap(80, 80, 80))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -295,20 +267,14 @@ public class Usuarios extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_BotonModificarUsuarioActionPerformed
 
-    private void BotonBuscarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBuscarUsuariosActionPerformed
-       
-    }//GEN-LAST:event_BotonBuscarUsuariosActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BackGroundUsuarios;
-    private javax.swing.JButton BotonBuscarUsuarios;
     private javax.swing.JButton BotonCrearUsuario;
     private javax.swing.JButton BotonEliminarUsuario;
     private javax.swing.JButton BotonModificarUsuario;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel title;
-    private javax.swing.JTextField userSearch;
     // End of variables declaration//GEN-END:variables
 }
