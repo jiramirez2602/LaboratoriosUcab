@@ -7,26 +7,49 @@ package Views;
 import controller.ListaDeEquipos;
 import controller.ListaLaboratorios;
 import java.awt.BorderLayout;
+import java.text.SimpleDateFormat;
 import javax.swing.JPanel;
+import model.Equipo;
 import model.Usuario;
 
 /**
  *
  * @author derno
  */
-public class CrearEquipos extends javax.swing.JPanel {
+public class ModificarEquipos extends javax.swing.JPanel {
     
     private Usuario userActual;
     private ListaLaboratorios listalaboratorios;
     private ListaDeEquipos listaequipos;
+    private Equipo equipoActual;
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
     
-    public CrearEquipos(Usuario user,ListaLaboratorios listaLab,ListaDeEquipos equipos ) {
+    public ModificarEquipos(Usuario user, ListaLaboratorios listaLab, ListaDeEquipos equipos, Equipo equipo) {
         initComponents();
-        this.userActual=user;
-        this.listalaboratorios=listaLab;
-        this.listaequipos=equipos;
+        this.userActual = user;
+        this.listalaboratorios = listaLab;
+        this.listaequipos = equipos;
+        this.equipoActual = equipo;
+        cargarDatosEquipo();
     }
-    
+    private void cargarDatosEquipo() {
+        if (equipoActual != null) {
+            AñodeCompraTXT.setText(dateFormat.format(equipoActual.getAñoDeCompra()));
+            DescripcionTXT.setText(equipoActual.getDescripcion());
+            MarcaTXT.setText(equipoActual.getMarca());
+            MaterialRequeridoTXT.setText(equipoActual.getMaterialRequerido());
+            ModeloTXT.setText(equipoActual.getModelo());
+            NumActivoTXT.setText(equipoActual.getNumeroActivo());
+            NumSerialTXT.setText(equipoActual.getNumeroSerial());
+            PresentacionTXT.setText(equipoActual.getPresentacion());
+            VoltajeTXT.setText(equipoActual.getVoltaje());
+            if ("Sí".equals(equipoActual.getProcesable())) {
+                ProcesableSIRadioBtton.setSelected(true);
+            } else {
+                ProcesableNoRadioBtton.setSelected(true);
+            }
+        }
+    }
       private void MostrarJpanel(JPanel p){
         p.setSize(1038, 666);   
         p.setLocation(0,0);
@@ -80,10 +103,10 @@ public class CrearEquipos extends javax.swing.JPanel {
         BackgroundCrearEquipo1.setPreferredSize(new java.awt.Dimension(1038, 666));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel1.setText("Crear Equipo");
+        jLabel1.setText("Modifica Equipo");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel2.setText("Por favor, ingrese los datos para poder crear el equipo: ");
+        jLabel2.setText("Por favor, ingrese los datos para poder modificar el equipo: ");
 
         nameLbl1.setText("Ingrese la descripcion:");
 
@@ -136,7 +159,7 @@ public class CrearEquipos extends javax.swing.JPanel {
                 .addGap(31, 31, 31)
                 .addGroup(BackgroundCrearEquipo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(BackgroundCrearEquipo1Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(764, 764, 764))
                     .addGroup(BackgroundCrearEquipo1Layout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -253,7 +276,7 @@ public class CrearEquipos extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(BackgroundCrearEquipo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(BackgroundCrearEquipo1, javax.swing.GroupLayout.DEFAULT_SIZE, 1052, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -262,18 +285,18 @@ public class CrearEquipos extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void CrearEquipoSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearEquipoSiguienteActionPerformed
-        String descripcion = DescripcionTXT.getText();
+       String descripcion = DescripcionTXT.getText();
         String marca = MarcaTXT.getText();
         String modelo = ModeloTXT.getText();
         String numeroSerial = NumSerialTXT.getText();
         String numeroActivo = NumActivoTXT.getText();
         String presentacion = PresentacionTXT.getText();
         String voltaje = VoltajeTXT.getText();
-        String procesable = ProcesableSIRadioBtton.isSelected() ? "SI" : "NO";
+        String procesable = ProcesableSIRadioBtton.isSelected() ? "Sí" : "No";
         String materialRequerido = MaterialRequeridoTXT.getText();
         String añoDeCompra = AñodeCompraTXT.getText();
         
-        MostrarJpanel(new CrearEquipos2(userActual, listalaboratorios, listaequipos, descripcion, marca, modelo, numeroSerial, numeroActivo, presentacion, voltaje, procesable, materialRequerido, añoDeCompra));
+        MostrarJpanel(new ModificarEquipos2(userActual, listalaboratorios, listaequipos,equipoActual, descripcion, marca, modelo, numeroSerial, numeroActivo, presentacion, voltaje, procesable, materialRequerido, añoDeCompra));
     }//GEN-LAST:event_CrearEquipoSiguienteActionPerformed
 
 

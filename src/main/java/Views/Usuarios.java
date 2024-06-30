@@ -81,7 +81,7 @@ public class Usuarios extends javax.swing.JPanel {
     }
 
     private void MostrarJPanel(JPanel p) {
-        p.setSize(1180, 556);
+        p.setSize(1038, 666);
         p.setLocation(0,0);
         BackGroundUsuarios.removeAll();
         BackGroundUsuarios.add(p, BorderLayout.CENTER);
@@ -184,28 +184,29 @@ public class Usuarios extends javax.swing.JPanel {
         BackGroundUsuarios.setLayout(BackGroundUsuariosLayout);
         BackGroundUsuariosLayout.setHorizontalGroup(
             BackGroundUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackGroundUsuariosLayout.createSequentialGroup()
+                .addGap(433, 433, 433)
+                .addComponent(BotonCrearUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(BotonModificarUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(BotonEliminarUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(44, 44, 44))
             .addGroup(BackGroundUsuariosLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(17, 17, 17)
                 .addGroup(BackGroundUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(BackGroundUsuariosLayout.createSequentialGroup()
-                        .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
-                        .addGap(699, 699, 699))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackGroundUsuariosLayout.createSequentialGroup()
-                        .addComponent(userSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 612, Short.MAX_VALUE)
+                        .addComponent(userSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 871, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(BotonBuscarUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(50, 50, 50))
                     .addGroup(BackGroundUsuariosLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 739, Short.MAX_VALUE)
-                        .addGap(16, 16, 16))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackGroundUsuariosLayout.createSequentialGroup()
-                        .addGap(427, 427, 427)
-                        .addComponent(BotonCrearUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(BotonModificarUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(BotonEliminarUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(44, 44, 44))))
+                        .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, 1017, Short.MAX_VALUE)
+                        .addContainerGap())))
+            .addGroup(BackGroundUsuariosLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1007, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         BackGroundUsuariosLayout.setVerticalGroup(
             BackGroundUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -225,7 +226,7 @@ public class Usuarios extends javax.swing.JPanel {
                     .addComponent(BotonEliminarUsuario)
                     .addComponent(BotonModificarUsuario)
                     .addComponent(BotonCrearUsuario))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

@@ -42,7 +42,7 @@ public class Laboratorios extends javax.swing.JPanel {
     }
     
         private void MostrarJPanel(JPanel p) {
-        p.setSize(1180, 556);
+        p.setSize(1038, 666);
         p.setLocation(0,0);
         BackgroundLab.removeAll();
         BackgroundLab.add(p, BorderLayout.CENTER);

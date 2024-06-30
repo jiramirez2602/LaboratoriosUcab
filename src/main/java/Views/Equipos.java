@@ -7,6 +7,8 @@ import java.awt.Color;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -82,7 +84,7 @@ public class Equipos extends javax.swing.JPanel {
     }
 
     private void MostrarJPanel(JPanel p) {
-        p.setSize(1180, 556);
+        p.setSize(1038, 666);
         p.setLocation(0, 0);
         BackgroundEquipos.removeAll();
         BackgroundEquipos.add(p, BorderLayout.CENTER);
@@ -274,7 +276,23 @@ public class Equipos extends javax.swing.JPanel {
     }//GEN-LAST:event_BotonEliminarEquipoActionPerformed
 
     private void BotonModificarEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarEquipoActionPerformed
-       
+       int selectedRow = jTable1.getSelectedRow();
+        if (selectedRow != -1) {
+        String idEquipo = idMapEquipos.get(selectedRow);
+        Equipo equipo = null;
+        try {
+            equipo = listaequipos.listarEquipo(idEquipo);
+        } catch (ParseException ex) {
+            Logger.getLogger(Equipos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if (equipo != null) {
+            MostrarJPanel(new ModificarEquipos(userActual, listalaboratorios, listaequipos, equipo));
+        } else {
+            JOptionPane.showMessageDialog(null, "Equipo no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    } else {
+        JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila para modificar.", "Error", JOptionPane.ERROR_MESSAGE);
+    }
     }//GEN-LAST:event_BotonModificarEquipoActionPerformed
 
     private void BotonBuscarLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBuscarLabActionPerformed

@@ -37,26 +37,26 @@ public class CrearEquipos2 extends javax.swing.JPanel {
     private String añoDeCompra;
     
     public CrearEquipos2(Usuario user, ListaLaboratorios listaLab, ListaDeEquipos equipos, 
-                         String descripcion, String marca, String modelo, String numeroSerial, 
-                         String numeroActivo, String presentacion, String voltaje, 
-                         String procesable, String materialRequerido, String añoDeCompra) {
-        initComponents();
-        this.userActual = user;
-        this.listalaboratorios = listaLab;
-        this.listaequipos = equipos;
-        this.descripcion = descripcion;
-        this.marca = marca;
-        this.modelo = modelo;
-        this.numeroSerial = numeroSerial;
-        this.numeroActivo = numeroActivo;
-        this.presentacion = presentacion;
-        this.voltaje = voltaje;
-        this.procesable = procesable;
-        this.materialRequerido = materialRequerido;
-        this.añoDeCompra =  añoDeCompra;
-        initLabDisponible();
-        
-        LabDisponible.addActionListener(new java.awt.event.ActionListener() {
+                     String descripcion, String marca, String modelo, String numeroSerial, 
+                     String numeroActivo, String presentacion, String voltaje, 
+                     String procesable, String materialRequerido, String añoDeCompra) {
+    initComponents();
+    this.userActual = user;
+    this.listalaboratorios = listaLab;
+    this.listaequipos = equipos;
+    this.descripcion = descripcion;
+    this.marca = marca;
+    this.modelo = modelo;
+    this.numeroSerial = numeroSerial;
+    this.numeroActivo = numeroActivo;
+    this.presentacion = presentacion;
+    this.voltaje = voltaje;
+    this.procesable = procesable;
+    this.materialRequerido = materialRequerido;
+    this.añoDeCompra =  añoDeCompra;
+    initLabDisponible();
+    
+    LabDisponible.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
             LabDisponibleActionPerformed(evt);
         }
@@ -125,6 +125,9 @@ public class CrearEquipos2 extends javax.swing.JPanel {
         nameLbl11 = new javax.swing.JLabel();
         LabDisponible = new javax.swing.JComboBox<>();
         Atras = new javax.swing.JButton();
+
+        setMinimumSize(new java.awt.Dimension(1038, 666));
+        setPreferredSize(new java.awt.Dimension(1038, 666));
 
         BackgroundCrearEquipos2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -244,11 +247,11 @@ public class CrearEquipos2 extends javax.swing.JPanel {
                             .addComponent(ProximaCalibracionTXT)
                             .addComponent(nameLbl1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.DEFAULT_SIZE, 1, Short.MAX_VALUE)
                 .addGap(36, 36, 36)
                 .addGroup(BackgroundCrearEquipos2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(BackgroundCrearEquipos2Layout.createSequentialGroup()
-                        .addComponent(LabDisponible, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(LabDisponible, 0, 108, Short.MAX_VALUE)
                         .addGap(408, 408, 408))
                     .addGroup(BackgroundCrearEquipos2Layout.createSequentialGroup()
                         .addGroup(BackgroundCrearEquipos2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -346,7 +349,7 @@ public class CrearEquipos2 extends javax.swing.JPanel {
                                 .addGroup(BackgroundCrearEquipos2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(CrearEquiposFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(Atras, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(200, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -357,7 +360,7 @@ public class CrearEquipos2 extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(BackgroundCrearEquipos2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(BackgroundCrearEquipos2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 

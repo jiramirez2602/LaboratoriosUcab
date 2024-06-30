@@ -68,14 +68,15 @@ public class Dashboard extends javax.swing.JFrame {
         ShowJPanel(new Principal());
     }
     
-    public static void ShowJPanel(JPanel p) {
-        p.setSize(760, 478);
+    public  void ShowJPanel(JPanel p) {
+        p.setSize(1038, 666);
         p.setLocation(0,0);
-        content.removeAll();
-        content.add(p, BorderLayout.CENTER);
-        content.revalidate();
-        content.repaint();
+        Contenido.removeAll();
+        Contenido.add(p,BorderLayout.CENTER);
+        Contenido.revalidate();
+        Contenido.repaint();
     }
+    
     
 
     /**
@@ -101,12 +102,13 @@ public class Dashboard extends javax.swing.JFrame {
         BotonSustanciasQuimicas = new javax.swing.JButton();
         header = new javax.swing.JPanel();
         dateText = new javax.swing.JLabel();
-        content = new javax.swing.JPanel();
+        Contenido = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(1050, 660));
+        setMinimumSize(new java.awt.Dimension(1038, 666));
 
         background.setBackground(new java.awt.Color(255, 255, 255));
+        background.setMinimumSize(new java.awt.Dimension(1038, 666));
 
         menu.setBackground(new java.awt.Color(13, 71, 161));
         menu.setPreferredSize(new java.awt.Dimension(270, 640));
@@ -264,12 +266,12 @@ public class Dashboard extends javax.swing.JFrame {
                     .addGroup(menuLayout.createSequentialGroup()
                         .addGap(98, 98, 98)
                         .addComponent(usuarioLabel)))
-                .addGap(0, 40, Short.MAX_VALUE))
+                .addGap(0, 20, Short.MAX_VALUE))
             .addComponent(BotonEquipos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(BotonSustanciasQuimicas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(BotonInsumos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(BotonTransacciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(BotonReportes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(BotonInsumos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         menuLayout.setVerticalGroup(
             menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -297,7 +299,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addComponent(BotonTransacciones, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(BotonReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(261, Short.MAX_VALUE))
         );
 
         header.setBackground(new java.awt.Color(25, 118, 210));
@@ -312,7 +314,7 @@ public class Dashboard extends javax.swing.JFrame {
             .addGroup(headerLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(dateText, javax.swing.GroupLayout.PREFERRED_SIZE, 683, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(331, Short.MAX_VALUE))
         );
         headerLayout.setVerticalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -322,29 +324,40 @@ public class Dashboard extends javax.swing.JFrame {
                 .addContainerGap(59, Short.MAX_VALUE))
         );
 
-        content.setBackground(new java.awt.Color(255, 255, 255));
-        content.setLayout(new java.awt.BorderLayout());
+        Contenido.setBackground(new java.awt.Color(255, 255, 255));
+        Contenido.setMinimumSize(new java.awt.Dimension(1038, 666));
+        Contenido.setPreferredSize(new java.awt.Dimension(1038, 666));
+
+        javax.swing.GroupLayout ContenidoLayout = new javax.swing.GroupLayout(Contenido);
+        Contenido.setLayout(ContenidoLayout);
+        ContenidoLayout.setHorizontalGroup(
+            ContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        ContenidoLayout.setVerticalGroup(
+            ContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout backgroundLayout = new javax.swing.GroupLayout(background);
         background.setLayout(backgroundLayout);
         backgroundLayout.setHorizontalGroup(
             backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(backgroundLayout.createSequentialGroup()
-                .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(header, javax.swing.GroupLayout.DEFAULT_SIZE, 760, Short.MAX_VALUE)
-                    .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(248, 248, 248)
+                .addComponent(header, javax.swing.GroupLayout.DEFAULT_SIZE, 1044, Short.MAX_VALUE))
+            .addGroup(backgroundLayout.createSequentialGroup()
+                .addGap(254, 254, 254)
+                .addComponent(Contenido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         backgroundLayout.setVerticalGroup(
             backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, 660, Short.MAX_VALUE)
             .addGroup(backgroundLayout.createSequentialGroup()
-                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(backgroundLayout.createSequentialGroup()
-                        .addGap(134, 134, 134)
-                        .addComponent(content, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Contenido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, 812, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -355,7 +368,9 @@ public class Dashboard extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
         );
 
         pack();
@@ -403,9 +418,9 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JButton BotonSustanciasQuimicas;
     private javax.swing.JButton BotonTransacciones;
     private javax.swing.JButton BotonUsuarios;
+    private javax.swing.JPanel Contenido;
     private javax.swing.JPanel background;
     private javax.swing.JButton btn_prin;
-    private static javax.swing.JPanel content;
     private javax.swing.JLabel dateText;
     private javax.swing.JPanel header;
     private javax.swing.JSeparator jSeparator1;
