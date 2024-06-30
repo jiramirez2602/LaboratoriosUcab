@@ -39,7 +39,7 @@ public class CrearEquipos2 extends javax.swing.JPanel {
     public CrearEquipos2(Usuario user, ListaLaboratorios listaLab, ListaDeEquipos equipos, 
                          String descripcion, String marca, String modelo, String numeroSerial, 
                          String numeroActivo, String presentacion, String voltaje, 
-                         String procesable, String materialRequerido, String añodecompra) {
+                         String procesable, String materialRequerido, String añoDeCompra) {
         initComponents();
         this.userActual = user;
         this.listalaboratorios = listaLab;
@@ -53,8 +53,9 @@ public class CrearEquipos2 extends javax.swing.JPanel {
         this.voltaje = voltaje;
         this.procesable = procesable;
         this.materialRequerido = materialRequerido;
-        this.añoDeCompra = añoDeCompra;
+        this.añoDeCompra =  añoDeCompra;
         initLabDisponible();
+        
         LabDisponible.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
             LabDisponibleActionPerformed(evt);
@@ -100,7 +101,6 @@ public class CrearEquipos2 extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         nameLbl1 = new javax.swing.JLabel();
         AplicacionTXT = new javax.swing.JTextField();
-        jSeparator1 = new javax.swing.JSeparator();
         CrearEquiposFinal = new javax.swing.JButton();
         nameLbl3 = new javax.swing.JLabel();
         UltimoMantenimientoTXT = new javax.swing.JTextField();
@@ -124,6 +124,7 @@ public class CrearEquipos2 extends javax.swing.JPanel {
         jSeparator2 = new javax.swing.JSeparator();
         nameLbl11 = new javax.swing.JLabel();
         LabDisponible = new javax.swing.JComboBox<>();
+        Atras = new javax.swing.JButton();
 
         BackgroundCrearEquipos2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -134,10 +135,6 @@ public class CrearEquipos2 extends javax.swing.JPanel {
         jLabel2.setText("Por favor, ingrese los datos para poder crear el equipo: ");
 
         nameLbl1.setText("Ingrese la aplicacion:");
-
-        jSeparator1.setForeground(new java.awt.Color(204, 204, 204));
-        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jSeparator1.setPreferredSize(new java.awt.Dimension(200, 10));
 
         CrearEquiposFinal.setBackground(new java.awt.Color(21, 101, 192));
         CrearEquiposFinal.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -186,160 +183,181 @@ public class CrearEquipos2 extends javax.swing.JPanel {
 
         LabDisponible.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        Atras.setBackground(new java.awt.Color(21, 101, 192));
+        Atras.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Atras.setForeground(new java.awt.Color(255, 255, 255));
+        Atras.setText("Regresar");
+        Atras.setBorder(null);
+        Atras.setBorderPainted(false);
+        Atras.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Atras.setIconTextGap(13);
+        Atras.setInheritsPopupMenu(true);
+        Atras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AtrasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout BackgroundCrearEquipos2Layout = new javax.swing.GroupLayout(BackgroundCrearEquipos2);
         BackgroundCrearEquipos2.setLayout(BackgroundCrearEquipos2Layout);
         BackgroundCrearEquipos2Layout.setHorizontalGroup(
             BackgroundCrearEquipos2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackgroundCrearEquipos2Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
                 .addGroup(BackgroundCrearEquipos2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(BackgroundCrearEquipos2Layout.createSequentialGroup()
-                        .addComponent(nameLbl4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(196, 196, 196))
-                    .addGroup(BackgroundCrearEquipos2Layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
                         .addGroup(BackgroundCrearEquipos2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(27, 27, 27))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackgroundCrearEquipos2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(BackgroundCrearEquipos2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(BackgroundCrearEquipos2Layout.createSequentialGroup()
+                                .addComponent(nameLbl4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(189, 189, 189))
                             .addGroup(BackgroundCrearEquipos2Layout.createSequentialGroup()
                                 .addGap(1, 1, 1)
                                 .addGroup(BackgroundCrearEquipos2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(BackgroundCrearEquipos2Layout.createSequentialGroup()
                                         .addComponent(nameLbl3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGap(51, 51, 51))
+                                        .addGap(47, 47, 47))
                                     .addGroup(BackgroundCrearEquipos2Layout.createSequentialGroup()
                                         .addComponent(nameLbl5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGap(29, 29, 29))
+                                        .addGap(25, 25, 25))
                                     .addGroup(BackgroundCrearEquipos2Layout.createSequentialGroup()
                                         .addComponent(nameLbl7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGap(42, 42, 42))
+                                        .addGap(38, 38, 38))
                                     .addGroup(BackgroundCrearEquipos2Layout.createSequentialGroup()
                                         .addGroup(BackgroundCrearEquipos2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(nameLbl1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(UltimoMantenimientoTXT)
                                             .addComponent(AplicacionTXT)
-                                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(ProximoMantenimientoTXT)
                                             .addComponent(UltimaCalibracionTXT))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))))
+                                        .addGap(2, 2, 2))))
                             .addGroup(BackgroundCrearEquipos2Layout.createSequentialGroup()
                                 .addComponent(ProvedorServicioTXT)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 1, Short.MAX_VALUE))
-                    .addGroup(BackgroundCrearEquipos2Layout.createSequentialGroup()
-                        .addComponent(nameLbl6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(49, 49, 49))
-                    .addGroup(BackgroundCrearEquipos2Layout.createSequentialGroup()
-                        .addComponent(ProximaCalibracionTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(2, 2, 2))
+                            .addGroup(BackgroundCrearEquipos2Layout.createSequentialGroup()
+                                .addComponent(nameLbl6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(42, 42, 42))
+                            .addComponent(ProximaCalibracionTXT)
+                            .addComponent(nameLbl1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addGap(36, 36, 36)
                 .addGroup(BackgroundCrearEquipos2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(BackgroundCrearEquipos2Layout.createSequentialGroup()
-                        .addGroup(BackgroundCrearEquipos2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ObservacionesTXT)
+                        .addComponent(LabDisponible, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(408, 408, 408))
+                    .addGroup(BackgroundCrearEquipos2Layout.createSequentialGroup()
+                        .addGroup(BackgroundCrearEquipos2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(BackgroundCrearEquipos2Layout.createSequentialGroup()
+                                .addComponent(Atras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(32, 32, 32)
+                                .addComponent(CrearEquiposFinal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(134, 134, 134))
+                            .addComponent(ObservacionesTXT, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, BackgroundCrearEquipos2Layout.createSequentialGroup()
                                 .addComponent(nameLbl10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(187, 187, 187))
-                            .addGroup(BackgroundCrearEquipos2Layout.createSequentialGroup()
-                                .addComponent(nameLbl8, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, BackgroundCrearEquipos2Layout.createSequentialGroup()
+                                .addComponent(nameLbl8, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
                                 .addGap(319, 319, 319))
-                            .addGroup(BackgroundCrearEquipos2Layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, BackgroundCrearEquipos2Layout.createSequentialGroup()
                                 .addComponent(EncendidoNocheSi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(26, 26, 26)
                                 .addComponent(EncendidoNocheNo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(333, 333, 333))
-                            .addComponent(NombreProductoTXT, javax.swing.GroupLayout.DEFAULT_SIZE, 431, Short.MAX_VALUE)
-                            .addGroup(BackgroundCrearEquipos2Layout.createSequentialGroup()
+                            .addComponent(NombreProductoTXT, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, BackgroundCrearEquipos2Layout.createSequentialGroup()
                                 .addComponent(nameLbl9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(243, 243, 243))
-                            .addComponent(InventarioExistenteTXT)
-                            .addGroup(BackgroundCrearEquipos2Layout.createSequentialGroup()
-                                .addComponent(nameLbl12, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(CrearEquiposFinal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 431, Short.MAX_VALUE)
-                            .addComponent(nameLbl11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(157, 157, 157))
-                    .addGroup(BackgroundCrearEquipos2Layout.createSequentialGroup()
-                        .addComponent(LabDisponible, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(InventarioExistenteTXT, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, BackgroundCrearEquipos2Layout.createSequentialGroup()
+                                .addComponent(nameLbl12, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addGap(316, 316, 316))
+                            .addComponent(nameLbl11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(49, 49, 49))))
         );
         BackgroundCrearEquipos2Layout.setVerticalGroup(
             BackgroundCrearEquipos2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BackgroundCrearEquipos2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(7, 7, 7)
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(31, 31, 31)
-                .addGroup(BackgroundCrearEquipos2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(BackgroundCrearEquipos2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(BackgroundCrearEquipos2Layout.createSequentialGroup()
-                        .addComponent(nameLbl1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(10, 10, 10)
-                        .addComponent(AplicacionTXT)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(nameLbl3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(7, 7, 7)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(UltimoMantenimientoTXT, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                        .addGroup(BackgroundCrearEquipos2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(BackgroundCrearEquipos2Layout.createSequentialGroup()
+                                .addComponent(nameLbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(AplicacionTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(nameLbl3, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(UltimoMantenimientoTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(nameLbl5, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(ProximoMantenimientoTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(nameLbl7, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(UltimaCalibracionTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(nameLbl6, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(ProximaCalibracionTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(nameLbl4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(ProvedorServicioTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(BackgroundCrearEquipos2Layout.createSequentialGroup()
+                        .addGap(93, 93, 93)
+                        .addComponent(nameLbl8, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(nameLbl5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(10, 10, 10)
-                        .addComponent(ProximoMantenimientoTXT, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
+                        .addGroup(BackgroundCrearEquipos2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(EncendidoNocheNo)
+                            .addComponent(EncendidoNocheSi))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(nameLbl7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(10, 10, 10)
-                        .addComponent(UltimaCalibracionTXT, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                        .addComponent(nameLbl9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(nameLbl6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(10, 10, 10)
-                        .addComponent(ProximaCalibracionTXT, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
+                        .addComponent(NombreProductoTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(nameLbl4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(10, 10, 10)
-                        .addComponent(ProvedorServicioTXT, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-                        .addGap(12, 12, 12))
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, BackgroundCrearEquipos2Layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 2, Short.MAX_VALUE)))
-                .addGap(80, 80, 80))
-            .addGroup(BackgroundCrearEquipos2Layout.createSequentialGroup()
-                .addGap(93, 93, 93)
-                .addComponent(nameLbl8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(BackgroundCrearEquipos2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(EncendidoNocheNo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(EncendidoNocheSi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nameLbl9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(NombreProductoTXT)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nameLbl12)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(InventarioExistenteTXT)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nameLbl10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ObservacionesTXT)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nameLbl11)
-                .addGap(18, 18, 18)
-                .addComponent(LabDisponible, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(84, 84, 84)
-                .addComponent(CrearEquiposFinal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(56, 56, 56))
+                        .addComponent(nameLbl12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(InventarioExistenteTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nameLbl10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ObservacionesTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nameLbl11)
+                        .addGroup(BackgroundCrearEquipos2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(BackgroundCrearEquipos2Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(LabDisponible, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackgroundCrearEquipos2Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(BackgroundCrearEquipos2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(CrearEquiposFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Atras, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(BackgroundCrearEquipos2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(BackgroundCrearEquipos2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(BackgroundCrearEquipos2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(BackgroundCrearEquipos2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -355,11 +373,30 @@ public class CrearEquipos2 extends javax.swing.JPanel {
         String inventarioExistente = InventarioExistenteTXT.getText();
         String observaciones = ObservacionesTXT.getText();
         
+        String nombreLaboratorioSeleccionado = (String) LabDisponible.getSelectedItem();
+        String idLaboratorio = listalaboratorios.listarLaboratorioPorNombre(nombreLaboratorioSeleccionado);
+
+        boolean creado = listaequipos.crearProductoEquipo(userActual, descripcion, marca, modelo, numeroSerial, numeroActivo,
+                presentacion, voltaje, procesable, materialRequerido, añoDeCompra, aplicacion, ultimoMantenimiento,
+                proximoMantenimiento, ultimaCalibracion, proximaCalibracion, proovedoresDeServicios, encendidoDenoche,
+                nombreProducto, inventarioExistente, observaciones, idLaboratorio);
+
+        if (creado) {
+            JOptionPane.showMessageDialog(this, "Equipo creado exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            
+        } else {
+            JOptionPane.showMessageDialog(this, "Error al crear el equipo. Verifique los campos.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_CrearEquiposFinalActionPerformed
+
+    private void AtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrasActionPerformed
+        MostrarJpanel(new CrearEquipos(userActual,listalaboratorios,listaequipos));
+    }//GEN-LAST:event_AtrasActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField AplicacionTXT;
+    private javax.swing.JButton Atras;
     private javax.swing.JPanel BackgroundCrearEquipos2;
     private javax.swing.JButton CrearEquiposFinal;
     private javax.swing.ButtonGroup EncendidoNoche;
@@ -376,7 +413,6 @@ public class CrearEquipos2 extends javax.swing.JPanel {
     private javax.swing.JTextField UltimoMantenimientoTXT;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel nameLbl1;
     private javax.swing.JLabel nameLbl10;

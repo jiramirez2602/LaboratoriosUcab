@@ -1,37 +1,91 @@
 package Views;
 
-
 import controller.ListaDeEquipos;
 import controller.ListaLaboratorios;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import model.Equipo;
+import model.Laboratorio;
 import model.Usuario;
 
-
 public class Equipos extends javax.swing.JPanel {
-    
+
     private ListaLaboratorios listalaboratorios;
     private Usuario userActual;
     private ListaDeEquipos listaequipos;
-    
-    public Equipos(Usuario user,ListaLaboratorios listaLab,ListaDeEquipos equipos ) {
-        this.listalaboratorios=listaLab;
+    private DefaultTableModel tableModelEquipos;
+    private HashMap<Integer, String> idMapEquipos;
+
+    public Equipos(Usuario user, ListaLaboratorios listaLab, ListaDeEquipos equipos) {
+        this.listalaboratorios = listaLab;
         this.listaequipos = equipos;
-        this.userActual=user;
+        this.userActual = user;
+        idMapEquipos = new HashMap<>();
         initComponents();
         InitStyles();
+        inicializarTablaEquipos(); 
+        actualizarTablaEquipos();
     }
-    
+
+    private void inicializarTablaEquipos() {
+        String[] columnas = {"Nombre", "Laboratorio"};
+        tableModelEquipos = new DefaultTableModel(columnas, 0);
+        jTable1.setModel(tableModelEquipos);
+    }
+
+    private void actualizarTablaEquipos() {
+        tableModelEquipos.setRowCount(0);
+        idMapEquipos.clear();
+        int row = 0;
+
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+
+        try {
+            ArrayList<Equipo> equipos = listaequipos.getListaEquipos();
+
+            for (Equipo equipo : equipos) {
+                // Obtener el nombre del laboratorio utilizando el método listarLaboratorio
+                Laboratorio laboratorio = listalaboratorios.listarLaboratorio(equipo.getLaboratorio());
+                String nombreLaboratorio = (laboratorio != null) ? laboratorio.getNombreLaboratorio() : "Desconocido";
+
+                Object[] fila = {
+                    equipo.getNombreProducto(), // Nombre del equipo
+                    nombreLaboratorio // Nombre del laboratorio asociado
+                };
+                tableModelEquipos.addRow(fila);
+
+                idMapEquipos.put(row, equipo.getId());
+
+                // Aplicar renderizador centrado a las celdas de la tabla
+                for (int i = 0; i < tableModelEquipos.getColumnCount(); i++) {
+                    jTable1.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+                }
+
+                row++;
+            }
+        } catch (ParseException ex) {
+            JOptionPane.showMessageDialog(this, "Error al obtener la lista de equipos.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
     private void InitStyles() {
         title.putClientProperty("FlatLaf.styleClass", "h1");
         title.setForeground(Color.black);
         userSearch.putClientProperty("JTextField.placeholderText", "Ingrese el nombre de usuario a buscar.");
     }
-    
+
     private void MostrarJPanel(JPanel p) {
         p.setSize(1180, 556);
-        p.setLocation(0,0);
+        p.setLocation(0, 0);
         BackgroundEquipos.removeAll();
         BackgroundEquipos.add(p, BorderLayout.CENTER);
         BackgroundEquipos.revalidate();
@@ -148,30 +202,30 @@ public class Equipos extends javax.swing.JPanel {
                                 .addComponent(BotonEliminarEquipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(BackgroundEquiposLayout.createSequentialGroup()
                                 .addComponent(userSearch)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(BotonBuscarLab)))
+                                .addGap(18, 18, 18)
+                                .addComponent(BotonBuscarLab, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(50, 50, 50))
                     .addGroup(BackgroundEquiposLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 702, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addComponent(jScrollPane1)
+                        .addGap(39, 39, 39))))
         );
         BackgroundEquiposLayout.setVerticalGroup(
             BackgroundEquiposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BackgroundEquiposLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(title)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(BackgroundEquiposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(userSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BotonBuscarLab, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(48, 48, 48)
                 .addGroup(BackgroundEquiposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotonEliminarEquipo)
                     .addComponent(BotonModificarEquipo)
                     .addComponent(BotonCrearEquipo))
-                .addGap(31, 31, 31))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -195,7 +249,30 @@ public class Equipos extends javax.swing.JPanel {
     }//GEN-LAST:event_BotonCrearEquipoActionPerformed
 
     private void BotonEliminarEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarEquipoActionPerformed
-        
+        int selectedRow = jTable1.getSelectedRow();
+
+        if (selectedRow != -1) {
+            String idEquipoAEliminar = idMapEquipos.get(selectedRow);
+
+            if (idEquipoAEliminar != null && !idEquipoAEliminar.isEmpty()) {
+                int confirmacion = JOptionPane.showConfirmDialog(null, "¿Estás seguro de eliminar este equipo?", "Confirmar Eliminación", JOptionPane.YES_NO_OPTION);
+
+                if (confirmacion == JOptionPane.YES_OPTION) {
+                    boolean eliminacionExitosa = listaequipos.eliminarEquipo(userActual, idEquipoAEliminar);
+
+                    if (eliminacionExitosa) {
+                        JOptionPane.showMessageDialog(null, "Equipo eliminado exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                        actualizarTablaEquipos();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Error al eliminar el equipo.", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "No se ha seleccionado ningún equipo para eliminar.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila para eliminar.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_BotonEliminarEquipoActionPerformed
 
     private void BotonModificarEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarEquipoActionPerformed
