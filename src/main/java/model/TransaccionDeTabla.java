@@ -8,18 +8,16 @@ public class TransaccionDeTabla {
     String tipoDeProducto;
     int inventarioExistente;
     String observaciones;
-    String nombreLaboratorio;
     String fecha;
     String nombreCompleto;
     String id;
     String tipoDeTransaccion;
 
-    public TransaccionDeTabla(String nombreProducto, String tipoDeProducto, int inventarioExistente, String observaciones, String nombreLaboratorio, String fecha, String nombreCompleto, String id, String tipoDeTransaccion) {
+    public TransaccionDeTabla(String nombreProducto, String tipoDeProducto, int inventarioExistente, String observaciones, String fecha, String nombreCompleto, String id, String tipoDeTransaccion) {
         this.nombreProducto = nombreProducto;
         this.tipoDeProducto = tipoDeProducto;
         this.inventarioExistente = inventarioExistente;
         this.observaciones = observaciones;
-        this.nombreLaboratorio = nombreLaboratorio; //Sacar el nombre del id
         this.fecha = fecha;
         this.nombreCompleto = nombreCompleto;
         this.id = id;
@@ -40,10 +38,6 @@ public class TransaccionDeTabla {
 
     public String getObservaciones() {
         return observaciones;
-    }
-
-    public String getNombreLaboratorio() {
-        return nombreLaboratorio;
     }
 
     public String getFecha() {
@@ -76,10 +70,6 @@ public class TransaccionDeTabla {
 
     public void setObservaciones(String observaciones) {
         this.observaciones = observaciones;
-    }
-
-    public void setNombreLaboratorio(String nombreLaboratorio) {
-        this.nombreLaboratorio = nombreLaboratorio;
     }
 
     public void setFecha(String fecha) {

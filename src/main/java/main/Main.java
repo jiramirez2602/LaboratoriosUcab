@@ -57,20 +57,20 @@ public class Main {
         //Equipos
         ListaDeEquipos lista3 = new ListaDeEquipos();
         //lista3.crearProductoEquipo(administradorLaboratorio, "Equipo importante", "GM", "ael-88g", "22fdfd-44", "233211", "Normal", "200 V", "true", "Nada", "26/02/2001", "No Aplica", "26/02/2001", "26/02/2030", "26/02/2020", "26/02/2024", "GM Latam", "Si", "Motor de vapor", "33", "No tengo observaciones", "af473a5b-ab43-4d1a-8bb1-b6f4cd5e392f");
-       //lista3.modificarEquipo(administradorLaboratorio, "0a42753a-2f07-4491-8525-bb3d299227f9","Equipo actualizado", "GM actualizado", "ael-88g actualizado", "22fdfd-44 actualizado", "875", "Normal actualizado", "200 V actualizado", "false", "Nada actualizado", "26/02/2011", "No Aplica actualizado", "26/02/2011", "26/02/2033", "26/02/2022", "26/02/2044", "GM Latam actualizado", "true", "Motor de vapor actualizado", "44", "No tengo observaciones actualizado", "af473a5b-ab43-4d1a-8bb1-b6f4cd5e392f");
+        //lista3.modificarEquipo(administradorLaboratorio, "0a42753a-2f07-4491-8525-bb3d299227f9","Equipo actualizado", "GM actualizado", "ael-88g actualizado", "22fdfd-44 actualizado", "875", "Normal actualizado", "200 V actualizado", "false", "Nada actualizado", "26/02/2011", "No Aplica actualizado", "26/02/2011", "26/02/2033", "26/02/2022", "26/02/2044", "GM Latam actualizado", "true", "Motor de vapor actualizado", "44", "No tengo observaciones actualizado", "af473a5b-ab43-4d1a-8bb1-b6f4cd5e392f");
         //lista3.eliminarEquipo(administradorLaboratorio, "0a42753a-2f07-4491-8525-bb3d299227f9");
         //lista3.getListaEquipos();
 
 //        //Iteramos para ejemplificar:
-//        ArrayList<Equipo> listaEquiposAux = new ArrayList<>();
-//        listaEquiposAux = lista3.getListaEquipos();
-//
-//        listaEquiposAux.forEach(elemento -> {
-//            System.out.println(elemento.getId());
-//            System.out.println(elemento.getNombreProducto());
-//        });
-         */
- /*
+        ArrayList<Equipo> listaEquiposAux = new ArrayList<>();
+        listaEquiposAux = lista3.getListaEquipos();
+
+        listaEquiposAux.forEach(elemento -> {
+            System.out.println(elemento.getId());
+            System.out.println(elemento.getNombreProducto());
+        });
+        */
+        /*
         //Sustancia Quimica:
         ListaDeSustanciasQuimicas lista4 = new ListaDeSustanciasQuimicas();
         //lista4.crearProductoSustanciaQuimica(administradorLaboratorio, "H2O", "100", "Liquida", "Agua", Boolean.TRUE, "aaiituktuk", "Riesgo es no tomarla", "NA", "NA", "Tuberias", "Hidro Capial", "ml", "100", "Estado", "Si", "Agua", "3", "No tengo Sed", "af473a5b-ab43-4d1a-8bb1-b6f4cd5e392f");

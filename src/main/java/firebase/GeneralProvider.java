@@ -250,7 +250,6 @@ public class GeneralProvider {
                         document.getString("tipoDeProducto"),
                         Integer.valueOf(document.getString("inventarioExistente")),
                         document.getString("observaciones"),
-                        document.getString("idLaboratorio"), 
                         document.getString("fecha"),
                         document.getString("nombreUsuario"),
                         document.getString("id"),
