@@ -6,17 +6,16 @@ view\Login$2.class
 Views\SustanciasQuimicas$6.class
 model\Equipo.class
 Views\SustanciasQuimicas$3.class
-Views\Productos.class
 controller\ListaDeEquipos.class
 Views\Insumos$6.class
 Views\Equipos$3.class
 Views\ModificarLaboratorio$2.class
+Views\CrearEquipos2$2.class
 Views\Equipos$5.class
+view\Dashboard$7.class
 Views\Usuarios$3.class
-Views\Productos$1.class
 Views\Transacciones$3.class
 Views\CrearEquipos.class
-Views\CrearEquiposUltimo.class
 view\Dashboard.class
 view\Login$5.class
 Views\ModificarUsuario.class
@@ -44,7 +43,6 @@ Views\Usuarios$1.class
 controller\ListaDeInsumos.class
 Views\Reportes$1.class
 model\Insumo.class
-Views\Productos$3.class
 Views\Transacciones$4.class
 view\Login$6.class
 view\Dashboard$5.class
@@ -55,12 +53,12 @@ Views\Laboratorios$2.class
 Views\Equipos$4.class
 Views\Usuarios$5.class
 view\Dashboard$3.class
-Views\Productos$2.class
 Views\ModificarUsuario$1.class
 Views\Laboratorios$5.class
 view\Dashboard$6.class
 Views\ModificarLaboratorio$3.class
 Views\Usuarios$2.class
+Views\CrearEquipos2$3.class
 Views\Reportes$3.class
 Views\Laboratorios.class
 model\Producto.class
@@ -74,6 +72,7 @@ Views\CrearEquipos$1.class
 Views\CrearUsuario$1.class
 Views\SustanciasQuimicas$4.class
 view\Dashboard$1.class
+view\Dashboard$8.class
 Views\Equipos$2.class
 Views\Usuarios.class
 Views\Transacciones$2.class
@@ -93,4 +92,3 @@ Views\ModificarLaboratorio.class
 firebase\Conexion.class
 Views\Transacciones$1.class
 Views\Insumos$2.class
-Views\CrearEquiposUltimo$1.class
