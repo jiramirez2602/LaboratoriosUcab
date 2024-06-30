@@ -53,19 +53,17 @@ public class Equipos extends javax.swing.JPanel {
             ArrayList<Equipo> equipos = listaequipos.getListaEquipos();
 
             for (Equipo equipo : equipos) {
-                // Obtener el nombre del laboratorio utilizando el método listarLaboratorio
                 Laboratorio laboratorio = listalaboratorios.listarLaboratorio(equipo.getLaboratorio());
                 String nombreLaboratorio = (laboratorio != null) ? laboratorio.getNombreLaboratorio() : "Desconocido";
 
                 Object[] fila = {
-                    equipo.getNombreProducto(), // Nombre del equipo
-                    nombreLaboratorio // Nombre del laboratorio asociado
+                    equipo.getNombreProducto(), 
+                    nombreLaboratorio 
                 };
                 tableModelEquipos.addRow(fila);
 
                 idMapEquipos.put(row, equipo.getId());
 
-                // Aplicar renderizador centrado a las celdas de la tabla
                 for (int i = 0; i < tableModelEquipos.getColumnCount(); i++) {
                     jTable1.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
                 }
