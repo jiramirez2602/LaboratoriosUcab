@@ -157,26 +157,41 @@ public class ListaDeInsumos {
         return null;
     }
 
-//    //Listar un insumo con un Usuario
-//    public ArrayList<Insumo> listarInsumoPorUsuario(Usuario usuario) {
-//        ArrayList<Insumo> listaInsumoAux = new ArrayList<>();
-//
-//        for (Insumo i : getListaInsumos()) {
-//            if (i.getLaboratorio().getAdministrador().getNombreUser().equals(usuario.getNombreUser())) {
-//                listaInsumoAux.add(i);
-//            }
-//        }
-//        return listaInsumoAux;
-//    }
-//    //Listar un INSUMO con un nombre de Insumo
-//    public String listarInsumosPorNombre(Usuario usuario, String nombreDeInsumo) {
-//        for (Insumo i : listarInsumoPorUsuario(usuario)) {
-//            if (i.getNombreProducto().toLowerCase().equals(nombreDeInsumo.toLowerCase())) {
-//                return i.getId();
-//            }
-//        }
-//        return null;
-//    }
+    //Listar un equipo con un Usuario
+    public ArrayList<Insumo> listarEquipoPorUsuario(Usuario usuario) throws ParseException {
+        ArrayList<Insumo> listaInsumoAux = new ArrayList<>();
+        if (usuario.getRolUsuario().equals("Tecnico")) {
+            ListaLaboratorios listaLabs = new ListaLaboratorios();
+            String idLaboratorio = listaLabs.getLaboratorioConUsuario(usuario.getId());
+
+            for (Insumo i : getListaInsumos()) {
+                if (idLaboratorio.equals(i.getLaboratorio())) {
+                    listaInsumoAux.add(i);
+                }
+            }
+            return listaInsumoAux;
+        } else {
+            return getListaInsumos();
+        }
+    }
+
+    //Listar un equipo con un nombre de Equipo
+    public ArrayList<Insumo> listarInsumoPorDato(Usuario usuario, String datoDelInsumo) throws ParseException {
+        ArrayList<Insumo> listaInsumoAux = listarEquipoPorUsuario(usuario); //Lista del usuario
+        ArrayList<Insumo> listaInsumoFiltrada = new ArrayList<>(); //Lista a retornar
+        for (Insumo i : listaInsumoAux) {
+            if (i.getNombreProducto().toLowerCase().equals(datoDelInsumo.toLowerCase())
+                    || i.getLaboratorio().toLowerCase().equals(datoDelInsumo.toLowerCase())
+                    || i.getId().toLowerCase().equals(datoDelInsumo.toLowerCase())
+                    || i.getDescripcion().toLowerCase().equals(datoDelInsumo.toLowerCase()) 
+                    || i.getCategoria().toLowerCase().equals(datoDelInsumo.toLowerCase())
+                    || i.getMarca().toLowerCase().equals(datoDelInsumo.toLowerCase())
+                    || i.getModelo().toLowerCase().equals(datoDelInsumo.toLowerCase())) {
+                listaInsumoFiltrada.add(i);
+            }
+        }
+        return listaInsumoFiltrada;
+    }
     
     //Modifica Insumos
     public boolean modificarInsumo(Usuario user, String id, String descripcion, String marca, String modelo, String presentacion, String clasificacion, String categoria, String ultimaCompra, String precioEstimado, String unidad, String proveedor, String nombreProducto, String inventarioExistente, String observaciones, String idLaboratorio) {

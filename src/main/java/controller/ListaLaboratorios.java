@@ -71,6 +71,17 @@ public class ListaLaboratorios {
         return lista;
     }
 
+    public String getLaboratorioConUsuario(String idUser) {
+        lista = GeneralProvider.cargarInfoLaboratorios();
+        String idLaboratorio = "";
+        for (Laboratorio i : lista) {
+            if (idUser.equals(i.getIdAdministrador())) {
+                idLaboratorio = i.getId();
+            }
+        }
+        return idLaboratorio;
+    }
+
     public boolean crearLaboratorio(Usuario user, String nombreLaboratorio, String facultad, String escuela, String departamento, String idAdministrador) {
         Validador validador = new Validador();
         if (!validador.validarConRegex(nombreLaboratorio, "^[A-Za-zñÑáéíóúÁÉÍÓÚ\\s]{5,30}$", "Nombre de laboratorio", "Nombre es invalido, puede usar hasta 30 caractes alfanumericos")

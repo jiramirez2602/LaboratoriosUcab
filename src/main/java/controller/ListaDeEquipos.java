@@ -20,7 +20,7 @@ public class ListaDeEquipos {
     ListaDeTransacciones listaDeTransacciones = new ListaDeTransacciones();
 
     //FIREBASE
-    public boolean guardarEnFirebase(Equipo equipo) {
+    private boolean guardarEnFirebase(Equipo equipo) {
         try {
             DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
             Map<String, Object> datos = new HashMap<>();
@@ -54,7 +54,7 @@ public class ListaDeEquipos {
         }
     }
 
-    public boolean actualizarEnFirebase(Equipo equipo) {
+    private boolean actualizarEnFirebase(Equipo equipo) {
         try {
             DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
             Map<String, Object> datos = new HashMap<>();
@@ -88,7 +88,7 @@ public class ListaDeEquipos {
         }
     }
 
-    public boolean eliminarEnFirebase(String id) {
+    private boolean eliminarEnFirebase(String id) {
         try {
             GeneralProvider.eliminar("Equipos", id);
             JOptionPane.showMessageDialog(null, "Eliminado con exito");
@@ -221,14 +221,8 @@ public class ListaDeEquipos {
             long fechaDada2 = fechaCalibracion.getTime();
             long diferencia12 = fechaDada2 - fechaActual;
 
-//            System.out.println("Id: " + i.getId());
-//            System.out.println("Calibracion: " + i.getProximaCalibracion());
-//            System.out.println("Actual: " + fechaActual);
-//            System.out.println("Dada: "+ fechaDada2);
-//            System.out.println("Diferencial: "+ diferencia12);
-            
 //            Se nos paso la fecha
-            if (fechaDada1 < fechaActual || fechaDada2 < fechaActual){
+            if (fechaDada1 < fechaActual || fechaDada2 < fechaActual) {
                 listaEquiposFiltrada.add(i);
                 continue;
             }
@@ -241,26 +235,47 @@ public class ListaDeEquipos {
         return listaEquiposFiltrada;
     }
 
-//    //Listar un equipo con un Usuario
-//    public ArrayList<Equipo> listarEquipoPorUsuario(Usuario usuario) {
-//        ArrayList<Equipo> listaEquipoAux = new ArrayList<>();
-//
-//        for (Equipo i : getListaEquipos()) {
-//            if (i.getLaboratorio().getAdministrador().getNombreUser().equals(usuario.getNombreUser())) {
-//                listaEquipoAux.add(i);
-//            }
-//        }
-//        return listaEquipoAux;
-//    }
-//    //Listar un equipo con un nombre de Equipo
-//    public String listarEquipoPorNombre(Usuario usuario, String nombreDeEquipo) {
-//        for (Equipo i : listarEquipoPorUsuario(usuario)) {
-//            if (i.getNombreProducto().toLowerCase().equals(nombreDeEquipo.toLowerCase())) {
-//                return i.getId();
-//            }
-//        }
-//        return null;
-//    }
+    //Listar un equipo con un Usuario
+    public ArrayList<Equipo> listarEquipoPorUsuario(Usuario usuario) throws ParseException {
+        try {
+            ArrayList<Equipo> listaEquipoAux = new ArrayList<>();
+            if (usuario.getRolUsuario().equals("Tecnico")) {
+                ListaLaboratorios listaLabs = new ListaLaboratorios();
+                String idLaboratorio = listaLabs.getLaboratorioConUsuario(usuario.getId());
+
+                for (Equipo i : getListaEquipos()) {
+                    if (idLaboratorio.equals(i.getLaboratorio())) {
+                        listaEquipoAux.add(i);
+                    }
+                }
+                return listaEquipoAux;
+            } else {
+                return getListaEquipos();
+            }
+        } catch (Exception e) {
+            System.out.println("Error al listar: " + e);
+            return null;
+        }
+    }
+
+    //Listar un equipo con un nombre de Equipo
+    public ArrayList<Equipo> listarEquipoPorDato(Usuario usuario, String datoDelEquipo) throws ParseException {
+        ArrayList<Equipo> listaEquipoAux = listarEquipoPorUsuario(usuario); //Lista del usuario
+        ArrayList<Equipo> listaEquipoFiltrada = new ArrayList<>(); //Lista a retornar
+        for (Equipo i : listaEquipoAux) {
+            if (i.getNombreProducto().toLowerCase().equals(datoDelEquipo.toLowerCase())
+                    || i.getLaboratorio().toLowerCase().equals(datoDelEquipo.toLowerCase())
+                    || i.getId().toLowerCase().equals(datoDelEquipo.toLowerCase())
+                    || i.getDescripcion().toLowerCase().equals(datoDelEquipo.toLowerCase()) 
+                    || i.getNumeroActivo().toLowerCase().equals(datoDelEquipo.toLowerCase())
+                    || i.getMarca().toLowerCase().equals(datoDelEquipo.toLowerCase())
+                    || i.getModelo().toLowerCase().equals(datoDelEquipo.toLowerCase())) {
+                listaEquipoFiltrada.add(i);
+            }
+        }
+        return listaEquipoFiltrada;
+    }
+    
     //Modifica Equipos
     public boolean modificarEquipo(Usuario user, String id, String descripcion, String marca, String modelo, String numeroSerial, String numeroActivo, String presentacion, String voltaje, String procesable, String materialRequerido, String añoDeCompra, String aplicacion, String ultimoMantenimiento, String proximoMantenimiento, String ultimaCalibracion, String proximaCalibracion, String proovedoresDeServicios, String encendidoDenoche, String nombreProducto, String inventarioExistente, String observaciones, String idLaboratorio) {
         Validador validador = new Validador();

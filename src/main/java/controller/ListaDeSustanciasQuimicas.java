@@ -159,25 +159,39 @@ public class ListaDeSustanciasQuimicas {
     }
 
     //Listar un equipo con un Usuario
-//    public ArrayList<SustanciaQuimica> listarSustanciaQuimicaPorUsuario(Usuario usuario) {
-//        ArrayList<SustanciaQuimica> listaSustanciaQuimicaAux = new ArrayList<>();
-//
-//        for (SustanciaQuimica i : getListaSustanciasQuimicas()) {
-//            if (i.getLaboratorio().getAdministrador().getNombreUser().equals(usuario.getNombreUser())) {
-//                listaSustanciaQuimicaAux.add(i);
-//            }
-//        }
-//        return listaSustanciaQuimicaAux;
-//    }
-//    //Listar una sustancia Quimica con un nombre 
-//    public String listarSustanciaQumicaPorNombre(Usuario usuario, String nombreDeSustancia) {
-//        for (SustanciaQuimica i : listarSustanciaQuimicaPorUsuario(usuario)) {
-//            if (i.getNombreProducto().toLowerCase().equals(nombreDeSustancia.toLowerCase())) {
-//                return i.getId();
-//            }
-//        }
-//        return null;
-//    }
+    public ArrayList<SustanciaQuimica> listarEquipoPorUsuario(Usuario usuario) throws ParseException {
+        ArrayList<SustanciaQuimica> listaSustanciaQuimicasAux = new ArrayList<>();
+        if (usuario.getRolUsuario().equals("Tecnico")) {
+            ListaLaboratorios listaLabs = new ListaLaboratorios();
+            String idLaboratorio = listaLabs.getLaboratorioConUsuario(usuario.getId());
+
+            for (SustanciaQuimica i : getListaSustanciasQuimicas()) {
+                if (idLaboratorio.equals(i.getLaboratorio())) {
+                    listaSustanciaQuimicasAux.add(i);
+                }
+            }
+            return listaSustanciaQuimicasAux;
+        } else {
+            return getListaSustanciasQuimicas();
+        }
+    }
+
+    //Listar un equipo con un nombre de Equipo
+    public ArrayList<SustanciaQuimica> listarSustanciaQuimicaPorDato(Usuario usuario, String datoDeSustanciaQuimica) throws ParseException {
+        ArrayList<SustanciaQuimica> listaSustanciaQuimicaAux = listarEquipoPorUsuario(usuario); //Lista del usuario
+        ArrayList<SustanciaQuimica> listaSustanciaQuimicaFiltrada = new ArrayList<>(); //Lista a retornar
+        for (SustanciaQuimica i : listaSustanciaQuimicaAux) {
+            if (i.getNombreProducto().toLowerCase().equals(datoDeSustanciaQuimica.toLowerCase())
+                    || i.getLaboratorio().toLowerCase().equals(datoDeSustanciaQuimica.toLowerCase())
+                    || i.getId().toLowerCase().equals(datoDeSustanciaQuimica.toLowerCase())
+                    || i.getFormulaQuimica().toLowerCase().equals(datoDeSustanciaQuimica.toLowerCase())
+                    || i.getPresentacion().toLowerCase().equals(datoDeSustanciaQuimica.toLowerCase())) {
+                listaSustanciaQuimicaFiltrada.add(i);  
+            }
+        }
+        return listaSustanciaQuimicaFiltrada;
+    }
+
     //Modifica Equipos
     public boolean modificarSustancia(Usuario user, String id, String formulaQuimica, String concentracion, String presentacion, String nombreComercial, Boolean poseeMSD, String numeroDeIdentificacion, String grupoDeRiesgo, String fraseR, String fraseS, String metodoDeControl, String permisos, String unidad, String precioEstimado, String proveedor, String almacenadoEnvasado, String nombreProducto, String inventarioExistente, String observaciones, String idLaboratorio) {
         Validador validador = new Validador();
