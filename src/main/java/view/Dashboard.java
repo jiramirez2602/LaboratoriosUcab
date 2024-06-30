@@ -7,6 +7,7 @@ package view;
 
 import Views.Equipos;
 import Views.EquiposJimmy;
+import Views.EquiposMantenimiento;
 import Views.Insumos;
 import Views.Reportes;
 import Views.Laboratorios;
@@ -201,8 +202,7 @@ public class Dashboard extends javax.swing.JFrame {
         BotonReportes.setBackground(new java.awt.Color(21, 101, 192));
         BotonReportes.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         BotonReportes.setForeground(new java.awt.Color(255, 255, 255));
-        BotonReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/file-chart.png"))); // NOI18N
-        BotonReportes.setText("Reportes");
+        BotonReportes.setText("Mantenimiento de equipos");
         BotonReportes.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 13, 1, 1, new java.awt.Color(0, 0, 0)));
         BotonReportes.setBorderPainted(false);
         BotonReportes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -399,7 +399,7 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonTransaccionesActionPerformed
 
     private void BotonReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonReportesActionPerformed
-        ShowJPanel(new Reportes());
+        ShowJPanel(new EquiposMantenimiento(userActual,listalaboratorios,listaequipos));
     }//GEN-LAST:event_BotonReportesActionPerformed
 
     private void BotonInsumosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonInsumosActionPerformed
