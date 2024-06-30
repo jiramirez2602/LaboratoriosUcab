@@ -3,6 +3,7 @@ package main;
 import controller.ListaDeEquipos;
 import controller.ListaDeInsumos;
 import controller.ListaDeSustanciasQuimicas;
+import controller.ListaDeTransacciones;
 import controller.ListaDeUsuarios;
 import controller.ListaLaboratorios;
 import firebase.Conexion;
@@ -12,6 +13,7 @@ import model.Equipo;
 import model.Insumo;
 import model.Laboratorio;
 import model.SustanciaQuimica;
+import model.TransaccionDeTabla;
 import model.Usuario;
 
 public class Main {
@@ -53,7 +55,7 @@ public class Main {
          */
  /*
         //Equipos
-        //ListaDeEquipos lista3 = new ListaDeEquipos();
+        ListaDeEquipos lista3 = new ListaDeEquipos();
         //lista3.crearProductoEquipo(administradorLaboratorio, "Equipo importante", "GM", "ael-88g", "22fdfd-44", "233211", "Normal", "200 V", "true", "Nada", "26/02/2001", "No Aplica", "26/02/2001", "26/02/2030", "26/02/2020", "26/02/2024", "GM Latam", "Si", "Motor de vapor", "33", "No tengo observaciones", "af473a5b-ab43-4d1a-8bb1-b6f4cd5e392f");
        //lista3.modificarEquipo(administradorLaboratorio, "0a42753a-2f07-4491-8525-bb3d299227f9","Equipo actualizado", "GM actualizado", "ael-88g actualizado", "22fdfd-44 actualizado", "875", "Normal actualizado", "200 V actualizado", "false", "Nada actualizado", "26/02/2011", "No Aplica actualizado", "26/02/2011", "26/02/2033", "26/02/2022", "26/02/2044", "GM Latam actualizado", "true", "Motor de vapor actualizado", "44", "No tengo observaciones actualizado", "af473a5b-ab43-4d1a-8bb1-b6f4cd5e392f");
         //lista3.eliminarEquipo(administradorLaboratorio, "0a42753a-2f07-4491-8525-bb3d299227f9");
@@ -102,5 +104,18 @@ public class Main {
             System.out.println(elemento.getNombreProducto());
         });
          */
+ /*
+        //Transacciones
+        ListaDeTransacciones lista6 = new ListaDeTransacciones();
+        //lista6.getListaTransacciones();
+        
+        //Iteramos para ejemplificar:
+        ArrayList<TransaccionDeTabla> listaTransacciones = new ArrayList<>();
+        listaTransacciones = lista6.getListaTransacciones();
+
+        listaTransacciones.forEach(elemento -> {
+            System.out.println(elemento.getId());
+            System.out.println(elemento.getNombreProducto());
+        });*/
     }
 }

@@ -3,18 +3,26 @@ package controller;
 import firebase.Conexion;
 import firebase.GeneralProvider;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
+import model.SustanciaQuimica;
 import model.Transaccion;
+import model.TransaccionDeTabla;
 import model.Usuario;
 
 public class ListaDeTransacciones {
 
-    ArrayList<Transaccion> listaTransacciones = new ArrayList<>();
+    ArrayList<TransaccionDeTabla> listaTransacciones = new ArrayList<>();
+
+    public ArrayList<TransaccionDeTabla> getListaTransacciones() throws ParseException {
+        listaTransacciones = GeneralProvider.cargarInfoTransacciones();
+        return listaTransacciones;
+    }
 
     public boolean guardarEnFirebase(Transaccion transaccion) {
         try {
@@ -56,7 +64,7 @@ public class ListaDeTransacciones {
                 datos.put("proovedoresDeServicios", String.valueOf(transaccion.equipo.getProovedoresDeServicios()));
                 datos.put("encendidoDenoche", String.valueOf(transaccion.equipo.getEncendidoDenoche()));
                 datos.put("nombreProducto", String.valueOf(transaccion.equipo.getNombreProducto()));
-                datos.put("inventarioExistenteAux", String.valueOf(transaccion.equipo.getInventarioExistente()));
+                datos.put("inventarioExistente", String.valueOf(transaccion.equipo.getInventarioExistente()));
                 datos.put("observaciones", String.valueOf(transaccion.equipo.getObservaciones()));
                 datos.put("idLaboratorio", String.valueOf(transaccion.equipo.getLaboratorio()));
             } else if (transaccion.sustanciaQuimica != null) {
@@ -89,4 +97,5 @@ public class ListaDeTransacciones {
             return false;
         }
     }
+
 }

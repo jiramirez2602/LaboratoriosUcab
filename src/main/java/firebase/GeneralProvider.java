@@ -22,6 +22,7 @@ import model.Equipo;
 import model.Insumo;
 import model.Laboratorio;
 import model.SustanciaQuimica;
+import model.TransaccionDeTabla;
 import model.Usuario;
 
 public class GeneralProvider {
@@ -148,7 +149,7 @@ public class GeneralProvider {
                         document.getString("proovedoresDeServicios"),
                         document.getString("encendidoDenoche"),
                         document.getString("nombreProducto"),
-                        Integer.valueOf(document.getString("inventarioExistenteAux")),
+                        Integer.valueOf(document.getString("inventarioExistente")),
                         document.getString("observaciones"),
                         document.getString("idLaboratorio")
                 );
@@ -236,5 +237,31 @@ public class GeneralProvider {
             System.out.println("Error al obtener lista: " + e.getMessage());
         }
         return listaInsumo;
+    }
+
+    public static ArrayList<TransaccionDeTabla> cargarInfoTransacciones() throws ParseException {
+        ArrayList<TransaccionDeTabla> listaTransaccionDeTablas = new ArrayList<>();
+
+        try {
+            CollectionReference insumoAux = Conexion.db.collection("Transacciones");
+            ApiFuture<QuerySnapshot> querySnap = insumoAux.get();
+            for (DocumentSnapshot document : querySnap.get().getDocuments()) {
+                TransaccionDeTabla tran = new TransaccionDeTabla(document.getString("nombreProducto"),
+                        document.getString("tipoDeProducto"),
+                        Integer.valueOf(document.getString("inventarioExistente")),
+                        document.getString("observaciones"),
+                        document.getString("idLaboratorio"), 
+                        document.getString("fecha"),
+                        document.getString("nombreUsuario"),
+                        document.getString("id"),
+                        document.getString("tipoDeTransaccion")
+                );
+                tran.setId(document.getId());
+                listaTransaccionDeTablas.add(tran);
+            }
+        } catch (InterruptedException | ExecutionException e) {
+            System.out.println("Error al obtener lista: " + e.getMessage());
+        }
+        return listaTransaccionDeTablas;
     }
 }

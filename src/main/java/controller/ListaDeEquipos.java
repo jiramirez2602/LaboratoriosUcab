@@ -11,11 +11,13 @@ import java.util.Map;
 import javax.swing.JOptionPane;
 import model.Equipo;
 import model.Laboratorio;
+import model.Transaccion;
 import model.Usuario;
 
 public class ListaDeEquipos {
 
     ArrayList<Equipo> listaEquipos;
+    ListaDeTransacciones listaDeTransacciones = new ListaDeTransacciones();
 
     //FIREBASE
     public boolean guardarEnFirebase(Equipo equipo) {
@@ -40,7 +42,7 @@ public class ListaDeEquipos {
             datos.put("proovedoresDeServicios", String.valueOf(equipo.getProovedoresDeServicios()));
             datos.put("encendidoDenoche", String.valueOf(equipo.getEncendidoDenoche()));
             datos.put("nombreProducto", String.valueOf(equipo.getNombreProducto()));
-            datos.put("inventarioExistenteAux", String.valueOf(equipo.getInventarioExistente()));
+            datos.put("inventarioExistente", String.valueOf(equipo.getInventarioExistente()));
             datos.put("observaciones", String.valueOf(equipo.getObservaciones()));
             datos.put("idLaboratorio", String.valueOf(equipo.getLaboratorio()));
             GeneralProvider.guardar("Equipos", String.valueOf(equipo.getId()), datos);
@@ -74,7 +76,7 @@ public class ListaDeEquipos {
             datos.put("proovedoresDeServicios", String.valueOf(equipo.getProovedoresDeServicios()));
             datos.put("encendidoDenoche", String.valueOf(equipo.getEncendidoDenoche()));
             datos.put("nombreProducto", String.valueOf(equipo.getNombreProducto()));
-            datos.put("inventarioExistenteAux", String.valueOf(equipo.getInventarioExistente()));
+            datos.put("inventarioExistente", String.valueOf(equipo.getInventarioExistente()));
             datos.put("observaciones", String.valueOf(equipo.getObservaciones()));
             datos.put("idLaboratorio", String.valueOf(equipo.getLaboratorio()));
             GeneralProvider.actualizar("Equipos", equipo.getId(), datos);
@@ -100,13 +102,11 @@ public class ListaDeEquipos {
     public void setListaEquipos(ArrayList<Equipo> listaEquipos) {
         this.listaEquipos = listaEquipos;
     }
-
-    //TODO: Agregar logica de transacciones
+    
     //Crear producto Equipos
     public boolean crearProductoEquipo(Usuario user, String descripcion, String marca, String modelo, String numeroSerial, String numeroActivo, String presentacion, String voltaje, String procesable, String materialRequerido, String añoDeCompra, String aplicacion, String ultimoMantenimiento, String proximoMantenimiento, String ultimaCalibracion, String proximaCalibracion, String proovedoresDeServicios, String encendidoDenoche, String nombreProducto, String inventarioExistente, String observaciones, String idLaboratorio) {
         Validador validador = new Validador();
-        
-        
+
         if (!validador.validarConRegex(descripcion, "^[^\\n]{0,100}$", "Descripcion", "Descripcion es invalido(a), puede usar hasta 100 caractes alfanumericos")
                 || !validador.validarConRegex(marca, "^[^\\n]{0,100}$", "Marca", "Marca es invalido(a), puede usar hasta 100 caractes alfabeticos")
                 || !validador.validarConRegex(modelo, "^[^\\n]{5,100}$", "Modelo", "Modelo es invalido(a), puede usar hasta 100 caractes alfabeticos")
@@ -183,22 +183,22 @@ public class ListaDeEquipos {
                 JOptionPane.showMessageDialog(null, "Existencias invalidas", "Error", JOptionPane.ERROR_MESSAGE);
                 return false;
             }
-
             Equipo equipoAux = new Equipo(descripcion, marca, modelo, numeroSerial, numeroActivo, presentacion, voltaje, procesable, materialRequerido, añoDeCompraAux, aplicacion, ultimoMantenimientoAux, proximoMantenimientoAux, ultimaCalibracionAux, proximaCalibracionAux, proovedoresDeServicios, encendidoDenoche, nombreProducto, inventarioExistenteAux, observaciones, idLaboratorio);
             guardarEnFirebase(equipoAux);
+            listaDeTransacciones.guardarEnFirebase(new Transaccion(equipoAux, user, "Crear Equipo"));
             return true;
         }
     }
 
-//    //Listar un equipo con un ID
-//    public Equipo listarEquipo(String id) {
-//        for (Equipo i : getListaEquipos()) {
-//            if (i.getId().equals(id)) {
-//                return i;
-//            }
-//        }
-//        return null;
-//    }
+    //Listar un equipo con un ID
+    public Equipo listarEquipo(String id) throws ParseException {
+        for (Equipo i : getListaEquipos()) {
+            if (i.getId().equals(id)) {
+                return i;
+            }
+        }
+        return null;
+    }
 
     public ArrayList<Equipo> getListaEquipos() throws ParseException {
         listaEquipos = GeneralProvider.cargarInfoEquipos();
@@ -225,7 +225,7 @@ public class ListaDeEquipos {
 //        }
 //        return null;
 //    }
-    //TODO: Agregar logica de transacciones
+    
     //Modifica Equipos
     public boolean modificarEquipo(Usuario user, String id, String descripcion, String marca, String modelo, String numeroSerial, String numeroActivo, String presentacion, String voltaje, String procesable, String materialRequerido, String añoDeCompra, String aplicacion, String ultimoMantenimiento, String proximoMantenimiento, String ultimaCalibracion, String proximaCalibracion, String proovedoresDeServicios, String encendidoDenoche, String nombreProducto, String inventarioExistente, String observaciones, String idLaboratorio) {
         Validador validador = new Validador();
@@ -313,15 +313,18 @@ public class ListaDeEquipos {
             Equipo equipoModified = new Equipo(descripcion, marca, modelo, numeroSerial, numeroActivo, presentacion, voltaje, procesable, materialRequerido, añoDeCompraAux, aplicacion, ultimoMantenimientoAux, proximoMantenimientoAux, ultimaCalibracionAux, proximaCalibracionAux, proovedoresDeServicios, encendidoDenoche, nombreProducto, inventarioExistenteAux, observaciones, idLaboratorio);
             equipoModified.setId(id);
             actualizarEnFirebase(equipoModified);
+            listaDeTransacciones.guardarEnFirebase(new Transaccion(equipoModified, user, "Modificar Equipo"));
             return true;
         }
     }
 
-    //TODO: Agregar logica de transacciones
     //Eliminar Equipos
     public boolean eliminarEquipo(Usuario user, String id) {
         try {
-            return eliminarEnFirebase(id);
+            Equipo equipo = listarEquipo(id);
+            eliminarEnFirebase(id);
+            listaDeTransacciones.guardarEnFirebase(new Transaccion(equipo, user, "Eliminar Equipo"));
+            return true;
         } catch (Exception e) {
             System.out.println("Error" + e);
             return false;
