@@ -42,29 +42,29 @@ public class CrearLaboratorios extends javax.swing.JPanel {
     
     private String[] facultadComboBox(String facultad){
         String[]escuela=new String[5];
-        if(facultad.equals("Ciencias Economicas")){
-            escuela[0]="Administracion de empresas";
-            escuela[1]="Contaduria publica";
+        if(facultad.equals("Ciencias Económicas")){
+            escuela[0]="Administración de empresas";
+            escuela[1]="Contaduría pública";
             escuela[2]="Relaciones Industriales";
-            escuela[3]="Sociologia";
-            escuela[4]="Economia";
+            escuela[3]="Sociología";
+            escuela[4]="Economía";
         }
         if(facultad.equals("Seleccionar")){
             escuela=new String[1];
             escuela[0]="Seleccionar facultad primero";
         }
-        if(facultad.equals("Humanidades y Educacion")){
-            escuela[0]="Educacion";
-            escuela[1]="Comunicacion Social";
-            escuela[2]="Psicologia";
+        if(facultad.equals("Humanidades y Educación")){
+            escuela[0]="Educación";
+            escuela[1]="Comunicación Social";
+            escuela[2]="Psicología";
             escuela[3]="Letras";
-            escuela[4]="Filosofia";
+            escuela[4]="Filosofía";
         }
         if(facultad.equals("Ingenieria")){
-            escuela[0]="Ingenieria Civil";
-            escuela[1]="Ingenieria Informatica";
-            escuela[2]="Ingenieria Industrial";
-            escuela[3]="Ingenieria Telecomunicaciones";
+            escuela[0]="Ingeniería Civil";
+            escuela[1]="Ingeniería Informatica";
+            escuela[2]="Ingeniería Industrial";
+            escuela[3]="Ingeniería Telecomunicaciones";
             escuela[4]="Arquitectura";
         }
         if(facultad.equals("Derecho")){
@@ -189,7 +189,7 @@ public class CrearLaboratorios extends javax.swing.JPanel {
 
         nameLbl5.setText("Usuarios disponibles para asignar el laboratorio:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Ciencias Economicas", "Humanidades y Educacion", "Ingenieria", "Derecho" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Ciencias Económicas", "Humanidades y Educación", "Ingeniería", "Derecho" }));
         jComboBox1.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jComboBox1ItemStateChanged(evt);
@@ -285,7 +285,7 @@ public class CrearLaboratorios extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(BackgroundCrearUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 1135, Short.MAX_VALUE)
+                .addComponent(BackgroundCrearUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 1135, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(

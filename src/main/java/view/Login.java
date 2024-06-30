@@ -76,7 +76,7 @@ public class Login extends javax.swing.JFrame {
         panelPrincipal.setForeground(new java.awt.Color(255, 255, 255));
         panelPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panelDiseño.setBackground(new java.awt.Color(13, 71, 161));
+        panelDiseño.setBackground(new java.awt.Color(25, 118, 210));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Logo_UCAB_1 (1).png"))); // NOI18N
 
@@ -139,13 +139,15 @@ public class Login extends javax.swing.JFrame {
         panelExit.setLayout(panelExitLayout);
         panelExitLayout.setHorizontalGroup(
             panelExitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(labelExit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelExitLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(labelExit, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         panelExitLayout.setVerticalGroup(
             panelExitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelExitLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(labelExit, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(labelExit, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout panelParaMoverLayout = new javax.swing.GroupLayout(panelParaMover);
@@ -153,14 +155,14 @@ public class Login extends javax.swing.JFrame {
         panelParaMoverLayout.setHorizontalGroup(
             panelParaMoverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelParaMoverLayout.createSequentialGroup()
-                .addGap(0, 940, Short.MAX_VALUE)
+                .addGap(0, 950, Short.MAX_VALUE)
                 .addComponent(panelExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         panelParaMoverLayout.setVerticalGroup(
             panelParaMoverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelParaMoverLayout.createSequentialGroup()
                 .addComponent(panelExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 10, Short.MAX_VALUE))
         );
 
         panelPrincipal.add(panelParaMover, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 990, 50));
@@ -208,9 +210,9 @@ public class Login extends javax.swing.JFrame {
         });
         panelPrincipal.add(txtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, 570, -1));
 
-        btnEntrar.setBackground(new java.awt.Color(13, 71, 161));
+        btnEntrar.setBackground(new java.awt.Color(25, 118, 210));
 
-        labelEntrar.setBackground(new java.awt.Color(13, 71, 161));
+        labelEntrar.setBackground(new java.awt.Color(25, 118, 210));
         labelEntrar.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 16)); // NOI18N
         labelEntrar.setForeground(new java.awt.Color(255, 255, 255));
         labelEntrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -286,7 +288,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_labelEntrarMouseEntered
 
     private void labelEntrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelEntrarMouseExited
-        btnEntrar.setBackground(new Color(0,153,255));
+        btnEntrar.setBackground(new Color(25,118,210));
     }//GEN-LAST:event_labelEntrarMouseExited
 
     private void txtUsuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtUsuarioMousePressed

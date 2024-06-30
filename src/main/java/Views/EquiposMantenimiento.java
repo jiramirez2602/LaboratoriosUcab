@@ -39,7 +39,7 @@ public class EquiposMantenimiento extends javax.swing.JPanel {
     }
 
     private void inicializarTablaEquipos() {
-        String[] columnas = {"Nombre","Ultimo Mantenimiento","Proximo Mantenimiento", "Laboratorio"};
+        String[] columnas = {"Nombre","Último Mantenimiento","Próximo Mantenimiento", "Laboratorio"};
         tableModelEquipos = new DefaultTableModel(columnas, 0);
         jTable1.setModel(tableModelEquipos);
     }
@@ -89,7 +89,6 @@ public class EquiposMantenimiento extends javax.swing.JPanel {
     private void InitStyles() {
         title.putClientProperty("FlatLaf.styleClass", "h1");
         title.setForeground(Color.black);
-        userSearch.putClientProperty("JTextField.placeholderText", "Ingrese el nombre de usuario a buscar.");
     }
 
     private void MostrarJPanel(JPanel p) {
@@ -111,8 +110,6 @@ public class EquiposMantenimiento extends javax.swing.JPanel {
 
         BackgroundEquipos = new javax.swing.JPanel();
         title = new javax.swing.JLabel();
-        userSearch = new javax.swing.JTextField();
-        BotonBuscarLab = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         BotonModificarEquipo = new javax.swing.JButton();
@@ -122,18 +119,6 @@ public class EquiposMantenimiento extends javax.swing.JPanel {
         BackgroundEquipos.setBackground(new java.awt.Color(255, 255, 255));
 
         title.setText("Mantenimiento de equipos");
-
-        BotonBuscarLab.setBackground(new java.awt.Color(18, 90, 173));
-        BotonBuscarLab.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        BotonBuscarLab.setForeground(new java.awt.Color(255, 255, 255));
-        BotonBuscarLab.setText("Buscar");
-        BotonBuscarLab.setBorderPainted(false);
-        BotonBuscarLab.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        BotonBuscarLab.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonBuscarLabActionPerformed(evt);
-            }
-        });
 
         jTable1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -175,11 +160,6 @@ public class EquiposMantenimiento extends javax.swing.JPanel {
                         .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(699, 699, 699))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackgroundEquiposLayout.createSequentialGroup()
-                        .addComponent(userSearch)
-                        .addGap(18, 18, 18)
-                        .addComponent(BotonBuscarLab, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(50, 50, 50))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackgroundEquiposLayout.createSequentialGroup()
                         .addGroup(BackgroundEquiposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(BackgroundEquiposLayout.createSequentialGroup()
                                 .addGap(675, 675, 675)
@@ -190,13 +170,9 @@ public class EquiposMantenimiento extends javax.swing.JPanel {
         BackgroundEquiposLayout.setVerticalGroup(
             BackgroundEquiposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BackgroundEquiposLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(34, 34, 34)
                 .addComponent(title)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(BackgroundEquiposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(userSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BotonBuscarLab, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(48, 48, 48)
                 .addComponent(BotonModificarEquipo)
@@ -239,18 +215,12 @@ public class EquiposMantenimiento extends javax.swing.JPanel {
     }
     }//GEN-LAST:event_BotonModificarEquipoActionPerformed
 
-    private void BotonBuscarLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBuscarLabActionPerformed
-       
-    }//GEN-LAST:event_BotonBuscarLabActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BackgroundEquipos;
-    private javax.swing.JButton BotonBuscarLab;
     private javax.swing.JButton BotonModificarEquipo;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel title;
-    private javax.swing.JTextField userSearch;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,16 +1,22 @@
 package Views;
 
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialLighterIJTheme;
+import controller.Excel;
 import controller.ListaDeEquipos;
 import controller.ListaLaboratorios;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import model.Equipo;
@@ -18,7 +24,7 @@ import model.Laboratorio;
 import model.Usuario;
 import view.Login;
 
-public class EquiposJimmy extends javax.swing.JPanel {
+public class EquiposExcel extends javax.swing.JPanel {
 
     private ListaLaboratorios listalaboratorios;
     private Usuario userActual;
@@ -26,7 +32,7 @@ public class EquiposJimmy extends javax.swing.JPanel {
     private DefaultTableModel tableModelEquipos;
     private HashMap<Integer, String> idMapEquipos;
 
-    public EquiposJimmy(Usuario user, ListaLaboratorios listaLab, ListaDeEquipos equipos) {
+    public EquiposExcel(Usuario user, ListaLaboratorios listaLab, ListaDeEquipos equipos) {
         this.listalaboratorios = listaLab;
         this.listaequipos = equipos;
         this.userActual = user;
@@ -34,6 +40,8 @@ public class EquiposJimmy extends javax.swing.JPanel {
         initComponents();
         inicializarTablaEquipos(); 
         actualizarTablaEquipos();
+        BackgroundEquipos.setVisible(false);
+        exportarExcel();
     }
 
     private void inicializarTablaEquipos() {
@@ -46,6 +54,21 @@ public class EquiposJimmy extends javax.swing.JPanel {
         };
         tableModelEquipos = new DefaultTableModel(columnas, 0);
         jTable1.setModel(tableModelEquipos);
+    }
+    
+    private void exportarExcel(){
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
+            Logger.getLogger(EquiposExcel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try{
+            Excel exportar = new Excel();
+            exportar.exportarExcel(jTable1,"Reportes de Equipos");
+        }
+        catch(IOException e){
+            System.out.println("Error de exportación");
+        }
     }
 
     private void actualizarTablaEquipos() {
@@ -101,14 +124,6 @@ public class EquiposJimmy extends javax.swing.JPanel {
         }
     }
     
-    private void MostrarJPanel(JPanel p) {
-        p.setSize(1038, 666);
-        p.setLocation(0, 0);
-        BackgroundEquipos.removeAll();
-        BackgroundEquipos.add(p, BorderLayout.CENTER);
-        BackgroundEquipos.revalidate();
-        BackgroundEquipos.repaint();
-    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
