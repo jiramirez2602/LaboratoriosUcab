@@ -60,7 +60,7 @@ public class CrearLaboratorios extends javax.swing.JPanel {
             escuela[3]="Letras";
             escuela[4]="Filosofía";
         }
-        if(facultad.equals("Ingenieria")){
+        if(facultad.equals("Ingeniería")){
             escuela[0]="Ingeniería Civil";
             escuela[1]="Ingeniería Informatica";
             escuela[2]="Ingeniería Industrial";
