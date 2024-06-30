@@ -42,6 +42,7 @@ public class EquiposExcel extends javax.swing.JPanel {
         actualizarTablaEquipos();
         BackgroundEquipos.setVisible(false);
         exportarExcel();
+        MostrarJPanel(new Principal());
     }
 
     private void inicializarTablaEquipos() {
@@ -122,6 +123,15 @@ public class EquiposExcel extends javax.swing.JPanel {
         } catch (ParseException ex) {
             JOptionPane.showMessageDialog(this, "Error al obtener la lista de equipos.", "Error", JOptionPane.ERROR_MESSAGE);
         }
+    }
+    
+    private void MostrarJPanel(JPanel p) {
+        p.setSize(1392, 698);
+        p.setLocation(0, 0);
+        BackgroundEquipos.removeAll();
+        BackgroundEquipos.add(p, BorderLayout.CENTER);
+        BackgroundEquipos.revalidate();
+        BackgroundEquipos.repaint();
     }
     
     /**

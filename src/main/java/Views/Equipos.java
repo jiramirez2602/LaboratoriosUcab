@@ -17,6 +17,7 @@ import javax.swing.table.DefaultTableModel;
 import model.Equipo;
 import model.Laboratorio;
 import model.Usuario;
+import Views.EquiposExcel;
 
 public class Equipos extends javax.swing.JPanel {
 
@@ -118,6 +119,7 @@ public class Equipos extends javax.swing.JPanel {
         BotonEliminarEquipo = new javax.swing.JButton();
         BotonModificarEquipo = new javax.swing.JButton();
         BotonCrearEquipo = new javax.swing.JButton();
+        BotonExportarEquipo = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -190,6 +192,18 @@ public class Equipos extends javax.swing.JPanel {
             }
         });
 
+        BotonExportarEquipo.setBackground(new java.awt.Color(18, 90, 173));
+        BotonExportarEquipo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        BotonExportarEquipo.setForeground(new java.awt.Color(255, 255, 255));
+        BotonExportarEquipo.setText("Exportar");
+        BotonExportarEquipo.setBorderPainted(false);
+        BotonExportarEquipo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        BotonExportarEquipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonExportarEquipoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout BackgroundEquiposLayout = new javax.swing.GroupLayout(BackgroundEquipos);
         BackgroundEquipos.setLayout(BackgroundEquiposLayout);
         BackgroundEquiposLayout.setHorizontalGroup(
@@ -203,7 +217,9 @@ public class Equipos extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackgroundEquiposLayout.createSequentialGroup()
                         .addGroup(BackgroundEquiposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(BackgroundEquiposLayout.createSequentialGroup()
-                                .addGap(427, 427, 427)
+                                .addGap(332, 332, 332)
+                                .addComponent(BotonExportarEquipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(BotonCrearEquipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(BotonModificarEquipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -233,7 +249,8 @@ public class Equipos extends javax.swing.JPanel {
                 .addGroup(BackgroundEquiposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotonEliminarEquipo)
                     .addComponent(BotonModificarEquipo)
-                    .addComponent(BotonCrearEquipo))
+                    .addComponent(BotonCrearEquipo)
+                    .addComponent(BotonExportarEquipo))
                 .addContainerGap(31, Short.MAX_VALUE))
         );
 
@@ -308,12 +325,17 @@ public class Equipos extends javax.swing.JPanel {
        
     }//GEN-LAST:event_BotonBuscarLabActionPerformed
 
+    private void BotonExportarEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonExportarEquipoActionPerformed
+        MostrarJPanel(new EquiposExcel(userActual,listalaboratorios,listaequipos));
+    }//GEN-LAST:event_BotonExportarEquipoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BackgroundEquipos;
     private javax.swing.JButton BotonBuscarLab;
     private javax.swing.JButton BotonCrearEquipo;
     private javax.swing.JButton BotonEliminarEquipo;
+    private javax.swing.JButton BotonExportarEquipo;
     private javax.swing.JButton BotonModificarEquipo;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
