@@ -7,26 +7,50 @@ import java.time.format.DateTimeFormatter; // Import the DateTimeFormatter class
 
 public class Transaccion {
 
-    Equipo equipo;
-    Insumo insumo;
-    SustanciaQuimica sustanciaQuimica;
-    String fecha;
-    Usuario user;
-    String id;
-    String tipoDeTransaccion;
+    public Equipo equipo;
+    public Insumo insumo;
+    public SustanciaQuimica sustanciaQuimica;
+    public String fecha;
+    public Usuario user;
+    public String id;
+    public String tipoDeTransaccion;
 
     public static final String generarUUID() {
         UUID uuid = UUID.randomUUID();
         return uuid.toString();
     }
 
-    public Transaccion(Equipo equipo, Insumo insumo, SustanciaQuimica sustanciaQuimica, Usuario user, String tipoDeTransaccion) {
+    public Transaccion(SustanciaQuimica sustanciaQuimica, Usuario user, String tipoDeTransaccion) {
+        LocalDateTime myDateObj = LocalDateTime.now();
+        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        this.fecha = myDateObj.format(myFormatObj);
+        this.sustanciaQuimica = sustanciaQuimica;
+        this.equipo = null;
+        this.insumo = null;
+        this.user = user;
+        this.id = generarUUID();
+        this.tipoDeTransaccion = tipoDeTransaccion;
+    }
+
+    public Transaccion(Insumo insumo, Usuario user, String tipoDeTransaccion) {
+        LocalDateTime myDateObj = LocalDateTime.now();
+        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        this.fecha = myDateObj.format(myFormatObj);
+        this.insumo = insumo;
+        this.sustanciaQuimica = null;
+        this.equipo = null;
+        this.user = user;
+        this.id = generarUUID();
+        this.tipoDeTransaccion = tipoDeTransaccion;
+    }
+
+    public Transaccion(Equipo equipo, Usuario user, String tipoDeTransaccion) {
         LocalDateTime myDateObj = LocalDateTime.now();
         DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
         this.fecha = myDateObj.format(myFormatObj);
         this.equipo = equipo;
-        this.insumo = insumo;
-        this.sustanciaQuimica = sustanciaQuimica;
+        this.sustanciaQuimica = null;
+        this.insumo = null;
         this.user = user;
         this.id = generarUUID();
         this.tipoDeTransaccion = tipoDeTransaccion;
@@ -48,8 +72,6 @@ public class Transaccion {
         return sustanciaQuimica;
     }
 
-    
-
     public String getFecha() {
         return fecha;
     }
@@ -66,7 +88,6 @@ public class Transaccion {
         this.tipoDeTransaccion = tipoDeTransaccion;
     }
 
-   
     public void setEquipo(Equipo equipo) {
         this.equipo = equipo;
     }

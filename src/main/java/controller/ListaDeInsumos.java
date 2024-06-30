@@ -11,13 +11,15 @@ import java.util.Map;
 import javax.swing.JOptionPane;
 import model.Insumo;
 import model.Laboratorio;
+import model.Transaccion;
 import model.Usuario;
 
 public class ListaDeInsumos {
 
     ArrayList<Insumo> listaInsumos;
-//FIREBASE
+    ListaDeTransacciones listaDeTransacciones = new ListaDeTransacciones();
 
+    //FIREBASE
     public boolean guardarEnFirebase(Insumo insumo) {
         try {
             DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -92,7 +94,6 @@ public class ListaDeInsumos {
         this.listaInsumos = listaEquipos;
     }
 
-    //TODO: Agregar logica de transacciones
     //Crear producto Insumo
     public boolean crearProductoInsumo(Usuario user, String descripcion, String marca, String modelo, String presentacion, String clasificacion, String categoria, String ultimaCompra, String precioEstimado, String unidad, String proveedor, String nombreProducto, String inventarioExistente, String observaciones, String idLaboratorio) {
         Validador validador = new Validador();
@@ -141,6 +142,7 @@ public class ListaDeInsumos {
 
             Insumo insumoAux = new Insumo(descripcion, marca, modelo, presentacion, clasificacion, categoria, ultimaCompraAux, precioEstimadoAux, unidad, proveedor, nombreProducto, existenciasAux, observaciones, idLaboratorio);
             guardarEnFirebase(insumoAux);
+            listaDeTransacciones.guardarEnFirebase(new Transaccion(insumoAux, user, "Crear Insumo"));
             return true;
         }
     }
@@ -175,7 +177,7 @@ public class ListaDeInsumos {
 //        }
 //        return null;
 //    }
-    //TODO: Agregar logica de transacciones
+    
     //Modifica Insumos
     public boolean modificarInsumo(Usuario user, String id, String descripcion, String marca, String modelo, String presentacion, String clasificacion, String categoria, String ultimaCompra, String precioEstimado, String unidad, String proveedor, String nombreProducto, String inventarioExistente, String observaciones, String idLaboratorio) {
         Validador validador = new Validador();
@@ -223,16 +225,19 @@ public class ListaDeInsumos {
 
             Insumo insumoAux = new Insumo(descripcion, marca, modelo, presentacion, clasificacion, categoria, ultimaCompraAux, precioEstimadoAux, unidad, proveedor, nombreProducto, existenciasAux, observaciones, idLaboratorio);
             insumoAux.setId(id);
-
-            return actualizarEnFirebase(insumoAux);
+            actualizarEnFirebase(insumoAux);
+            listaDeTransacciones.guardarEnFirebase(new Transaccion(insumoAux, user, "Modificar Insumo"));
+            return true;
         }
     }
 
-//TODO: Agregar logica de transacciones
-//Eliminar Equipos
+    //Eliminar Equipos
     public boolean eliminarInsumo(Usuario user, String id) {
         try {
-            return eliminarEnFirebase(id);
+            Insumo insumo = listarInsumo(id);
+            eliminarEnFirebase(id);
+            listaDeTransacciones.guardarEnFirebase(new Transaccion(insumo, user, "Eliminar Insumo"));
+            return true;
         } catch (Exception e) {
             System.out.println("Error" + e);
             return false;
