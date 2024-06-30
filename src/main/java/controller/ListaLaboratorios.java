@@ -74,8 +74,6 @@ public class ListaLaboratorios {
     public boolean crearLaboratorio(Usuario user, String nombreLaboratorio, String facultad, String escuela, String departamento, String idAdministrador) {
         Validador validador = new Validador();
         if (!validador.validarConRegex(nombreLaboratorio, "^[A-Za-zñÑáéíóúÁÉÍÓÚ\\s]{5,30}$", "Nombre de laboratorio", "Nombre es invalido, puede usar hasta 30 caractes alfanumericos")
-                || !validador.validarConRegex(facultad, "^[A-Za-zñÑáéíóúÁÉÍÓÚ\\s]{5,30}$", "Facultad", "Facultad es invalida, puede usar hasta 30 caractes alfabeticos")
-                || !validador.validarConRegex(escuela, "^[A-Za-zñÑáéíóúÁÉÍÓÚ\\s]{5,30}$", "Escuela", "Escuela es invalida, puede usar hasta 30 caractes alfabeticos")
                 || !validador.validarConRegex(departamento, "^[A-Za-zñÑáéíóúÁÉÍÓÚ\\s]{5,30}$", "Departamento", "Departamento es invalida, puede usar hasta 30 caractes alfabeticos")) {
             return false;
         } else {
@@ -125,8 +123,6 @@ public class ListaLaboratorios {
     public boolean modificarLaboratorio(Usuario user, String idLaboratorio, String nombreLaboratorio, String facultad, String escuela, String departamento, String idAdministrador) {
         Validador validador = new Validador();
         if (!validador.validarConRegex(nombreLaboratorio, "^[A-Za-zñÑáéíóúÁÉÍÓÚ\\s]{5,30}$", "Nombre de laboratorio", "Nombre es invalido, puede usar hasta 30 caractes alfanumericos")
-                || !validador.validarConRegex(facultad, "^[A-Za-zñÑáéíóúÁÉÍÓÚ\\s]{5,30}$", "Facultad", "Facultad es invalida, puede usar hasta 30 caractes alfabeticos")
-                || !validador.validarConRegex(escuela, "^[A-Za-zñÑáéíóúÁÉÍÓÚ\\s]{5,30}$", "Escuela", "Escuela es invalida, puede usar hasta 30 caractes alfabeticos")
                 || !validador.validarConRegex(departamento, "^[A-Za-zñÑáéíóúÁÉÍÓÚ\\s]{5,30}$", "Departamento", "Departamento es invalida, puede usar hasta 30 caractes alfabeticos")) {
             return false;
         } else {

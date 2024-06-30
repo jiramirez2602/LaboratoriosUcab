@@ -42,7 +42,7 @@ public class Laboratorios extends javax.swing.JPanel {
     }
     
         private void MostrarJPanel(JPanel p) {
-        p.setSize(1038, 666);
+        p.setSize(1180, 556);
         p.setLocation(0,0);
         BackgroundLab.removeAll();
         BackgroundLab.add(p, BorderLayout.CENTER);
@@ -65,6 +65,7 @@ public class Laboratorios extends javax.swing.JPanel {
     }
     
     private void actualizarTablaLab() {
+    listalaboratorios.getListaLaboratorios();
     tableModelLab.setRowCount(0);
     idMapLab.clear();
     int row = 0;

@@ -6,6 +6,8 @@ package Views;
 
 import controller.ListaDeUsuarios;
 import controller.ListaLaboratorios;
+import java.awt.event.ItemEvent;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -36,6 +38,41 @@ public class CrearLaboratorios extends javax.swing.JPanel {
         String[] columnas = {"Username", "Nombre Completo", "Rol", "Estado"};
         tableModelAdmin = new DefaultTableModel(columnas, 0);
         JTableAdmin.setModel(tableModelAdmin);
+    }
+    
+    private String[] facultadComboBox(String facultad){
+        String[]escuela=new String[5];
+        if(facultad.equals("Ciencias Economicas")){
+            escuela[0]="Administracion de empresas";
+            escuela[1]="Contaduria publica";
+            escuela[2]="Relaciones Industriales";
+            escuela[3]="Sociologia";
+            escuela[4]="Economia";
+        }
+        if(facultad.equals("Seleccionar")){
+            escuela=new String[1];
+            escuela[0]="Seleccionar facultad primero";
+        }
+        if(facultad.equals("Humanidades y Educacion")){
+            escuela[0]="Educacion";
+            escuela[1]="Comunicacion Social";
+            escuela[2]="Psicologia";
+            escuela[3]="Letras";
+            escuela[4]="Filosofia";
+        }
+        if(facultad.equals("Ingenieria")){
+            escuela[0]="Ingenieria Civil";
+            escuela[1]="Ingenieria Informatica";
+            escuela[2]="Ingenieria Industrial";
+            escuela[3]="Ingenieria Telecomunicaciones";
+            escuela[4]="Arquitectura";
+        }
+        if(facultad.equals("Derecho")){
+            escuela=new String[2];
+            escuela[0]="Derecho";
+            escuela[1]="Derecho ITER";
+        }
+        return escuela;
     }
     
     private void actualizarTablaAdmin() {
@@ -93,14 +130,14 @@ public class CrearLaboratorios extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
         CrearLaboratorio = new javax.swing.JButton();
         nameLbl3 = new javax.swing.JLabel();
-        FacultadTxt = new javax.swing.JTextField();
         nameLbl6 = new javax.swing.JLabel();
-        EscuelaTxt = new javax.swing.JTextField();
         nameLbl4 = new javax.swing.JLabel();
         DepartamentoTxt = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         JTableAdmin = new javax.swing.JTable();
         nameLbl5 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<>();
 
         BackgroundCrearUsuario.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -152,17 +189,27 @@ public class CrearLaboratorios extends javax.swing.JPanel {
 
         nameLbl5.setText("Usuarios disponibles para asignar el laboratorio:");
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Ciencias Economicas", "Humanidades y Educacion", "Ingenieria", "Derecho" }));
+        jComboBox1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox1ItemStateChanged(evt);
+            }
+        });
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar facultad primero" }));
+
         javax.swing.GroupLayout BackgroundCrearUsuarioLayout = new javax.swing.GroupLayout(BackgroundCrearUsuario);
         BackgroundCrearUsuario.setLayout(BackgroundCrearUsuarioLayout);
         BackgroundCrearUsuarioLayout.setHorizontalGroup(
             BackgroundCrearUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BackgroundCrearUsuarioLayout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addGap(30, 30, 30)
                 .addGroup(BackgroundCrearUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(BackgroundCrearUsuarioLayout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(1004, 1004, 1004))
                     .addGroup(BackgroundCrearUsuarioLayout.createSequentialGroup()
+                        .addGap(1, 1, 1)
                         .addComponent(jLabel2)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(BackgroundCrearUsuarioLayout.createSequentialGroup()
@@ -171,26 +218,31 @@ public class CrearLaboratorios extends javax.swing.JPanel {
                                 .addComponent(nameLbl1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(95, 95, 95))
                             .addGroup(BackgroundCrearUsuarioLayout.createSequentialGroup()
+                                .addGap(1, 1, 1)
                                 .addGroup(BackgroundCrearUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(BackgroundCrearUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(nameLbl3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jScrollPane1)
-                                        .addComponent(FacultadTxt)
                                         .addComponent(NombreLaboratorioTxt))
-                                    .addComponent(nameLbl5, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(nameLbl5, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(BackgroundCrearUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(BackgroundCrearUsuarioLayout.createSequentialGroup()
-                                .addComponent(nameLbl6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(185, 185, 185))
-                            .addGroup(BackgroundCrearUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(CrearLaboratorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(EscuelaTxt)
-                                .addComponent(DepartamentoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(nameLbl4, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(193, 193, 193))))
+                                .addGroup(BackgroundCrearUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(BackgroundCrearUsuarioLayout.createSequentialGroup()
+                                        .addComponent(nameLbl6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(185, 185, 185))
+                                    .addGroup(BackgroundCrearUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(CrearLaboratorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(DepartamentoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(nameLbl4, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(193, 193, 193))
+                            .addGroup(BackgroundCrearUsuarioLayout.createSequentialGroup()
+                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
         );
         BackgroundCrearUsuarioLayout.setVerticalGroup(
             BackgroundCrearUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -204,8 +256,8 @@ public class CrearLaboratorios extends javax.swing.JPanel {
                     .addGroup(BackgroundCrearUsuarioLayout.createSequentialGroup()
                         .addComponent(nameLbl6)
                         .addGap(18, 18, 18)
-                        .addComponent(EscuelaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31)
                         .addComponent(nameLbl4)
                         .addGap(18, 18, 18)
                         .addComponent(DepartamentoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -219,9 +271,9 @@ public class CrearLaboratorios extends javax.swing.JPanel {
                             .addComponent(NombreLaboratorioTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(20, 20, 20)
                             .addComponent(nameLbl3)
+                            .addGap(25, 25, 25)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
-                            .addComponent(FacultadTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(12, 12, 12)
                             .addComponent(nameLbl5)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -233,7 +285,7 @@ public class CrearLaboratorios extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(BackgroundCrearUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 1135, Short.MAX_VALUE)
+                .addComponent(BackgroundCrearUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 1135, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -243,37 +295,49 @@ public class CrearLaboratorios extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void CrearLaboratorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearLaboratorioActionPerformed
-    String nombreLaboratorio = NombreLaboratorioTxt.getText();
-    String facultad = FacultadTxt.getText();
-    String escuela = EscuelaTxt.getText();
-    String departamento = DepartamentoTxt.getText();
+        if (!jComboBox1.getSelectedItem().equals("Seleccionar")) {
+            String nombreLaboratorio = NombreLaboratorioTxt.getText();
+            String facultad =jComboBox1.getSelectedItem().toString();
+            String escuela =jComboBox2.getSelectedItem().toString();
+            String departamento = DepartamentoTxt.getText();
 
-     String idAdministrador = obtenerIdAdministradorSeleccionado();
-        if (idAdministrador == null) {
-            return; 
-        }
-    
-    boolean exito = listalaboratorios.crearLaboratorio(this.userActual,nombreLaboratorio, facultad, escuela, departamento,idAdministrador);
+            String idAdministrador = obtenerIdAdministradorSeleccionado();
+            if (idAdministrador == null) {
+                return;
+            }
 
-   if (exito) {
-       JOptionPane.showMessageDialog(this, "Laboratorio creado exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            boolean exito = listalaboratorios.crearLaboratorio(this.userActual, nombreLaboratorio, facultad, escuela, departamento, idAdministrador);
+
+            if (exito) {
+                JOptionPane.showMessageDialog(this, "Laboratorio creado exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Error al crear el laboratorio.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
         }
-        else {
-        JOptionPane.showMessageDialog(this, "Error al crear el laboratorio.", "Error", JOptionPane.ERROR_MESSAGE);
-    }
+        else{
+            JOptionPane.showMessageDialog(this, "Seleccione una opcion de facultad", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_CrearLaboratorioActionPerformed
+
+    private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
+        if(evt.getStateChange()==ItemEvent.SELECTED){
+            if(this.jComboBox1.getSelectedIndex()>=0){
+                this.jComboBox2.setModel(new DefaultComboBoxModel(this.facultadComboBox(this.jComboBox1.getSelectedItem().toString())));
+            }
+        }
+    }//GEN-LAST:event_jComboBox1ItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BackgroundCrearUsuario;
     private javax.swing.JButton CrearLaboratorio;
     private javax.swing.JTextField DepartamentoTxt;
-    private javax.swing.JTextField EscuelaTxt;
     private javax.swing.ButtonGroup Estado;
-    private javax.swing.JTextField FacultadTxt;
     private javax.swing.JTable JTableAdmin;
     private javax.swing.JTextField NombreLaboratorioTxt;
     private javax.swing.ButtonGroup Rol;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
