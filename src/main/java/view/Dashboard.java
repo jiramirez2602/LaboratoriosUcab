@@ -6,6 +6,7 @@
 package view;
 
 import Views.Equipos;
+import Views.EquiposJimmy;
 import Views.Insumos;
 import Views.Reportes;
 import Views.Laboratorios;
@@ -105,7 +106,7 @@ public class Dashboard extends javax.swing.JFrame {
         Contenido = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(1038, 666));
+        setMinimumSize(new java.awt.Dimension(1392, 698));
 
         background.setBackground(new java.awt.Color(255, 255, 255));
         background.setMinimumSize(new java.awt.Dimension(1038, 666));
@@ -299,7 +300,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addComponent(BotonTransacciones, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(BotonReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(261, Short.MAX_VALUE))
+                .addContainerGap(293, Short.MAX_VALUE))
         );
 
         header.setBackground(new java.awt.Color(25, 118, 210));
@@ -314,7 +315,7 @@ public class Dashboard extends javax.swing.JFrame {
             .addGroup(headerLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(dateText, javax.swing.GroupLayout.PREFERRED_SIZE, 683, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(331, Short.MAX_VALUE))
+                .addContainerGap(434, Short.MAX_VALUE))
         );
         headerLayout.setVerticalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -325,7 +326,7 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         Contenido.setBackground(new java.awt.Color(255, 255, 255));
-        Contenido.setMinimumSize(new java.awt.Dimension(1038, 666));
+        Contenido.setMinimumSize(new java.awt.Dimension(1140, 698));
         Contenido.setPreferredSize(new java.awt.Dimension(1038, 666));
 
         javax.swing.GroupLayout ContenidoLayout = new javax.swing.GroupLayout(Contenido);
@@ -345,10 +346,10 @@ public class Dashboard extends javax.swing.JFrame {
             backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(backgroundLayout.createSequentialGroup()
                 .addGap(248, 248, 248)
-                .addComponent(header, javax.swing.GroupLayout.DEFAULT_SIZE, 1044, Short.MAX_VALUE))
+                .addComponent(header, javax.swing.GroupLayout.DEFAULT_SIZE, 1147, Short.MAX_VALUE))
             .addGroup(backgroundLayout.createSequentialGroup()
                 .addGap(254, 254, 254)
-                .addComponent(Contenido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(Contenido, javax.swing.GroupLayout.DEFAULT_SIZE, 1141, Short.MAX_VALUE))
             .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         backgroundLayout.setVerticalGroup(
@@ -356,8 +357,8 @@ public class Dashboard extends javax.swing.JFrame {
             .addGroup(backgroundLayout.createSequentialGroup()
                 .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Contenido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, 812, Short.MAX_VALUE)
+                .addComponent(Contenido, javax.swing.GroupLayout.DEFAULT_SIZE, 698, Short.MAX_VALUE))
+            .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, 844, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -394,7 +395,7 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonEquiposActionPerformed
 
     private void BotonTransaccionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonTransaccionesActionPerformed
-        ShowJPanel(new Transacciones());
+        ShowJPanel(new EquiposJimmy(userActual,listalaboratorios,listaequipos));
     }//GEN-LAST:event_BotonTransaccionesActionPerformed
 
     private void BotonReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonReportesActionPerformed

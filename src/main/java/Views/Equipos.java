@@ -93,7 +93,7 @@ public class Equipos extends javax.swing.JPanel {
     }
 
     private void MostrarJPanel(JPanel p) {
-        p.setSize(1038, 666);
+        p.setSize(1392, 698);
         p.setLocation(0, 0);
         BackgroundEquipos.removeAll();
         BackgroundEquipos.add(p, BorderLayout.CENTER);
