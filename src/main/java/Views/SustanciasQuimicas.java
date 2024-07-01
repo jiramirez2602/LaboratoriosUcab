@@ -17,6 +17,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import model.SustanciaQuimica;
 import model.Usuario;
+import Views.SustanciasExcel;
 
 
 public class SustanciasQuimicas extends javax.swing.JPanel {
@@ -44,6 +45,14 @@ public class SustanciasQuimicas extends javax.swing.JPanel {
         title.setForeground(Color.black);
     }
     
+    private void bloquearPorRol(Usuario user){
+        if(user.verificarRol(user,"Invitado")){
+            BotonCrearSustancia.setEnabled(false);
+            BotonEliminarSustancia.setEnabled(false);
+            BotonModificarSustancia.setEnabled(false);
+        }
+    }
+    
     public  void ShowJPanel(JPanel p) {
         p.setSize(1038, 666);
         p.setLocation(0,0);
@@ -68,6 +77,12 @@ public class SustanciasQuimicas extends javax.swing.JPanel {
 
         try {
             ArrayList<SustanciaQuimica> sustancias = listasustancias.getListaSustanciasQuimicas();
+            if(userActual.getRolUsuario().equals("Tecnico")){
+                sustancias= listasustancias.listarEquipoPorUsuario(userActual);
+            }
+            else if(userActual.getRolUsuario().equals("Administrador")){
+                sustancias = listasustancias.getListaSustanciasQuimicas();
+            }
             for (SustanciaQuimica sustancia : sustancias) {
                 Object[] fila = {
                     sustancia.getNombreProducto(),         
@@ -108,6 +123,7 @@ public class SustanciasQuimicas extends javax.swing.JPanel {
         BotonEliminarSustancia = new javax.swing.JButton();
         BotonModificarSustancia = new javax.swing.JButton();
         BotonCrearSustancia = new javax.swing.JButton();
+        BotonExportarSustancias = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -168,6 +184,18 @@ public class SustanciasQuimicas extends javax.swing.JPanel {
             }
         });
 
+        BotonExportarSustancias.setBackground(new java.awt.Color(18, 90, 173));
+        BotonExportarSustancias.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        BotonExportarSustancias.setForeground(new java.awt.Color(255, 255, 255));
+        BotonExportarSustancias.setText("Exportar");
+        BotonExportarSustancias.setBorderPainted(false);
+        BotonExportarSustancias.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        BotonExportarSustancias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonExportarSustanciasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout BackgroundSustanciasLayout = new javax.swing.GroupLayout(BackgroundSustancias);
         BackgroundSustancias.setLayout(BackgroundSustanciasLayout);
         BackgroundSustanciasLayout.setHorizontalGroup(
@@ -181,7 +209,9 @@ public class SustanciasQuimicas extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackgroundSustanciasLayout.createSequentialGroup()
                         .addGroup(BackgroundSustanciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(BackgroundSustanciasLayout.createSequentialGroup()
-                                .addGap(427, 427, 427)
+                                .addGap(310, 310, 310)
+                                .addComponent(BotonExportarSustancias, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(BotonCrearSustancia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(BotonModificarSustancia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -201,7 +231,8 @@ public class SustanciasQuimicas extends javax.swing.JPanel {
                 .addGroup(BackgroundSustanciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotonEliminarSustancia)
                     .addComponent(BotonModificarSustancia)
-                    .addComponent(BotonCrearSustancia))
+                    .addComponent(BotonCrearSustancia)
+                    .addComponent(BotonExportarSustancias))
                 .addGap(25, 25, 25))
         );
 
@@ -274,11 +305,16 @@ public class SustanciasQuimicas extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_BotonModificarSustanciaActionPerformed
 
+    private void BotonExportarSustanciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonExportarSustanciasActionPerformed
+        ShowJPanel(new SustanciasExcel(userActual,listalaboratorios,listasustancias));
+    }//GEN-LAST:event_BotonExportarSustanciasActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BackgroundSustancias;
     private javax.swing.JButton BotonCrearSustancia;
     private javax.swing.JButton BotonEliminarSustancia;
+    private javax.swing.JButton BotonExportarSustancias;
     private javax.swing.JButton BotonModificarSustancia;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

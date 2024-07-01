@@ -58,6 +58,7 @@ public class Dashboard extends javax.swing.JFrame {
         this.listaequipos = equipos;
         this.listaInsumos = insumos;
         this.userActual=user;
+        this.listasustancias=sustancias;
         usuarioLabel.setText(userActual.getUsername());
     }
 
