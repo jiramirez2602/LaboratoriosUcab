@@ -51,7 +51,6 @@ public class Equipos extends javax.swing.JPanel {
             BotonCrearEquipo.setEnabled(false);
             BotonEliminarEquipo.setEnabled(false);
             BotonModificarEquipo.setEnabled(false);
-            BotonExportarEquipo.setEnabled(false);
         }
     }
 

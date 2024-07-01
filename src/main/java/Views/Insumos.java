@@ -51,7 +51,6 @@ public class Insumos extends javax.swing.JPanel {
             BotonCrearInsumo.setEnabled(false);
             BotonEliminarInsumo.setEnabled(false);
             BotonModificarInsumo.setEnabled(false);
-            ExportarBtton.setEnabled(false);
         }
     }
     
