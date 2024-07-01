@@ -1,23 +1,95 @@
 package Views;
 
 
+import controller.ListaDeSustanciasQuimicas;
+import controller.ListaLaboratorios;
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import model.SustanciaQuimica;
+import model.Usuario;
 
 
 public class SustanciasQuimicas extends javax.swing.JPanel {
-
-    public SustanciasQuimicas() {
+    
+    private ListaLaboratorios listalaboratorios;
+    private Usuario userActual;
+    private ListaDeSustanciasQuimicas listasustancias;
+    private DefaultTableModel tableModelSustancias;
+    private HashMap<Integer, String> idMapSustancias;
+    
+    public SustanciasQuimicas(Usuario user,ListaLaboratorios listaLab,ListaDeSustanciasQuimicas sustancias ) {
+        this.listalaboratorios = listaLab;
+        this.userActual = user;
+        this.listasustancias = sustancias;
+        idMapSustancias = new HashMap<>();
         initComponents();
         InitStyles();
+        inicializarTablaSustancias();
+        actualizarTablaSustancias();
     
     }
 
     private void InitStyles() {
         title.putClientProperty("FlatLaf.styleClass", "h1");
         title.setForeground(Color.black);
-        userSearch.putClientProperty("JTextField.placeholderText", "Ingrese el nombre de usuario a buscar.");
     }
+    
+    public  void ShowJPanel(JPanel p) {
+        p.setSize(1038, 666);
+        p.setLocation(0,0);
+        BackgroundSustancias.removeAll();
+        BackgroundSustancias.add(p,BorderLayout.CENTER);
+        BackgroundSustancias.revalidate();
+        BackgroundSustancias.repaint();
+    }
+    private void inicializarTablaSustancias() {
+        String[] columnas = {"Nombre","Tipo de Producto","Inventario","Observaciones","Formula Quimica","Nombre comercial"};
+        tableModelSustancias = new DefaultTableModel(columnas, 0);
+        jTable1.setModel(tableModelSustancias);
+    }
+    
+    private void actualizarTablaSustancias() {
+        tableModelSustancias.setRowCount(0); 
+        idMapSustancias.clear();  
+        int row = 0;
 
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+
+        try {
+            ArrayList<SustanciaQuimica> sustancias = listasustancias.getListaSustanciasQuimicas();
+            for (SustanciaQuimica sustancia : sustancias) {
+                Object[] fila = {
+                    sustancia.getNombreProducto(),         
+                    sustancia.getTipoDeProducto(),         
+                    sustancia.getInventarioExistente(),    
+                    sustancia.getObservaciones(),          
+                    sustancia.getFormulaQuimica(),         
+                    sustancia.getNombreComercial()         
+                };
+
+                tableModelSustancias.addRow(fila);  
+                idMapSustancias.put(row, sustancia.getId());  
+                for (int i = 0; i < tableModelSustancias.getColumnCount(); i++) {
+                    jTable1.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+                }
+                row++;
+            }
+        } catch (ParseException ex) {
+            JOptionPane.showMessageDialog(this, "Error al obtener la lista de sustancias químicas.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        jTable1.setDefaultEditor(Object.class, null);  // Hacer que las celdas no sean editables
+    }
   
 
     /**
@@ -31,8 +103,6 @@ public class SustanciasQuimicas extends javax.swing.JPanel {
 
         BackgroundSustancias = new javax.swing.JPanel();
         title = new javax.swing.JLabel();
-        userSearch = new javax.swing.JTextField();
-        BotonBuscarSustancia = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         BotonEliminarSustancia = new javax.swing.JButton();
@@ -45,42 +115,15 @@ public class SustanciasQuimicas extends javax.swing.JPanel {
 
         title.setText("Sustancias Quimicas");
 
-        BotonBuscarSustancia.setBackground(new java.awt.Color(18, 90, 173));
-        BotonBuscarSustancia.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        BotonBuscarSustancia.setForeground(new java.awt.Color(255, 255, 255));
-        BotonBuscarSustancia.setText("Buscar");
-        BotonBuscarSustancia.setBorderPainted(false);
-        BotonBuscarSustancia.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        BotonBuscarSustancia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonBuscarSustanciaActionPerformed(evt);
-            }
-        });
-
         jTable1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "Nombre", "Apellido P.", "Apellido M.", "Domicilio", "Teléfono"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, true, true, true, true, true
-            };
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
             }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         jTable1.getTableHeader().setReorderingAllowed(false);
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -144,11 +187,7 @@ public class SustanciasQuimicas extends javax.swing.JPanel {
                                 .addComponent(BotonModificarSustancia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(BotonEliminarSustancia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(BackgroundSustanciasLayout.createSequentialGroup()
-                                .addComponent(userSearch)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(BotonBuscarSustancia)))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGap(50, 50, 50))))
         );
         BackgroundSustanciasLayout.setVerticalGroup(
@@ -156,11 +195,7 @@ public class SustanciasQuimicas extends javax.swing.JPanel {
             .addGroup(BackgroundSustanciasLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(BackgroundSustanciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(userSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BotonBuscarSustancia, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(64, 64, 64)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(BackgroundSustanciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -187,31 +222,66 @@ public class SustanciasQuimicas extends javax.swing.JPanel {
     }//GEN-LAST:event_jTable1MousePressed
 
     private void BotonCrearSustanciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCrearSustanciaActionPerformed
-        
+        ShowJPanel(new CrearSustanciasQuimicas(userActual,listalaboratorios,listasustancias));
     }//GEN-LAST:event_BotonCrearSustanciaActionPerformed
 
     private void BotonEliminarSustanciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarSustanciaActionPerformed
-     
+        int selectedRow = jTable1.getSelectedRow();
+
+        if (selectedRow != -1) {
+            String idSustanciaAEliminar = idMapSustancias.get(selectedRow);
+
+            if (idSustanciaAEliminar != null && !idSustanciaAEliminar.isEmpty()) {
+                int confirmacion = JOptionPane.showConfirmDialog(null, "¿Estás seguro de eliminar esta sustancia química?", "Confirmar Eliminación", JOptionPane.YES_NO_OPTION);
+
+                if (confirmacion == JOptionPane.YES_OPTION) {
+                    boolean eliminado = listasustancias.eliminarSustanciaQuimica(userActual, idSustanciaAEliminar);
+
+                    if (eliminado) {
+                        JOptionPane.showMessageDialog(null, "Sustancia química eliminada exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                        actualizarTablaSustancias();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "No se pudo eliminar la sustancia química.", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna sustancia química para eliminar.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila para eliminar.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_BotonEliminarSustanciaActionPerformed
 
     private void BotonModificarSustanciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarSustanciaActionPerformed
-        
-    }//GEN-LAST:event_BotonModificarSustanciaActionPerformed
+        int selectedRow = jTable1.getSelectedRow();
 
-    private void BotonBuscarSustanciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBuscarSustanciaActionPerformed
-       
-    }//GEN-LAST:event_BotonBuscarSustanciaActionPerformed
+        if (selectedRow != -1) {
+            String idSustancia = idMapSustancias.get(selectedRow);
+            SustanciaQuimica sustancia = null;
+            try {
+                sustancia = listasustancias.listarSustanciaQuimica(idSustancia);
+            } catch (ParseException ex) {
+                Logger.getLogger(SustanciasQuimicas.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            if (sustancia != null) {
+                ShowJPanel(new ModificarSustanciasQuimicas(userActual,listalaboratorios,listasustancias,sustancia));
+            } else {
+                JOptionPane.showMessageDialog(null, "Sustancia química no encontrada", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila para modificar.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_BotonModificarSustanciaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BackgroundSustancias;
-    private javax.swing.JButton BotonBuscarSustancia;
     private javax.swing.JButton BotonCrearSustancia;
     private javax.swing.JButton BotonEliminarSustancia;
     private javax.swing.JButton BotonModificarSustancia;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel title;
-    private javax.swing.JTextField userSearch;
     // End of variables declaration//GEN-END:variables
 }

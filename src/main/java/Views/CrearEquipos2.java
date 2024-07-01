@@ -124,7 +124,6 @@ public class CrearEquipos2 extends javax.swing.JPanel {
         jSeparator2 = new javax.swing.JSeparator();
         nameLbl11 = new javax.swing.JLabel();
         LabDisponible = new javax.swing.JComboBox<>();
-        Atras = new javax.swing.JButton();
 
         setMinimumSize(new java.awt.Dimension(1038, 666));
         setPreferredSize(new java.awt.Dimension(1038, 666));
@@ -142,7 +141,7 @@ public class CrearEquipos2 extends javax.swing.JPanel {
         CrearEquiposFinal.setBackground(new java.awt.Color(21, 101, 192));
         CrearEquiposFinal.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         CrearEquiposFinal.setForeground(new java.awt.Color(255, 255, 255));
-        CrearEquiposFinal.setText("Siguiente");
+        CrearEquiposFinal.setText("Crear");
         CrearEquiposFinal.setBorder(null);
         CrearEquiposFinal.setBorderPainted(false);
         CrearEquiposFinal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -185,21 +184,6 @@ public class CrearEquipos2 extends javax.swing.JPanel {
         nameLbl11.setText("Escoja el laboratorio a asignar:");
 
         LabDisponible.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        Atras.setBackground(new java.awt.Color(21, 101, 192));
-        Atras.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        Atras.setForeground(new java.awt.Color(255, 255, 255));
-        Atras.setText("Regresar");
-        Atras.setBorder(null);
-        Atras.setBorderPainted(false);
-        Atras.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Atras.setIconTextGap(13);
-        Atras.setInheritsPopupMenu(true);
-        Atras.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AtrasActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout BackgroundCrearEquipos2Layout = new javax.swing.GroupLayout(BackgroundCrearEquipos2);
         BackgroundCrearEquipos2.setLayout(BackgroundCrearEquipos2Layout);
@@ -253,13 +237,9 @@ public class CrearEquipos2 extends javax.swing.JPanel {
                     .addGroup(BackgroundCrearEquipos2Layout.createSequentialGroup()
                         .addComponent(LabDisponible, 0, 108, Short.MAX_VALUE)
                         .addGap(408, 408, 408))
-                    .addGroup(BackgroundCrearEquipos2Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackgroundCrearEquipos2Layout.createSequentialGroup()
                         .addGroup(BackgroundCrearEquipos2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(BackgroundCrearEquipos2Layout.createSequentialGroup()
-                                .addComponent(Atras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(32, 32, 32)
-                                .addComponent(CrearEquiposFinal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(134, 134, 134))
+                            .addComponent(CrearEquiposFinal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(ObservacionesTXT, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, BackgroundCrearEquipos2Layout.createSequentialGroup()
                                 .addComponent(nameLbl10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -340,15 +320,10 @@ public class CrearEquipos2 extends javax.swing.JPanel {
                         .addComponent(ObservacionesTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(nameLbl11)
-                        .addGroup(BackgroundCrearEquipos2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(BackgroundCrearEquipos2Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(LabDisponible, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackgroundCrearEquipos2Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(BackgroundCrearEquipos2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(CrearEquiposFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Atras, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                        .addGap(18, 18, 18)
+                        .addComponent(LabDisponible, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(CrearEquiposFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(200, Short.MAX_VALUE))
         );
 
@@ -356,7 +331,9 @@ public class CrearEquipos2 extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(BackgroundCrearEquipos2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(BackgroundCrearEquipos2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -392,14 +369,9 @@ public class CrearEquipos2 extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_CrearEquiposFinalActionPerformed
 
-    private void AtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrasActionPerformed
-        MostrarJpanel(new CrearEquipos(userActual,listalaboratorios,listaequipos));
-    }//GEN-LAST:event_AtrasActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField AplicacionTXT;
-    private javax.swing.JButton Atras;
     private javax.swing.JPanel BackgroundCrearEquipos2;
     private javax.swing.JButton CrearEquiposFinal;
     private javax.swing.ButtonGroup EncendidoNoche;

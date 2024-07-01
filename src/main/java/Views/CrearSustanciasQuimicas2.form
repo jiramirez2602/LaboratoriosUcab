@@ -24,7 +24,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="BackgroundCrearEquipo1" alignment="0" min="-2" max="-2" attributes="0"/>
+          <Component id="BackgroundCrearEquipo1" alignment="0" pref="1142" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -54,39 +54,47 @@
                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabel1" pref="160" max="32767" attributes="0"/>
-                          <EmptySpace min="764" pref="764" max="-2" attributes="0"/>
+                          <Component id="jLabel1" pref="264" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="847" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel2" max="32767" attributes="0"/>
-                          <EmptySpace min="460" pref="460" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="543" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="nameLbl1" max="32767" attributes="0"/>
-                                  <EmptySpace min="41" pref="41" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="117" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="DescripcionTXT" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="nameLbl3" max="32767" attributes="0"/>
-                                  <EmptySpace min="255" pref="255" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="331" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="MarcaTXT" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="nameLbl5" max="32767" attributes="0"/>
-                                  <EmptySpace min="255" pref="255" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="331" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="ModeloTXT" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="nameLbl7" max="32767" attributes="0"/>
-                                  <EmptySpace min="224" pref="224" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="300" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="NumSerialTXT" max="32767" attributes="0"/>
-                              <Component id="nameLbl8" min="-2" pref="156" max="-2" attributes="0"/>
-                              <Component id="NumActivoTXT" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="PrecioEstimadoTxt" alignment="0" max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="nameLbl8" min="-2" pref="156" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                              <Component id="GrupoRiesgoTxt" alignment="0" pref="409" max="32767" attributes="0"/>
+                                              <Component id="AlmacenadoSustanciaTxt" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="FraseSTxt" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="FraseRTxt" alignment="0" max="32767" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace max="32767" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                           <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -94,37 +102,29 @@
                                   <Component id="nameLbl6" max="32767" attributes="0"/>
                                   <EmptySpace min="138" pref="138" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="PresentacionTXT" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="nameLbl4" max="32767" attributes="0"/>
                                   <EmptySpace min="307" pref="307" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="VoltajeTXT" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="nameLbl9" max="32767" attributes="0"/>
-                                  <EmptySpace min="307" pref="307" max="-2" attributes="0"/>
+                                  <Component id="LabDisponible" pref="211" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="359" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" attributes="0">
-                                  <Component id="ProcesableSIRadioBtton" max="32767" attributes="0"/>
-                                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                  <Component id="ProcesableNoRadioBtton" max="32767" attributes="0"/>
-                                  <EmptySpace min="-2" pref="341" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="nameLbl11" alignment="1" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="nameLbl10" max="32767" attributes="0"/>
-                                  <EmptySpace min="187" pref="187" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="InventarioExistente" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="ObservacionesSutanciasTxt" alignment="0" min="-2" pref="481" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="CrearSustanciaFinal" alignment="0" min="-2" pref="475" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
-                              <Component id="MaterialRequeridoTXT" max="32767" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="nameLbl11" max="32767" attributes="0"/>
-                                  <EmptySpace min="271" pref="271" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="AñodeCompraTXT" max="32767" attributes="0"/>
-                              <Component id="CrearEquipoSiguiente" max="32767" attributes="0"/>
                           </Group>
+                          <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -140,50 +140,39 @@
                       <Group type="102" attributes="0">
                           <Component id="nameLbl1" min="-2" pref="19" max="-2" attributes="0"/>
                           <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                          <Component id="DescripcionTXT" min="-2" pref="37" max="-2" attributes="0"/>
+                          <Component id="FraseRTxt" min="-2" pref="37" max="-2" attributes="0"/>
                           <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                           <Component id="nameLbl3" min="-2" pref="19" max="-2" attributes="0"/>
                           <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                          <Component id="MarcaTXT" min="-2" pref="37" max="-2" attributes="0"/>
+                          <Component id="FraseSTxt" min="-2" pref="37" max="-2" attributes="0"/>
                           <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                           <Component id="nameLbl5" min="-2" pref="19" max="-2" attributes="0"/>
                           <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                          <Component id="ModeloTXT" min="-2" pref="31" max="-2" attributes="0"/>
+                          <Component id="AlmacenadoSustanciaTxt" min="-2" pref="31" max="-2" attributes="0"/>
                           <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                           <Component id="nameLbl7" min="-2" pref="19" max="-2" attributes="0"/>
                           <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                          <Component id="NumSerialTXT" min="-2" pref="36" max="-2" attributes="0"/>
+                          <Component id="GrupoRiesgoTxt" min="-2" pref="36" max="-2" attributes="0"/>
                           <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                           <Component id="nameLbl8" min="-2" pref="19" max="-2" attributes="0"/>
                           <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                          <Component id="NumActivoTXT" min="-2" pref="37" max="-2" attributes="0"/>
+                          <Component id="PrecioEstimadoTxt" min="-2" pref="37" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jSeparator1" min="-2" pref="374" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Component id="nameLbl6" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                          <Component id="PresentacionTXT" min="-2" pref="28" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="InventarioExistente" min="-2" pref="34" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                           <Component id="nameLbl4" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                          <Component id="VoltajeTXT" min="-2" pref="28" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                          <Component id="nameLbl9" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="ProcesableSIRadioBtton" min="-2" max="-2" attributes="0"/>
-                              <Component id="ProcesableNoRadioBtton" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                          <Component id="nameLbl10" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                          <Component id="MaterialRequeridoTXT" min="-2" pref="34" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                          <Component id="nameLbl11" min="-2" pref="22" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                          <Component id="AñodeCompraTXT" min="-2" pref="33" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="ObservacionesSutanciasTxt" min="-2" pref="34" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="CrearEquipoSiguiente" min="-2" pref="47" max="-2" attributes="0"/>
+                          <Component id="nameLbl11" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="LabDisponible" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="151" max="-2" attributes="0"/>
+                          <Component id="CrearSustanciaFinal" min="-2" pref="47" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="169" max="32767" attributes="0"/>
@@ -197,7 +186,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="24" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Crear Equipo"/>
+            <Property name="text" type="java.lang.String" value="Crear Sustancia Quimica"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
@@ -205,15 +194,15 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Por favor, ingrese los datos para poder crear el equipo: "/>
+            <Property name="text" type="java.lang.String" value="Por favor, ingrese los datos para poder crear la sustancia: "/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="nameLbl1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Ingrese la descripcion:"/>
+            <Property name="text" type="java.lang.String" value="Ingrese la Frase R:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="DescripcionTXT">
+        <Component class="javax.swing.JTextField" name="FraseRTxt">
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator1">
           <Properties>
@@ -226,7 +215,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="CrearEquipoSiguiente">
+        <Component class="javax.swing.JButton" name="CrearSustanciaFinal">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="c0" green="65" red="15" type="rgb"/>
@@ -237,7 +226,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Siguiente"/>
+            <Property name="text" type="java.lang.String" value="Crear"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
@@ -249,85 +238,70 @@
             <Property name="inheritsPopupMenu" type="boolean" value="true"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CrearEquipoSiguienteActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CrearSustanciaFinalActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="nameLbl3">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Ingrese la marca: "/>
+            <Property name="text" type="java.lang.String" value="Ingrese la Frase S:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="MarcaTXT">
+        <Component class="javax.swing.JTextField" name="FraseSTxt">
         </Component>
         <Component class="javax.swing.JLabel" name="nameLbl6">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Ingrese la presentacion:"/>
+            <Property name="text" type="java.lang.String" value="Ingrese el inventario existente:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="PresentacionTXT">
+        <Component class="javax.swing.JTextField" name="InventarioExistente">
         </Component>
         <Component class="javax.swing.JLabel" name="nameLbl4">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Ingrese el voltaje:"/>
+            <Property name="text" type="java.lang.String" value="Ingrese las observaciones:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="VoltajeTXT">
+        <Component class="javax.swing.JTextField" name="ObservacionesSutanciasTxt">
         </Component>
         <Component class="javax.swing.JLabel" name="nameLbl5">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Ingrese el modelo: "/>
+            <Property name="text" type="java.lang.String" value="Ingrese el almacenado:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="ModeloTXT">
+        <Component class="javax.swing.JTextField" name="AlmacenadoSustanciaTxt">
         </Component>
         <Component class="javax.swing.JLabel" name="nameLbl7">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Ingrese el numero de serial: "/>
+            <Property name="text" type="java.lang.String" value="Ingrese el grupo riesgo:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="NumSerialTXT">
+        <Component class="javax.swing.JTextField" name="GrupoRiesgoTxt">
         </Component>
         <Component class="javax.swing.JLabel" name="nameLbl8">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Ingrese numero de activo:"/>
+            <Property name="text" type="java.lang.String" value="Ingrese el precio estimado:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="NumActivoTXT">
-        </Component>
-        <Component class="javax.swing.JLabel" name="nameLbl9">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Ingrese el procesable:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="nameLbl10">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Ingrese el material requerido:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="MaterialRequeridoTXT">
+        <Component class="javax.swing.JTextField" name="PrecioEstimadoTxt">
         </Component>
         <Component class="javax.swing.JLabel" name="nameLbl11">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Ingrese el a&#xf1;o de compra:"/>
+            <Property name="text" type="java.lang.String" value="Escoja el laboratorio a asignar:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="A&#xf1;odeCompraTXT">
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="ProcesableSIRadioBtton">
+        <Component class="javax.swing.JComboBox" name="LabDisponible">
           <Properties>
-            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="Procesable"/>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="4">
+                <StringItem index="0" value="Item 1"/>
+                <StringItem index="1" value="Item 2"/>
+                <StringItem index="2" value="Item 3"/>
+                <StringItem index="3" value="Item 4"/>
+              </StringArray>
             </Property>
-            <Property name="text" type="java.lang.String" value="Si"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="ProcesableNoRadioBtton">
-          <Properties>
-            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="Procesable"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="No"/>
-          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

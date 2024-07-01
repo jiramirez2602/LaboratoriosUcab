@@ -18,6 +18,7 @@ import Views.Transacciones;
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialLighterIJTheme;
 import controller.ListaDeEquipos;
 import controller.ListaDeInsumos;
+import controller.ListaDeSustanciasQuimicas;
 import controller.ListaDeUsuarios;
 import controller.ListaLaboratorios;
 import java.awt.BorderLayout;
@@ -43,8 +44,9 @@ public class Dashboard extends javax.swing.JFrame {
     private Usuario userActual;
     private ListaDeEquipos listaequipos;
     private ListaDeInsumos listaInsumos;
+    private ListaDeSustanciasQuimicas listasustancias;
 
-    public Dashboard(Usuario user,ListaDeUsuarios users, ListaLaboratorios laboratorios,ListaDeEquipos equipos, ListaDeInsumos insumos) {
+    public Dashboard(Usuario user,ListaDeUsuarios users, ListaLaboratorios laboratorios,ListaDeEquipos equipos, ListaDeInsumos insumos, ListaDeSustanciasQuimicas sustancias) {
         FlatMaterialLighterIJTheme.setup();
         initComponents();
         InitStyles();
@@ -418,7 +420,7 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonInsumosActionPerformed
 
     private void BotonSustanciasQuimicasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonSustanciasQuimicasActionPerformed
-        ShowJPanel(new SustanciasQuimicas());
+        ShowJPanel(new SustanciasQuimicas(userActual,listalaboratorios,listasustancias));
     }//GEN-LAST:event_BotonSustanciasQuimicasActionPerformed
 
 

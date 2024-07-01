@@ -88,7 +88,6 @@
                               <Component id="InventarioExistenteTXT" min="-2" pref="492" max="-2" attributes="0"/>
                               <Component id="nameLbl11" min="-2" pref="236" max="-2" attributes="0"/>
                               <Component id="ObservacionesTXT" min="-2" pref="492" max="-2" attributes="0"/>
-                              <Component id="CrearEquipoSiguiente" min="-2" pref="492" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jScrollPane1" min="-2" pref="272" max="-2" attributes="0"/>
@@ -103,6 +102,7 @@
                                       <Component id="LabDisponible" alignment="0" min="-2" pref="133" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
+                              <Component id="CrearEquipoSiguiente" alignment="0" min="-2" pref="492" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -182,9 +182,9 @@
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="23" max="32767" attributes="0"/>
+                  <EmptySpace pref="8" max="32767" attributes="0"/>
                   <Component id="CrearEquipoSiguiente" min="-2" pref="47" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

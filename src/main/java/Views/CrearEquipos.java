@@ -124,8 +124,10 @@ public class CrearEquipos extends javax.swing.JPanel {
 
         nameLbl11.setText("Ingrese el año de compra:");
 
+        Procesable.add(ProcesableSIRadioBtton);
         ProcesableSIRadioBtton.setText("Si");
 
+        Procesable.add(ProcesableNoRadioBtton);
         ProcesableNoRadioBtton.setText("No");
 
         javax.swing.GroupLayout BackgroundCrearEquipo1Layout = new javax.swing.GroupLayout(BackgroundCrearEquipo1);

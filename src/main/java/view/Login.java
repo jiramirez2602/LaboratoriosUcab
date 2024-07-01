@@ -31,6 +31,7 @@ public class Login extends javax.swing.JFrame {
     private ListaLaboratorios laboratorios;
     private ListaDeEquipos equipos;
     private ListaDeInsumos insumos;
+    private ListaDeSustanciasQuimicas sustancias;
     //user: Harry1 password: 1234
     public Login() {
         initComponents();
@@ -38,6 +39,7 @@ public class Login extends javax.swing.JFrame {
         laboratorios = new ListaLaboratorios();
         equipos = new ListaDeEquipos();
         insumos = new ListaDeInsumos();
+        sustancias = new ListaDeSustanciasQuimicas();
         setIconImage(new ImageIcon(getClass().getResource("/file.png")).getImage());
         this.setLocationRelativeTo(null);
     }
@@ -329,10 +331,10 @@ public class Login extends javax.swing.JFrame {
             ListaLaboratorios listalab = new ListaLaboratorios();
             ListaDeEquipos listaEquip = new ListaDeEquipos();
             ListaDeInsumos listaInsu = new ListaDeInsumos();
-//            ListaDeSustanciasQuimicas listaSusQui = new ListaDeSustanciasQuimicas();*/
+            ListaDeSustanciasQuimicas listaSusQui = new ListaDeSustanciasQuimicas();
             Usuario usuario = usuarios.iniciarSesion(username.trim(), password.trim());
             if (usuario != null) {
-                Dashboard iniciarMain = new Dashboard(usuario,usuarios,laboratorios,equipos,insumos);
+                Dashboard iniciarMain = new Dashboard(usuario,usuarios,laboratorios,equipos,insumos,sustancias);
                 iniciarMain.setVisible(true);
                 dispose();
             }
