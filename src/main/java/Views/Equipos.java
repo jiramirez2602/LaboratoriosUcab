@@ -63,7 +63,13 @@ public class Equipos extends javax.swing.JPanel {
         centerRenderer.setHorizontalAlignment(JLabel.CENTER);
 
         try {
-            ArrayList<Equipo> equipos = listaequipos.getListaEquipos();
+            ArrayList<Equipo> equipos=null;
+            if(userActual.getRolUsuario().equals("Tecnico")){
+                equipos= listaequipos.listarEquipoPorUsuario(userActual);
+            }
+            else if(userActual.getRolUsuario().equals("Administrador")){
+                equipos = listaequipos.getListaEquipos();
+            }
             SimpleDateFormat dateFormatter = new SimpleDateFormat("dd/MM/yyyy");
 
             for (Equipo equipo : equipos) {

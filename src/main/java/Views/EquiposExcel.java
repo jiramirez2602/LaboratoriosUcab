@@ -43,7 +43,6 @@ public class EquiposExcel extends javax.swing.JPanel {
         BackgroundEquipos.setVisible(false);
         exportarExcel();
         FlatMaterialLighterIJTheme.setup();
-        MostrarJPanel(new Equipos(userActual,listalaboratorios,listaequipos));
     }
 
     private void inicializarTablaEquipos() {

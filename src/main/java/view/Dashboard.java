@@ -107,8 +107,6 @@ public class Dashboard extends javax.swing.JFrame {
         BotonInsumos = new javax.swing.JButton();
         BotonSustanciasQuimicas = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        bttonCerrar = new javax.swing.JPanel();
-        labelCerrar = new javax.swing.JLabel();
         header = new javax.swing.JPanel();
         dateText = new javax.swing.JLabel();
         Contenido = new javax.swing.JPanel();
@@ -159,6 +157,7 @@ public class Dashboard extends javax.swing.JFrame {
         BotonLaboratorios.setBackground(new java.awt.Color(21, 101, 192));
         BotonLaboratorios.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         BotonLaboratorios.setForeground(new java.awt.Color(255, 255, 255));
+        BotonLaboratorios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icono Laboratorios.png"))); // NOI18N
         BotonLaboratorios.setText("Laboratorios");
         BotonLaboratorios.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 13, 1, 1, new java.awt.Color(0, 0, 0)));
         BotonLaboratorios.setBorderPainted(false);
@@ -175,6 +174,7 @@ public class Dashboard extends javax.swing.JFrame {
         BotonEquipos.setBackground(new java.awt.Color(21, 101, 192));
         BotonEquipos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         BotonEquipos.setForeground(new java.awt.Color(255, 255, 255));
+        BotonEquipos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icono Equipos.png"))); // NOI18N
         BotonEquipos.setText("Equipos");
         BotonEquipos.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 13, 1, 1, new java.awt.Color(0, 0, 0)));
         BotonEquipos.setBorderPainted(false);
@@ -191,6 +191,7 @@ public class Dashboard extends javax.swing.JFrame {
         BotonTransacciones.setBackground(new java.awt.Color(21, 101, 192));
         BotonTransacciones.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         BotonTransacciones.setForeground(new java.awt.Color(255, 255, 255));
+        BotonTransacciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icono Transaccion Main.png"))); // NOI18N
         BotonTransacciones.setText("Transacciones");
         BotonTransacciones.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 13, 1, 1, new java.awt.Color(0, 0, 0)));
         BotonTransacciones.setBorderPainted(false);
@@ -207,6 +208,7 @@ public class Dashboard extends javax.swing.JFrame {
         BotonReportes.setBackground(new java.awt.Color(21, 101, 192));
         BotonReportes.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         BotonReportes.setForeground(new java.awt.Color(255, 255, 255));
+        BotonReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mantenimiento b.png"))); // NOI18N
         BotonReportes.setText("Mantenimiento de equipos");
         BotonReportes.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 13, 1, 1, new java.awt.Color(0, 0, 0)));
         BotonReportes.setBorderPainted(false);
@@ -228,6 +230,7 @@ public class Dashboard extends javax.swing.JFrame {
         BotonInsumos.setBackground(new java.awt.Color(21, 101, 192));
         BotonInsumos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         BotonInsumos.setForeground(new java.awt.Color(255, 255, 255));
+        BotonInsumos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icono Insumos.png"))); // NOI18N
         BotonInsumos.setText("Insumos");
         BotonInsumos.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 13, 1, 1, new java.awt.Color(0, 0, 0)));
         BotonInsumos.setBorderPainted(false);
@@ -244,6 +247,7 @@ public class Dashboard extends javax.swing.JFrame {
         BotonSustanciasQuimicas.setBackground(new java.awt.Color(21, 101, 192));
         BotonSustanciasQuimicas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         BotonSustanciasQuimicas.setForeground(new java.awt.Color(255, 255, 255));
+        BotonSustanciasQuimicas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icono Sustancias Quimicas_1.png"))); // NOI18N
         BotonSustanciasQuimicas.setText("Sustancias Quimicas");
         BotonSustanciasQuimicas.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 13, 1, 1, new java.awt.Color(0, 0, 0)));
         BotonSustanciasQuimicas.setBorderPainted(false);
@@ -261,30 +265,6 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Usuario:");
-
-        bttonCerrar.setBackground(new java.awt.Color(255, 51, 51));
-
-        labelCerrar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        labelCerrar.setForeground(new java.awt.Color(255, 255, 255));
-        labelCerrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelCerrar.setText("Cerrar Sesion");
-        labelCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        labelCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                labelCerrarMouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout bttonCerrarLayout = new javax.swing.GroupLayout(bttonCerrar);
-        bttonCerrar.setLayout(bttonCerrarLayout);
-        bttonCerrarLayout.setHorizontalGroup(
-            bttonCerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(labelCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        bttonCerrarLayout.setVerticalGroup(
-            bttonCerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(labelCerrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
-        );
 
         javax.swing.GroupLayout menuLayout = new javax.swing.GroupLayout(menu);
         menu.setLayout(menuLayout);
@@ -304,10 +284,6 @@ public class Dashboard extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(usuarioLabel)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(bttonCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(77, 77, 77))
         );
         menuLayout.setVerticalGroup(
             menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -316,9 +292,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addGroup(menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(usuarioLabel)
                     .addComponent(jLabel1))
-                .addGap(13, 13, 13)
-                .addComponent(bttonCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(57, 57, 57)
                 .addGroup(menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(menuLayout.createSequentialGroup()
                         .addGap(50, 50, 50)
@@ -447,10 +421,6 @@ public class Dashboard extends javax.swing.JFrame {
         ShowJPanel(new SustanciasQuimicas());
     }//GEN-LAST:event_BotonSustanciasQuimicasActionPerformed
 
-    private void labelCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelCerrarMouseClicked
-        System.exit(0);
-    }//GEN-LAST:event_labelCerrarMouseClicked
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonEquipos;
@@ -463,11 +433,9 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel Contenido;
     private javax.swing.JPanel background;
     private javax.swing.JButton btn_prin;
-    private javax.swing.JPanel bttonCerrar;
     private javax.swing.JLabel dateText;
     private javax.swing.JPanel header;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel labelCerrar;
     private javax.swing.JPanel menu;
     private javax.swing.JLabel usuarioLabel;
     // End of variables declaration//GEN-END:variables

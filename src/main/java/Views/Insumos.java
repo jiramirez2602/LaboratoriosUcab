@@ -63,8 +63,14 @@ public class Insumos extends javax.swing.JPanel {
         centerRenderer.setHorizontalAlignment(JLabel.CENTER);
 
         try {
-            ArrayList<Insumo> insumos = listaInsumos.getListaInsumos();
-
+            ArrayList<Insumo> insumos=null;
+            if(userActual.getRolUsuario().equals("Tecnico")){
+                insumos= listaInsumos.listarEquipoPorUsuario(userActual);
+            }
+            else if(userActual.getRolUsuario().equals("Administrador")){
+                insumos = listaInsumos.getListaInsumos();
+            }
+             
             for (Insumo insumo : insumos) {
                 Object[] fila = {
                     insumo.getNombreProducto(),
