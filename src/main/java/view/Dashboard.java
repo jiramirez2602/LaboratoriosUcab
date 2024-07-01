@@ -107,7 +107,6 @@ public class Dashboard extends javax.swing.JFrame {
         BotonUsuarios = new javax.swing.JButton();
         BotonLaboratorios = new javax.swing.JButton();
         BotonEquipos = new javax.swing.JButton();
-        BotonTransacciones = new javax.swing.JButton();
         BotonReportes = new javax.swing.JButton();
         usuarioLabel = new javax.swing.JLabel();
         BotonInsumos = new javax.swing.JButton();
@@ -194,23 +193,6 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
 
-        BotonTransacciones.setBackground(new java.awt.Color(21, 101, 192));
-        BotonTransacciones.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        BotonTransacciones.setForeground(new java.awt.Color(255, 255, 255));
-        BotonTransacciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icono Transaccion Main.png"))); // NOI18N
-        BotonTransacciones.setText("Transacciones");
-        BotonTransacciones.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 13, 1, 1, new java.awt.Color(0, 0, 0)));
-        BotonTransacciones.setBorderPainted(false);
-        BotonTransacciones.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        BotonTransacciones.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BotonTransacciones.setIconTextGap(13);
-        BotonTransacciones.setInheritsPopupMenu(true);
-        BotonTransacciones.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonTransaccionesActionPerformed(evt);
-            }
-        });
-
         BotonReportes.setBackground(new java.awt.Color(21, 101, 192));
         BotonReportes.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         BotonReportes.setForeground(new java.awt.Color(255, 255, 255));
@@ -281,7 +263,6 @@ public class Dashboard extends javax.swing.JFrame {
             .addComponent(BotonLaboratorios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(BotonEquipos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(BotonSustanciasQuimicas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(BotonTransacciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(BotonReportes, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
             .addComponent(BotonInsumos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(menuLayout.createSequentialGroup()
@@ -314,10 +295,8 @@ public class Dashboard extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(BotonInsumos, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(BotonTransacciones, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
                 .addComponent(BotonReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(293, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         header.setBackground(new java.awt.Color(25, 118, 210));
@@ -411,10 +390,6 @@ public class Dashboard extends javax.swing.JFrame {
 //        ShowJPanel(new Equipos(userActual,listalaboratorios,listaequipos));
     }//GEN-LAST:event_BotonEquiposActionPerformed
 
-    private void BotonTransaccionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonTransaccionesActionPerformed
-        ShowJPanel(new Transacciones(listatransacciones));
-    }//GEN-LAST:event_BotonTransaccionesActionPerformed
-
     private void BotonReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonReportesActionPerformed
         ShowJPanel(new EquiposMantenimiento(userActual,listalaboratorios,listaequipos));
     }//GEN-LAST:event_BotonReportesActionPerformed
@@ -434,7 +409,6 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JButton BotonLaboratorios;
     private javax.swing.JButton BotonReportes;
     private javax.swing.JButton BotonSustanciasQuimicas;
-    private javax.swing.JButton BotonTransacciones;
     private javax.swing.JButton BotonUsuarios;
     private javax.swing.JPanel Contenido;
     private javax.swing.JPanel background;
