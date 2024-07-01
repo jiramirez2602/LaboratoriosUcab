@@ -162,7 +162,7 @@ public class Dashboard extends javax.swing.JFrame {
         BotonLaboratorios.setBackground(new java.awt.Color(21, 101, 192));
         BotonLaboratorios.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         BotonLaboratorios.setForeground(new java.awt.Color(255, 255, 255));
-        BotonLaboratorios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icono Laboratorios.png"))); // NOI18N
+        BotonLaboratorios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Laboratorio.png"))); // NOI18N
         BotonLaboratorios.setText("Laboratorios");
         BotonLaboratorios.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 13, 1, 1, new java.awt.Color(0, 0, 0)));
         BotonLaboratorios.setBorderPainted(false);
@@ -179,7 +179,7 @@ public class Dashboard extends javax.swing.JFrame {
         BotonEquipos.setBackground(new java.awt.Color(21, 101, 192));
         BotonEquipos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         BotonEquipos.setForeground(new java.awt.Color(255, 255, 255));
-        BotonEquipos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icono Equipos.png"))); // NOI18N
+        BotonEquipos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Equiposb.png"))); // NOI18N
         BotonEquipos.setText("Equipos");
         BotonEquipos.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 13, 1, 1, new java.awt.Color(0, 0, 0)));
         BotonEquipos.setBorderPainted(false);
@@ -218,7 +218,7 @@ public class Dashboard extends javax.swing.JFrame {
         BotonInsumos.setBackground(new java.awt.Color(21, 101, 192));
         BotonInsumos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         BotonInsumos.setForeground(new java.awt.Color(255, 255, 255));
-        BotonInsumos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icono Insumos.png"))); // NOI18N
+        BotonInsumos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/insumos.png"))); // NOI18N
         BotonInsumos.setText("Insumos");
         BotonInsumos.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 13, 1, 1, new java.awt.Color(0, 0, 0)));
         BotonInsumos.setBorderPainted(false);
@@ -235,7 +235,7 @@ public class Dashboard extends javax.swing.JFrame {
         BotonSustanciasQuimicas.setBackground(new java.awt.Color(21, 101, 192));
         BotonSustanciasQuimicas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         BotonSustanciasQuimicas.setForeground(new java.awt.Color(255, 255, 255));
-        BotonSustanciasQuimicas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icono Sustancias Quimicas_1.png"))); // NOI18N
+        BotonSustanciasQuimicas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Sustancias.png"))); // NOI18N
         BotonSustanciasQuimicas.setText("Sustancias Quimicas");
         BotonSustanciasQuimicas.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 13, 1, 1, new java.awt.Color(0, 0, 0)));
         BotonSustanciasQuimicas.setBorderPainted(false);
