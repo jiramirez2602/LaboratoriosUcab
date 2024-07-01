@@ -103,7 +103,7 @@ public class SustanciasQuimicas extends javax.swing.JPanel {
         } catch (ParseException ex) {
             JOptionPane.showMessageDialog(this, "Error al obtener la lista de sustancias químicas.", "Error", JOptionPane.ERROR_MESSAGE);
         }
-        jTable1.setDefaultEditor(Object.class, null);  // Hacer que las celdas no sean editables
+        jTable1.setDefaultEditor(Object.class, null);
     }
   
 

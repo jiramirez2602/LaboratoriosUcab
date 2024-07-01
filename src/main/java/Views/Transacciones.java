@@ -1,24 +1,68 @@
 package Views;
 
 
+import controller.ListaDeTransacciones;
 import java.awt.Color;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import model.TransaccionDeTabla;
 
 
 public class Transacciones extends javax.swing.JPanel {
-
-    public Transacciones() {
+    
+    private DefaultTableModel tableModelTransaccion;
+    private ListaDeTransacciones listatransacciones;
+    
+    public Transacciones(ListaDeTransacciones transacciones) {
+        this.listatransacciones = transacciones;
         initComponents();
         InitStyles();
+        inicializarTablaSustancias();
     }
 
     private void InitStyles() {
         title.putClientProperty("FlatLaf.styleClass", "h1");
         title.setForeground(Color.black);
-        userSearch.putClientProperty("JTextField.placeholderText", "Ingrese el nombre de usuario a buscar.");
     }
+    
+    private void inicializarTablaSustancias() {
+        String[] columnas = {"Nombre","Tipo de Producto","Inventario Existente", "Observaciones","Fecha","Nombre completo","Tipo de transaccion"};
+        tableModelTransaccion = new DefaultTableModel(columnas, 0);
+        jTable1.setModel(tableModelTransaccion);
+    }
+    private void actualizarTablaTransacciones() throws ParseException {
+        tableModelTransaccion.setRowCount(0);  
+        int row = 0;
 
-   
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
 
+        ArrayList<TransaccionDeTabla> transacciones = listatransacciones.getListaTransacciones();
+        for (TransaccionDeTabla transaccion : transacciones) {
+            Object[] fila = {
+                transaccion.getNombreProducto(),
+                transaccion.getTipoDeProducto(),
+                transaccion.getInventarioExistente(),
+                transaccion.getObservaciones(),
+                transaccion.getFecha(),
+                transaccion.getNombreCompleto(),
+                transaccion.getTipoDeTransaccion()
+            };
+
+            tableModelTransaccion.addRow(fila);
+            for (int i = 0; i < tableModelTransaccion.getColumnCount(); i++) {
+                jTable1.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+            }
+            row++;
+        }
+        jTable1.setDefaultEditor(Object.class, null);  // Hacer que las celdas no sean editables
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,13 +74,8 @@ public class Transacciones extends javax.swing.JPanel {
 
         bg = new javax.swing.JPanel();
         title = new javax.swing.JLabel();
-        userSearch = new javax.swing.JTextField();
-        BotonBuscarTransaccion = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        BotonEliminarTransaccion = new javax.swing.JButton();
-        BotonModificarTransaccion = new javax.swing.JButton();
-        BotonCrearTransaccion = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -44,42 +83,15 @@ public class Transacciones extends javax.swing.JPanel {
 
         title.setText("Transacciones");
 
-        BotonBuscarTransaccion.setBackground(new java.awt.Color(18, 90, 173));
-        BotonBuscarTransaccion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        BotonBuscarTransaccion.setForeground(new java.awt.Color(255, 255, 255));
-        BotonBuscarTransaccion.setText("Buscar");
-        BotonBuscarTransaccion.setBorderPainted(false);
-        BotonBuscarTransaccion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        BotonBuscarTransaccion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonBuscarTransaccionActionPerformed(evt);
-            }
-        });
-
         jTable1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "Nombre", "Apellido P.", "Apellido M.", "Domicilio", "Teléfono"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, true, true, true, true, true
-            };
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
             }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         jTable1.getTableHeader().setReorderingAllowed(false);
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -88,85 +100,27 @@ public class Transacciones extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        BotonEliminarTransaccion.setBackground(new java.awt.Color(18, 90, 173));
-        BotonEliminarTransaccion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        BotonEliminarTransaccion.setForeground(new java.awt.Color(255, 255, 255));
-        BotonEliminarTransaccion.setText("Borrar");
-        BotonEliminarTransaccion.setBorderPainted(false);
-        BotonEliminarTransaccion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        BotonEliminarTransaccion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonEliminarTransaccionActionPerformed(evt);
-            }
-        });
-
-        BotonModificarTransaccion.setBackground(new java.awt.Color(18, 90, 173));
-        BotonModificarTransaccion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        BotonModificarTransaccion.setForeground(new java.awt.Color(255, 255, 255));
-        BotonModificarTransaccion.setText("Editar");
-        BotonModificarTransaccion.setBorderPainted(false);
-        BotonModificarTransaccion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        BotonModificarTransaccion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonModificarTransaccionActionPerformed(evt);
-            }
-        });
-
-        BotonCrearTransaccion.setBackground(new java.awt.Color(18, 90, 173));
-        BotonCrearTransaccion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        BotonCrearTransaccion.setForeground(new java.awt.Color(255, 255, 255));
-        BotonCrearTransaccion.setText("Nuevo");
-        BotonCrearTransaccion.setBorderPainted(false);
-        BotonCrearTransaccion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        BotonCrearTransaccion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonCrearTransaccionActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);
         bg.setLayout(bgLayout);
         bgLayout.setHorizontalGroup(
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(bgLayout.createSequentialGroup()
-                        .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(699, 699, 699))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgLayout.createSequentialGroup()
-                        .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(bgLayout.createSequentialGroup()
-                                .addGap(427, 427, 427)
-                                .addComponent(BotonCrearTransaccion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(BotonModificarTransaccion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(BotonEliminarTransaccion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(bgLayout.createSequentialGroup()
-                                .addComponent(userSearch)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(BotonBuscarTransaccion)))
-                        .addGap(50, 50, 50))))
+                .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(699, 699, 699))
+            .addGroup(bgLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 736, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         bgLayout.setVerticalGroup(
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(userSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BotonBuscarTransaccion, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(64, 64, 64)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BotonEliminarTransaccion)
-                    .addComponent(BotonModificarTransaccion)
-                    .addComponent(BotonCrearTransaccion))
-                .addGap(25, 25, 25))
+                .addGap(69, 69, 69))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -185,32 +139,11 @@ public class Transacciones extends javax.swing.JPanel {
 
     }//GEN-LAST:event_jTable1MousePressed
 
-    private void BotonCrearTransaccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCrearTransaccionActionPerformed
-
-    }//GEN-LAST:event_BotonCrearTransaccionActionPerformed
-
-    private void BotonEliminarTransaccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarTransaccionActionPerformed
-        
-    }//GEN-LAST:event_BotonEliminarTransaccionActionPerformed
-
-    private void BotonModificarTransaccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarTransaccionActionPerformed
-        
-    }//GEN-LAST:event_BotonModificarTransaccionActionPerformed
-
-    private void BotonBuscarTransaccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBuscarTransaccionActionPerformed
-        
-    }//GEN-LAST:event_BotonBuscarTransaccionActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BotonBuscarTransaccion;
-    private javax.swing.JButton BotonCrearTransaccion;
-    private javax.swing.JButton BotonEliminarTransaccion;
-    private javax.swing.JButton BotonModificarTransaccion;
     private javax.swing.JPanel bg;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel title;
-    private javax.swing.JTextField userSearch;
     // End of variables declaration//GEN-END:variables
 }

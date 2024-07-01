@@ -8,6 +8,7 @@ import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialLighte
 import controller.ListaDeEquipos;
 import controller.ListaDeInsumos;
 import controller.ListaDeSustanciasQuimicas;
+import controller.ListaDeTransacciones;
 import controller.ListaDeUsuarios;
 import controller.ListaLaboratorios;
 import java.awt.Color;
@@ -32,6 +33,7 @@ public class Login extends javax.swing.JFrame {
     private ListaDeEquipos equipos;
     private ListaDeInsumos insumos;
     private ListaDeSustanciasQuimicas sustancias;
+    private ListaDeTransacciones transacciones;
     //user: Harry1 password: 1234
     public Login() {
         initComponents();
@@ -40,6 +42,7 @@ public class Login extends javax.swing.JFrame {
         equipos = new ListaDeEquipos();
         insumos = new ListaDeInsumos();
         sustancias = new ListaDeSustanciasQuimicas();
+        transacciones = new ListaDeTransacciones();
         setIconImage(new ImageIcon(getClass().getResource("/file.png")).getImage());
         this.setLocationRelativeTo(null);
     }
@@ -332,9 +335,10 @@ public class Login extends javax.swing.JFrame {
             ListaDeEquipos listaEquip = new ListaDeEquipos();
             ListaDeInsumos listaInsu = new ListaDeInsumos();
             ListaDeSustanciasQuimicas listaSusQui = new ListaDeSustanciasQuimicas();
+            ListaDeTransacciones listatran = new ListaDeTransacciones();
             Usuario usuario = usuarios.iniciarSesion(username.trim(), password.trim());
             if (usuario != null) {
-                Dashboard iniciarMain = new Dashboard(usuario,usuarios,laboratorios,equipos,insumos,sustancias);
+                Dashboard iniciarMain = new Dashboard(usuario,usuarios,laboratorios,equipos,insumos,sustancias,transacciones);
                 iniciarMain.setVisible(true);
                 dispose();
             }

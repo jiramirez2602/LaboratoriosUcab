@@ -19,6 +19,7 @@ import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialLighte
 import controller.ListaDeEquipos;
 import controller.ListaDeInsumos;
 import controller.ListaDeSustanciasQuimicas;
+import controller.ListaDeTransacciones;
 import controller.ListaDeUsuarios;
 import controller.ListaLaboratorios;
 import java.awt.BorderLayout;
@@ -45,8 +46,9 @@ public class Dashboard extends javax.swing.JFrame {
     private ListaDeEquipos listaequipos;
     private ListaDeInsumos listaInsumos;
     private ListaDeSustanciasQuimicas listasustancias;
+    private ListaDeTransacciones listatransacciones;
 
-    public Dashboard(Usuario user,ListaDeUsuarios users, ListaLaboratorios laboratorios,ListaDeEquipos equipos, ListaDeInsumos insumos, ListaDeSustanciasQuimicas sustancias) {
+    public Dashboard(Usuario user,ListaDeUsuarios users, ListaLaboratorios laboratorios,ListaDeEquipos equipos, ListaDeInsumos insumos, ListaDeSustanciasQuimicas sustancias, ListaDeTransacciones transacciones) {
         FlatMaterialLighterIJTheme.setup();
         initComponents();
         InitStyles();
@@ -58,7 +60,8 @@ public class Dashboard extends javax.swing.JFrame {
         this.listaequipos = equipos;
         this.listaInsumos = insumos;
         this.userActual=user;
-        this.listasustancias=sustancias;
+        this.listasustancias= sustancias;
+        this.listatransacciones = transacciones;
         usuarioLabel.setText(userActual.getUsername());
     }
 
@@ -409,7 +412,7 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonEquiposActionPerformed
 
     private void BotonTransaccionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonTransaccionesActionPerformed
-        
+        ShowJPanel(new Transacciones(listatransacciones));
     }//GEN-LAST:event_BotonTransaccionesActionPerformed
 
     private void BotonReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonReportesActionPerformed
