@@ -51,7 +51,7 @@ public class Excel {
                         if (tabla.getValueAt(i,j) instanceof Double) {
                             celda.setCellValue(Double.parseDouble(tabla.getValueAt(i,j).toString()));
                         } else if (tabla.getValueAt(i,j) instanceof Float) {
-                            celda.setCellValue(Float.parseFloat((String) tabla.getValueAt(i,j)));
+                            celda.setCellValue(Float.parseFloat((String) tabla.getValueAt(i,j).toString()));
                         } else {
                             celda.setCellValue(String.valueOf(tabla.getValueAt(i,j)));
                         }

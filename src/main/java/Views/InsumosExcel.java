@@ -49,7 +49,10 @@ public class InsumosExcel extends javax.swing.JPanel {
     }
 
     private void inicializarTablaInsumos() {
-        String[] columnas = {"Nombre de producto", "Tipo de producto", "Inventario Existente", "Observaciones", "Descripcion", "Marca", "Modelo", "Precio Estimado"};
+        String[] columnas = {"Nombre de producto", "Tipo de producto", 
+            "Inventario Existente", 
+            "Observaciones", "Descripción", 
+            "Marca", "Modelo","Presentación","Clasificación","Categoria","Última Compra", "Precio Estimado","Unidad","Proovedor"};
         tableModelInsumo = new DefaultTableModel(columnas, 0);
         JTableInsumos.setModel(tableModelInsumo);
     }
@@ -109,7 +112,6 @@ public class InsumosExcel extends javax.swing.JPanel {
             }
         } catch (ParseException ex) {
             JOptionPane.showMessageDialog(this, "Error al obtener la lista de insumos.", "Error", JOptionPane.ERROR_MESSAGE);
-            ex.printStackTrace();
         }
 
         JTableInsumos.setDefaultEditor(Object.class, null);
