@@ -66,26 +66,32 @@ public class EquiposMantenimiento extends javax.swing.JPanel {
             else if(userActual.getRolUsuario().equals("Administrador")){
                 equipos = listaequipos.getListaEquiposMantenimiento();
             }
-            for (Equipo equipo : equipos) {
-                Laboratorio laboratorio = listalaboratorios.listarLaboratorio(equipo.getLaboratorio());
-                String nombreLaboratorio = (laboratorio != null) ? laboratorio.getNombreLaboratorio() : "Desconocido";
+            if (equipos != null) {
+                for (Equipo equipo : equipos) {
+                    Laboratorio laboratorio = listalaboratorios.listarLaboratorio(equipo.getLaboratorio());
+                    String nombreLaboratorio = (laboratorio != null) ? laboratorio.getNombreLaboratorio() : "Desconocido";
 
-                Object[] fila = {
-                    equipo.getNombreProducto(),
-                    equipo.getUltimoMantenimiento(),
-                    equipo.getProximoMantenimiento(),
-                    nombreLaboratorio 
-                };
-                tableModelEquipos.addRow(fila);
+                    Object[] fila = {
+                        equipo.getNombreProducto(),
+                        equipo.getUltimoMantenimiento(),
+                        equipo.getProximoMantenimiento(),
+                        nombreLaboratorio
+                    };
+                    tableModelEquipos.addRow(fila);
 
-                idMapEquipos.put(row, equipo.getId());
+                    idMapEquipos.put(row, equipo.getId());
 
-                for (int i = 0; i < tableModelEquipos.getColumnCount(); i++) {
-                    jTable1.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+                    for (int i = 0; i < tableModelEquipos.getColumnCount(); i++) {
+                        jTable1.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+                    }
+
+                    row++;
                 }
-
-                row++;
             }
+            else{
+                JOptionPane.showMessageDialog(this, "Los Invitados y Tecnicos no pueden ver el modulo de mantenimiento", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+
         } catch (ParseException ex) {
             JOptionPane.showMessageDialog(this, "Error al obtener la lista de equipos.", "Error", JOptionPane.ERROR_MESSAGE);
         }
