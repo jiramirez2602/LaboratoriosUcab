@@ -43,8 +43,6 @@ public class Principal extends javax.swing.JPanel {
         jLabel9.setForeground(Color.black);
         jLabel10.putClientProperty("FlatLaf.styleClass", "large");
         jLabel10.setForeground(Color.black);
-        jLabel11.putClientProperty("FlatLaf.styleClass", "large");
-        jLabel11.setForeground(Color.black);
     }
    
     /**
