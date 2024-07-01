@@ -68,36 +68,33 @@ public class Principal extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
         bg.setBackground(new java.awt.Color(255, 255, 255));
 
         image.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/336799ebb339821f342bc5a13386aff2.jpg"))); // NOI18N
+        image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo_ingenieria-removebg-preview.png"))); // NOI18N
 
         title.setText("Bienvenido");
 
-        jLabel2.setText("Sistema de Gestión para Biblioteca Pública. Controle y administre de");
+        jLabel2.setText("Sistema de Gestión para Laboratorios UCAB. Controle y administre de");
 
-        jLabel3.setText("forma óptima y fácil el flujo de préstamos y devoluciones de Libros. ");
+        jLabel3.setText("forma óptima y fácil el inventario de cada laboratorio. ");
 
-        jLabel4.setText("Esta herramienta le permitirá llevar un control completo y detallado de su Biblioteca,");
+        jLabel4.setText("Esta herramienta le permitirá llevar un control completo y detallado del Laboratorio");
 
         jLabel5.setText("tendrá acceso a herramientas especiales para tareas específicas, como lo son:");
 
-        jLabel6.setText("• Préstamos");
+        jLabel6.setText("• Regitros de Usuarios de la aplicación ");
 
-        jLabel7.setText("• Devoluciones");
+        jLabel7.setText("• Registros de Laboratorios ");
 
-        jLabel8.setText("• Registro de Usuarios y Libros Nuevos");
+        jLabel8.setText("• Registro de Productos de Laboratorios");
 
-        jLabel9.setText("• Edición de Usuarios y Libros existentes");
+        jLabel9.setText("• Notificación de Mantenimiento de Equipos ");
 
-        jLabel10.setText("• Eliminar todo tipo de Registros");
-
-        jLabel11.setText("• Sección de Reportes de acciones en el sistema");
+        jLabel10.setText("• Registros de Transacciones");
 
         javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);
         bg.setLayout(bgLayout);
@@ -119,9 +116,6 @@ public class Principal extends javax.swing.JPanel {
                         .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(306, 306, 306))
                     .addGroup(bgLayout.createSequentialGroup()
-                        .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(306, 306, 306))
-                    .addGroup(bgLayout.createSequentialGroup()
                         .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(306, 306, 306))
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -132,10 +126,9 @@ public class Principal extends javax.swing.JPanel {
                         .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(306, 306, 306)))
                 .addGap(10, 10, 10))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgLayout.createSequentialGroup()
+            .addGroup(bgLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(image, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(image, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         bgLayout.setVerticalGroup(
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -160,10 +153,6 @@ public class Principal extends javax.swing.JPanel {
                         .addGap(75, 75, 75)
                         .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(155, 155, 155))
-                    .addGroup(bgLayout.createSequentialGroup()
-                        .addGap(175, 175, 175)
-                        .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(55, 55, 55))
                     .addGroup(bgLayout.createSequentialGroup()
                         .addGap(135, 135, 135)
                         .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -204,7 +193,6 @@ public class Principal extends javax.swing.JPanel {
     private javax.swing.JPanel bg;
     private javax.swing.JLabel image;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

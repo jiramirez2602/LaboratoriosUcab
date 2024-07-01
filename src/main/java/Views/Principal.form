@@ -66,10 +66,6 @@
                           <EmptySpace min="306" pref="306" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabel11" max="32767" attributes="0"/>
-                          <EmptySpace min="306" pref="306" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel9" max="32767" attributes="0"/>
                           <EmptySpace min="306" pref="306" max="-2" attributes="0"/>
                       </Group>
@@ -85,10 +81,9 @@
                   </Group>
                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
               </Group>
-              <Group type="102" alignment="1" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="image" max="32767" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -117,11 +112,6 @@
                           <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
                           <Component id="jLabel6" max="32767" attributes="0"/>
                           <EmptySpace min="155" pref="155" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="175" max="-2" attributes="0"/>
-                          <Component id="jLabel11" max="32767" attributes="0"/>
-                          <EmptySpace min="55" pref="55" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="135" max="-2" attributes="0"/>
@@ -154,7 +144,7 @@
           <Properties>
             <Property name="horizontalAlignment" type="int" value="4"/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/336799ebb339821f342bc5a13386aff2.jpg"/>
+              <Image iconType="3" name="/logo_ingenieria-removebg-preview.png"/>
             </Property>
           </Properties>
         </Component>
@@ -165,17 +155,17 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Sistema de Gesti&#xf3;n para Biblioteca P&#xfa;blica. Controle y administre de"/>
+            <Property name="text" type="java.lang.String" value="Sistema de Gesti&#xf3;n para Laboratorios UCAB. Controle y administre de"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
-            <Property name="text" type="java.lang.String" value="forma &#xf3;ptima y f&#xe1;cil el flujo de pr&#xe9;stamos y devoluciones de Libros. "/>
+            <Property name="text" type="java.lang.String" value="forma &#xf3;ptima y f&#xe1;cil el inventario de cada laboratorio. "/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Esta herramienta le permitir&#xe1; llevar un control completo y detallado de su Biblioteca,"/>
+            <Property name="text" type="java.lang.String" value="Esta herramienta le permitir&#xe1; llevar un control completo y detallado del Laboratorio"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
@@ -185,32 +175,27 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
-            <Property name="text" type="java.lang.String" value="&#x2022; Pr&#xe9;stamos"/>
+            <Property name="text" type="java.lang.String" value="&#x2022; Regitros de Usuarios de la aplicaci&#xf3;n "/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>
-            <Property name="text" type="java.lang.String" value="&#x2022; Devoluciones"/>
+            <Property name="text" type="java.lang.String" value="&#x2022; Registros de Laboratorios "/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel8">
           <Properties>
-            <Property name="text" type="java.lang.String" value="&#x2022; Registro de Usuarios y Libros Nuevos"/>
+            <Property name="text" type="java.lang.String" value="&#x2022; Registro de Productos de Laboratorios"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel9">
           <Properties>
-            <Property name="text" type="java.lang.String" value="&#x2022; Edici&#xf3;n de Usuarios y Libros existentes"/>
+            <Property name="text" type="java.lang.String" value="&#x2022; Notificaci&#xf3;n de Mantenimiento de Equipos "/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel10">
           <Properties>
-            <Property name="text" type="java.lang.String" value="&#x2022; Eliminar todo tipo de Registros"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel11">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="&#x2022; Secci&#xf3;n de Reportes de acciones en el sistema"/>
+            <Property name="text" type="java.lang.String" value="&#x2022; Registros de Transacciones"/>
           </Properties>
         </Component>
       </SubComponents>
