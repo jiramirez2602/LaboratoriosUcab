@@ -387,7 +387,7 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonLaboratoriosActionPerformed
 
     private void BotonEquiposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEquiposActionPerformed
-//        ShowJPanel(new Equipos(userActual,listalaboratorios,listaequipos));
+        ShowJPanel(new Equipos(userActual,listalaboratorios,listaequipos));
     }//GEN-LAST:event_BotonEquiposActionPerformed
 
     private void BotonReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonReportesActionPerformed
