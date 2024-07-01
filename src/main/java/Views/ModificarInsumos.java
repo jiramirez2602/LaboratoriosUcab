@@ -105,7 +105,7 @@ public class ModificarInsumos extends javax.swing.JPanel {
         ModificarInsumoSiguiente.setText("Siguente");
         ModificarInsumoSiguiente.setBorder(null);
         ModificarInsumoSiguiente.setBorderPainted(false);
-        ModificarInsumoSiguiente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        ModificarInsumoSiguiente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ModificarInsumoSiguiente.setIconTextGap(13);
         ModificarInsumoSiguiente.setInheritsPopupMenu(true);
         ModificarInsumoSiguiente.addActionListener(new java.awt.event.ActionListener() {

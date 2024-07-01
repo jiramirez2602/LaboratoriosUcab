@@ -134,7 +134,7 @@ public class Usuarios extends javax.swing.JPanel {
         BotonEliminarUsuario.setForeground(new java.awt.Color(255, 255, 255));
         BotonEliminarUsuario.setText("Borrar");
         BotonEliminarUsuario.setBorderPainted(false);
-        BotonEliminarUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        BotonEliminarUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BotonEliminarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonEliminarUsuarioActionPerformed(evt);
@@ -146,7 +146,7 @@ public class Usuarios extends javax.swing.JPanel {
         BotonModificarUsuario.setForeground(new java.awt.Color(255, 255, 255));
         BotonModificarUsuario.setText("Editar");
         BotonModificarUsuario.setBorderPainted(false);
-        BotonModificarUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        BotonModificarUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BotonModificarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonModificarUsuarioActionPerformed(evt);
@@ -158,7 +158,7 @@ public class Usuarios extends javax.swing.JPanel {
         BotonCrearUsuario.setForeground(new java.awt.Color(255, 255, 255));
         BotonCrearUsuario.setText("Nuevo");
         BotonCrearUsuario.setBorderPainted(false);
-        BotonCrearUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        BotonCrearUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BotonCrearUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonCrearUsuarioActionPerformed(evt);

@@ -91,7 +91,7 @@ public class Crearinsumos extends javax.swing.JPanel {
         CrearInsumoSiguiente.setText("Siguente");
         CrearInsumoSiguiente.setBorder(null);
         CrearInsumoSiguiente.setBorderPainted(false);
-        CrearInsumoSiguiente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        CrearInsumoSiguiente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         CrearInsumoSiguiente.setIconTextGap(13);
         CrearInsumoSiguiente.setInheritsPopupMenu(true);
         CrearInsumoSiguiente.addActionListener(new java.awt.event.ActionListener() {

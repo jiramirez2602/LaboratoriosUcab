@@ -142,7 +142,7 @@ public class Laboratorios extends javax.swing.JPanel {
         BotonEliminarLab.setForeground(new java.awt.Color(255, 255, 255));
         BotonEliminarLab.setText("Borrar");
         BotonEliminarLab.setBorderPainted(false);
-        BotonEliminarLab.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        BotonEliminarLab.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BotonEliminarLab.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonEliminarLabActionPerformed(evt);
@@ -154,7 +154,7 @@ public class Laboratorios extends javax.swing.JPanel {
         BotonModificarLab.setForeground(new java.awt.Color(255, 255, 255));
         BotonModificarLab.setText("Editar");
         BotonModificarLab.setBorderPainted(false);
-        BotonModificarLab.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        BotonModificarLab.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BotonModificarLab.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonModificarLabActionPerformed(evt);
@@ -166,7 +166,7 @@ public class Laboratorios extends javax.swing.JPanel {
         BotonCrearLab.setForeground(new java.awt.Color(255, 255, 255));
         BotonCrearLab.setText("Nuevo");
         BotonCrearLab.setBorderPainted(false);
-        BotonCrearLab.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        BotonCrearLab.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BotonCrearLab.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonCrearLabActionPerformed(evt);

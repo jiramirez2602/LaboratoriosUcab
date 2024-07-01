@@ -175,7 +175,7 @@ import model.Usuario;
         ModificarLaboratorio.setText("Modificar");
         ModificarLaboratorio.setBorder(null);
         ModificarLaboratorio.setBorderPainted(false);
-        ModificarLaboratorio.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        ModificarLaboratorio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ModificarLaboratorio.setIconTextGap(13);
         ModificarLaboratorio.setInheritsPopupMenu(true);
         ModificarLaboratorio.addActionListener(new java.awt.event.ActionListener() {

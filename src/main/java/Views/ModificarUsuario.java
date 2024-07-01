@@ -101,6 +101,8 @@ public class ModificarUsuario extends javax.swing.JPanel {
         NombreCompletoTxt = new javax.swing.JTextField();
         TecnicoRadiobtton = new javax.swing.JRadioButton();
 
+        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
         BackgroundCrearUsuario.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N

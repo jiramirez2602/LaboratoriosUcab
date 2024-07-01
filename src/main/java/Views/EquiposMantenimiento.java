@@ -142,7 +142,7 @@ public class EquiposMantenimiento extends javax.swing.JPanel {
         BotonModificarEquipo.setForeground(new java.awt.Color(255, 255, 255));
         BotonModificarEquipo.setText("Editar");
         BotonModificarEquipo.setBorderPainted(false);
-        BotonModificarEquipo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        BotonModificarEquipo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BotonModificarEquipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonModificarEquipoActionPerformed(evt);

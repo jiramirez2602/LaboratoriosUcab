@@ -164,7 +164,7 @@ public class ModificarInsumos2 extends javax.swing.JPanel {
         ModificarInsumoFinal.setText("Modificar");
         ModificarInsumoFinal.setBorder(null);
         ModificarInsumoFinal.setBorderPainted(false);
-        ModificarInsumoFinal.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        ModificarInsumoFinal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ModificarInsumoFinal.setIconTextGap(13);
         ModificarInsumoFinal.setInheritsPopupMenu(true);
         ModificarInsumoFinal.addActionListener(new java.awt.event.ActionListener() {

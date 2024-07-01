@@ -159,7 +159,7 @@ public class CrearLaboratorios extends javax.swing.JPanel {
         CrearLaboratorio.setText("Crear");
         CrearLaboratorio.setBorder(null);
         CrearLaboratorio.setBorderPainted(false);
-        CrearLaboratorio.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        CrearLaboratorio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         CrearLaboratorio.setIconTextGap(13);
         CrearLaboratorio.setInheritsPopupMenu(true);
         CrearLaboratorio.addActionListener(new java.awt.event.ActionListener() {

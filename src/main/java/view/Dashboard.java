@@ -107,6 +107,8 @@ public class Dashboard extends javax.swing.JFrame {
         BotonInsumos = new javax.swing.JButton();
         BotonSustanciasQuimicas = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        bttonCerrar = new javax.swing.JPanel();
+        labelCerrar = new javax.swing.JLabel();
         header = new javax.swing.JPanel();
         dateText = new javax.swing.JLabel();
         Contenido = new javax.swing.JPanel();
@@ -127,7 +129,7 @@ public class Dashboard extends javax.swing.JFrame {
         btn_prin.setText("Principal");
         btn_prin.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 13, 1, 1, new java.awt.Color(0, 0, 0)));
         btn_prin.setBorderPainted(false);
-        btn_prin.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_prin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_prin.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btn_prin.setIconTextGap(13);
         btn_prin.setInheritsPopupMenu(true);
@@ -144,7 +146,7 @@ public class Dashboard extends javax.swing.JFrame {
         BotonUsuarios.setText("Usuarios");
         BotonUsuarios.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 13, 1, 1, new java.awt.Color(0, 0, 0)));
         BotonUsuarios.setBorderPainted(false);
-        BotonUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        BotonUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BotonUsuarios.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BotonUsuarios.setIconTextGap(13);
         BotonUsuarios.setInheritsPopupMenu(true);
@@ -160,7 +162,7 @@ public class Dashboard extends javax.swing.JFrame {
         BotonLaboratorios.setText("Laboratorios");
         BotonLaboratorios.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 13, 1, 1, new java.awt.Color(0, 0, 0)));
         BotonLaboratorios.setBorderPainted(false);
-        BotonLaboratorios.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        BotonLaboratorios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BotonLaboratorios.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BotonLaboratorios.setIconTextGap(13);
         BotonLaboratorios.setInheritsPopupMenu(true);
@@ -176,7 +178,7 @@ public class Dashboard extends javax.swing.JFrame {
         BotonEquipos.setText("Equipos");
         BotonEquipos.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 13, 1, 1, new java.awt.Color(0, 0, 0)));
         BotonEquipos.setBorderPainted(false);
-        BotonEquipos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        BotonEquipos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BotonEquipos.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BotonEquipos.setIconTextGap(13);
         BotonEquipos.setInheritsPopupMenu(true);
@@ -192,7 +194,7 @@ public class Dashboard extends javax.swing.JFrame {
         BotonTransacciones.setText("Transacciones");
         BotonTransacciones.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 13, 1, 1, new java.awt.Color(0, 0, 0)));
         BotonTransacciones.setBorderPainted(false);
-        BotonTransacciones.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        BotonTransacciones.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BotonTransacciones.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BotonTransacciones.setIconTextGap(13);
         BotonTransacciones.setInheritsPopupMenu(true);
@@ -208,7 +210,7 @@ public class Dashboard extends javax.swing.JFrame {
         BotonReportes.setText("Mantenimiento de equipos");
         BotonReportes.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 13, 1, 1, new java.awt.Color(0, 0, 0)));
         BotonReportes.setBorderPainted(false);
-        BotonReportes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        BotonReportes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BotonReportes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BotonReportes.setIconTextGap(13);
         BotonReportes.setInheritsPopupMenu(true);
@@ -229,7 +231,7 @@ public class Dashboard extends javax.swing.JFrame {
         BotonInsumos.setText("Insumos");
         BotonInsumos.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 13, 1, 1, new java.awt.Color(0, 0, 0)));
         BotonInsumos.setBorderPainted(false);
-        BotonInsumos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        BotonInsumos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BotonInsumos.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BotonInsumos.setIconTextGap(13);
         BotonInsumos.setInheritsPopupMenu(true);
@@ -245,7 +247,7 @@ public class Dashboard extends javax.swing.JFrame {
         BotonSustanciasQuimicas.setText("Sustancias Quimicas");
         BotonSustanciasQuimicas.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 13, 1, 1, new java.awt.Color(0, 0, 0)));
         BotonSustanciasQuimicas.setBorderPainted(false);
-        BotonSustanciasQuimicas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        BotonSustanciasQuimicas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BotonSustanciasQuimicas.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BotonSustanciasQuimicas.setIconTextGap(13);
         BotonSustanciasQuimicas.setInheritsPopupMenu(true);
@@ -260,6 +262,30 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Usuario:");
 
+        bttonCerrar.setBackground(new java.awt.Color(255, 51, 51));
+
+        labelCerrar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        labelCerrar.setForeground(new java.awt.Color(255, 255, 255));
+        labelCerrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelCerrar.setText("Cerrar Sesion");
+        labelCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        labelCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                labelCerrarMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout bttonCerrarLayout = new javax.swing.GroupLayout(bttonCerrar);
+        bttonCerrar.setLayout(bttonCerrarLayout);
+        bttonCerrarLayout.setHorizontalGroup(
+            bttonCerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(labelCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        bttonCerrarLayout.setVerticalGroup(
+            bttonCerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(labelCerrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout menuLayout = new javax.swing.GroupLayout(menu);
         menu.setLayout(menuLayout);
         menuLayout.setHorizontalGroup(
@@ -267,17 +293,21 @@ public class Dashboard extends javax.swing.JFrame {
             .addComponent(BotonUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btn_prin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(BotonLaboratorios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(BotonEquipos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(BotonSustanciasQuimicas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(BotonTransacciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(BotonReportes, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+            .addComponent(BotonInsumos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(menuLayout.createSequentialGroup()
                 .addGap(53, 53, 53)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(usuarioLabel)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(BotonEquipos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(BotonSustanciasQuimicas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(BotonTransacciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(BotonReportes, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-            .addComponent(BotonInsumos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bttonCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(77, 77, 77))
         );
         menuLayout.setVerticalGroup(
             menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -286,7 +316,9 @@ public class Dashboard extends javax.swing.JFrame {
                 .addGroup(menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(usuarioLabel)
                     .addComponent(jLabel1))
-                .addGap(57, 57, 57)
+                .addGap(13, 13, 13)
+                .addComponent(bttonCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(menuLayout.createSequentialGroup()
                         .addGap(50, 50, 50)
@@ -338,11 +370,11 @@ public class Dashboard extends javax.swing.JFrame {
         Contenido.setLayout(ContenidoLayout);
         ContenidoLayout.setHorizontalGroup(
             ContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 1141, Short.MAX_VALUE)
         );
         ContenidoLayout.setVerticalGroup(
             ContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 698, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout backgroundLayout = new javax.swing.GroupLayout(background);
@@ -415,6 +447,10 @@ public class Dashboard extends javax.swing.JFrame {
         ShowJPanel(new SustanciasQuimicas());
     }//GEN-LAST:event_BotonSustanciasQuimicasActionPerformed
 
+    private void labelCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelCerrarMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_labelCerrarMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonEquipos;
@@ -427,9 +463,11 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel Contenido;
     private javax.swing.JPanel background;
     private javax.swing.JButton btn_prin;
+    private javax.swing.JPanel bttonCerrar;
     private javax.swing.JLabel dateText;
     private javax.swing.JPanel header;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel labelCerrar;
     private javax.swing.JPanel menu;
     private javax.swing.JLabel usuarioLabel;
     // End of variables declaration//GEN-END:variables

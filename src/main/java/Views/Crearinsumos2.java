@@ -132,6 +132,7 @@ public class Crearinsumos2 extends javax.swing.JPanel {
 
         nameLbl3.setText("Inventario existente:");
         nameLbl3.setToolTipText("");
+        nameLbl3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         nameLbl6.setText("Observacion:");
 

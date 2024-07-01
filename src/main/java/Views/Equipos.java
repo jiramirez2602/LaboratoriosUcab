@@ -173,7 +173,7 @@ public class Equipos extends javax.swing.JPanel {
         BotonEliminarEquipo.setForeground(new java.awt.Color(255, 255, 255));
         BotonEliminarEquipo.setText("Borrar");
         BotonEliminarEquipo.setBorderPainted(false);
-        BotonEliminarEquipo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        BotonEliminarEquipo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BotonEliminarEquipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonEliminarEquipoActionPerformed(evt);
@@ -185,7 +185,7 @@ public class Equipos extends javax.swing.JPanel {
         BotonModificarEquipo.setForeground(new java.awt.Color(255, 255, 255));
         BotonModificarEquipo.setText("Editar");
         BotonModificarEquipo.setBorderPainted(false);
-        BotonModificarEquipo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        BotonModificarEquipo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BotonModificarEquipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonModificarEquipoActionPerformed(evt);
@@ -197,7 +197,7 @@ public class Equipos extends javax.swing.JPanel {
         BotonCrearEquipo.setForeground(new java.awt.Color(255, 255, 255));
         BotonCrearEquipo.setText("Nuevo");
         BotonCrearEquipo.setBorderPainted(false);
-        BotonCrearEquipo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        BotonCrearEquipo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BotonCrearEquipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonCrearEquipoActionPerformed(evt);
@@ -209,7 +209,7 @@ public class Equipos extends javax.swing.JPanel {
         BotonExportarEquipo.setForeground(new java.awt.Color(255, 255, 255));
         BotonExportarEquipo.setText("Exportar");
         BotonExportarEquipo.setBorderPainted(false);
-        BotonExportarEquipo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        BotonExportarEquipo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BotonExportarEquipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonExportarEquipoActionPerformed(evt);

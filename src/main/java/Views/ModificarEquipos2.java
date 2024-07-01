@@ -180,7 +180,7 @@ public class ModificarEquipos2 extends javax.swing.JPanel {
         CrearEquipoSiguiente.setText("Modificar");
         CrearEquipoSiguiente.setBorder(null);
         CrearEquipoSiguiente.setBorderPainted(false);
-        CrearEquipoSiguiente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        CrearEquipoSiguiente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         CrearEquipoSiguiente.setIconTextGap(13);
         CrearEquipoSiguiente.setInheritsPopupMenu(true);
         CrearEquipoSiguiente.addActionListener(new java.awt.event.ActionListener() {

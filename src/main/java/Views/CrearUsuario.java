@@ -76,7 +76,7 @@ public class CrearUsuario extends javax.swing.JPanel {
         CrearUsuario.setText("Crear");
         CrearUsuario.setBorder(null);
         CrearUsuario.setBorderPainted(false);
-        CrearUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        CrearUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         CrearUsuario.setIconTextGap(13);
         CrearUsuario.setInheritsPopupMenu(true);
         CrearUsuario.addActionListener(new java.awt.event.ActionListener() {

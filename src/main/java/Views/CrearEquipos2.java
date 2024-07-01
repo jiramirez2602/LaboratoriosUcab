@@ -145,7 +145,7 @@ public class CrearEquipos2 extends javax.swing.JPanel {
         CrearEquiposFinal.setText("Siguiente");
         CrearEquiposFinal.setBorder(null);
         CrearEquiposFinal.setBorderPainted(false);
-        CrearEquiposFinal.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        CrearEquiposFinal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         CrearEquiposFinal.setIconTextGap(13);
         CrearEquiposFinal.setInheritsPopupMenu(true);
         CrearEquiposFinal.addActionListener(new java.awt.event.ActionListener() {
@@ -192,7 +192,7 @@ public class CrearEquipos2 extends javax.swing.JPanel {
         Atras.setText("Regresar");
         Atras.setBorder(null);
         Atras.setBorderPainted(false);
-        Atras.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Atras.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Atras.setIconTextGap(13);
         Atras.setInheritsPopupMenu(true);
         Atras.addActionListener(new java.awt.event.ActionListener() {

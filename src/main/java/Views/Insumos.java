@@ -158,7 +158,7 @@ public class Insumos extends javax.swing.JPanel {
         BotonEliminarInsumo.setForeground(new java.awt.Color(255, 255, 255));
         BotonEliminarInsumo.setText("Borrar");
         BotonEliminarInsumo.setBorderPainted(false);
-        BotonEliminarInsumo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        BotonEliminarInsumo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BotonEliminarInsumo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonEliminarInsumoActionPerformed(evt);
@@ -170,7 +170,7 @@ public class Insumos extends javax.swing.JPanel {
         BotonModificarInsumo.setForeground(new java.awt.Color(255, 255, 255));
         BotonModificarInsumo.setText("Editar");
         BotonModificarInsumo.setBorderPainted(false);
-        BotonModificarInsumo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        BotonModificarInsumo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BotonModificarInsumo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonModificarInsumoActionPerformed(evt);
@@ -182,7 +182,7 @@ public class Insumos extends javax.swing.JPanel {
         BotonCrearInsumo.setForeground(new java.awt.Color(255, 255, 255));
         BotonCrearInsumo.setText("Nuevo");
         BotonCrearInsumo.setBorderPainted(false);
-        BotonCrearInsumo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        BotonCrearInsumo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BotonCrearInsumo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonCrearInsumoActionPerformed(evt);
@@ -194,7 +194,7 @@ public class Insumos extends javax.swing.JPanel {
         ExportarBtton.setForeground(new java.awt.Color(255, 255, 255));
         ExportarBtton.setText("Exportar");
         ExportarBtton.setBorderPainted(false);
-        ExportarBtton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        ExportarBtton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ExportarBtton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ExportarBttonActionPerformed(evt);
