@@ -97,7 +97,6 @@ public class CrearEquipos extends javax.swing.JPanel {
         CrearEquipoSiguiente.setText("Siguiente");
         CrearEquipoSiguiente.setBorder(null);
         CrearEquipoSiguiente.setBorderPainted(false);
-        CrearEquipoSiguiente.setContentAreaFilled(false);
         CrearEquipoSiguiente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         CrearEquipoSiguiente.setIconTextGap(13);
         CrearEquipoSiguiente.setInheritsPopupMenu(true);
