@@ -15,6 +15,7 @@ import Views.Usuarios;
 import Views.Principal;
 import Views.SustanciasQuimicas;
 import Views.Transacciones;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialLighterIJTheme;
 import controller.ListaDeEquipos;
 import controller.ListaDeInsumos;
 import controller.ListaDeUsuarios;
@@ -44,6 +45,7 @@ public class Dashboard extends javax.swing.JFrame {
     private ListaDeInsumos listaInsumos;
 
     public Dashboard(Usuario user,ListaDeUsuarios users, ListaLaboratorios laboratorios,ListaDeEquipos equipos, ListaDeInsumos insumos) {
+        FlatMaterialLighterIJTheme.setup();
         initComponents();
         InitStyles();
         SetDate();

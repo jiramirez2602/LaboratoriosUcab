@@ -45,7 +45,7 @@ public class EquiposMantenimiento extends javax.swing.JPanel {
     }
     
     private void bloquearPorRol(Usuario user){
-        if((user.verificarRol(user,"Invitado"))||(user.verificarRol(user,"Tecnico"))){
+        if(user.verificarRol(user,"Invitado")){
             BotonModificarEquipo.setEnabled(false);
         }
     }
