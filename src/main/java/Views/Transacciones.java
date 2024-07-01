@@ -6,6 +6,8 @@ import java.awt.Color;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -23,6 +25,7 @@ public class Transacciones extends javax.swing.JPanel {
         initComponents();
         InitStyles();
         inicializarTablaSustancias();
+        actualizarTablaTransacciones();
     }
 
     private void InitStyles() {
@@ -35,14 +38,19 @@ public class Transacciones extends javax.swing.JPanel {
         tableModelTransaccion = new DefaultTableModel(columnas, 0);
         jTable1.setModel(tableModelTransaccion);
     }
-    private void actualizarTablaTransacciones() throws ParseException {
+    private void actualizarTablaTransacciones() {
         tableModelTransaccion.setRowCount(0);  
         int row = 0;
 
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(JLabel.CENTER);
 
-        ArrayList<TransaccionDeTabla> transacciones = listatransacciones.getListaTransacciones();
+        ArrayList<TransaccionDeTabla> transacciones = null;
+        try {
+            transacciones = listatransacciones.getListaTransacciones();
+        } catch (ParseException ex) {
+            Logger.getLogger(Transacciones.class.getName()).log(Level.SEVERE, null, ex);
+        }
         for (TransaccionDeTabla transaccion : transacciones) {
             Object[] fila = {
                 transaccion.getNombreProducto(),
