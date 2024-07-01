@@ -52,7 +52,7 @@ public class InsumosExcel extends javax.swing.JPanel {
         String[] columnas = {"Nombre de producto", "Tipo de producto", 
             "Inventario Existente", 
             "Observaciones", "Descripción", 
-            "Marca", "Modelo","Presentación","Clasificación","Categoria","Última Compra", "Precio Estimado","Unidad","Proovedor"};
+            "Marca", "Modelo","Presentación","Clasificación","Categoria","Última Compra", "Precio Estimado","Unidad","Proovedor","Laboratorio"};
         tableModelInsumo = new DefaultTableModel(columnas, 0);
         JTableInsumos.setModel(tableModelInsumo);
     }
@@ -84,6 +84,8 @@ public class InsumosExcel extends javax.swing.JPanel {
             ArrayList<Insumo> insumos = listaInsumos.getListaInsumos();
 
             for (Insumo insumo : insumos) {
+                Laboratorio laboratorio = listalaboratorios.listarLaboratorio(insumo.getLaboratorio());
+                String nombreLaboratorio = (laboratorio != null) ? laboratorio.getNombreLaboratorio() : "Desconocido";
                 Object[] fila = {
                     insumo.getNombreProducto(),
                     insumo.getTipoDeProducto(),
@@ -98,7 +100,8 @@ public class InsumosExcel extends javax.swing.JPanel {
                     insumo.getUltimaCompra(),
                     insumo.getPrecioEstimado(),
                     insumo.getUnidad(),
-                    insumo.getProveedor()
+                    insumo.getProveedor(),
+                    nombreLaboratorio
                 };
                 tableModelInsumo.addRow(fila);
 
