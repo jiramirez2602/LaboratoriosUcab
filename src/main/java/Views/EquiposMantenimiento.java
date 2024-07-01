@@ -59,8 +59,13 @@ public class EquiposMantenimiento extends javax.swing.JPanel {
         centerRenderer.setHorizontalAlignment(JLabel.CENTER);
 
         try {
-            ArrayList<Equipo> equipos = listaequipos.getListaEquiposMantenimiento();
-
+            ArrayList<Equipo> equipos=null;
+            if((userActual.getRolUsuario().equals("Tecnico"))||(userActual.getRolUsuario().equals("Invitado"))){
+                equipos = null;
+            }
+            else if(userActual.getRolUsuario().equals("Administrador")){
+                equipos = listaequipos.getListaEquiposMantenimiento();
+            }
             for (Equipo equipo : equipos) {
                 Laboratorio laboratorio = listalaboratorios.listarLaboratorio(equipo.getLaboratorio());
                 String nombreLaboratorio = (laboratorio != null) ? laboratorio.getNombreLaboratorio() : "Desconocido";
