@@ -67,7 +67,7 @@ public class Insumos extends javax.swing.JPanel {
             if(userActual.getRolUsuario().equals("Tecnico")){
                 insumos= listaInsumos.listarEquipoPorUsuario(userActual);
             }
-            else if(userActual.getRolUsuario().equals("Administrador")){
+            else if((userActual.getRolUsuario().equals("Administrador"))||(userActual.getRolUsuario().equals("Invitado"))){
                 insumos = listaInsumos.getListaInsumos();
             }
              

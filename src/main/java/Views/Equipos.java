@@ -67,7 +67,7 @@ public class Equipos extends javax.swing.JPanel {
             if(userActual.getRolUsuario().equals("Tecnico")){
                 equipos= listaequipos.listarEquipoPorUsuario(userActual);
             }
-            else if(userActual.getRolUsuario().equals("Administrador")){
+            else if((userActual.getRolUsuario().equals("Administrador"))||(userActual.getRolUsuario().equals("Invitado"))){
                 equipos = listaequipos.getListaEquipos();
             }
             SimpleDateFormat dateFormatter = new SimpleDateFormat("dd/MM/yyyy");

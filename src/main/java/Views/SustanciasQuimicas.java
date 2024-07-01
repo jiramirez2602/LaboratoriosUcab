@@ -80,7 +80,7 @@ public class SustanciasQuimicas extends javax.swing.JPanel {
             if(userActual.getRolUsuario().equals("Tecnico")){
                 sustancias= listasustancias.listarEquipoPorUsuario(userActual);
             }
-            else if(userActual.getRolUsuario().equals("Administrador")){
+            else if((userActual.getRolUsuario().equals("Administrador"))||(userActual.getRolUsuario().equals("Invitado"))){
                 sustancias = listasustancias.getListaSustanciasQuimicas();
             }
             for (SustanciaQuimica sustancia : sustancias) {
