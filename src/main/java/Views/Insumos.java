@@ -37,7 +37,7 @@ public class Insumos extends javax.swing.JPanel {
         InitStyles();
         inicializarTablaInsumos();
         actualizarTablaInsumos();
-
+        bloquearPorRol(userActual);
     }
     
     private void inicializarTablaInsumos() {
@@ -47,10 +47,11 @@ public class Insumos extends javax.swing.JPanel {
     }
     
     private void bloquearPorRol(Usuario user){
-        if((user.verificarRol(user,"Invitado"))||(user.verificarRol(user,"Tecnico"))){
+        if(user.verificarRol(user,"Invitado")){
             BotonCrearInsumo.setEnabled(false);
             BotonEliminarInsumo.setEnabled(false);
             BotonModificarInsumo.setEnabled(false);
+            ExportarBtton.setEnabled(false);
         }
     }
     

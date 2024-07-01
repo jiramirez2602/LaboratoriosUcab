@@ -47,10 +47,11 @@ public class Equipos extends javax.swing.JPanel {
     }
     
     private void bloquearPorRol(Usuario user){
-        if((user.verificarRol(user,"Invitado"))||(user.verificarRol(user,"Tecnico"))){
+        if(user.verificarRol(user,"Invitado")){
             BotonCrearEquipo.setEnabled(false);
             BotonEliminarEquipo.setEnabled(false);
             BotonModificarEquipo.setEnabled(false);
+            BotonExportarEquipo.setEnabled(false);
         }
     }
 
