@@ -3,6 +3,7 @@ package Views;
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialLighterIJTheme;
 import controller.Excel;
 import controller.ListaDeEquipos;
+import controller.ListaDeInsumos;
 import controller.ListaLaboratorios;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -20,110 +21,98 @@ import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import model.Equipo;
+import model.Insumo;
 import model.Laboratorio;
 import model.Usuario;
 import view.Login;
 
-public class EquiposExcel extends javax.swing.JPanel {
+public class InsumosExcel extends javax.swing.JPanel {
 
     private ListaLaboratorios listalaboratorios;
     private Usuario userActual;
-    private ListaDeEquipos listaequipos;
+    private ListaDeInsumos listaInsumos;
     private DefaultTableModel tableModelEquipos;
-    private HashMap<Integer, String> idMapEquipos;
-
-    public EquiposExcel(Usuario user, ListaLaboratorios listaLab, ListaDeEquipos equipos) {
+    private DefaultTableModel tableModelInsumo;
+    private HashMap<Integer, String> idMapInsumos;
+    
+    public InsumosExcel(Usuario user, ListaLaboratorios listaLab, ListaDeInsumos insumos) {
         this.listalaboratorios = listaLab;
-        this.listaequipos = equipos;
+        this.listaInsumos = insumos;
         this.userActual = user;
-        idMapEquipos = new HashMap<>();
+        idMapInsumos = new HashMap<>();
         initComponents();
-        inicializarTablaEquipos(); 
-        actualizarTablaEquipos();
+        inicializarTablaInsumos();
+        actualizarTablaInsumos();
         BackgroundEquipos.setVisible(false);
         exportarExcel();
         FlatMaterialLighterIJTheme.setup();
-        MostrarJPanel(new Equipos(userActual,listalaboratorios,listaequipos));
     }
 
-    private void inicializarTablaEquipos() {
-        String[] columnas = {
-            "Nombre", "Tipo", "Inventario", "Marca", "Modelo", "Número Serial",
-            "Número Activo", "Presentación", "Voltaje", "Descripción", "Procesable",
-            "Material Requerido", "Año de Compra", "Aplicación", "Último Mantenimiento",
-            "Próximo Mantenimiento", "Última Calibración", "Próxima Calibración",
-            "Proveedores de Servicios", "Encendido de Noche", "Laboratorio"
-        };
-        tableModelEquipos = new DefaultTableModel(columnas, 0);
-        jTable1.setModel(tableModelEquipos);
+    private void inicializarTablaInsumos() {
+        String[] columnas = {"Nombre de producto", "Tipo de producto", "Inventario Existente", "Observaciones", "Descripcion", "Marca", "Modelo", "Precio Estimado"};
+        tableModelInsumo = new DefaultTableModel(columnas, 0);
+        JTableInsumos.setModel(tableModelInsumo);
     }
     
     private void exportarExcel(){
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
-            Logger.getLogger(EquiposExcel.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(InsumosExcel.class.getName()).log(Level.SEVERE, null, ex);
         }
         try{
             Excel exportar = new Excel();
-            exportar.exportarExcel(jTable1,"Reportes de Equipos");
+            exportar.exportarExcel(JTableInsumos,"Reportes de Insumos");
         }
         catch(IOException e){
             System.out.println("Error de exportación");
         }
     }
 
-    private void actualizarTablaEquipos() {
-        tableModelEquipos.setRowCount(0);
-        idMapEquipos.clear();
+    private void actualizarTablaInsumos() {
+        tableModelInsumo.setRowCount(0);
+        idMapInsumos.clear();
         int row = 0;
 
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(JLabel.CENTER);
 
         try {
-            ArrayList<Equipo> equipos = listaequipos.getListaEquipos();
+            ArrayList<Insumo> insumos = listaInsumos.getListaInsumos();
 
-            for (Equipo equipo : equipos) {
-                Laboratorio laboratorio = listalaboratorios.listarLaboratorio(equipo.getLaboratorio());
-                String nombreLaboratorio = (laboratorio != null) ? laboratorio.getNombreLaboratorio() : "Desconocido";
-
+            for (Insumo insumo : insumos) {
                 Object[] fila = {
-                    equipo.getNombreProducto(),
-                    equipo.getTipoDeProducto(),
-                    equipo.getInventarioExistente(),
-                    equipo.getMarca(),
-                    equipo.getModelo(),
-                    equipo.getNumeroSerial(),
-                    equipo.getNumeroActivo(),
-                    equipo.getPresentacion(),
-                    equipo.getVoltaje(),
-                    equipo.getDescripcion(),
-                    equipo.getProcesable(),
-                    equipo.getMaterialRequerido(),
-                    equipo.getAñoDeCompra(),
-                    equipo.getAplicacion(),
-                    equipo.getUltimoMantenimiento(),
-                    equipo.getProximoMantenimiento(),
-                    equipo.getUltimaCalibracion(),
-                    equipo.getProximaCalibracion(),
-                    equipo.getProovedoresDeServicios(),
-                    equipo.getEncendidoDenoche(),
-                    nombreLaboratorio
+                    insumo.getNombreProducto(),
+                    insumo.getTipoDeProducto(),
+                    insumo.getInventarioExistente(),
+                    insumo.getObservaciones(),
+                    insumo.getDescripcion(),
+                    insumo.getMarca(),
+                    insumo.getModelo(),
+                    insumo.getPresentacion(),
+                    insumo.getClasificacion(),
+                    insumo.getCategoria(),
+                    insumo.getUltimaCompra(),
+                    insumo.getPrecioEstimado(),
+                    insumo.getUnidad(),
+                    insumo.getProveedor()
                 };
-                tableModelEquipos.addRow(fila);
+                tableModelInsumo.addRow(fila);
 
-                idMapEquipos.put(row, equipo.getId());
+                idMapInsumos.put(row, insumo.getId());
 
-                for (int i = 0; i < tableModelEquipos.getColumnCount(); i++) {
-                    jTable1.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+                for (int i = 0; i < tableModelInsumo.getColumnCount(); i++) {
+                    JTableInsumos.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
                 }
 
                 row++;
             }
         } catch (ParseException ex) {
-            JOptionPane.showMessageDialog(this, "Error al obtener la lista de equipos.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Error al obtener la lista de insumos.", "Error", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
         }
+
+        JTableInsumos.setDefaultEditor(Object.class, null);
     }
     
     private void MostrarJPanel(JPanel p) {
@@ -146,14 +135,14 @@ public class EquiposExcel extends javax.swing.JPanel {
 
         BackgroundEquipos = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        JTableInsumos = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
         BackgroundEquipos.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTable1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        JTableInsumos.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        JTableInsumos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -161,13 +150,13 @@ public class EquiposExcel extends javax.swing.JPanel {
 
             }
         ));
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+        JTableInsumos.getTableHeader().setReorderingAllowed(false);
+        JTableInsumos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jTable1MousePressed(evt);
+                JTableInsumosMousePressed(evt);
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(JTableInsumos);
 
         javax.swing.GroupLayout BackgroundEquiposLayout = new javax.swing.GroupLayout(BackgroundEquipos);
         BackgroundEquipos.setLayout(BackgroundEquiposLayout);
@@ -202,14 +191,14 @@ public class EquiposExcel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTable1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MousePressed
-        
-    }//GEN-LAST:event_jTable1MousePressed
+    private void JTableInsumosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTableInsumosMousePressed
+
+    }//GEN-LAST:event_JTableInsumosMousePressed
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BackgroundEquipos;
+    private javax.swing.JTable JTableInsumos;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

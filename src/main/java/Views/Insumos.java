@@ -46,6 +46,14 @@ public class Insumos extends javax.swing.JPanel {
         JTableInsumos.setModel(tableModelInsumo);
     }
     
+    private void bloquearPorRol(Usuario user){
+        if((user.verificarRol(user,"Invitado"))||(user.verificarRol(user,"Tecnico"))){
+            BotonCrearInsumo.setEnabled(false);
+            BotonEliminarInsumo.setEnabled(false);
+            BotonModificarInsumo.setEnabled(false);
+        }
+    }
+    
     private void actualizarTablaInsumos() {
         tableModelInsumo.setRowCount(0);
         idMapInsumos.clear();
@@ -120,6 +128,7 @@ public class Insumos extends javax.swing.JPanel {
         BotonEliminarInsumo = new javax.swing.JButton();
         BotonModificarInsumo = new javax.swing.JButton();
         BotonCrearInsumo = new javax.swing.JButton();
+        ExportarBtton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -180,6 +189,18 @@ public class Insumos extends javax.swing.JPanel {
             }
         });
 
+        ExportarBtton.setBackground(new java.awt.Color(18, 90, 173));
+        ExportarBtton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        ExportarBtton.setForeground(new java.awt.Color(255, 255, 255));
+        ExportarBtton.setText("Exportar");
+        ExportarBtton.setBorderPainted(false);
+        ExportarBtton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        ExportarBtton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExportarBttonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout BackGroundInsumosLayout = new javax.swing.GroupLayout(BackGroundInsumos);
         BackGroundInsumos.setLayout(BackGroundInsumosLayout);
         BackGroundInsumosLayout.setHorizontalGroup(
@@ -193,7 +214,9 @@ public class Insumos extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackGroundInsumosLayout.createSequentialGroup()
                         .addGroup(BackGroundInsumosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(BackGroundInsumosLayout.createSequentialGroup()
-                                .addGap(427, 427, 427)
+                                .addGap(331, 331, 331)
+                                .addComponent(ExportarBtton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(BotonCrearInsumo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(BotonModificarInsumo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -213,7 +236,8 @@ public class Insumos extends javax.swing.JPanel {
                 .addGroup(BackGroundInsumosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotonEliminarInsumo)
                     .addComponent(BotonModificarInsumo)
-                    .addComponent(BotonCrearInsumo))
+                    .addComponent(BotonCrearInsumo)
+                    .addComponent(ExportarBtton))
                 .addGap(25, 25, 25))
         );
 
@@ -286,12 +310,17 @@ public class Insumos extends javax.swing.JPanel {
     }
     }//GEN-LAST:event_BotonModificarInsumoActionPerformed
 
+    private void ExportarBttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExportarBttonActionPerformed
+        ShowJPanel(new InsumosExcel(userActual,listalaboratorios,listaInsumos));
+    }//GEN-LAST:event_ExportarBttonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BackGroundInsumos;
     private javax.swing.JButton BotonCrearInsumo;
     private javax.swing.JButton BotonEliminarInsumo;
     private javax.swing.JButton BotonModificarInsumo;
+    private javax.swing.JButton ExportarBtton;
     private javax.swing.JTable JTableInsumos;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel title;
