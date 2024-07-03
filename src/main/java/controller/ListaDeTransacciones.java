@@ -42,7 +42,7 @@ public class ListaDeTransacciones {
                 datos.put("unidad", String.valueOf(transaccion.insumo.getUnidad()));
                 datos.put("proveedor", String.valueOf(transaccion.insumo.getProveedor()));
                 datos.put("nombreProducto", String.valueOf(transaccion.insumo.getNombreProducto()));
-                datos.put("existencias", String.valueOf(transaccion.insumo.getInventarioExistente()));
+                datos.put("inventarioExistente", String.valueOf(transaccion.insumo.getInventarioExistente()));
                 datos.put("observaciones", String.valueOf(transaccion.insumo.getObservaciones()));
                 datos.put("idLaboratorio", String.valueOf(transaccion.insumo.getLaboratorio()));
             } else if (transaccion.equipo != null) {
