@@ -112,6 +112,7 @@ public class Dashboard extends javax.swing.JFrame {
         BotonInsumos = new javax.swing.JButton();
         BotonSustanciasQuimicas = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        btn_prin1 = new javax.swing.JButton();
         header = new javax.swing.JPanel();
         dateText = new javax.swing.JLabel();
         Contenido = new javax.swing.JPanel();
@@ -254,6 +255,23 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Usuario:");
 
+        btn_prin1.setBackground(new java.awt.Color(21, 101, 192));
+        btn_prin1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btn_prin1.setForeground(new java.awt.Color(255, 255, 255));
+        btn_prin1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/transacciones.png"))); // NOI18N
+        btn_prin1.setText("Transacciones");
+        btn_prin1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 13, 1, 1, new java.awt.Color(0, 0, 0)));
+        btn_prin1.setBorderPainted(false);
+        btn_prin1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_prin1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btn_prin1.setIconTextGap(13);
+        btn_prin1.setInheritsPopupMenu(true);
+        btn_prin1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_prin1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout menuLayout = new javax.swing.GroupLayout(menu);
         menu.setLayout(menuLayout);
         menuLayout.setHorizontalGroup(
@@ -271,6 +289,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(usuarioLabel)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(btn_prin1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         menuLayout.setVerticalGroup(
             menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -296,6 +315,8 @@ public class Dashboard extends javax.swing.JFrame {
                 .addComponent(BotonInsumos, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(BotonReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(btn_prin1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -402,6 +423,10 @@ public class Dashboard extends javax.swing.JFrame {
         ShowJPanel(new SustanciasQuimicas(userActual,listalaboratorios,listasustancias));
     }//GEN-LAST:event_BotonSustanciasQuimicasActionPerformed
 
+    private void btn_prin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_prin1ActionPerformed
+        ShowJPanel(new Transacciones(listatransacciones));
+    }//GEN-LAST:event_btn_prin1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonEquipos;
@@ -413,6 +438,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel Contenido;
     private javax.swing.JPanel background;
     private javax.swing.JButton btn_prin;
+    private javax.swing.JButton btn_prin1;
     private javax.swing.JLabel dateText;
     private javax.swing.JPanel header;
     private javax.swing.JLabel jLabel1;
