@@ -55,12 +55,12 @@ public class Main {
 
         });
          */
- /*
+ 
         //Equipos
         ListaDeEquipos lista3 = new ListaDeEquipos();
         //lista3.crearProductoEquipo(administradorLaboratorio, "Equipo importante", "GM", "ael-88g", "22fdfd-44", "233211", "Normal", "200 V", "true", "Nada", "26/02/2001", "No Aplica", "26/02/2001", "26/02/2030", "26/02/2020", "26/02/2024", "GM Latam", "Si", "Motor de vapor", "33", "No tengo observaciones", "af473a5b-ab43-4d1a-8bb1-b6f4cd5e392f");
         //lista3.modificarEquipo(administradorLaboratorio, "7395b7c9-1176-4484-9571-ad92c0ca5668","Equipo actualizado", "GM actualizado", "ael-88g actualizado", "22fdfd-44 actualizado", "875", "Normal actualizado", "200 V actualizado", "false", "Nada actualizado", "26/02/2011", "No Aplica actualizado", "26/02/2011", "26/02/2033", "26/02/2022", "26/02/2044", "GM Latam actualizado", "true", "Motor de vapor actualizado", "44", "No tengo observaciones actualizado", "af473a5b-ab43-4d1a-8bb1-b6f4cd5e392f");
-        //lista3.eliminarEquipo(administradorLaboratorio, "7395b7c9-1176-4484-9571-ad92c0ca5668");
+        lista3.eliminarEquipo(administradorLaboratorio, "1b43f015-f6c2-4df4-a75a-e102f6f80620");
         //lista3.getListaEquipos();
         //Iteramos para ejemplificar:
 //        ArrayList<Equipo> listaEquiposAux = new ArrayList<>();
@@ -81,7 +81,7 @@ public class Main {
 //            System.out.println(elemento.getId());
 //            System.out.println(elemento.getNombreProducto());
 //        });
-        */
+       
 
 
 
@@ -133,5 +133,6 @@ public class Main {
             System.out.println(elemento.getId());
             System.out.println(elemento.getNombreProducto());
         });
+
     }
 }
