@@ -37,7 +37,7 @@ public class SustanciasQuimicas extends javax.swing.JPanel {
         InitStyles();
         inicializarTablaSustancias();
         actualizarTablaSustancias();
-    
+        bloquearPorRol(userActual);
     }
 
     private void InitStyles() {
