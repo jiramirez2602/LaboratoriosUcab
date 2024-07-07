@@ -1,11 +1,9 @@
 package Views;
 
-import controller.ListaDeEquipos;
 import controller.ListaDeInsumos;
 import controller.ListaLaboratorios;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -236,15 +234,15 @@ public class Insumos extends javax.swing.JPanel {
             .addGroup(BackGroundInsumosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(64, 64, 64)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(BackGroundInsumosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotonEliminarInsumo)
                     .addComponent(BotonModificarInsumo)
                     .addComponent(BotonCrearInsumo)
                     .addComponent(ExportarBtton))
-                .addGap(25, 25, 25))
+                .addGap(65, 65, 65))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

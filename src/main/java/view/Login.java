@@ -4,7 +4,6 @@
  */
 package view;
 
-import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialLighterIJTheme;
 import controller.ListaDeEquipos;
 import controller.ListaDeInsumos;
 import controller.ListaDeSustanciasQuimicas;
@@ -12,12 +11,7 @@ import controller.ListaDeTransacciones;
 import controller.ListaDeUsuarios;
 import controller.ListaLaboratorios;
 import java.awt.Color;
-import java.awt.Image;
-import java.awt.Toolkit;
-import javax.swing.JOptionPane;
 import model.Usuario;
-import firebase.Conexion;
-import firebase.GeneralProvider;
 import javax.swing.ImageIcon;
 
 /**

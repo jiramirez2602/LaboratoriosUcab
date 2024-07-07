@@ -4,12 +4,10 @@ package Views;
 import controller.ListaDeTransacciones;
 import java.awt.Color;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import model.TransaccionDeTabla;
@@ -68,7 +66,7 @@ public class Transacciones extends javax.swing.JPanel {
             }
             row++;
         }
-        jTable1.setDefaultEditor(Object.class, null);  // Hacer que las celdas no sean editables
+        jTable1.setDefaultEditor(Object.class, null);
     }
     
     /**
@@ -116,11 +114,11 @@ public class Transacciones extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(bgLayout.createSequentialGroup()
-                        .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(699, 699, 699))
+                        .addComponent(jScrollPane1)
+                        .addContainerGap())
                     .addGroup(bgLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 736, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(699, 699, 699))))
         );
         bgLayout.setVerticalGroup(
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

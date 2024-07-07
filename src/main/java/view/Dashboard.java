@@ -6,10 +6,8 @@
 package view;
 
 import Views.Equipos;
-import Views.EquiposExcel;
 import Views.EquiposMantenimiento;
 import Views.Insumos;
-import Views.Reportes;
 import Views.Laboratorios;
 import Views.Usuarios;
 import Views.Principal;
@@ -24,9 +22,6 @@ import controller.ListaDeUsuarios;
 import controller.ListaLaboratorios;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;

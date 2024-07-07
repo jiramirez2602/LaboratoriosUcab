@@ -95,6 +95,7 @@ public class EquiposMantenimiento extends javax.swing.JPanel {
         } catch (ParseException ex) {
             JOptionPane.showMessageDialog(this, "Error al obtener la lista de equipos.", "Error", JOptionPane.ERROR_MESSAGE);
         }
+        jTable1.setDefaultEditor(Object.class, null);
     }
 
     private void InitStyles() {
@@ -184,10 +185,10 @@ public class EquiposMantenimiento extends javax.swing.JPanel {
                 .addGap(34, 34, 34)
                 .addComponent(title)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
                 .addGap(48, 48, 48)
                 .addComponent(BotonModificarEquipo)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addGap(31, 31, 31))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

@@ -230,22 +230,22 @@ public class Equipos extends javax.swing.JPanel {
                         .addGap(50, 50, 50))
                     .addGroup(BackgroundEquiposLayout.createSequentialGroup()
                         .addComponent(jScrollPane1)
-                        .addGap(39, 39, 39))))
+                        .addGap(22, 22, 22))))
         );
         BackgroundEquiposLayout.setVerticalGroup(
             BackgroundEquiposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BackgroundEquiposLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(title)
-                .addGap(46, 46, 46)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
                 .addGap(48, 48, 48)
                 .addGroup(BackgroundEquiposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotonEliminarEquipo)
                     .addComponent(BotonModificarEquipo)
                     .addComponent(BotonCrearEquipo)
                     .addComponent(BotonExportarEquipo))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addGap(31, 31, 31))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
