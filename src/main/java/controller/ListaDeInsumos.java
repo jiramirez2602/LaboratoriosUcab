@@ -35,7 +35,7 @@ public class ListaDeInsumos {
             datos.put("unidad", String.valueOf(insumo.getUnidad()));
             datos.put("proveedor", String.valueOf(insumo.getProveedor()));
             datos.put("nombreProducto", String.valueOf(insumo.getNombreProducto()));
-            datos.put("existencias", String.valueOf(insumo.getInventarioExistente()));
+            datos.put("inventarioExistente", String.valueOf(insumo.getInventarioExistente()));
             datos.put("observaciones", String.valueOf(insumo.getObservaciones()));
             datos.put("idLaboratorio", String.valueOf(insumo.getLaboratorio()));
             GeneralProvider.guardar("Insumos", String.valueOf(insumo.getId()), datos);
@@ -62,7 +62,7 @@ public class ListaDeInsumos {
             datos.put("unidad", String.valueOf(insumo.getUnidad()));
             datos.put("proveedor", String.valueOf(insumo.getProveedor()));
             datos.put("nombreProducto", String.valueOf(insumo.getNombreProducto()));
-            datos.put("existencias", String.valueOf(insumo.getInventarioExistente()));
+            datos.put("inventarioExistente", String.valueOf(insumo.getInventarioExistente()));
             datos.put("observaciones", String.valueOf(insumo.getObservaciones()));
             datos.put("idLaboratorio", String.valueOf(insumo.getLaboratorio()));
             GeneralProvider.actualizar("Insumos", insumo.getId(), datos);
