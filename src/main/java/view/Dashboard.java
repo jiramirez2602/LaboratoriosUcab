@@ -338,7 +338,7 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         Contenido.setBackground(new java.awt.Color(255, 255, 255));
-        Contenido.setMinimumSize(new java.awt.Dimension(1140, 698));
+        Contenido.setMinimumSize(new java.awt.Dimension(0, 0));
         Contenido.setPreferredSize(new java.awt.Dimension(1038, 666));
 
         javax.swing.GroupLayout ContenidoLayout = new javax.swing.GroupLayout(Contenido);

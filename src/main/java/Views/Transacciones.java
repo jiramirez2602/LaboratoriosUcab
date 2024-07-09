@@ -89,6 +89,8 @@ public class Transacciones extends javax.swing.JPanel {
 
         title.setText("Transacciones");
 
+        jScrollPane1.setToolTipText("");
+
         jTable1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -117,7 +119,7 @@ public class Transacciones extends javax.swing.JPanel {
                         .addComponent(jScrollPane1)
                         .addContainerGap())
                     .addGroup(bgLayout.createSequentialGroup()
-                        .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
                         .addGap(699, 699, 699))))
         );
         bgLayout.setVerticalGroup(

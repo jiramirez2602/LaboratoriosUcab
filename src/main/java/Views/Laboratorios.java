@@ -255,6 +255,7 @@ public class Laboratorios extends javax.swing.JPanel {
 
     private void BotonModificarLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarLabActionPerformed
         int selectedRow = jTable1.getSelectedRow();
+        
         if (selectedRow != -1) {
             String idLaboratorio = idMapLab.get(selectedRow);
             Laboratorio laboratorio = listalaboratorios.listarLaboratorio(idLaboratorio);

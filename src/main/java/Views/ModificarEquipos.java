@@ -147,8 +147,10 @@ public class ModificarEquipos extends javax.swing.JPanel {
 
         nameLbl11.setText("Ingrese el año de compra:");
 
+        Procesable.add(ProcesableSIRadioBtton);
         ProcesableSIRadioBtton.setText("Si");
 
+        Procesable.add(ProcesableNoRadioBtton);
         ProcesableNoRadioBtton.setText("No");
 
         javax.swing.GroupLayout BackgroundCrearEquipo1Layout = new javax.swing.GroupLayout(BackgroundCrearEquipo1);
@@ -156,7 +158,7 @@ public class ModificarEquipos extends javax.swing.JPanel {
         BackgroundCrearEquipo1Layout.setHorizontalGroup(
             BackgroundCrearEquipo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BackgroundCrearEquipo1Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addContainerGap()
                 .addGroup(BackgroundCrearEquipo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(BackgroundCrearEquipo1Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -213,12 +215,12 @@ public class ModificarEquipos extends javax.swing.JPanel {
                                 .addGap(271, 271, 271))
                             .addComponent(AñodeCompraTXT)
                             .addComponent(CrearEquipoSiguiente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(83, 83, 83))
+                .addGap(108, 108, 108))
         );
         BackgroundCrearEquipo1Layout.setVerticalGroup(
             BackgroundCrearEquipo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BackgroundCrearEquipo1Layout.createSequentialGroup()
-                .addGap(7, 7, 7)
+                .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -269,7 +271,7 @@ public class ModificarEquipos extends javax.swing.JPanel {
                         .addComponent(AñodeCompraTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(CrearEquipoSiguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(169, Short.MAX_VALUE))
+                .addContainerGap(170, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
