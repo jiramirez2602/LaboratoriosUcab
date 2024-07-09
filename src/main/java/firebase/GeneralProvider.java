@@ -225,7 +225,7 @@ public class GeneralProvider {
                         document.getString("unidad"),
                         document.getString("proveedor"),
                         document.getString("nombreProducto"),
-                        Integer.valueOf(document.getString("existencias")),
+                        Integer.valueOf(document.getString("inventarioExistente")),
                         document.getString("observaciones"),
                         document.getString("idLaboratorio")
                 );
