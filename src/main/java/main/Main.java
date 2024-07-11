@@ -1,5 +1,6 @@
 package main;
 
+/*
 import controller.ListaDeEquipos;
 import controller.ListaDeInsumos;
 import controller.ListaDeSustanciasQuimicas;
@@ -134,6 +135,7 @@ public class Main {
             System.out.println(elemento.getTipoDeTransaccion());
         });
 */
-
+/*
     }
 }
+*/

@@ -14,7 +14,8 @@ public class Conexion {
 
     public static void conectarFirebase() {
         try {
-            FileInputStream sa = new FileInputStream("tutorial.json");
+            FileInputStream sa = new FileInputStream("./src/main/resources/tutorial.json"); //tutorial.json
+            //FileInputStream sa = new FileInputStream("tutorial.json"); //tutorial.json
 
             FirebaseOptions options = FirebaseOptions.builder()
                     .setCredentials(GoogleCredentials.fromStream(sa))
