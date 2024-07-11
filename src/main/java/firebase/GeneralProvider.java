@@ -251,7 +251,7 @@ public class GeneralProvider {
                         Integer.valueOf(document.getString("inventarioExistente")),
                         document.getString("observaciones"),
                         document.getString("fecha"),
-                        document.getString("nombreUsuario"),
+                        document.getString("nombreCompleto"),
                         document.getString("id"),
                         document.getString("tipoDeTransaccion")
                 );

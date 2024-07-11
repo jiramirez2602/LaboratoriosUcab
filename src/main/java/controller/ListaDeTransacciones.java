@@ -88,6 +88,13 @@ public class ListaDeTransacciones {
                 datos.put("observaciones", String.valueOf(transaccion.sustanciaQuimica.getObservaciones()));
                 datos.put("idLaboratorio", String.valueOf(transaccion.sustanciaQuimica.getLaboratorio()));
             }
+            if (transaccion.insumo != null) {
+                datos.put("tipoDeProducto", String.valueOf(transaccion.insumo.getTipoDeProducto()));
+            } else if (transaccion.equipo != null) {
+                datos.put("tipoDeProducto", String.valueOf(transaccion.equipo.getTipoDeProducto()));
+            } else if (transaccion.sustanciaQuimica != null) {
+                datos.put("tipoDeProducto", String.valueOf(transaccion.sustanciaQuimica.getTipoDeProducto()));
+            }
             datos.put("fecha", String.valueOf(transaccion.getFecha()));
             datos.put("tipoDeTransaccion", String.valueOf(transaccion.getTipoDeTransaccion()));
             GeneralProvider.guardar("Transacciones", String.valueOf(transaccion.getId()), datos);
